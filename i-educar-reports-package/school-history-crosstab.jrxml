@@ -417,7 +417,8 @@
 									<measureExpression><![CDATA[$F{carga_horaria_disciplina}]]></measureExpression>
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="First">
-									<measureExpression><![CDATA[$F{nm_serie}.replace($F{grade},"") + ' ' + $F{grade}]]></measureExpression>
+									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
+					? $F{nm_serie} : $F{nm_serie} + ' ' + $F{grade}]]></measureExpression>
 								</measure>
 								<crosstabCell width="60" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">
@@ -706,7 +707,8 @@
 									<measureExpression><![CDATA[$F{carga_horaria_disciplina}]]></measureExpression>
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="Highest">
-									<measureExpression><![CDATA[$F{nm_serie}.replace($F{grade},"") + ' ' + $F{grade}]]></measureExpression>
+									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
+					? $F{nm_serie} : $F{nm_serie} + ' ' + $F{grade}]]></measureExpression>
 								</measure>
 								<crosstabCell width="60" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">
@@ -978,12 +980,12 @@
 				</textElement>
 				<text><![CDATA[Município e Data:]]></text>
 			</staticText>
-			<line>
+			<!--<line>
 				<reportElement x="4" y="22" width="545" height="1" uuid="7b8eed87-99ea-4452-ade6-c47d2369ee7b"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</line>-->
 			<textField>
 				<reportElement x="78" y="6" width="142" height="13" uuid="8d1f8a33-abc5-4539-836a-46ea9c1b57bb"/>
 				<textElement>
@@ -1004,12 +1006,12 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<line>
+			<!--<line>
 				<reportElement x="392" y="3" width="1" height="20" uuid="a1a66412-eb01-4bdf-9dbb-5eaaec30f2c7"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</line>-->
 			<staticText>
 				<reportElement x="7" y="26" width="218" height="13" uuid="66622429-0456-4f67-a469-a2484977c464">
 					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
