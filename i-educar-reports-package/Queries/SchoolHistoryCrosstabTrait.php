@@ -31,7 +31,7 @@ trait SchoolHistoryCrosstabTrait
                 livro,
                 folha,
                 ref_cod_aluno,
-                historico_disciplinas.nm_disciplina,
+                UPPER(historico_disciplinas.nm_disciplina) AS nm_disciplina,
                 historico_disciplinas.nota,
                 historico_disciplinas.carga_horaria_disciplina,
                 to_char(CURRENT_DATE,'dd/mm/yyyy') AS data_atual,
