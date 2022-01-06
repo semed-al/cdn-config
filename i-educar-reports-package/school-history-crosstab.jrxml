@@ -413,8 +413,8 @@
 								<measure name="carga_horaria" class="java.lang.Integer" calculation="First">
 									<measureExpression><![CDATA[$F{carga_horaria}]]></measureExpression>
 								</measure>
-								<measure name="chd" class="java.lang.Integer" calculation="First">
-									<measureExpression><![CDATA[$F{carga_horaria_disciplina}]]></measureExpression>
+								<measure name="chd" class="java.lang.String" calculation="First">
+									<measureExpression><![CDATA[$F{carga_horaria_disciplina} == null ? '-' : $F{carga_horaria_disciplina} + 'h']]></measureExpression>
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="First">
 									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
@@ -441,13 +441,14 @@
 											<textElement verticalAlignment="Middle">
 												<font fontName="DejaVu Sans" size="7"/>
 											</textElement>
-											<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-'
-    : !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd} + "h"
-    : Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? '*' + $V{notaMeasure} + '\n' + $V{chd} + "h"
-    : $V{notaMeasure} + '\n' + $V{chd} + "h") : ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-'
-    : !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd} + "h"
-    : Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? $V{notaMeasure} + '\n' + $V{chd} + "h"
-    : $V{notaMeasure} + '\n' + $V{chd} + "h")]]></textFieldExpression>
+											<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-' + '\n' + ($V{chd} == null ? '-' : $V{chd})
+		: !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd}
+		: Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? '*' + $V{notaMeasure} + '\n' + $V{chd}
+		: $V{notaMeasure} + '\n' + $V{chd}) 
+	: ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-' + '\n' + ($V{chd} == null ? '-' : $V{chd})
+		: !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd}
+		: Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? $V{notaMeasure} + '\n' + $V{chd}
+		: $V{notaMeasure} + '\n' + $V{chd})]]></textFieldExpression>
 										</textField>
 									</cellContents>
 								</crosstabCell>
@@ -703,8 +704,8 @@
 								<measure name="carga_horaria" class="java.lang.Integer" calculation="First">
 									<measureExpression><![CDATA[$F{carga_horaria}]]></measureExpression>
 								</measure>
-								<measure name="chd" class="java.lang.Integer" calculation="First">
-									<measureExpression><![CDATA[$F{carga_horaria_disciplina}]]></measureExpression>
+								<measure name="chd" class="java.lang.String" calculation="First">
+									<measureExpression><![CDATA[$F{carga_horaria_disciplina} == null ? '-' : $F{carga_horaria_disciplina} + 'h']]></measureExpression>
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="Highest">
 									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
@@ -731,13 +732,15 @@
 											<textElement verticalAlignment="Middle">
 												<font fontName="DejaVu Sans" size="7"/>
 											</textElement>
-											<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-'
-    : !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd} + "h"
-    : Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? '*' + $V{notaMeasure} + '\n' + $V{chd} + "h"
-    : $V{notaMeasure} + '\n' + $V{chd} + "h") : ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-'
-    : !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd} + "h"
-    : Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? $V{notaMeasure} + '\n' + $V{chd} + "h"
-    : $V{notaMeasure} + '\n' + $V{chd} + "h")]]></textFieldExpression>
+											<textFieldExpression><![CDATA[$P{mostrar_msg} == false 
+											? ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-' + '\n' + ($V{chd} == null ? '-' : $V{chd})
+		: !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd}
+		: Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? '*' + $V{notaMeasure} + '\n' + $V{chd}
+		: $V{notaMeasure} + '\n' + $V{chd}) 
+	: ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-' + '\n' + ($V{chd} == null ? '-' : $V{chd})
+		: !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd}
+		: Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? $V{notaMeasure} + '\n' + $V{chd}
+		: $V{notaMeasure} + '\n' + $V{chd})]]></textFieldExpression>
 										</textField>
 									</cellContents>
 								</crosstabCell>
