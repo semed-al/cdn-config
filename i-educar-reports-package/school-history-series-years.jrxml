@@ -9,7 +9,7 @@
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="HORAS_ABREV" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA[" horas"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["h"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="instituicao" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
