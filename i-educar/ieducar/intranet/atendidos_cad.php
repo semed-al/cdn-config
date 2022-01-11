@@ -189,7 +189,9 @@ return new class extends clsCadastro {
 
         $this->campoOculto('cod_pessoa_fj', $this->cod_pessoa_fj);
         $this->campoTexto('nm_pessoa', 'Nome', $this->nm_pessoa, '50', '255', true);
-        $this->campoTexto('nome_social', 'Nome social', $this->nome_social, '50', '255', false);
+        /*
+            $this->campoTexto('nome_social', 'Nome social', $this->nome_social, '50', '255', false);
+        */
 
         $foto = false;
         if (is_numeric($this->cod_pessoa_fj)) {
@@ -258,9 +260,10 @@ return new class extends clsCadastro {
         $this->inputsHelper()->date('data_nasc', $options);
 
         // pai, mãe
-
-        $this->inputPai();
-        $this->inputMae();
+        if (empty($parentType) || $parentType == NULL) {
+            $this->inputPai();
+            $this->inputMae();
+        }
 
         // documentos
 
@@ -353,6 +356,7 @@ return new class extends clsCadastro {
 
         // Carteira do SUS
 
+/*
         $options = [
             'required' => config('legacy.app.fisica.exigir_cartao_sus'),
             'label' => 'Número da carteira do SUS',
@@ -363,6 +367,7 @@ return new class extends clsCadastro {
         ];
 
         $this->inputsHelper()->text('sus', $options);
+*/
 
         // tipo de certidao civil
 
