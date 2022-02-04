@@ -97,7 +97,7 @@
 		<variableExpression><![CDATA[$F{situacao} == "Apr" ? $F{cod_matricula} : null]]></variableExpression>
 	</variable>
 	<variable name="count_reprovado" class="java.lang.Integer" calculation="DistinctCount">
-		<variableExpression><![CDATA[$F{situacao} == "Rep"  ? $F{cod_matricula} : null]]></variableExpression>
+		<variableExpression><![CDATA[($F{situacao} == "Rep" || $F{situacao} == "RpFt")  ? $F{cod_matricula} : null]]></variableExpression>
 	</variable>
 	<variable name="count_abandono" class="java.lang.Integer" calculation="DistinctCount">
 		<variableExpression><![CDATA[$F{situacao}== "Aba" ? $F{cod_matricula} : null]]></variableExpression>
@@ -230,7 +230,7 @@
 											<textElement textAlignment="Center">
 												<font fontName="DejaVu Sans" size="8"/>
 											</textElement>
-											<textFieldExpression><![CDATA[$V{situacao}]]></textFieldExpression>
+											<textFieldExpression><![CDATA[$V{situacao} == "RpFt" ? "Rep" : $V{situacao}]]></textFieldExpression>
 										</textField>
 									</cellContents>
 								</crosstabRowHeader>
@@ -308,7 +308,7 @@
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="DejaVu Sans" size="8"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$V{mediaMeasure} ? $V{mediaMeasure} : ($V{situacao} == "Apr" ? "APC" : "-") ]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$V{mediaMeasure} ? $V{mediaMeasure} : ($V{situacao} == "Apr" ? "APC" : "-")]]></textFieldExpression>
 									</textField>
 								</cellContents>
 							</crosstabCell>
