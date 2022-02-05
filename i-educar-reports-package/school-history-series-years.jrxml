@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="school-history-series-years" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="a79dda7b-5eab-4f10-b9e4-88b7ba7d8664">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Crosstab Data Text" hTextAlign="Center" hImageAlign="Center"/>
 	<subDataset name="dataset1" uuid="d908f52f-5cd9-45b2-8bba-8a08729e0436"/>
 	<subDataset name="dataset2" uuid="eeb007dc-7155-4973-97de-33ac02c4f90a"/>
@@ -8,7 +9,7 @@
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="HORAS_ABREV" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA[" horas"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["h"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="instituicao" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
@@ -59,6 +60,7 @@
 	<field name="cod_aluno" class="java.lang.Integer"/>
 	<field name="nm_disciplina" class="java.lang.String"/>
 	<field name="nome_aluno" class="java.lang.String"/>
+	<field name="nm_serie" class="java.lang.String"/>
 	<field name="cod_inep" class="java.lang.Long"/>
 	<field name="cidade_nascimento_uf" class="java.lang.String"/>
 	<field name="uf_nascimento" class="java.lang.String"/>
@@ -2232,7 +2234,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($P{cabecalho_alternativo} == 1) ? "" : ($P{cabecalho_alternativo} == 2) ? "HISTÓRICO ESCOLAR DO ENSINO FUNDAMENTAL" : ("HISTÓRICO ESCOLAR DO " + (($F{nome_curso} == "" ) ? "ENSINO FUNDAMENTAL" : $F{nome_curso} ))]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($P{cabecalho_alternativo} == 1) ? "" : "HISTÓRICO ESCOLAR"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="171" y="20" width="372" height="13" uuid="42924f94-244a-4738-9617-02a2ba19fb07">
@@ -2348,7 +2350,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($P{cabecalho_alternativo} == 1) ? "HISTÓRICO ESCOLAR" : ($P{cabecalho_alternativo} == 2) ? "CERTIFICADO DE CONCLUSÃO DO ENSINO FUNDAMENTAL" :  "CERTIFICADO DE CONCLUSÃO DE SÉRIE E/OU " + (($F{nome_curso} == "") ? "ENSINO FUNDAMENTAL" : $F{nome_curso} )]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($P{cabecalho_alternativo} == 1) ? "HISTÓRICO ESCOLAR" : "CERTIFICADO DE CONCLUSÃO"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="407" y="33" width="51" height="10" uuid="a4d18f2b-2954-4bfb-ad7b-ab8d20924912">
