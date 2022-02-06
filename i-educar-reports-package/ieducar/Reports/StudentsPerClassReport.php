@@ -40,7 +40,9 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 aluno.cod_aluno AS cod_aluno,
                 cpf,
                 fcn_upper(pessoa.nome) AS nome_aluno,
+                fisica.sus AS codigo_sus,
                 relatorio.get_pai_aluno(aluno.cod_aluno) AS nome_do_pai,
+                relatorio.get_mae_aluno(aluno.cod_aluno) AS nome_da_mae,
                 (
                  CASE WHEN fisica.sexo = 'M' THEN 'Mas' ELSE 'Fem' END
                 ) AS sexo,
@@ -193,7 +195,6 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 ),
                 sequencial_fechamento,
                 nome_aluno
-
         ";
     }
 }
