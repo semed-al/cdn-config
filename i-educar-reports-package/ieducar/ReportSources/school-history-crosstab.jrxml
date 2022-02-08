@@ -418,7 +418,7 @@
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="First">
 									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
-					? $F{nm_serie} : $F{nm_serie} + ' ' + $F{grade}]]></measureExpression>
+					? $F{nm_serie} + ' ' + $F{nome_curso} : $F{nm_serie} + ' ' + $F{grade} + ' ' + $F{nome_curso}]]></measureExpression>
 								</measure>
 								<crosstabCell width="60" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">
@@ -709,7 +709,7 @@
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="Highest">
 									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
-					? $F{nm_serie} : $F{nm_serie} + ' ' + $F{grade}]]></measureExpression>
+					? $F{nm_serie} + ' ' + $F{nome_curso} : $F{nm_serie} + ' ' + $F{grade} + ' ' + $F{nome_curso}]]></measureExpression>
 								</measure>
 								<crosstabCell width="60" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">

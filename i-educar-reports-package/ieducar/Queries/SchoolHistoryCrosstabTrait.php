@@ -301,11 +301,8 @@ trait SchoolHistoryCrosstabTrait
                         CASE
                             WHEN he.aprovado = 3 THEN 'está cursando o '
                             ELSE 'concluiu o(a) '
-                        END ||
-                        CASE
-                            WHEN (substring(nm_serie,1,1) = '9') THEN 'ENSINO FUNDAMENTAL (9 ANOS)'
-                            ELSE nm_serie
-                        END
+                        END || nm_serie
+                        
                     FROM pmieducar.historico_escolar he
                     WHERE he.ref_cod_aluno = historico_escolar.ref_cod_aluno
                     AND he.sequencial = (
