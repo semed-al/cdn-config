@@ -308,7 +308,7 @@
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="DejaVu Sans" size="8"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$V{mediaMeasure} ? $V{mediaMeasure} : ($V{situacao} == "Apr" ? "APC" : "-")]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$V{mediaMeasure} ? ($V{situacao} == "Trs" || $V{situacao} == "Aba" ? "-" : $V{mediaMeasure}) : ($V{situacao} == "Apr" ? "APC" : "-")]]></textFieldExpression>
 									</textField>
 								</cellContents>
 							</crosstabCell>

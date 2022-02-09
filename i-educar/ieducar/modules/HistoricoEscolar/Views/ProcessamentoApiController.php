@@ -729,6 +729,7 @@ class ProcessamentoApiController extends Core_Controller_Page_EditController
             $processarMediaGeral = $this->getRequest()->processar_media_geral;
             $casasDecimais = $this->getService()->getRegra()->get('qtdCasasDecimais');
             $aprovadoDependencia = $this->getSituacaoMatricula() == 12;
+            $aprovado = $this->getSituacaoMatricula() == App_Model_MatriculaSituacao::APROVADO;
 
             $isGlobalScoreForStage = $this->getService()->getEvaluationRule()->isGlobalScore();
 
@@ -761,7 +762,7 @@ class ProcessamentoApiController extends Core_Controller_Page_EditController
                         $nota = (string)$mediasCc[$ccId][0]->mediaArredondada;
                         $notaConceitualNumerica = (string)$mediasCc[$ccId][0]->media;
                     } elseif ($tpNota == RegraAvaliacao_Model_Nota_TipoValor::NENHUM) { // parecer descritivo
-                        if ($reprovado != true) {
+                        if ($aprovado == true) {
                             $nota = "APC";
                         }                        
                     }
