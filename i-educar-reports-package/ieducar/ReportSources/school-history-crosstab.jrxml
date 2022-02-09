@@ -418,7 +418,7 @@
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="First">
 									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
-					? $F{nm_serie} + ' ' + $F{nome_curso} : $F{nm_serie} + ' ' + $F{grade} + ' ' + $F{nome_curso}]]></measureExpression>
+					? $F{nm_serie} : $F{nm_serie} + ' ' + $F{grade}]]></measureExpression>
 								</measure>
 								<crosstabCell width="60" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">
@@ -709,7 +709,7 @@
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="Highest">
 									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
-					? $F{nm_serie} + ' ' + $F{nome_curso} : $F{nm_serie} + ' ' + $F{grade} + ' ' + $F{nome_curso}]]></measureExpression>
+					? $F{nm_serie} : $F{nm_serie} + ' ' + $F{grade}]]></measureExpression>
 								</measure>
 								<crosstabCell width="60" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">
@@ -900,7 +900,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Certificamos que "+($F{nome_social_aluno} ? $F{nome_social_aluno} +", nome de registro " + $F{nome_aluno} : $F{nome_aluno}) + ", matrícula "+$F{ref_cod_aluno}+($F{inep} == null ? "" : ", cód. INEP: "+$F{inep}) + ", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ (($F{nome_do_pai} == "") && ($F{nome_da_mae} == "") ? "NÃO INFORMADO" : ((($F{nome_do_pai} != "") && ($F{nome_da_mae} != "")) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == "") ? $F{nome_da_mae} : $F{nome_do_pai}))) +", "+  $F{nome_serie_aux} +" conforme Histórico Escolar."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Certificamos que "+($F{nome_social_aluno} ? $F{nome_social_aluno} +", nome de registro " + $F{nome_aluno} : $F{nome_aluno}) + ", matrícula "+$F{ref_cod_aluno}+($F{inep} == null ? "" : ", cód. INEP: "+$F{inep}) + ", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ (($F{nome_do_pai} == "") && ($F{nome_da_mae} == "") ? "NÃO INFORMADO" : ((($F{nome_do_pai} != "") && ($F{nome_da_mae} != "")) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == "") ? $F{nome_da_mae} : $F{nome_do_pai}))) +", "+  $F{nome_serie_aux} + " do(a) " + $F{nome_curso} +" conforme Histórico Escolar."]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="337" y="26" width="179" height="13" uuid="42924f94-244a-4738-9617-02a2ba19fb07">
