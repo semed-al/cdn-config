@@ -44,7 +44,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 relatorio.get_pai_aluno(aluno.cod_aluno) AS nome_do_pai,
                 relatorio.get_mae_aluno(aluno.cod_aluno) AS nome_da_mae,
                 (
-                 CASE WHEN fisica.sexo = 'M' THEN 'Mas' ELSE 'Fem' END
+                 CASE WHEN fisica.sexo = 'M' THEN 'M' ELSE 'F' END
                 ) AS sexo,
                 to_char(fisica.data_nasc,'dd/mm/yyyy') AS data_nasc,
                 nis_pis_pasep,
