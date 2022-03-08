@@ -23,6 +23,7 @@ trait SchoolHistoryCrosstabDatasetTrait
                 escola_cidade,
                 escola_uf,
                 nm_serie,
+                posicao,
                 (
                     CASE
                         WHEN historico_escolar.historico_grade_curso_id = 1 THEN 'Série'
@@ -70,10 +71,15 @@ trait SchoolHistoryCrosstabDatasetTrait
                     )
                 )
             )
+            
             ORDER BY
                 CASE WHEN  $apenas_ultimo_registro THEN ano END DESC,
-                CASE WHEN not $apenas_ultimo_registro THEN ano END ASC
+                CASE WHEN not $apenas_ultimo_registro THEN ano END ASC,
+                
+                CASE WHEN  $apenas_ultimo_registro THEN posicao END DESC,
+                CASE WHEN not $apenas_ultimo_registro THEN posicao END ASC
             LIMIT CASE WHEN $apenas_ultimo_registro THEN 1 END;
+            
 SQL;
     }
 }

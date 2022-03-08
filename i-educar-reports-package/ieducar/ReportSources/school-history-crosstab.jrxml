@@ -75,6 +75,7 @@
 			<defaultValueExpression><![CDATA['0']]></defaultValueExpression>
 		</parameter>
 		<field name="ano" class="java.lang.Integer"/>
+		<field name="posicao" class="java.lang.Integer"/>
 		<field name="observacao_all" class="java.lang.String"/>
 		<field name="inep" class="java.lang.Long"/>
 		<field name="carga_horaria" class="java.lang.Double"/>
@@ -181,6 +182,7 @@
 	<parameter name="serie" class="java.lang.Integer"/>
 	<parameter name="turma" class="java.lang.Integer"/>
 	<parameter name="ano" class="java.lang.Integer"/>
+	<parameter name="posicao" class="java.lang.Integer"/>
 	<parameter name="diretor" class="java.lang.String"/>
 	<parameter name="secretario" class="java.lang.String"/>
 	<parameter name="data_emissao" class="java.lang.String"/>
@@ -192,6 +194,7 @@
 		<![CDATA[]]>
 	</queryString>
 	<field name="ano" class="java.lang.Integer"/>
+	<field name="posicao" class="java.lang.Integer"/>
 	<field name="observacao_all" class="java.lang.String"/>
 	<field name="carga_horaria_disciplina" class="java.lang.Long"/>
 	<field name="inep" class="java.lang.Long"/>
@@ -369,7 +372,7 @@
 								</rowGroup>
 								<columnGroup name="ano" height="18" totalPosition="End">
 									<bucket class="java.lang.String">
-										<bucketExpression><![CDATA[$F{ano} + $F{nm_serie}]]></bucketExpression>
+										<bucketExpression><![CDATA[$F{ano} + $F{posicao} + $F{nm_serie}]]></bucketExpression>
 									</bucket>
 									<crosstabColumnHeader>
 										<cellContents backcolor="#FFFFFF" mode="Opaque">
@@ -660,7 +663,7 @@
 								</rowGroup>
 								<columnGroup name="ano" height="18" totalPosition="End">
 									<bucket class="java.lang.String">
-										<bucketExpression><![CDATA[$F{ano} + $F{nm_serie}]]></bucketExpression>
+										<bucketExpression><![CDATA[$F{ano} + $F{posicao} + $F{nm_serie}]]></bucketExpression>
 									</bucket>
 									<crosstabColumnHeader>
 										<cellContents backcolor="#FFFFFF" mode="Opaque">
