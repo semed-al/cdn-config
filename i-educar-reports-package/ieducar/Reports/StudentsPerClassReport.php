@@ -54,7 +54,23 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 turma.cod_turma AS cod_turma,
                 escola.cod_escola AS cod_escola,
                 juridica.fantasia AS nm_escola,
-                turma_turno.nome AS periodo,                
+                turma_turno.nome AS periodo,     
+                (
+                    SELECT pessoa_pai.ocupacao
+                    FROM cadastro.fisica AS pessoa_pai
+                    WHERE pessoa_pai.idpes = fisica.idpes_pai
+                ) AS profissao_pai,           
+                (
+                    SELECT pessoa_mae.ocupacao
+                    FROM cadastro.fisica AS pessoa_mae
+                    WHERE pessoa_mae.idpes = fisica.idpes_mae
+                ) AS profissao_mae,
+                (
+                    CASE
+                        WHEN transporte_aluno.responsavel = 0 THEN 'N'
+                        ELSE 'S'
+                    END
+                ) AS transporte_aluno,
                 (
                     SELECT
                         infra_predio.nm_predio
@@ -134,6 +150,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 AND documento.idpes = fisica.idpes
             LEFT JOIN modules.educacenso_cod_aluno ON TRUE
                 AND educacenso_cod_aluno.cod_aluno = aluno.cod_aluno
+            LEFT JOIN modules.transporte_aluno ON (aluno.cod_aluno = transporte_aluno.aluno_id)
             WHERE TRUE
                 AND pmieducar.instituicao.cod_instituicao = '{$this->args['instituicao']}'
                 AND pmieducar.escola_ano_letivo.ano = '{$this->args['ano']}'
