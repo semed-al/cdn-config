@@ -54,7 +54,8 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 turma.cod_turma AS cod_turma,
                 escola.cod_escola AS cod_escola,
                 juridica.fantasia AS nm_escola,
-                turma_turno.nome AS periodo,     
+                turma_turno.nome AS periodo,
+                raca.nm_raca AS cor_raca,     
                 (
                     SELECT pessoa_pai.ocupacao
                     FROM cadastro.fisica AS pessoa_pai
@@ -151,6 +152,8 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
             LEFT JOIN modules.educacenso_cod_aluno ON TRUE
                 AND educacenso_cod_aluno.cod_aluno = aluno.cod_aluno
             LEFT JOIN modules.transporte_aluno ON (aluno.cod_aluno = transporte_aluno.aluno_id)
+            LEFT JOIN cadastro.fisica_raca ON (pessoa.idpes = fisica_raca.ref_idpes)
+            LEFT JOIN cadastro.raca ON (fisica_raca.ref_cod_raca = raca.cod_raca)
             WHERE TRUE
                 AND pmieducar.instituicao.cod_instituicao = '{$this->args['instituicao']}'
                 AND pmieducar.escola_ano_letivo.ano = '{$this->args['ano']}'
