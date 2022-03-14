@@ -73,6 +73,13 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     END
                 ) AS transporte_aluno,
                 (
+                    SELECT CASE WHEN (deficiencia.nm_deficiencia IS NOT NULL OR LENGTH(deficiencia.nm_deficiencia) > 0) THEN 'S' ELSE 'N' END
+                    FROM cadastro.deficiencia,
+                        cadastro.fisica_deficiencia
+                    WHERE deficiencia.cod_deficiencia = fisica_deficiencia.ref_cod_deficiencia
+                        AND fisica_deficiencia.ref_idpes = fisica.idpes
+                ) AS deficiencia,
+                (
                     SELECT
                         infra_predio.nm_predio
                     FROM
