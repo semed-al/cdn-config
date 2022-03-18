@@ -192,7 +192,15 @@
 				</staticText>
 
 				<staticText>
-					<reportElement x="303" y="74" width="25" height="35" />
+					<reportElement x="301" y="74" width="7" height="20" />
+					<textElement rotation="Left">
+						<font fontName="DejaVu Sans" size="7"/>
+					</textElement>
+					<text><![CDATA[Sexo]]></text>
+				</staticText>
+
+				<staticText>
+					<reportElement x="312" y="74" width="7" height="35" />
 					<textElement rotation="Left">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
@@ -200,7 +208,7 @@
 				</staticText>
 
 				<staticText>
-					<reportElement x="333" y="74" width="20" height="35" />
+					<reportElement x="323" y="74" width="7" height="35" />
 					<textElement rotation="Left">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
@@ -208,7 +216,7 @@
 				</staticText>
 
 				<staticText>
-					<reportElement x="358" y="74" width="15" height="35" />
+					<reportElement x="334" y="74" width="7" height="35" />
 					<textElement rotation="Left">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
@@ -216,14 +224,14 @@
 				</staticText>
 
 				<staticText>
-					<reportElement x="378" y="74" width="100" height="13" uuid="656cfbd4-aa39-14b8-a9ea-2428c36e4a80"/>
+					<reportElement x="345" y="74" width="100" height="13" uuid="656cfbd4-aa39-14b8-a9ea-2428c36e4a80"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Nome da mãe]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="483" y="74" width="35" height="13" />
+					<reportElement x="449" y="74" width="35" height="13" />
 					<textElement>
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
@@ -244,13 +252,6 @@
 					<text><![CDATA[Profissão]]></text>
 				</staticText>
 				
-				<staticText>
-					<reportElement x="678" y="74" width="10" height="13" uuid="fbf2ba34-a989-463f-9790-1f5fd63b8faf"/>
-					<textElement rotation="Left">
-						<font fontName="DejaVu Sans" size="7"/>
-					</textElement>
-					<text><![CDATA[Sexo]]></text>
-				</staticText>
 				<staticText>
 					<reportElement x="703" y="74" width="41" height="13" uuid="92f9b1d6-8562-42db-ab67-7720721b5c0b"/>
 					<textElement>
@@ -370,24 +371,32 @@
 				<textFieldExpression><![CDATA[$F{cor_raca} == null ? "" : $F{cor_raca}]]></textFieldExpression>
 			</textField>
 
+			<textField isBlankWhenNull="true">
+				<reportElement x="301" y="3" width="7" height="10" uuid="abb1859c-61ff-4f61-bdc5-3926b1a665bc"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+
 			<textField>
-				<reportElement x="303" y="3" width="20" height="10" />
+				<reportElement x="312" y="3" width="7" height="10" />
 				<textElement verticalAlignment="Top">
-					<font fontName="DejaVu Sans" size="6"/>
+					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{transporte_aluno} == null ? "" : $F{transporte_aluno}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="3" width="10" height="10" />
+				<reportElement x="323" y="3" width="7" height="10" />
 				<textElement verticalAlignment="Top">
-					<font fontName="DejaVu Sans" size="6"/>
+					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{deficiencia} == null ? "" : $F{deficiencia}]]></textFieldExpression>
 			</textField>
 			
 
 			<textField isBlankWhenNull="true" isStretchWithOverflow="true">
-				<reportElement x="378" y="3" width="100" height="10" />
+				<reportElement x="334" y="3" width="100" height="10" />
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
@@ -396,7 +405,7 @@
 			<textField isBlankWhenNull="true" isStretchWithOverflow="true">
 				<reportElement x="483" y="3" width="35" height="10" />
 				<textElement>
-					<font fontName="DejaVu Sans" size="5"/>
+					<font fontName="DejaVu Sans" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{profissao_mae} != null && $F{profissao_mae}.length() > 1)
 					? $F{profissao_mae}.substring(0, 1).toUpperCase() + $F{profissao_mae}.substring(1).toLowerCase()
@@ -412,21 +421,13 @@
 			<textField isBlankWhenNull="true" isStretchWithOverflow="true">
 				<reportElement x="633" y="3" width="35" height="10" />
 				<textElement>
-					<font fontName="DejaVu Sans" size="5"/>
+					<font fontName="DejaVu Sans" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{profissao_pai} != null && $F{profissao_pai}.length() > 1)
 					? $F{profissao_pai}.substring(0, 1).toUpperCase() + $F{profissao_pai}.substring(1).toLowerCase()
 					: ""]]></textFieldExpression>
 			</textField>
 			
-			
-			<textField isBlankWhenNull="true">
-				<reportElement x="678" y="3" width="10" height="10" uuid="abb1859c-61ff-4f61-bdc5-3926b1a665bc"/>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
-			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="703" y="3" width="41" height="10" uuid="873ef749-5afb-4916-b375-6768f9064860"/>
 				<textElement>
