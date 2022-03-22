@@ -149,6 +149,9 @@
 	<field name="escola_cidade_7serie" class="java.lang.String"/>
 	<field name="escola_cidade_8serie" class="java.lang.String"/>
 	<field name="escola_cidade_9serie" class="java.lang.String"/>
+	<field name="nome_serie1" class="java.lang.String"/>
+	<field name="nome_serie2" class="java.lang.String"/>
+	<field name="nome_serie3" class="java.lang.String"/>
 	<field name="municipio" class="java.lang.String"/>
 	<field name="diretor" class="java.lang.String"/>
 	<field name="secretario" class="java.lang.String"/>
@@ -329,6 +332,15 @@
 	</variable>
 	<variable name="max_status_serie8" class="java.lang.String" resetType="Group" resetGroup="grupo" calculation="Highest">
 		<variableExpression><![CDATA[$F{status_serie8}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie1" class="java.lang.String" resetType="Group" resetGroup="grupo" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie1}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie2" class="java.lang.String" resetType="Group" resetGroup="grupo" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie2}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie3" class="java.lang.String" resetType="Group" resetGroup="grupo" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie3}]]></variableExpression>
 	</variable>
 	<variable name="chd1_1" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{chd1}]]></variableExpression>
@@ -583,13 +595,13 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField>
 					<reportElement positionType="Float" x="9" y="68" width="72" height="14" uuid="b8a500bc-0be5-428b-be6d-cbb81cdb4565"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[1ª Série/2º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie2}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement positionType="Float" x="527" y="68" width="20" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie2} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_uf2} == null]]></printWhenExpression>
@@ -709,13 +721,13 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField>
 					<reportElement positionType="Float" x="9" y="82" width="72" height="14" uuid="439f1af5-3c8c-4f3e-8ceb-65b137766129"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[2ª Série/3º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie3}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement positionType="Float" x="237" y="27" width="39" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie3} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_status_serie3} == null]]></printWhenExpression>
@@ -1682,13 +1694,13 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{max_escola_cidade7}]]></textFieldExpression>
 				</textField>
-				<staticText>
+				<textField>
 					<reportElement positionType="Float" x="9" y="54" width="72" height="14" uuid="a0ceccd8-bc73-4d82-86f6-6aa14035f9c6"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[1º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie1}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement positionType="Float" x="379" y="138" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie7} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade7} == null]]></printWhenExpression>
@@ -2082,13 +2094,13 @@
 				</textElement>
 				<text><![CDATA[6ª Série/]]></text>
 			</staticText>
-			<staticText>
+			<textField>
 				<reportElement x="146" y="105" width="39" height="13" uuid="c6c8d638-ab56-4857-a600-01c07a97101d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[1º  Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie1}]]></textFieldExpression>
+			</textField>
 			<line>
 				<reportElement x="144" y="105" width="1" height="25" uuid="d74143eb-0785-497a-b88b-03144a488805"/>
 				<graphicElement>
@@ -2141,20 +2153,20 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<staticText>
+			<textField>
 				<reportElement x="188" y="117" width="39" height="13" uuid="ece0884f-da77-40d1-a067-a4d93dfaab5a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[2º Ano]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie2}]]></textFieldExpression>
+			</textField>
+			<textField>
 				<reportElement x="235" y="117" width="39" height="13" uuid="e9c2f6d0-b72d-4774-8873-09b2a78cfdcc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[3º Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie3}]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement x="280" y="117" width="39" height="13" uuid="c91fb5f1-8fd5-4fcf-b049-abcf8add97cf"/>
 				<textElement verticalAlignment="Middle">

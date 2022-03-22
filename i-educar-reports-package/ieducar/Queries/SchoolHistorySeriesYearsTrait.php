@@ -105,6 +105,113 @@ trait SchoolHistorySeriesYearsTrait
                 vhsa.escola_cidade_8serie,
                 vhsa.escola_cidade_9serie,
                 (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ano = vhsa.ano_1serie AND phe.ativo = 1  
+                    ORDER BY phe.ano
+                ) AS nome_serie1,
+                (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_2serie                  
+                    ORDER BY phe.ano
+                ) AS nome_serie2,
+                (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_3serie                  
+                    ORDER BY phe.ano
+                ) AS nome_serie3,
+                (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_4serie                  
+                    ORDER BY phe.ano
+                ) AS nome_serie4,
+                (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_5serie                  
+                    ORDER BY phe.ano
+                ) AS nome_serie5,
+                (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_6serie                  
+                    ORDER BY phe.ano
+                ) AS nome_serie6,
+                (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_7serie                  
+                    ORDER BY phe.ano
+                ) AS nome_serie7,
+                (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_8serie                  
+                    ORDER BY phe.ano
+                ) AS nome_serie8,
+                (
+                    SELECT CASE
+                        WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
+                        WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
+                        ELSE phe.nm_serie 
+                    END
+                    FROM pmieducar.historico_escolar phe
+                    WHERE phe.ref_cod_aluno = vhsa.cod_aluno
+                    AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_9serie                  
+                    ORDER BY phe.ano
+                ) AS nome_serie9,
+                (
                     SELECT municipio
                     FROM relatorio.view_dados_escola
                     WHERE cod_escola = $escola
