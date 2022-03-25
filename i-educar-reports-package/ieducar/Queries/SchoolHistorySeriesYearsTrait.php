@@ -113,7 +113,8 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ano = vhsa.ano_1serie AND phe.ativo = 1  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC
+                    LIMIT 1
                 ) AS nome_serie1,
                 (
                     SELECT CASE
@@ -325,7 +326,7 @@ trait SchoolHistorySeriesYearsTrait
                 (
                     SELECT textcat_all(obs)
                     FROM (
-                        SELECT concat(ano, ' - ', nm_serie,'<br><pre>',observacao,'</pre><br>') AS obs
+                        SELECT concat(ano, ' - ', nm_serie,'<br>',observacao,'<br>') AS obs
                         FROM pmieducar.historico_escolar phe
                         WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                         AND phe.ativo = 1
