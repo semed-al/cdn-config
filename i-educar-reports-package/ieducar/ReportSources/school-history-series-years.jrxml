@@ -68,9 +68,17 @@
 	<field name="data_nasc" class="java.lang.String"/>
 	<field name="nome_do_pai" class="java.lang.String"/>
 	<field name="nome_da_mae" class="java.lang.String"/>
+	
 	<field name="nome_serie1" class="java.lang.String"/>
 	<field name="nome_serie2" class="java.lang.String"/>
 	<field name="nome_serie3" class="java.lang.String"/>
+	<field name="nome_serie4" class="java.lang.String"/>
+	<field name="nome_serie5" class="java.lang.String"/>
+	<field name="nome_serie6" class="java.lang.String"/>
+	<field name="nome_serie7" class="java.lang.String"/>
+	<field name="nome_serie8" class="java.lang.String"/>
+	<field name="nome_serie9" class="java.lang.String"/>
+
 	<field name="chd1" class="java.lang.Integer"/>
 	<field name="chd2" class="java.lang.Integer"/>
 	<field name="chd3" class="java.lang.Integer"/>
@@ -174,6 +182,24 @@
 	</variable>
 	<variable name="max_nome_serie3" class="java.lang.String" calculation="Highest">
 		<variableExpression><![CDATA[$F{nome_serie3}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie4" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie4}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie5" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie5}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie6" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie6}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie7" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie7}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie8" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie8}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie9" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie9}]]></variableExpression>
 	</variable>
 
 	<variable name="max_escola1" class="java.lang.String" resetType="Group" resetGroup="grupo" calculation="Highest">
@@ -938,13 +964,14 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="110" width="72" height="14" uuid="8e5204e1-982c-482f-a9dd-12b9d72cc4bf"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[5º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie5}]]></textFieldExpression>
+				</textField>
+				
 				<textField isBlankWhenNull="true">
 					<reportElement positionType="Float" x="379" y="110" width="144" height="14" uuid="e93db816-e55a-41da-b6ff-f4557212cb9a">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie5} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
@@ -1314,13 +1341,14 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{max_escola6}]]></textFieldExpression>
 				</textField>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="96" width="72" height="14" uuid="f88e4e1b-5fd6-4a52-b1bc-cd6e9a3daa85"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[4º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie4}]]></textFieldExpression>
+				</textField>
+				
 				<staticText>
 					<reportElement positionType="Float" x="125" y="166" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie9} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola9} == null]]></printWhenExpression>
@@ -2056,7 +2084,7 @@
 			</rectangle>
 		
 			<textField evaluationTime="Report" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="146" y="105" width="39" height="13" />				  
+				<reportElement positionType="Float" x="146" y="117" width="39" height="13" />				  
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
@@ -2128,20 +2156,21 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$V{max_nome_serie3}]]></textFieldExpression>
 			</textField>
-			<staticText>
+			<textField evaluationTime="Report">
 				<reportElement x="280" y="117" width="39" height="13" uuid="c91fb5f1-8fd5-4fcf-b049-abcf8add97cf"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[4º Ano]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie4}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
 				<reportElement x="326" y="117" width="39" height="13" uuid="d77b923f-42dc-4764-a91f-431b9dea4af8"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[5º Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie5}]]></textFieldExpression>
+			</textField>
+			
 			<staticText>
 				<reportElement x="372" y="117" width="39" height="13" uuid="e3d2b289-8ce4-4e4e-963c-7dad28082906"/>
 				<textElement verticalAlignment="Middle">

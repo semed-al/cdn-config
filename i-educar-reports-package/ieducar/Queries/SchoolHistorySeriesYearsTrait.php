@@ -113,8 +113,7 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ano = vhsa.ano_1serie AND phe.ativo = 1  
-                    ORDER BY phe.ano DESC
-                    LIMIT 1
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie1,
                 (
                     SELECT CASE
@@ -126,7 +125,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_2serie                  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie2,
                 (
                     SELECT CASE
@@ -138,7 +137,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_3serie                  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie3,
                 (
                     SELECT CASE
@@ -150,7 +149,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_4serie                  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie4,
                 (
                     SELECT CASE
@@ -162,7 +161,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_5serie                  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie5,
                 (
                     SELECT CASE
@@ -174,7 +173,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_6serie                  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie6,
                 (
                     SELECT CASE
@@ -186,7 +185,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_7serie                  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie7,
                 (
                     SELECT CASE
@@ -198,7 +197,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_8serie                  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie8,
                 (
                     SELECT CASE
@@ -210,7 +209,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_9serie                  
-                    ORDER BY phe.ano
+                    ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie9,
                 (
                     SELECT municipio
@@ -326,7 +325,7 @@ trait SchoolHistorySeriesYearsTrait
                 (
                     SELECT textcat_all(obs)
                     FROM (
-                        SELECT concat(ano, ' - ', nm_serie,'<br>',observacao,'<br>') AS obs
+                        SELECT concat(ano, '<br>',observacao,'<br>') AS obs
                         FROM pmieducar.historico_escolar phe
                         WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                         AND phe.ativo = 1
