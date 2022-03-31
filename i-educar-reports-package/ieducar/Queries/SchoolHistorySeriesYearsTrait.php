@@ -112,7 +112,7 @@ trait SchoolHistorySeriesYearsTrait
                     END
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
-                    AND phe.ano = vhsa.ano_1serie AND phe.ativo = 1  
+                    AND phe.ano = vhsa.ano_1serie AND phe.ativo = 1
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie1,
                 (

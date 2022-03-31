@@ -454,7 +454,7 @@
 		<variableExpression><![CDATA[(!$V{max_carga_horaria9} || !$V{max_freq9}) ? "-" : (($V{max_carga_horaria9} * $V{max_freq9}) / 100)]]></variableExpression>
 		<initialValueExpression><![CDATA[]]></initialValueExpression>
 	</variable>
-	<group name="grupo" isStartNewPage="false">
+	<group name="grupo" isStartNewPage="true">
 		<groupExpression><![CDATA[true]]></groupExpression>
 		<groupFooter>
 			<band height="12">
@@ -1135,13 +1135,14 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<staticText>
+				
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="166" width="72" height="14" uuid="c8e06b3b-b1c3-4218-aba2-b6c6fba633fe"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[9º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie9}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement positionType="Float" x="283" y="0" width="39" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie4} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria4} == null]]></printWhenExpression>
@@ -1160,13 +1161,14 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="152" width="72" height="14" uuid="62a4acdb-fd16-4fe7-be1e-2602d03a27b0"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[8º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie8}]]></textFieldExpression>
+				</textField>
+				
 				<staticText>
 					<reportElement positionType="Float" x="527" y="42" width="20" height="13" uuid="c40a4487-7a5d-4344-a6e5-09b54b13368b"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1258,13 +1260,14 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="138" width="72" height="14" uuid="b15197d7-ac38-4637-9ffd-7d387763cd72"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[7º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie7}]]></textFieldExpression>
+				</textField>
+				
 				<staticText>
 					<reportElement positionType="Float" x="372" y="27" width="39" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie6} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_status_serie6} == null]]></printWhenExpression>
@@ -1774,13 +1777,14 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="124" width="72" height="14" uuid="c6bca5fb-564a-4fa6-a86a-a690f36ac07d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[6º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie6}]]></textFieldExpression>
+				</textField>
+				
 				<textField isBlankWhenNull="true">
 					<reportElement positionType="Float" x="82" y="54" width="43" height="14" uuid="9d79a27a-466b-467e-902d-b5e9c9db8751">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
@@ -2171,41 +2175,45 @@
 				<textFieldExpression><![CDATA[$V{max_nome_serie5}]]></textFieldExpression>
 			</textField>
 			
-			<staticText>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="372" y="117" width="39" height="13" uuid="e3d2b289-8ce4-4e4e-963c-7dad28082906"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[6º Ano]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie6}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="415" y="117" width="39" height="13" uuid="cacdbbcb-6a8f-41aa-849c-2c19924fefec"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[7º Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie7}]]></textFieldExpression>
+			</textField>
+			
 			<line>
 				<reportElement x="412" y="105" width="1" height="25" uuid="7ed82886-a945-4a85-8cc0-437580316ccd"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<staticText>
+
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="460" y="117" width="39" height="13" uuid="b46d405b-b56d-462f-9d0b-40509ec9be65"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[8º Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie8}]]></textFieldExpression>
+			</textField>
 			
-			<staticText>
+				
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="505" y="117" width="39" height="13" uuid="48a0513b-c17f-4f17-bd7b-b3fb0e088cdb"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[9º Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie9}]]></textFieldExpression>
+			</textField>
+			
 			<line>
 				<reportElement x="501" y="105" width="1" height="25" uuid="26936bfc-fb7a-4f66-bc43-1c062d48b27d"/>
 				<graphicElement>
