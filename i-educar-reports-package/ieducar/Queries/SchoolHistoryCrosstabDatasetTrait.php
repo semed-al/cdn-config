@@ -59,6 +59,7 @@ trait SchoolHistoryCrosstabDatasetTrait
             )
             AND historico_escolar.ref_cod_instituicao = $instituicao
             AND historico_escolar.ref_cod_aluno = $aluno
+            AND historico_escolar.ativo = 1 
             AND (
                 (historico_escolar.aprovado <> 2)
                 OR (
