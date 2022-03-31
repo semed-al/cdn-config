@@ -329,7 +329,8 @@ trait SchoolHistorySeriesYearsTrait
                         FROM pmieducar.historico_escolar phe
                         WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                         AND phe.ativo = 1
-                        AND (CASE WHEN $nao_emitir_reprovado THEN phe.aprovado <> 2 ELSE 1=1 END)
+                        AND LENGTH(observacao) > 0
+                        AND (CASE WHEN $nao_emitir_reprovado THEN phe.aprovado <> 2 ELSE 1=1 END)                        
                         ORDER BY phe.ano
                     )tabl
                 ) AS observacao_all
