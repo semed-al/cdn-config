@@ -97,7 +97,7 @@ trait SchoolHistoryCrosstabTrait
                     WHERE ref_cod_instituicao = $instituicao
                     AND ativo = 1
                     AND ref_cod_aluno = $aluno
-                    ORDER BY ano DESC, to_number(regexp_replace(nm_serie,'[^0-9]+',''),'99') DESC 
+                    ORDER BY ano DESC, to_number(CONCAT('0',regexp_replace(nm_serie,'[^0-9]+','')),'99') DESC 
                     LIMIT 1
                 ) AS situacao_aluno,
                 (
@@ -111,7 +111,7 @@ trait SchoolHistoryCrosstabTrait
                     WHERE ref_cod_instituicao = $instituicao
                     AND ativo = 1
                     AND ref_cod_aluno = $aluno
-                    ORDER BY ano DESC, to_number(regexp_replace(nm_serie,'[^0-9]+',''),'99') DESC
+                    ORDER BY ano DESC, to_number(CONCAT('0',regexp_replace(nm_serie,'[^0-9]+','')),'99') DESC
                     LIMIT 1
                 ) AS serie,
                 (
@@ -315,7 +315,7 @@ trait SchoolHistoryCrosstabTrait
                         AND he.ref_cod_aluno = historico_escolar.ref_cod_aluno
                         AND he.ativo = 1
                         AND he.aprovado NOT IN (2, 4, 6)
-                        ORDER BY ano desc, to_number(regexp_replace(nm_serie,'[^0-9]+',''),'99') DESC
+                        ORDER BY ano desc, to_number(CONCAT('0',regexp_replace(nm_serie,'[^0-9]+','')),'99') DESC
                         LIMIT 1
                     )
                     AND he.ref_cod_instituicao = historico_escolar.ref_cod_instituicao

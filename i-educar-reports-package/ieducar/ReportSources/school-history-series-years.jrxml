@@ -68,6 +68,17 @@
 	<field name="data_nasc" class="java.lang.String"/>
 	<field name="nome_do_pai" class="java.lang.String"/>
 	<field name="nome_da_mae" class="java.lang.String"/>
+	
+	<field name="nome_serie1" class="java.lang.String"/>
+	<field name="nome_serie2" class="java.lang.String"/>
+	<field name="nome_serie3" class="java.lang.String"/>
+	<field name="nome_serie4" class="java.lang.String"/>
+	<field name="nome_serie5" class="java.lang.String"/>
+	<field name="nome_serie6" class="java.lang.String"/>
+	<field name="nome_serie7" class="java.lang.String"/>
+	<field name="nome_serie8" class="java.lang.String"/>
+	<field name="nome_serie9" class="java.lang.String"/>
+
 	<field name="chd1" class="java.lang.Integer"/>
 	<field name="chd2" class="java.lang.Integer"/>
 	<field name="chd3" class="java.lang.Integer"/>
@@ -148,7 +159,7 @@
 	<field name="escola_cidade_6serie" class="java.lang.String"/>
 	<field name="escola_cidade_7serie" class="java.lang.String"/>
 	<field name="escola_cidade_8serie" class="java.lang.String"/>
-	<field name="escola_cidade_9serie" class="java.lang.String"/>
+	<field name="escola_cidade_9serie" class="java.lang.String"/>	
 	<field name="municipio" class="java.lang.String"/>
 	<field name="diretor" class="java.lang.String"/>
 	<field name="secretario" class="java.lang.String"/>
@@ -162,6 +173,35 @@
 	<field name="espaco_branco" class="java.lang.String"/>
 	<field name="possui_historico_dependencia" class="java.lang.Long"/>
 	<field name="observacao_all" class="java.lang.String"/>
+	
+	<variable name="max_nome_serie1" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie1}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie2" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie2}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie3" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie3}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie4" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie4}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie5" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie5}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie6" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie6}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie7" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie7}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie8" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie8}]]></variableExpression>
+	</variable>
+	<variable name="max_nome_serie9" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{nome_serie9}]]></variableExpression>
+	</variable>
+
 	<variable name="max_escola1" class="java.lang.String" resetType="Group" resetGroup="grupo" calculation="Highest">
 		<variableExpression><![CDATA[$F{escola_1serie}]]></variableExpression>
 	</variable>
@@ -583,13 +623,13 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
-					<reportElement positionType="Float" x="9" y="68" width="72" height="14" uuid="b8a500bc-0be5-428b-be6d-cbb81cdb4565"/>
+				<textField evaluationTime="Report">
+					<reportElement x="9" y="68" width="72" height="14" uuid="b8a500bc-0be5-428b-be6d-cbb81cdb4565"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[1ª Série/2º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie2}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement positionType="Float" x="527" y="68" width="20" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie2} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_uf2} == null]]></printWhenExpression>
@@ -709,13 +749,13 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="82" width="72" height="14" uuid="439f1af5-3c8c-4f3e-8ceb-65b137766129"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[2ª Série/3º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie3}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement positionType="Float" x="237" y="27" width="39" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie3} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_status_serie3} == null]]></printWhenExpression>
@@ -924,13 +964,14 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="110" width="72" height="14" uuid="8e5204e1-982c-482f-a9dd-12b9d72cc4bf"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[4ª Série/5º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie5}]]></textFieldExpression>
+				</textField>
+				
 				<textField isBlankWhenNull="true">
 					<reportElement positionType="Float" x="379" y="110" width="144" height="14" uuid="e93db816-e55a-41da-b6ff-f4557212cb9a">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie5} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
@@ -1094,13 +1135,14 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<staticText>
+				
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="166" width="72" height="14" uuid="c8e06b3b-b1c3-4218-aba2-b6c6fba633fe"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[8ª Série/9º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie9}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement positionType="Float" x="283" y="0" width="39" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie4} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria4} == null]]></printWhenExpression>
@@ -1119,13 +1161,14 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="152" width="72" height="14" uuid="62a4acdb-fd16-4fe7-be1e-2602d03a27b0"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[7ª Série/8º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie8}]]></textFieldExpression>
+				</textField>
+				
 				<staticText>
 					<reportElement positionType="Float" x="527" y="42" width="20" height="13" uuid="c40a4487-7a5d-4344-a6e5-09b54b13368b"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1217,13 +1260,14 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="138" width="72" height="14" uuid="b15197d7-ac38-4637-9ffd-7d387763cd72"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[6ª Série/7º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie7}]]></textFieldExpression>
+				</textField>
+				
 				<staticText>
 					<reportElement positionType="Float" x="372" y="27" width="39" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie6} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_status_serie6} == null]]></printWhenExpression>
@@ -1300,13 +1344,14 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{max_escola6}]]></textFieldExpression>
 				</textField>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="96" width="72" height="14" uuid="f88e4e1b-5fd6-4a52-b1bc-cd6e9a3daa85"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[3ª Série/4º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie4}]]></textFieldExpression>
+				</textField>
+				
 				<staticText>
 					<reportElement positionType="Float" x="125" y="166" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie9} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola9} == null]]></printWhenExpression>
@@ -1682,13 +1727,13 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{max_escola_cidade7}]]></textFieldExpression>
 				</textField>
-				<staticText>
-					<reportElement positionType="Float" x="9" y="54" width="72" height="14" uuid="a0ceccd8-bc73-4d82-86f6-6aa14035f9c6"/>
+				<textField evaluationTime="Report">
+					<reportElement positionType="Float" x="9" y="54" width="72" height="14" />
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[1º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie1}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement positionType="Float" x="379" y="138" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie7} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade7} == null]]></printWhenExpression>
@@ -1732,13 +1777,14 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<staticText>
+				<textField evaluationTime="Report">
 					<reportElement positionType="Float" x="9" y="124" width="72" height="14" uuid="c6bca5fb-564a-4fa6-a86a-a690f36ac07d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
 					</textElement>
-					<text><![CDATA[5ª Série/6º Ano]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$V{max_nome_serie6}]]></textFieldExpression>
+				</textField>
+				
 				<textField isBlankWhenNull="true">
 					<reportElement positionType="Float" x="82" y="54" width="43" height="14" uuid="9d79a27a-466b-467e-902d-b5e9c9db8751">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
@@ -1989,7 +2035,7 @@
 			</band>
 		</groupFooter>
 	</group>
-	<group name="Grupo Nova Página">
+	<!--<group name="Grupo Nova Página">
 		<groupFooter>
 			<band height="1">
 				<break>
@@ -1999,7 +2045,7 @@
 				</break>
 			</band>
 		</groupFooter>
-	</group>
+	</group>-->
 	<pageHeader>
 		<band height="50" splitType="Stretch">
 			<subreport>
@@ -2020,7 +2066,7 @@
 			</subreport>
 		</band>
 	</pageHeader>
-	<columnHeader>
+	<columnHeader> 
 		<band height="148">
 			<rectangle>
 				<reportElement x="6" y="0" width="545" height="80" uuid="91c092c5-d0b0-4373-84f2-6ab5714e18ae"/>
@@ -2040,55 +2086,14 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</rectangle>
-			<staticText>
-				<reportElement x="188" y="105" width="44" height="13" uuid="3d53fc54-e8be-472d-af61-f17bf4a54ea3"/>
+		
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="146" y="117" width="39" height="13" />				  
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[1ª Série/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="235" y="105" width="42" height="13" uuid="92db2a0f-27b4-4579-a983-0460bbdae21b"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[2ª Série/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="280" y="105" width="42" height="13" uuid="92c51760-24c3-4693-b9db-ac1aae91a20b"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[3ª Série/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="326" y="105" width="43" height="13" uuid="455517e8-626d-4259-8864-9a187d4ca336"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[4ª Série/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="372" y="105" width="43" height="13" uuid="76f72f19-f458-4e03-a5e9-4ccdd8d56e3b"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[5ª Série/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="415" y="105" width="43" height="13" uuid="ec3d6bc5-1e04-4e48-be61-80d8f42e544a"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[6ª Série/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="146" y="105" width="39" height="13" uuid="c6c8d638-ab56-4857-a600-01c07a97101d"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[1º  Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie1}]]></textFieldExpression>
+			</textField>
 			<line>
 				<reportElement x="144" y="105" width="1" height="25" uuid="d74143eb-0785-497a-b88b-03144a488805"/>
 				<graphicElement>
@@ -2133,7 +2138,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Certificamos que "+$F{nome_aluno}+ ", matrícula "+$F{cod_aluno}+($F{cod_inep} == null ? "" : ", cód. INEP: "+$F{cod_inep}) +", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ ((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai})) +", "+ $F{nome_serie_aux} +" conforme Histórico Escolar."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Certificamos que " +$F{nome_aluno}+ ", matrícula "+$F{cod_aluno}+($F{cod_inep} == null ? "" : ", cód. INEP: "+$F{cod_inep}) +", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ ((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai})) +", "+ $F{nome_serie_aux} +" conforme Histórico Escolar."]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="231" y="105" width="1" height="25" uuid="cf92ec55-59e6-4722-9394-b39b5d3d3733"/>
@@ -2141,82 +2146,74 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<staticText>
+			<textField evaluationTime="Report">
 				<reportElement x="188" y="117" width="39" height="13" uuid="ece0884f-da77-40d1-a067-a4d93dfaab5a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[2º Ano]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie2}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
 				<reportElement x="235" y="117" width="39" height="13" uuid="e9c2f6d0-b72d-4774-8873-09b2a78cfdcc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[3º Ano]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie3}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
 				<reportElement x="280" y="117" width="39" height="13" uuid="c91fb5f1-8fd5-4fcf-b049-abcf8add97cf"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[4º Ano]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie4}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
 				<reportElement x="326" y="117" width="39" height="13" uuid="d77b923f-42dc-4764-a91f-431b9dea4af8"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[5º Ano]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie5}]]></textFieldExpression>
+			</textField>
+			
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="372" y="117" width="39" height="13" uuid="e3d2b289-8ce4-4e4e-963c-7dad28082906"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[6º Ano]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie6}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="415" y="117" width="39" height="13" uuid="cacdbbcb-6a8f-41aa-849c-2c19924fefec"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[7º Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie7}]]></textFieldExpression>
+			</textField>
+			
 			<line>
 				<reportElement x="412" y="105" width="1" height="25" uuid="7ed82886-a945-4a85-8cc0-437580316ccd"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="460" y="105" width="42" height="13" uuid="6f151170-7393-4c5b-a277-55c42736fee2"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[7ª Série/]]></text>
-			</staticText>
-			<staticText>
+
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="460" y="117" width="39" height="13" uuid="b46d405b-b56d-462f-9d0b-40509ec9be65"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[8º Ano]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="505" y="105" width="43" height="13" uuid="55e74e51-9d5d-431e-b260-a8e0e7fc6b6d"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[8ª Série/]]></text>
-			</staticText>
-			<staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie8}]]></textFieldExpression>
+			</textField>
+			
+				
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="505" y="117" width="39" height="13" uuid="48a0513b-c17f-4f17-bd7b-b3fb0e088cdb"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[9º Ano]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{max_nome_serie9}]]></textFieldExpression>
+			</textField>
+			
 			<line>
 				<reportElement x="501" y="105" width="1" height="25" uuid="26936bfc-fb7a-4f66-bc43-1c062d48b27d"/>
 				<graphicElement>
@@ -2372,6 +2369,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 			</textField>
 		</band>
 	</columnHeader>
+
 	<detail>
 		<band height="30" splitType="Stretch">
 			<rectangle>
