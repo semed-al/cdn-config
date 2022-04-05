@@ -623,7 +623,7 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement x="9" y="68" width="72" height="14" uuid="b8a500bc-0be5-428b-be6d-cbb81cdb4565"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -749,7 +749,7 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="9" y="82" width="72" height="14" uuid="439f1af5-3c8c-4f3e-8ceb-65b137766129"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -964,7 +964,7 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="9" y="110" width="72" height="14" uuid="8e5204e1-982c-482f-a9dd-12b9d72cc4bf"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -1136,7 +1136,7 @@
 					</graphicElement>
 				</line>
 				
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="9" y="166" width="72" height="14" uuid="c8e06b3b-b1c3-4218-aba2-b6c6fba633fe"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -1161,7 +1161,7 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="9" y="152" width="72" height="14" uuid="62a4acdb-fd16-4fe7-be1e-2602d03a27b0"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -1260,7 +1260,7 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="9" y="138" width="72" height="14" uuid="b15197d7-ac38-4637-9ffd-7d387763cd72"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -1344,7 +1344,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{max_escola6}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="9" y="96" width="72" height="14" uuid="f88e4e1b-5fd6-4a52-b1bc-cd6e9a3daa85"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -1727,7 +1727,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$V{max_escola_cidade7}]]></textFieldExpression>
 				</textField>
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="9" y="54" width="72" height="14" />
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -1777,7 +1777,7 @@
 					</textElement>
 					<text><![CDATA[-]]></text>
 				</staticText>
-				<textField evaluationTime="Report">
+				<textField evaluationTime="Report" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="9" y="124" width="72" height="14" uuid="c6bca5fb-564a-4fa6-a86a-a690f36ac07d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -2146,28 +2146,28 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<textField evaluationTime="Report">
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="188" y="117" width="39" height="13" uuid="ece0884f-da77-40d1-a067-a4d93dfaab5a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{max_nome_serie2}]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report">
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="235" y="117" width="39" height="13" uuid="e9c2f6d0-b72d-4774-8873-09b2a78cfdcc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{max_nome_serie3}]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report">
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="280" y="117" width="39" height="13" uuid="c91fb5f1-8fd5-4fcf-b049-abcf8add97cf"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{max_nome_serie4}]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report">
+			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="326" y="117" width="39" height="13" uuid="d77b923f-42dc-4764-a91f-431b9dea4af8"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
