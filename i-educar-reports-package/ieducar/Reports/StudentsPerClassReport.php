@@ -78,6 +78,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                         cadastro.fisica_deficiencia
                     WHERE deficiencia.cod_deficiencia = fisica_deficiencia.ref_cod_deficiencia
                         AND fisica_deficiencia.ref_idpes = fisica.idpes
+                    LIMIT 1
                 ) AS deficiencia,
                 (
                     SELECT
