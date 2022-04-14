@@ -280,10 +280,10 @@
 						<rightPen lineWidth="0.0" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" isBold="true" isItalic="false"/>
+						<font fontName="DejaVu Sans" size="7" isBold="false" isItalic="false"/>
 						<paragraph rightIndent="5"/>
 					</textElement>
-					<text><![CDATA[Total:]]></text>
+					<text><![CDATA[Total por curso:]]></text>
 				</staticText>
 				<textField>
 					<reportElement x="529" y="4" width="34" height="16" backcolor="#FFFFFF" uuid="41006b88-4bc5-4726-bb95-27d993ae4d14"/>
@@ -295,7 +295,7 @@
 						<rightPen lineWidth="0.0" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="9"/>
+						<font fontName="DejaVu Sans" size="7"/>
 						<paragraph rightIndent="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{alunos_por_curso}]]></textFieldExpression>
