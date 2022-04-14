@@ -473,7 +473,7 @@ class AlunoController extends Portabilis_Controller_Page_EditController
 
         $this->campoCpf('id_federal', 'CPF', $valorCpf);
 
-/*        $options = [
+        $options = [
             'required' => false,
             'label' => 'NIS (PIS/PASEP)',
             'placeholder' => '',
@@ -483,7 +483,7 @@ class AlunoController extends Portabilis_Controller_Page_EditController
         ];
 
         $this->inputsHelper()->integer('nis_pis_pasep', $options);
-*/
+
         // tipo de certidao civil
         $escolha_certidao = 'Tipo certidão civil';
         $selectOptions = [

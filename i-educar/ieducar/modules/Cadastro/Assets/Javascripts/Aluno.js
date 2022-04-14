@@ -536,7 +536,7 @@ resourceOptions.handleGet = function (dataResponse) {
     $j('#religiao_id').val(dataResponse.religiao_id);
     $j('#tipo_transporte').val(dataResponse.tipo_transporte);
     $j('#alfabetizado').attr('checked', dataResponse.alfabetizado);
-    document.getElementById('emancipado').checked = dataResponse.emancipado;
+    $j('#emancipado').attr('checked', dataResponse.emancipado);
     $j('#autorizado_um').val(dataResponse.autorizado_um);
     $j('#parentesco_um').val(dataResponse.parentesco_um);
     $j('#autorizado_dois').val(dataResponse.autorizado_dois);
@@ -888,7 +888,9 @@ resourceOptions.handleGet = function (dataResponse) {
         }
     }
 
-    camposTransporte();
+    if (typeof camposTransporte == 'function') {
+        camposTransporte();
+    }
 
     setTimeout(function() {
         $veiculo_transporte_escolar = $j('#veiculo_transporte_escolar');
@@ -896,7 +898,9 @@ resourceOptions.handleGet = function (dataResponse) {
         $veiculo_transporte_escolar.trigger('chosen:updated');
     }, 550);
 
-    verificaObrigatoriedadeRg();
+    if (typeof verificaObrigatoriedadeRg == 'function') {
+        verificaObrigatoriedadeRg();
+    }
 };
 
 
@@ -946,7 +950,7 @@ $responsavelIdField.change(changeVisibilityOfLinksToPessoaResponsavel);
 
 var checkJustificativa = function () {
     var certidaoNascimento = $j('#certidao_nascimento').val().trim();
-    var nisPisPasep = $j('#nis_pis_pasep').val().trim();
+    var nisPisPasep = $j('#nis_pis_pasep').val();
     var cpf = $j('#id_federal').val().trim();
 
     if (

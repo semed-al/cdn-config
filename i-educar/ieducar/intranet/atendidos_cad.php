@@ -356,7 +356,7 @@ return new class extends clsCadastro {
 
         // Carteira do SUS
 
-/*
+
         $options = [
             'required' => config('legacy.app.fisica.exigir_cartao_sus'),
             'label' => 'Número da carteira do SUS',
@@ -367,7 +367,7 @@ return new class extends clsCadastro {
         ];
 
         $this->inputsHelper()->text('sus', $options);
-*/
+
 
         // tipo de certidao civil
 
