@@ -66,7 +66,8 @@
 	<field name="cor_raca" class="java.lang.String"/>
 	<field name="transporte_aluno" class="java.lang.String"/>	
 	<field name="deficiencia" class="java.lang.String"/>		
-	<field name="data_nasc" class="java.lang.String"/>
+	<field name="idade" class="java.lang.Integer"/>
+	<field name="data_nasc" class="java.lang.String"/>	
 	<field name="codigo_sus" class="java.lang.String"/>
 	<field name="nis_pis_pasep" class="java.math.BigDecimal"/>
 	<field name="nome_curso" class="java.lang.String"/>
@@ -440,6 +441,14 @@
 				<textFieldExpression><![CDATA[($F{profissao_pai} != null && $F{profissao_pai}.length() > 1)
 					? $F{profissao_pai}.substring(0, 1).toUpperCase() + $F{profissao_pai}.substring(1).toLowerCase()
 					: ""]]></textFieldExpression>
+			</textField>
+
+			<textField isBlankWhenNull="true">
+				<reportElement x="635" y="3" width="10" height="10" uuid="cd478d80-f266-46fb-ab6e-6d9ff8a5727d"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idade}]]></textFieldExpression>
 			</textField>
 			
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">

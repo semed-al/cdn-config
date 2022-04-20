@@ -47,6 +47,14 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                  CASE WHEN fisica.sexo = 'M' THEN 'M' ELSE 'F' END
                 ) AS sexo,
                 to_char(fisica.data_nasc,'dd/mm/yyyy') AS data_nasc,
+                (
+                    CASE
+                        WHEN '{$this->args['ano']}' >= EXTRACT (YEAR from CURRENT_DATE)
+                            AND CURRENT_DATE < (fisica.data_nasc + interval '1 year' * (EXTRACT (YEAR from CURRENT_DATE) - EXTRACT (YEAR from fisica.data_nasc)))
+                        THEN EXTRACT (YEAR from CURRENT_DATE) - EXTRACT (YEAR from fisica.data_nasc) - 1
+                        ELSE '{$this->args['ano']}' - EXTRACT (YEAR from fisica.data_nasc)
+                    END
+                ) AS idade,
                 nis_pis_pasep,
                 curso.nm_curso AS nome_curso,
                 turma.nm_turma AS nome_turma,
