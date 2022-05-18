@@ -1,5 +1,6 @@
 <?php
 
+use App\Facades\Asset;
 use App\Models\LegacyIndividual;
 use App\Models\LegacyInstitution;
 use App\Services\FileService;
@@ -123,7 +124,7 @@ return new class extends clsCadastro {
 
             $this->id_federal = is_numeric($this->id_federal) ? int2CPF($this->id_federal) : '';
             $this->nis_pis_pasep = int2Nis($this->nis_pis_pasep);
-            $this->renda_mensal = number_format($this->renda_mensal, 2, ',', '.');
+            $this->renda_mensal = number_format((float) $this->renda_mensal, 2, ',', '.');
             // $this->data_nasc = $this->data_nasc ? dataFromPgToBr($this->data_nasc) : '';
             $this->data_admissao = $this->data_admissao ? dataFromPgToBr($this->data_admissao) : '';
 
@@ -132,14 +133,16 @@ return new class extends clsCadastro {
             $this->naturalidade_id = $this->naturalidade;
         }
 
-        $this->fexcluir = $obj_permissoes->permissao_excluir(
+        $this->fexcluir = is_numeric($this->cod_pessoa_fj) && $obj_permissoes->permissao_excluir(
             43,
             $this->pessoa_logada,
             7
         );
 
+        $nomeMenu = $this->retorno === 'Editar' ? $this->retorno : 'Cadastrar';
+
         $this->nome_url_cancelar = 'Cancelar';
-        $this->breadcrumb('Pessoa física', ['educar_pessoas_index.php' => 'Pessoas']);
+        $this->breadcrumb("{$nomeMenu} pessoa física", ['educar_pessoas_index.php' => 'Pessoas']);
 
         return $this->retorno;
     }
@@ -153,7 +156,6 @@ return new class extends clsCadastro {
         $this->url_cancelar = $this->retorno == 'Editar' ?
         'atendidos_det.php?cod_pessoa=' . $this->cod_pessoa_fj : 'atendidos_lst.php';
 
-        $this->cod_pessoa_fj;
         $objPessoa = new clsPessoaFisica($this->cod_pessoa_fj);
         $db = new clsBanco();
 
@@ -189,15 +191,13 @@ return new class extends clsCadastro {
 
         $this->campoOculto('cod_pessoa_fj', $this->cod_pessoa_fj);
         $this->campoTexto('nm_pessoa', 'Nome', $this->nm_pessoa, '50', '255', true);
-        /*
-            $this->campoTexto('nome_social', 'Nome social', $this->nome_social, '50', '255', false);
-        */
+        /*$this->campoTexto('nome_social', 'Nome social e/ou afetivo', $this->nome_social, '50', '255', false);*/
 
         $foto = false;
         if (is_numeric($this->cod_pessoa_fj)) {
             $objFoto = new clsCadastroFisicaFoto($this->cod_pessoa_fj);
             $detalheFoto = $objFoto->detalhe();
-            if (count($detalheFoto)) {
+            if (is_array($detalheFoto) && count($detalheFoto)) {
                 $foto = $detalheFoto['caminho'];
             }
         } else {
@@ -264,7 +264,7 @@ return new class extends clsCadastro {
             $this->inputPai();
             $this->inputMae();
         }
-
+        
         // documentos
 
         $documentos = new clsDocumento();
@@ -356,7 +356,6 @@ return new class extends clsCadastro {
 
         // Carteira do SUS
 
-
         $options = [
             'required' => config('legacy.app.fisica.exigir_cartao_sus'),
             'label' => 'Número da carteira do SUS',
@@ -367,7 +366,6 @@ return new class extends clsCadastro {
         ];
 
         $this->inputsHelper()->text('sus', $options);
-
 
         // tipo de certidao civil
 
@@ -511,7 +509,7 @@ return new class extends clsCadastro {
         $this->inputsHelper()->textArea('cartorio_emissao_certidao_civil', $options);
 
         // Passaporte
-        /*$options = [
+/*        $options = [
             'required' => false,
             'label' => 'Passaporte',
             'value' => $documentos['passaporte'],
@@ -519,11 +517,11 @@ return new class extends clsCadastro {
             'max_length' => 20
         ];
 
-        $this->inputsHelper()->text('passaporte', $options);*/
+        $this->inputsHelper()->text('passaporte', $options);
 
         // carteira de trabalho
 
-/*        $options = [
+        $options = [
             'required' => false,
             'label' => 'Carteira de trabalho / Série',
             'placeholder' => 'Carteira de trabalho',
@@ -626,7 +624,7 @@ return new class extends clsCadastro {
 
         $raca = new clsCadastroFisicaRaca($this->cod_pessoa_fj);
         $raca = $raca->detalhe();
-        $this->cod_raca = is_array($raca) ? $raca['ref_cod_raca'] : null;
+        $this->cod_raca = is_array($raca) ? $raca['ref_cod_raca'] : $this->cor_raca;
 
         $this->campoLista('cor_raca', 'Raça', $selectOptionsRaca, $this->cod_raca, '', false, '', '', '', $obrigarCamposCenso);
 
@@ -674,6 +672,7 @@ return new class extends clsCadastro {
         $this->inputsHelper()->checkbox('falecido', $options);
 
         // naturalidade
+
         $options = ['label' => 'Naturalidade', 'required' => $naturalidadeObrigatoria && $camposObrigatorios];
 
         $helperOptions = [
@@ -717,20 +716,21 @@ return new class extends clsCadastro {
         $this->campoRotulo('contato', '<b>Contato</b>', '', '', 'Informações de contato da pessoa');
         $this->inputTelefone('1', 'Telefone residencial');
         $this->inputTelefone('2', 'Celular');
-/*        $this->inputTelefone('mov', 'Telefone adicional');
-        $this->inputTelefone('fax', 'Fax');
-*/
+        /*$this->inputTelefone('mov', 'Telefone adicional');
+        $this->inputTelefone('fax', 'Fax');*/
         $this->campoTexto('email', 'E-mail', $this->email, '50', '255', false);
 
         // renda
         $this->campoRotulo('renda', '<b>Trabalho e renda</b>', '', '', 'Informações de trabalho e renda da pessoa');
         $this->campoTexto('ocupacao', 'Ocupação', $this->ocupacao, '50', '255', false);
-/*        $this->campoMonetario('renda_mensal', 'Renda mensal (R$)', $this->renda_mensal, '9', '10');
+        /*
+        $this->campoMonetario('renda_mensal', 'Renda mensal (R$)', $this->renda_mensal, '9', '10');
         $this->campoData('data_admissao', 'Data de admissão', $this->data_admissao);
         $this->campoTexto('empresa', 'Empresa', $this->empresa, '50', '255', false);
         $this->inputTelefone('empresa', 'Telefone da empresa');
         $this->campoTexto('pessoa_contato', 'Pessoa de contato na empresa', $this->pessoa_contato, '50', '255', false);
-*/
+        */
+
         $fileService = new FileService(new UrlPresigner);
         $files = $this->cod_pessoa_fj ? $fileService->getFiles(LegacyIndividual::find($this->cod_pessoa_fj)) : [];
         $this->addHtml(view('uploads.upload', ['files' => $files])->render());
@@ -857,7 +857,7 @@ return new class extends clsCadastro {
 
         if(window.opener &&  window.opener.afterChangePessoa) {
             var parentType = \$j('#parent_type').val();
-
+            alert('Alteração realizada com sucesso!');
             if (parentType)
             window.opener.afterChangePessoa(self, parentType, $id, \$j('#nm_pessoa').val());
             else
@@ -866,7 +866,7 @@ return new class extends clsCadastro {
         else
             document.location = 'atendidos_lst.php';
 
-        ", $afterReady = true);
+        ", $afterReady = false);
     }
 
     protected function loadAlunoByPessoaId($id)
@@ -1046,7 +1046,7 @@ return new class extends clsCadastro {
     //envia foto e salva caminha no banco
     protected function savePhoto($id)
     {
-        $caminhoFoto = url('intranet/imagens/user-perfil.png');
+        $caminhoFoto = Asset::get('intranet/imagens/user-perfil.png');
         if ($this->objPhoto != null) {
             $caminhoFoto = $this->objPhoto->sendPicture();
             if ($caminhoFoto != '') {
@@ -1222,7 +1222,7 @@ return new class extends clsCadastro {
         $fisica->nacionalidade = $_REQUEST['tipo_nacionalidade'];
         $fisica->idpais_estrangeiro = $_REQUEST['pais_origem_id'];
         $fisica->idmun_nascimento = $_REQUEST['naturalidade_id'] ?: 'NULL';
-        $fisica->sus = $this->sus;
+        $fisica->sus = trim($this->sus);
         $fisica->nis_pis_pasep = $this->nis_pis_pasep ? $this->nis_pis_pasep : 'NULL';
         $fisica->ocupacao = $db->escapeString($this->ocupacao);
         $fisica->empresa = $db->escapeString($this->empresa);
@@ -1427,7 +1427,7 @@ return new class extends clsCadastro {
 
     public function Formular()
     {
-        $this->title = 'Pessoas Físicas - Cadastro';
+        $this->title = 'Pessoa Física - Cadastro';
         $this->processoAp = 43;
     }
 };
