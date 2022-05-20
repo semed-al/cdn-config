@@ -249,37 +249,34 @@ trait SchoolHistorySeriesYearsTrait
                             WHEN he.aprovado = 3 THEN 'está cursando '
                             ELSE 'concluiu '
                         END || (
-                            CASE
-                                WHEN ((substring(nm_serie,1,1)::integer = 8
-                                    AND historico_grade_curso_id = 1)
-                                    OR (substring(nm_serie,1,1)::integer = 9)
-                                    AND historico_grade_curso_id = 2) THEN 'o ENSINO FUNDAMENTAL'
-                                ELSE
-                                    CASE
-                                        WHEN (
-                                            SELECT substring(nm_serie,1,1)::integer
-                                            FROM pmieducar.historico_escolar he
-                                            WHERE he.ref_cod_aluno = vhsa.cod_aluno
-                                            AND he.ativo = 1
-                                            AND he.historico_grade_curso_id = 2
-                                            ORDER BY he.ano DESC LIMIT 1
-                                        ) = 1 THEN 'o ' || (substring(nm_serie,1,1)::integer::numeric) || 'º ano'
-                                        ELSE
-                                            CASE
-                                                WHEN historico_grade_curso_id = 1 THEN
-                                                    CASE
-                                                        WHEN substring(nm_serie,1,1)::integer = '0' THEN 'o ' || (substring(nm_serie,1,1)::integer::numeric +1) || 'º ano'
-                                                        ELSE 'a ' || substring(nm_serie,1,1)::integer || 'ª série/' || (substring(nm_serie,1,1)::integer::numeric +1) || 'º ano'
-                                                    END
-                                                ELSE
-                                                    CASE
-                                                        WHEN (substring(nm_serie,1,1)::integer::numeric -1) = '0' THEN 'o ' || substring(nm_serie,1,1)::integer || 'º ano'
-                                                        ELSE 'a ' || (substring(nm_serie,1,1)::integer::numeric -1) || 'ª série/' || substring(nm_serie,1,1)::integer || 'º ano'
-                                                    END
-                                            END
-                                    END
-                            END
-                        )
+                                CASE
+                                    WHEN (
+                                        SELECT substring(nm_serie,1,1)::integer
+                                        FROM pmieducar.historico_escolar he
+                                        WHERE he.ref_cod_aluno = vhsa.cod_aluno
+                                        AND he.ativo = 1
+                                        AND he.historico_grade_curso_id = 2
+                                        ORDER BY he.ano DESC LIMIT 1
+                                    ) = 1 
+                                    THEN 'o ' || (substring(nm_serie,1,1)::integer::numeric) || 'º ano'
+                                    ELSE
+                                        CASE 
+                                            WHEN historico_grade_curso_id = 1 
+                                            THEN
+                                                CASE
+                                                    WHEN substring(nm_serie,1,1)::integer = '0' 
+                                                    THEN 'o ' || (substring(nm_serie,1,1)::integer::numeric +1) || 'º ano'
+                                                    ELSE 'a ' || substring(nm_serie,1,1)::integer || 'ª série/' || (substring(nm_serie,1,1)::integer::numeric +1) || 'º ano'
+                                                END
+                                            ELSE
+                                                CASE
+                                                    WHEN (substring(nm_serie,1,1)::integer::numeric -1) = '0' 
+                                                    THEN 'o ' || substring(nm_serie,1,1)::integer || 'º ano'
+                                                    ELSE 'a ' || (substring(nm_serie,1,1)::integer::numeric -1) || 'ª série/' || substring(nm_serie,1,1)::integer || 'º ano'
+                                                END
+                                        END
+                                END
+                        ) || (' do ENSINO FUNDAMENTAL')
                     FROM pmieducar.historico_escolar he
                     WHERE he.ref_cod_aluno = vhsa.cod_aluno
                     AND he.aprovado NOT IN (2,3,4,6)
