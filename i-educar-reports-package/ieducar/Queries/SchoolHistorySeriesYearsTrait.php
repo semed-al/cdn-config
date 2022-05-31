@@ -113,6 +113,7 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ano = vhsa.ano_1serie AND phe.ativo = 1
+                    AND phe.nm_serie LIKE '%1%'
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie1,
                 (
@@ -124,7 +125,8 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
-                    AND phe.ano = vhsa.ano_2serie                  
+                    AND phe.ano = vhsa.ano_2serie  
+                    AND phe.nm_serie LIKE '%2%'
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie2,
                 (
@@ -137,6 +139,7 @@ trait SchoolHistorySeriesYearsTrait
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
                     AND phe.ano = vhsa.ano_3serie                  
+                    AND phe.nm_serie LIKE '%3%'
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie3,
                 (
@@ -148,7 +151,8 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
-                    AND phe.ano = vhsa.ano_4serie                  
+                    AND phe.ano = vhsa.ano_4serie
+                    AND phe.nm_serie LIKE '%4%'                 
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie4,
                 (
@@ -160,7 +164,8 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
-                    AND phe.ano = vhsa.ano_5serie                  
+                    AND phe.ano = vhsa.ano_5serie
+                    AND phe.nm_serie LIKE '%5%'
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie5,
                 (
@@ -172,7 +177,8 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
-                    AND phe.ano = vhsa.ano_6serie                  
+                    AND phe.ano = vhsa.ano_6serie
+                    AND phe.nm_serie LIKE '%6%'
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie6,
                 (
@@ -184,7 +190,8 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
-                    AND phe.ano = vhsa.ano_7serie                  
+                    AND phe.ano = vhsa.ano_7serie
+                    AND phe.nm_serie LIKE '%7%'               
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie7,
                 (
@@ -196,7 +203,8 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
-                    AND phe.ano = vhsa.ano_8serie                  
+                    AND phe.ano = vhsa.ano_8serie
+                    AND phe.nm_serie LIKE '%8%'               
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie8,
                 (
@@ -208,7 +216,8 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                     AND phe.ativo = 1  
-                    AND phe.ano = vhsa.ano_9serie                  
+                    AND phe.ano = vhsa.ano_9serie
+                    AND phe.nm_serie LIKE '%9%'            
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie9,
                 (
