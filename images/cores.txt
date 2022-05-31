@@ -1,0 +1,4 @@
+belem
+azul: #1e3565
+azul próximo: #000080
+amarelo: #fba52f
