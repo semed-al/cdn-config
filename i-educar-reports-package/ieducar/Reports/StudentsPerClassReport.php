@@ -58,7 +58,13 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 nis_pis_pasep,
                 curso.nm_curso AS nome_curso,
                 turma.nm_turma AS nome_turma,
+                turma.multiseriada AS multisseriada,
                 serie.nm_serie AS nome_serie,
+                (
+                    SELECT s.nm_serie
+                    FROM pmieducar.serie s
+                    WHERE s.cod_serie = matricula.ref_ref_cod_serie
+                ) AS serie_matricula,
                 turma.cod_turma AS cod_turma,
                 escola.cod_escola AS cod_escola,
                 juridica.fantasia AS nm_escola,
@@ -140,7 +146,6 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
             INNER JOIN pmieducar.turma ON TRUE
                 AND turma.ref_ref_cod_escola = escola.cod_escola
                 AND turma.ref_cod_curso = escola_curso.ref_cod_curso
-                AND turma.ref_ref_cod_serie = escola_serie.ref_cod_serie
                 AND turma.ativo = 1
             INNER JOIN pmieducar.matricula_turma ON TRUE
                 AND matricula_turma.ref_cod_turma = turma.cod_turma
@@ -220,6 +225,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 nm_escola,
                 nome_curso,
                 nome_serie,
+                serie_matricula ASC,
                 nome_turma,
                 cod_turma,
                 (
