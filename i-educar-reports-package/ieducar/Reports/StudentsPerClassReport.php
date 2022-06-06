@@ -34,8 +34,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
     public function getSqlMainReport()
     {
         return "
-
-            SELECT
+            SELECT DISTINCT
                 matricula_turma.sequencial_fechamento AS sequencial_fechamento,
                 aluno.cod_aluno AS cod_aluno,
                 cpf,
@@ -146,6 +145,14 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
             INNER JOIN pmieducar.turma ON TRUE
                 AND turma.ref_ref_cod_escola = escola.cod_escola
                 AND turma.ref_cod_curso = escola_curso.ref_cod_curso
+                AND (turma.ref_ref_cod_serie = escola_serie.ref_cod_serie 
+                        OR turma.cod_turma IN 
+                            (SELECT turma_serie.turma_id 
+                                FROM pmieducar.turma_serie 
+                                WHERE turma_serie.escola_id = escola.cod_escola
+                                    AND turma_serie.serie_id = escola_serie.ref_cod_serie
+                                    AND turma_serie.turma_id = turma.cod_turma)
+                    )
                 AND turma.ativo = 1
             INNER JOIN pmieducar.matricula_turma ON TRUE
                 AND matricula_turma.ref_cod_turma = turma.cod_turma
@@ -228,13 +235,6 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 serie_matricula ASC,
                 nome_turma,
                 cod_turma,
-                (
-                    CASE WHEN matricula.dependencia THEN
-                        1
-                    ELSE
-                        0
-                    END
-                ),
                 sequencial_fechamento,
                 nome_aluno
         ";
