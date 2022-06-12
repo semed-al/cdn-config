@@ -2376,6 +2376,7 @@
 	</pageHeader>
 	<columnHeader>
 		<band height="159">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
 			<rectangle>
 				<reportElement x="6" y="0" width="545" height="75" uuid="91c092c5-d0b0-4373-84f2-6ab5714e18ae"/>
 				<graphicElement>
