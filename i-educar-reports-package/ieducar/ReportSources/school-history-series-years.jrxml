@@ -2197,9 +2197,9 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<frame>
-					<reportElement stretchType="ElementGroupHeight" x="7" y="300" width="544" height="210" uuid="3acfefa5-f516-4b06-abcf-b4989d22e99c"/>
+					<reportElement stretchType="ElementGroupHeight" x="7" y="320" width="544" height="210" uuid="3acfefa5-f516-4b06-abcf-b4989d22e99c"/>
 					<staticText>
-						<reportElement stretchType="RelativeToBandHeight" x="1" y="0" width="543" height="20" uuid="e4671903-1ed5-457f-b80f-abaca79d0bbe"/>
+						<reportElement stretchType="RelativeToBandHeight" x="1" y="8" width="543" height="20" uuid="e4671903-1ed5-457f-b80f-abaca79d0bbe"/>
 						<box>
 							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -2213,33 +2213,33 @@
 						<text><![CDATA[ESPAÇO RESERVADO AO SETOR DE LEGISLAÇÃO E NORMAS DA SECRETARIA DE EDUCAÇÃO]]></text>
 					</staticText>
 					<line>
-						<reportElement x="280" y="170" width="204" height="1" uuid="92f4a4e7-c397-4545-a3c4-e5893ffd8972"/>
+						<reportElement x="305" y="193" width="204" height="1" uuid="92f4a4e7-c397-4545-a3c4-e5893ffd8972"/>
 						<graphicElement>
 							<pen lineWidth="0.25"/>
 						</graphicElement>
 					</line>
 					<line>
-						<reportElement x="22" y="170" width="204" height="1" uuid="326901d2-6ccb-4771-8795-554991a469c1"/>
+						<reportElement x="47" y="192" width="204" height="1" uuid="326901d2-6ccb-4771-8795-554991a469c1"/>
 						<graphicElement>
 							<pen lineWidth="0.25"/>
 						</graphicElement>
 					</line>
 					<staticText>
-						<reportElement x="301" y="170" width="168" height="16" uuid="8ba904b4-c272-43e5-ad32-b82153ef168e"/>
+						<reportElement x="326" y="193" width="168" height="16" uuid="8ba904b4-c272-43e5-ad32-b82153ef168e"/>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<text><![CDATA[SECRETÁRIA MUNICIPAL DE EDUCAÇÃO]]></text>
 					</staticText>
 					<staticText>
-						<reportElement x="10" y="170" width="230" height="16" uuid="b0f89728-e90a-4a2e-861d-7ebbc23c1a91"/>
+						<reportElement x="35" y="193" width="230" height="16" uuid="b0f89728-e90a-4a2e-861d-7ebbc23c1a91"/>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<text><![CDATA[COORDENADOR DO SETOR DE LEGISLAÇÃO E NORMAS]]></text>
 					</staticText>
 					<staticText>
-						<reportElement x="2" y="22" width="541" height="68" uuid="70e109f4-5319-4223-b207-b13bc7f67c2f">
+						<reportElement x="2" y="30" width="541" height="88" uuid="70e109f4-5319-4223-b207-b13bc7f67c2f">
 							<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 							<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 							<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
@@ -2257,23 +2257,23 @@
 						<text><![CDATA[Certificamos para os devidos fins conforme o artigo, 24 inciso VII da Lei Federal 9394/96, que ________________________________________________________ concluiu o (a) _______________ ano/série do Ensino Fundamental no ano de _______________.]]></text>
 					</staticText>
 					<textField>
-						<reportElement positionType="Float" x="44" y="122" width="150" height="18" uuid="d8c83c2f-9883-46bf-a871-d00006dc1c24"/>
+						<reportElement positionType="Float" x="69" y="138" width="150" height="18" uuid="d8c83c2f-9883-46bf-a871-d00006dc1c24"/>
 						<textElement textAlignment="Right" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="10"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
 					</textField>
 					<staticText>
-						<reportElement x="195" y="122" width="231" height="18" uuid="221cefea-21ee-481b-ac9d-655601f583e4"/>
+						<reportElement x="220" y="138" width="231" height="18" uuid="221cefea-21ee-481b-ac9d-655601f583e4"/>
 						<text><![CDATA[________ de __________________ de ___________]]></text>
 					</staticText>
 				</frame>
 				<frame>
-					<reportElement key="" stretchType="ElementGroupHeight" x="6" y="150" width="544" height="80" uuid="59558dd6-75c0-4c2b-b57a-d3a6d0f796ff">
+					<reportElement key="" stretchType="ElementGroupHeight" x="6" y="150" width="544" height="130" uuid="59558dd6-75c0-4c2b-b57a-d3a6d0f796ff">
 						<property name="com.jaspersoft.studio.element.name" value="Observacao"/>
 					</reportElement>
 					<staticText>
-						<reportElement stretchType="ElementGroupHeight" x="0" y="0" width="54" height="12" uuid="1e0cb877-fda3-4806-ac89-442a88a1433b"/>
+						<reportElement stretchType="ElementGroupHeight" x="281" y="0" width="263" height="40" uuid="1e0cb877-fda3-4806-ac89-442a88a1433b"/>
 						<box>
 							<topPen lineWidth="0.25"/>
 							<leftPen lineWidth="0.25"/>
@@ -2281,13 +2281,13 @@
 							<rightPen lineWidth="0.25"/>
 						</box>
 						<textElement>
-							<font fontName="DejaVu Sans" size="7" isBold="false"/>
+							<font fontName="DejaVu Sans" size="7" isBold="true"/>
 							<paragraph leftIndent="5" spacingBefore="2"/>
 						</textElement>
-						<text><![CDATA[Observação:]]></text>
+						<text><![CDATA[ESPAÇO RESERVADO PARA OBSERVAÇÕES DA SEMED]]></text>
 					</staticText>
 					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-						<reportElement stretchType="ElementGroupHeight" x="54" y="0" width="490" height="12" uuid="1933ad7b-d00b-41c9-898c-9f40fba38f92"/>
+						<reportElement stretchType="ElementGroupHeight" x="0" y="0" width="281" height="40" uuid="1933ad7b-d00b-41c9-898c-9f40fba38f92"/>
 						<box>
 							<topPen lineWidth="0.25"/>
 							<leftPen lineWidth="0.25"/>
@@ -2298,19 +2298,22 @@
 							<font fontName="DejaVu Sans" size="7"/>
 							<paragraph leftIndent="2" rightIndent="5" spacingBefore="2" spacingAfter="2"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{observacao_all}]]></textFieldExpression>
+						<textFieldExpression><![CDATA["Observações: " + $F{observacao_all}]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement positionType="Float" x="1" y="19" width="159" height="16" uuid="40196625-d873-4c94-91d4-248c35f98bf3"/>
+						<reportElement positionType="Float" x="199" y="57" width="159" height="16" uuid="40196625-d873-4c94-91d4-248c35f98bf3"/>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$F{municipio}+", "+$F{data_atual}]]></textFieldExpression>
 					</textField>
 					<textField isBlankWhenNull="true">
-						<reportElement positionType="Float" x="350" y="52" width="119" height="16" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe"/>
+						<reportElement positionType="Float" x="359" y="114" width="119" height="16" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe"/>
 						<box>
-							<rightPen lineWidth="0.25"/>
+							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
@@ -2318,33 +2321,33 @@
 						<textFieldExpression><![CDATA[$P{nm_diretor} ? $P{nm_diretor} : $P{emitir_nome_diretor} ? $F{diretor} : ""]]></textFieldExpression>
 					</textField>
 					<staticText>
-						<reportElement positionType="Float" x="301" y="51" width="48" height="16" uuid="bb58c3b6-29ba-410e-87d6-4216bf8b69c0"/>
+						<reportElement positionType="Float" x="310" y="113" width="48" height="16" uuid="bb58c3b6-29ba-410e-87d6-4216bf8b69c0"/>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<text><![CDATA[Diretor (a):]]></text>
 					</staticText>
 					<line>
-						<reportElement positionType="Float" x="284" y="51" width="204" height="1" uuid="9efb76da-0df4-41a3-9696-20974adb0fa5"/>
+						<reportElement positionType="Float" x="293" y="113" width="204" height="1" uuid="9efb76da-0df4-41a3-9696-20974adb0fa5"/>
 						<graphicElement>
 							<pen lineWidth="0.25"/>
 						</graphicElement>
 					</line>
 					<textField isBlankWhenNull="true">
-						<reportElement positionType="Float" x="114" y="51" width="103" height="16" uuid="323eb834-4bb0-4121-9a04-c3e7b208ef1f"/>
+						<reportElement positionType="Float" x="123" y="113" width="103" height="16" uuid="323eb834-4bb0-4121-9a04-c3e7b208ef1f"/>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$P{nm_secretario} ? $P{nm_secretario} : $P{emitir_secretario_escolar} ? $F{secretario} : ""]]></textFieldExpression>
 					</textField>
 					<line>
-						<reportElement positionType="Float" x="45" y="51" width="204" height="1" uuid="f1fb62bd-d042-4d79-941b-21db5878feb0"/>
+						<reportElement positionType="Float" x="54" y="113" width="204" height="1" uuid="f1fb62bd-d042-4d79-941b-21db5878feb0"/>
 						<graphicElement>
 							<pen lineWidth="0.25"/>
 						</graphicElement>
 					</line>
 					<staticText>
-						<reportElement positionType="Float" x="54" y="51" width="60" height="16" uuid="525c518d-519e-482e-97ab-34b24f70a88e"/>
+						<reportElement positionType="Float" x="63" y="113" width="60" height="16" uuid="525c518d-519e-482e-97ab-34b24f70a88e"/>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
