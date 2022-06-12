@@ -1105,7 +1105,7 @@
 					</staticText>
 				</frame>
 			</band>
-			<band height="530" splitType="Stretch">
+			<band height="566" splitType="Stretch">
 				<rectangle>
 					<reportElement positionType="Float" x="6" y="7" width="545" height="139" uuid="575649de-d6ff-4d0c-9ebe-4b1e6960b394"/>
 					<graphicElement>
@@ -2197,7 +2197,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<frame>
-					<reportElement stretchType="ElementGroupHeight" x="7" y="320" width="544" height="210" uuid="3acfefa5-f516-4b06-abcf-b4989d22e99c"/>
+					<reportElement stretchType="ElementGroupHeight" x="7" y="340" width="544" height="210" uuid="3acfefa5-f516-4b06-abcf-b4989d22e99c"/>
 					<staticText>
 						<reportElement stretchType="RelativeToBandHeight" x="1" y="8" width="543" height="20" uuid="e4671903-1ed5-457f-b80f-abaca79d0bbe"/>
 						<box>
@@ -2254,14 +2254,14 @@
 							<font isBold="false"/>
 							<paragraph lineSpacing="Double" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="5" rightIndent="5" spacingBefore="10"/>
 						</textElement>
-						<text><![CDATA[Certificamos para os devidos fins conforme o artigo, 24 inciso VII da Lei Federal 9394/96, que ________________________________________________________ concluiu o (a) _______________ ano/série do Ensino Fundamental no ano de _______________.]]></text>
+						<text><![CDATA[Certificamos para os devidos fins conforme o artigo, 24 inciso VII da Lei Federal 9394/96, que ________________________________________________________ concluiu o(a) ______________ do Ensino Fundamental no ano de _______________.]]></text>
 					</staticText>
 					<textField>
 						<reportElement positionType="Float" x="69" y="138" width="150" height="18" uuid="d8c83c2f-9883-46bf-a871-d00006dc1c24"/>
 						<textElement textAlignment="Right" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="10"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{municipio} == null ? "Belém" : $F{municipio}]]></textFieldExpression>
 					</textField>
 					<staticText>
 						<reportElement x="220" y="138" width="231" height="18" uuid="221cefea-21ee-481b-ac9d-655601f583e4"/>
@@ -2284,7 +2284,7 @@
 							<font fontName="DejaVu Sans" size="7" isBold="true"/>
 							<paragraph leftIndent="5" spacingBefore="2"/>
 						</textElement>
-						<text><![CDATA[ESPAÇO RESERVADO PARA OBSERVAÇÕES DA SEMED]]></text>
+						<text><![CDATA[ESPAÇO RESERVADO A SEMED]]></text>
 					</staticText>
 					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 						<reportElement stretchType="ElementGroupHeight" x="0" y="0" width="281" height="40" uuid="1933ad7b-d00b-41c9-898c-9f40fba38f92"/>
@@ -2305,7 +2305,7 @@
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{municipio}+", "+$F{data_atual}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[($F{municipio} == null ? "Belém" : $F{municipio}) + ", "+$F{data_atual}]]></textFieldExpression>
 					</textField>
 					<textField isBlankWhenNull="true">
 						<reportElement positionType="Float" x="359" y="114" width="119" height="16" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe"/>

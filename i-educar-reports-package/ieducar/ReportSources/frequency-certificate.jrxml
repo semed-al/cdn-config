@@ -124,7 +124,7 @@
 				<textFieldExpression><![CDATA[($F{altera_atestado_para_declaracao} ? "Declaramos" : "Atestamos") +" para os devidos fins que, o(a) aluno(a) "+$F{nome}+", filho(a) de "+(($F{nm_pai}.equals("") || $F{nm_pai} == null) && ($F{nm_mae}.equals("")  || $F{nm_mae} == null ) ? "não informado" : (!$F{nm_pai}.equals("") && ($F{nm_mae}.equals("") || $F{nm_mae} == null) ? $F{nm_pai} : (($F{nm_pai}.equals("") || $F{nm_pai} == null) && !$F{nm_mae}.equals("") ? $F{nm_mae} : ($F{nm_mae} + " e de " + $F{nm_pai}))))+", nascido(a) em "+$F{data_nasc}+", natural de "+$F{municipio_uf_nascimento}+", está regularmente frequentando o(a) "+$F{nm_serie}+" na(s) turma(s) "+$F{nm_turma}+" do(a) "+$F{nm_curso}+" no turno " + $F{periodo} + " no ano " + $P{ano} + (!$P{emitir_frequencia} ? "." : " com a frequência " + ($F{frequencia} == null ? "não informada." :"de " + $F{frequencia} + "%" + "."))]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="92" y="285" width="442" height="90" uuid="ba7cb218-2999-4bf4-9b20-ce90405335b9"/>
+				<reportElement positionType="Float" x="92" y="285" width="442" height="55" uuid="ba7cb218-2999-4bf4-9b20-ce90405335b9"/>
 				<textElement textAlignment="Justified">
 					<font fontName="DejaVu Sans" size="10"/>
 				</textElement>
@@ -186,7 +186,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ATESTADO DE FREQUÊNCIA"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["DECLARAÇÂO DE FREQUÊNCIA"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -194,7 +194,7 @@
 		<band height="28">
 			<printWhenExpression><![CDATA[$P{emitir_validade}]]></printWhenExpression>
 			<textField>
-				<reportElement x="21" y="-52" width="513" height="28" uuid="7853b7ed-0297-4e00-88b6-d07458b872d6"/>
+				<reportElement x="21" y="-91" width="513" height="28" uuid="7853b7ed-0297-4e00-88b6-d07458b872d6"/>
 				<textElement textAlignment="Justified" verticalAlignment="Top">
 					<font fontName="DejaVu Sans"/>
 					<paragraph firstLineIndent="30"/>
@@ -206,7 +206,7 @@
 	<pageFooter>
 		<band height="163">
 			<textField isBlankWhenNull="true">
-				<reportElement x="21" y="-47" width="513" height="14" uuid="90b88942-ea8c-4d08-a9e9-63d3f59a46b0"/>
+				<reportElement x="21" y="-86" width="513" height="14" uuid="90b88942-ea8c-4d08-a9e9-63d3f59a46b0"/>
 				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10"/>
 				</textElement>
