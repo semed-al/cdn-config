@@ -37,7 +37,9 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
             SELECT DISTINCT
                 matricula_turma.sequencial_fechamento AS sequencial_fechamento,
                 aluno.cod_aluno AS cod_aluno,
-                cpf,
+                (
+                    CASE WHEN cpf IS NOT NULL AND LENGTH(concat(cpf,'')) < 11 THEN CONCAT('0',cpf) ELSE CONCAT(cpf,'') END
+                ) AS cpf,
                 fcn_upper(pessoa.nome) AS nome_aluno,
                 fisica.sus AS codigo_sus,
                 relatorio.get_pai_aluno(aluno.cod_aluno) AS nome_do_pai,
@@ -86,13 +88,33 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     END
                 ) AS transporte_aluno,
                 (
-                    SELECT CASE WHEN (deficiencia.nm_deficiencia IS NOT NULL OR LENGTH(deficiencia.nm_deficiencia) > 0) THEN 'S' ELSE 'N' END
-                    FROM cadastro.deficiencia,
-                        cadastro.fisica_deficiencia
-                    WHERE deficiencia.cod_deficiencia = fisica_deficiencia.ref_cod_deficiencia
-                        AND fisica_deficiencia.ref_idpes = fisica.idpes
+                    SELECT CASE WHEN (COUNT(d.nm_deficiencia) > 0) THEN 'S' ELSE 'N' END
+                    FROM cadastro.deficiencia d
+                     INNER JOIN cadastro.fisica_deficiencia fd ON fd.ref_cod_deficiencia = d.cod_deficiencia
+                    WHERE fd.ref_idpes = fisica.idpes
                     LIMIT 1
                 ) AS deficiencia,
+                (
+                    SELECT CASE WHEN (COUNT(aluno_beneficio.nm_beneficio) > 0) THEN 'S' ELSE 'N' END
+                    FROM pmieducar.aluno_beneficio
+                     INNER JOIN pmieducar.aluno_aluno_beneficio ON pmieducar.aluno_aluno_beneficio.aluno_id = aluno.cod_aluno
+                    WHERE pmieducar.aluno_beneficio.cod_aluno_beneficio = pmieducar.aluno_aluno_beneficio.aluno_beneficio_id
+                ) AS beneficio,
+                (
+                    SELECT COALESCE(
+                        (
+                            SELECT logradouro.nome
+                            FROM public.logradouro
+                            INNER JOIN cadastro.endereco_pessoa ON logradouro.idlog = endereco_pessoa.idlog
+                            WHERE endereco_pessoa.idpes = pessoa.idpes
+                        ),
+                        (
+                            SELECT endereco_externo.logradouro
+                            FROM cadastro.endereco_externo
+                            WHERE endereco_externo.idpes = aluno.ref_idpes
+                        )
+                    )
+                ) AS endereco,
                 (
                     SELECT
                         infra_predio.nm_predio
@@ -147,7 +169,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 AND turma.ref_cod_curso = escola_curso.ref_cod_curso
                 AND (turma.ref_ref_cod_serie = escola_serie.ref_cod_serie 
                         OR turma.cod_turma IN 
-                            (SELECT turma_serie.turma_id 
+                            (SELECT DISTINCT turma_serie.turma_id 
                                 FROM pmieducar.turma_serie 
                                 WHERE turma_serie.escola_id = escola.cod_escola
                                     AND turma_serie.serie_id = escola_serie.ref_cod_serie
