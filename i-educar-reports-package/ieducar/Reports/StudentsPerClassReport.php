@@ -259,6 +259,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     nm_escola ASC,
                     nome_curso ASC,
                     nome_turma ASC,
+                    cod_turma ASC,
                     serie_matricula ASC,
                     nome_aluno ASC
         ";
