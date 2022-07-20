@@ -339,15 +339,37 @@ trait SchoolHistorySeriesYearsTrait
                         AND (CASE WHEN $nao_emitir_reprovado THEN phe.aprovado <> 2 ELSE 1=1 END)                        
                         ORDER BY phe.ano
                     )tabl
-                ) AS observacao_all
+                ) AS observacao_all,
+                (
+                    SELECT area.id
+                    FROM modules.area_conhecimento area
+                    LEFT JOIN relatorio.view_componente_curricular vcc ON (area.id = vcc.area_conhecimento_id)
+                    WHERE LOWER(vcc.nome) = LOWER(vhsa.disciplina)                    
+                    LIMIT 1
+                ) AS area_conhecimento_id,
+                (
+                    SELECT area.nome
+                    FROM modules.area_conhecimento area
+                    LEFT JOIN relatorio.view_componente_curricular vcc ON (area.id = vcc.area_conhecimento_id)
+                    WHERE LOWER(vcc.nome) = LOWER(vhsa.disciplina)
+                    LIMIT 1
+                ) AS area_conhecimento_nome,
+                (
+                    SELECT vcc.ordenamento
+                    FROM relatorio.view_componente_curricular vcc
+                    WHERE vcc.area_conhecimento_id = area_conhecimento_id
+                        AND LOWER(vcc.nome) = LOWER(vhsa.disciplina)                    
+                    LIMIT 1
+                ) AS area_conhecimento_ordem_disciplina
                 FROM relatorio.view_historico_series_anos vhsa
                 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = vhsa.cod_aluno)
                 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
                 INNER JOIN cadastro.fisica ON (fisica.idpes = aluno.ref_idpes)
-                /*INNER JOIN modules.area_conhecimento ON (area_conhecimento.id = view_componente_curricular.area_conhecimento_id)*/
                 LEFT JOIN modules.educacenso_cod_aluno eca ON (eca.cod_aluno = aluno.cod_aluno)
                 LEFT JOIN public.municipio ON (municipio.idmun = fisica.idmun_nascimento)
-                WHERE vhsa.cod_aluno = $aluno;
+                WHERE vhsa.cod_aluno = $aluno
+                ORDER BY area_conhecimento_id ASC, area_conhecimento_ordem_disciplina ASC
+                ;
 
 SQL;
     }
