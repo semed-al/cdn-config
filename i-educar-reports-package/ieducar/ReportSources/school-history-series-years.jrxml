@@ -167,10 +167,12 @@
 	<field name="hora_atual" class="java.lang.String"/>
 	<field name="data_atual_extenso" class="java.lang.String"/>
 	<field name="nome_serie_aux" class="java.lang.String"/>
+	<field name="ano" class="java.lang.Integer"/>
 	<field name="qtde_notas_maiores_dez" class="java.lang.Long"/>
 	<field name="espaco_branco" class="java.lang.String"/>
 	<field name="possui_historico_dependencia" class="java.lang.Long"/>
 	<field name="observacao_all" class="java.lang.String"/>
+	<field name="ac_nome" class="java.lang.String"/>
 	<variable name="max_nome_serie1" class="java.lang.String" calculation="Highest">
 		<variableExpression><![CDATA[$F{nome_serie1}]]></variableExpression>
 	</variable>
@@ -878,7 +880,7 @@
 						<text><![CDATA[-]]></text>
 					</staticText>
 					<staticText>
-						<reportElement positionType="Float" x="0" y="0" width="138" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42"/>
+						<reportElement positionType="Float" x="0" y="1" width="138" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42"/>
 						<box>
 							<topPen lineWidth="0.25"/>
 							<leftPen lineWidth="0.25"/>
@@ -1144,7 +1146,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="413" y="-14" width="46" height="13" forecolor="#000000" backcolor="#FFFFFF" uuid="cdc23782-5cab-49b0-8baf-142da2e16937">
+					<reportElement positionType="Float" x="413" y="-13" width="46" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="cdc23782-5cab-49b0-8baf-142da2e16937">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie7} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1182,7 +1184,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="188" y="-14" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="188" y="-13" width="44" height="13" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie2} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_status_serie2} == null]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1191,7 +1193,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="502" y="-14" width="49" height="13" forecolor="#000000" backcolor="#FFFFFF" uuid="0d3d4747-dae3-4683-a26c-f09d0b791102">
+					<reportElement positionType="Float" x="502" y="-13" width="49" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="0d3d4747-dae3-4683-a26c-f09d0b791102">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie9} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1223,7 +1225,7 @@
 					<textFieldExpression><![CDATA[$V{max_nome_serie3}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="232" y="-14" width="46" height="13" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="232" y="-13" width="46" height="12" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie3} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_status_serie3} == null]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1241,7 +1243,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="145" y="-14" width="43" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="145" y="-13" width="43" height="13" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie1} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_status_serie1} == null]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1404,7 +1406,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="459" y="-14" width="43" height="13" forecolor="#000000" backcolor="#FFFFFF" uuid="0d3d4747-dae3-4683-a26c-f09d0b791102">
+					<reportElement positionType="Float" x="459" y="-13" width="43" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="0d3d4747-dae3-4683-a26c-f09d0b791102">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie8} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1439,7 +1441,7 @@
 					<textFieldExpression><![CDATA[$V{max_escola7}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="369" y="-14" width="44" height="13" forecolor="#000000" backcolor="#FFFFFF" uuid="f231d12c-8e16-4a6a-a1f2-6957af310da8">
+					<reportElement positionType="Float" x="369" y="-13" width="44" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="f231d12c-8e16-4a6a-a1f2-6957af310da8">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie6} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1500,7 +1502,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="322" y="-14" width="47" height="13" forecolor="#000000" backcolor="#FFFFFF" uuid="f6122758-b7b6-409b-ab84-55ac9c4091fe">
+					<reportElement positionType="Float" x="322" y="-13" width="47" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="f6122758-b7b6-409b-ab84-55ac9c4091fe">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie5} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1641,7 +1643,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="278" y="-14" width="44" height="13" forecolor="#000000" backcolor="#FFFFFF" uuid="06ab8b1d-034c-4453-8ae1-1ba6c86b4f7e">
+					<reportElement positionType="Float" x="278" y="-13" width="44" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="06ab8b1d-034c-4453-8ae1-1ba6c86b4f7e">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie4} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2357,6 +2359,9 @@
 			</band>
 		</groupFooter>
 	</group>
+	<group name="ac_grupo" keepTogether="true">
+		<groupExpression><![CDATA[$F{ac_nome}]]></groupExpression>
+	</group>
 	<pageHeader>
 		<band height="50" splitType="Stretch">
 			<subreport>
@@ -2425,7 +2430,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Certificamos que " +$F{nome_aluno}+ ", matrícula "+$F{cod_aluno}+($F{cod_inep} == null ? "" : ", cód. INEP: "+$F{cod_inep}) +", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ ((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai})) +", "+ $F{nome_serie_aux} +" conforme Histórico Escolar."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Certificamos que " +$F{nome_aluno}+ ", matrícula "+$F{cod_aluno}+($F{cod_inep} == null ? "" : ", cód. INEP: "+$F{cod_inep}) +", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ ((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai})) +", "+ $F{nome_serie_aux} +" no ano letivo de " + $F{ano} + ", conforme Histórico Escolar."]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement x="188" y="134" width="44" height="13" uuid="ece0884f-da77-40d1-a067-a4d93dfaab5a"/>
@@ -2508,7 +2513,7 @@
 				<textFieldExpression><![CDATA[$V{max_nome_serie9}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="10" y="115" width="533" height="16" uuid="021421f4-e6c1-4be7-8ab1-0ef26ab43d84"/>
+				<reportElement x="10" y="117" width="533" height="16" uuid="021421f4-e6c1-4be7-8ab1-0ef26ab43d84"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="11" isBold="true"/>
 				</textElement>
@@ -2628,7 +2633,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($P{cabecalho_alternativo} == 1) ? "HISTÓRICO ESCOLAR" : "CERTIFICADO DE CONCLUSÃO"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($P{cabecalho_alternativo} == 1) ? "HISTÓRICO ESCOLAR" : "CERTIFICADO DE CONCLUSÃO DE SÉRIE ESCOLAR E HISTÓRICO ESCOLAR"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="407" y="33" width="51" height="10" uuid="a4d18f2b-2954-4bfb-ad7b-ab8d20924912">
@@ -2847,7 +2852,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<text><![CDATA[NOTA]]></text>
 			</staticText>
 			<frame>
-				<reportElement x="6" y="78" width="545" height="37" uuid="ea0a4442-0e38-4431-b113-c8da0baa8280"/>
+				<reportElement x="6" y="78" width="545" height="40" uuid="ea0a4442-0e38-4431-b113-c8da0baa8280"/>
 				<staticText>
 					<reportElement x="0" y="0" width="545" height="12" uuid="6f8cc8e6-8fd3-4a68-813d-2077111dbd53"/>
 					<box>
@@ -2858,13 +2863,13 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 						<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="7" isBold="true"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 						<paragraph leftIndent="5" rightIndent="5"/>
 					</textElement>
 					<text><![CDATA[CRITÉRIOS DE APURAÇÃO DO RENDIMENTO ESCOLAR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement stretchType="ContainerHeight" x="0" y="12" width="545" height="25" isPrintInFirstWholeBand="true" uuid="3fcd4df4-8e0e-4331-a93d-2da2d0d54db9"/>
+					<reportElement stretchType="ContainerHeight" x="0" y="12" width="545" height="28" isPrintInFirstWholeBand="true" uuid="3fcd4df4-8e0e-4331-a93d-2da2d0d54db9"/>
 					<box>
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -2882,7 +2887,23 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="12" splitType="Stretch">
+		<band height="10" splitType="Prevent">
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="7" y="0" width="544" height="10" isRemoveLineWhenBlank="true" printWhenGroupChanges="ac_grupo" backcolor="rgba(214, 214, 214, 0.0)" uuid="724cb0fa-47d4-4057-9c86-83b70f1a28bc"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Área de conhecimento: "+ $F{ac_nome}.toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="12">
 			<textField isBlankWhenNull="false">
 				<reportElement x="145" y="0" width="22" height="12" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF" uuid="d22a8666-d939-4f90-af9c-efe92169ebac"/>
 				<box>

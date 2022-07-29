@@ -17,7 +17,7 @@ trait SchoolHistorySeriesYearsTrait
                 vhsa.disciplina AS nm_disciplina,
                 pessoa.nome AS nome_aluno,
                 eca.cod_aluno_inep AS cod_inep,
-                municipio.nome || '/' || municipio.sigla_uf AS cidade_nascimento_uf,
+                municipio.nome || ', Estado de ' || municipio.sigla_uf AS cidade_nascimento_uf,
                 municipio.sigla_uf AS uf_nascimento,
                 municipio.nome AS cidade_nascimento,
                 to_char(fisica.data_nasc,'DD/MM/YYYY') AS data_nasc,
@@ -294,7 +294,16 @@ trait SchoolHistorySeriesYearsTrait
                     ORDER BY ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                     LIMIT 1
                 ) AS nome_serie_aux,
-
+                (
+                    SELECT he.ano
+                    FROM pmieducar.historico_escolar he
+                    WHERE he.ref_cod_aluno = vhsa.cod_aluno
+                    AND he.aprovado NOT IN (2,3,4,6)
+                    AND he.extra_curricular = 0
+                    AND ativo = 1
+                    ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
+                    LIMIT 1
+                ) AS ano,
                 (
                     SELECT count(hd.nota)
                     FROM pmieducar.historico_disciplinas hd
@@ -341,26 +350,19 @@ trait SchoolHistorySeriesYearsTrait
                     )tabl
                 ) AS observacao_all,
                 (
-                    SELECT area.id
-                    FROM modules.area_conhecimento area
-                    LEFT JOIN relatorio.view_componente_curricular vcc ON (area.id = vcc.area_conhecimento_id)
-                    WHERE LOWER(vcc.nome) = LOWER(vhsa.disciplina)                    
-                    LIMIT 1
-                ) AS area_conhecimento_id,
-                (
                     SELECT area.nome
                     FROM modules.area_conhecimento area
                     LEFT JOIN relatorio.view_componente_curricular vcc ON (area.id = vcc.area_conhecimento_id)
-                    WHERE LOWER(vcc.nome) = LOWER(vhsa.disciplina)
+                    WHERE relatorio.get_texto_sem_caracter_especial(vcc.nome) = vhsa.disciplina
                     LIMIT 1
-                ) AS area_conhecimento_nome,
+                ) AS ac_nome,
                 (
-                    SELECT vcc.ordenamento
-                    FROM relatorio.view_componente_curricular vcc
-                    WHERE vcc.area_conhecimento_id = area_conhecimento_id
-                        AND LOWER(vcc.nome) = LOWER(vhsa.disciplina)                    
+                    SELECT cc.ordenamento 
+                    FROM modules.componente_curricular cc 
+                    WHERE relatorio.get_texto_sem_caracter_especial(cc.nome) = vhsa.disciplina
+                    ORDER BY cc.ordenamento ASC
                     LIMIT 1
-                ) AS area_conhecimento_ordem_disciplina
+                ) AS ordem_disciplina
                 FROM relatorio.view_historico_series_anos vhsa
                 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = vhsa.cod_aluno)
                 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
@@ -368,7 +370,7 @@ trait SchoolHistorySeriesYearsTrait
                 LEFT JOIN modules.educacenso_cod_aluno eca ON (eca.cod_aluno = aluno.cod_aluno)
                 LEFT JOIN public.municipio ON (municipio.idmun = fisica.idmun_nascimento)
                 WHERE vhsa.cod_aluno = $aluno
-                ORDER BY area_conhecimento_id ASC, area_conhecimento_ordem_disciplina ASC
+                ORDER BY ordem_disciplina ASC
                 ;
 
 SQL;
