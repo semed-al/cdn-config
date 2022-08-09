@@ -52,10 +52,10 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     to_char(fisica.data_nasc,'dd/mm/yyyy') AS data_nasc,
                     (
                         CASE
-                            WHEN '{$this->args['ano']}' >= EXTRACT (YEAR from CURRENT_DATE)
-                                AND CURRENT_DATE < (fisica.data_nasc + interval '1 year' * (EXTRACT (YEAR from CURRENT_DATE) - EXTRACT (YEAR from fisica.data_nasc)))
-                            THEN EXTRACT (YEAR from CURRENT_DATE) - EXTRACT (YEAR from fisica.data_nasc) - 1
-                            ELSE '{$this->args['ano']}' - EXTRACT (YEAR from fisica.data_nasc)
+                            WHEN EXTRACT (MONTH from fisica.data_nasc) <= 3
+                                AND EXTRACT (DAY from fisica.data_nasc) <= 30
+                            THEN '{$this->args['ano']}' - EXTRACT (YEAR from fisica.data_nasc)
+                            ELSE '{$this->args['ano']}' - EXTRACT (YEAR from fisica.data_nasc) - 1
                         END
                     ) AS idade,
                     nis_pis_pasep,
