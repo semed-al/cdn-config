@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_cabecalho_retrato" language="groovy" pageWidth="545" pageHeight="752" columnWidth="545" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0d2ddb19-fbc0-4ec9-9b68-1b3f41c8ef77">
 	<parameter name="logo" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -20,6 +20,7 @@
 	<field name="nm_instituicao" class="java.lang.String"/>
 	<field name="nm_responsavel" class="java.lang.String"/>
 	<field name="nm_escola" class="java.lang.String"/>
+	<field name="cnpj" class="java.lang.String"/>
 	<field name="tipo_logradouro" class="java.lang.String"/>
 	<field name="logradouro" class="java.lang.String"/>
 	<field name="bairro" class="java.lang.String"/>
@@ -56,7 +57,7 @@
 				<textFieldExpression><![CDATA[$F{nm_escola}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="329" y="41" width="93" height="10" uuid="1176d12b-48c8-4a50-8104-f9daf02dc0d4"/>
+				<reportElement x="354" y="41" width="93" height="10" uuid="1176d12b-48c8-4a50-8104-f9daf02dc0d4"/>
 				<textElement markup="html">
 					<font fontName="DejaVu Sans" size="8" isBold="false"/>
 				</textElement>
@@ -67,14 +68,14 @@
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="69" y="11" width="394" height="10" uuid="08a62240-61cb-401e-a8ac-a1b3a17541f1"/>
+				<reportElement x="69" y="11" width="311" height="10" uuid="08a62240-61cb-401e-a8ac-a1b3a17541f1"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nm_responsavel}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="336" y="51" width="204" height="10" uuid="a065f9a7-f9bc-4117-ba78-c79f630c77d3">
+				<reportElement x="361" y="51" width="178" height="10" uuid="a065f9a7-f9bc-4117-ba78-c79f630c77d3">
 					<printWhenExpression><![CDATA[$P{cod_escola}!=0]]></printWhenExpression>
 				</reportElement>
 				<textElement markup="html">
@@ -83,49 +84,49 @@
 				<textFieldExpression><![CDATA[($F{email} != null ? $F{email} : "")]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="69" y="31" width="56" height="10" uuid="d04f3578-20b5-4aad-9204-0e9881ababc5"/>
+				<reportElement x="69" y="31" width="30" height="10" uuid="d04f3578-20b5-4aad-9204-0e9881ababc5"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ENDEREÇO:]]></text>
+				<text><![CDATA[CNPJ:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="125" y="31" width="174" height="10" uuid="7636d4d5-22c3-4d32-b7e4-5ee20088eed1"/>
+				<reportElement x="99" y="31" width="174" height="10" uuid="7636d4d5-22c3-4d32-b7e4-5ee20088eed1"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{logradouro} == null ? 'S/N' : $F{logradouro}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="300" y="31" width="29" height="10" uuid="6e04a503-844c-4935-8258-fc62897fabda"/>
+				<reportElement x="325" y="31" width="29" height="10" uuid="6e04a503-844c-4935-8258-fc62897fabda"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CEP:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="329" y="31" width="93" height="10" uuid="3eb2334f-4588-4522-94bf-c3415ae03a37"/>
+				<reportElement x="354" y="31" width="93" height="10" uuid="3eb2334f-4588-4522-94bf-c3415ae03a37"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cep}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="69" y="41" width="45" height="10" uuid="bdaf72bf-3b44-419e-8339-cbb46f7393ce"/>
+				<reportElement x="69" y="41" width="56" height="10" uuid="bdaf72bf-3b44-419e-8339-cbb46f7393ce"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[BAIRRO:]]></text>
+				<text><![CDATA[ENDEREÇO:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="114" y="41" width="186" height="10" uuid="0002a293-e607-4dcf-862e-e39a23250c19"/>
+				<reportElement x="125" y="41" width="195" height="10" uuid="0002a293-e607-4dcf-862e-e39a23250c19"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{bairro}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{logradouro} == null ? 'S/N' : $F{logradouro} +', '+ $F{bairro}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="300" y="41" width="29" height="10" uuid="a1fad0f9-1e91-461d-a73f-fc885809cbf4"/>
+				<reportElement x="325" y="41" width="29" height="10" uuid="a1fad0f9-1e91-461d-a73f-fc885809cbf4"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
@@ -146,7 +147,7 @@
 				<textFieldExpression><![CDATA[$F{cidade} + ($F{uf} != null ? " - " + $F{uf} : "")]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="300" y="51" width="36" height="10" uuid="761ab10a-bced-44e6-8f14-2f2d8a7f66ef">
+				<reportElement x="325" y="51" width="36" height="10" uuid="761ab10a-bced-44e6-8f14-2f2d8a7f66ef">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -154,13 +155,19 @@
 				</textElement>
 				<text><![CDATA[E-MAIL:]]></text>
 			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="390" y="11" width="75" height="10" uuid="06243296-6ee9-41fb-bd07-960c019a46a1"/>
+				<textElement textAlignment="Right" markup="html">
+					<font fontName="DejaVu Sans" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>Emitido em:</b>"]]></textFieldExpression>
+			</textField>
 			<textField pattern="dd/MM/yyyy hh:mm" isBlankWhenNull="false">
-				<reportElement x="463" y="11" width="76" height="10" uuid="47ab2458-b7bc-491d-aa50-b25299ffb811">					
-				</reportElement>
+				<reportElement x="465" y="11" width="74" height="10" uuid="47ab2458-b7bc-491d-aa50-b25299ffb811"/>
 				<textElement textAlignment="Right" markup="html">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<b>Emitido em:</b>" + new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
