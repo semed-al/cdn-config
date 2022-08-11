@@ -393,7 +393,7 @@ class ServantSheetReport extends Portabilis_Report_ReportCore
                 turma_turno.id,
                 substring(servidor_alocacao.carga_horaria::varchar,1,5) AS carga_horaria,
                 funcao.professor,
-                fisica.data_admissao AS dt_admissao,
+                servidor_alocacao.data_admissao AS dt_admissao,
                 translate(upper((
                     SELECT replace(textcat_all(curso.nm_curso), ' <br>', ',')
                     FROM pmieducar.curso
