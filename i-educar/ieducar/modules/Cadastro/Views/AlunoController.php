@@ -458,7 +458,7 @@ class AlunoController extends Portabilis_Controller_Page_EditController
             $nisPisPasep = int2Nis($fisica['nis_pis_pasep']);
         }
 
-        $this->campoCpf('id_federal', 'CPF', $valorCpf);
+        $this->campoCpf('id_federal', 'CPF', $valorCpf, true);
 
         $options = [
             'required' => false,
