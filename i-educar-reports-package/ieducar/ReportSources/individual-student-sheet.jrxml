@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_boletim" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f9ea369-c6c3-48c5-ae82-2872022857d3">
+	<property name="ireport.zoom" value="1.6500000000000192"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="202"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="ano" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="instituicao" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="escola" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="curso" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="serie" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="turma" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="matricula" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="diario" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="observacoes" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imprimir_mensagem_aniversario" class="java.lang.Boolean"/>
+	<parameter name="mensagem_aniversario" class="java.lang.String"/>
+	<parameter name="grafico_media_turma" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
+	</parameter>
+	<parameter name="grafico_preto" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<parameter name="situacao" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="emitir_nota_exame" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
+	</parameter>
+	<parameter name="situacao_matricula" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="alunos_diferenciados" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="etapa" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="orientacao" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="selecionar_areas_conhecimento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="emitir_assinatura" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="componente_curricular" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="areas_conhecimento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="manual" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="copia" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="professor" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="auxiliares_operacionais" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="servidor" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="buscar_professor" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="emitir_tabela_conversao" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="modelo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="professor_regente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="professores_regentes" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="professor_artes" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="professor_informatica" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="professor_ed_fisica" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="mostra_descricao" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="emitir_multiplas_assinaturas" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="assinatura_secretario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="database" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="data_emissao" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="source" class="java.lang.String"/>
+	<field name="nome_instituicao" class="java.lang.String"/>
+	<field name="nome_responsavel" class="java.lang.String"/>
+	<field name="nm_escola" class="java.lang.String"/>
+	<field name="ano" class="java.lang.Integer"/>
+	<field name="logradouro" class="java.lang.String"/>
+	<field name="fone" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="nome_curso" class="java.lang.String"/>
+	<field name="nome_serie" class="java.lang.String"/>
+	<field name="nome_turma" class="java.lang.String"/>
+	<field name="nome_aluno" class="java.lang.String"/>
+	<field name="periodo" class="java.lang.String"/>
+	<field name="situacao" class="java.lang.String"/>
+	<field name="nome_disciplina" class="java.lang.String"/>
+	<field name="nota1num" class="java.math.BigDecimal"/>
+	<field name="nota1" class="java.lang.String"/>
+	<field name="nota2num" class="java.math.BigDecimal"/>
+	<field name="nota2" class="java.lang.String"/>
+	<field name="nota3num" class="java.math.BigDecimal"/>
+	<field name="nota3" class="java.lang.String"/>
+	<field name="nota4num" class="java.math.BigDecimal"/>
+	<field name="nota4" class="java.lang.String"/>
+	<field name="exame" class="java.math.BigDecimal"/>
+	<field name="matricula" class="java.lang.Integer"/>
+	<field name="frequencia" class="java.lang.Double"/>
+	<field name="dt_nasc" class="java.sql.Date"/>
+	<field name="nota1numturma" class="java.math.BigDecimal"/>
+	<field name="nota2numturma" class="java.math.BigDecimal"/>
+	<field name="nota3numturma" class="java.math.BigDecimal"/>
+	<field name="nota4numturma" class="java.math.BigDecimal"/>
+	<field name="total_faltas_et1" class="java.lang.Integer"/>
+	<field name="total_faltas_et2" class="java.lang.Integer"/>
+	<field name="total_faltas_et3" class="java.lang.Integer"/>
+	<field name="total_faltas_et4" class="java.lang.Integer"/>
+	<field name="faltas_componente_et1" class="java.lang.Integer"/>
+	<field name="faltas_componente_et2" class="java.lang.Integer"/>
+	<field name="faltas_componente_et3" class="java.lang.Integer"/>
+	<field name="faltas_componente_et4" class="java.lang.Integer"/>
+	<field name="total_geral_faltas_componente" class="java.math.BigDecimal"/>
+	<field name="total_faltas" class="java.math.BigDecimal"/>
+	<field name="curso_hora_falta" class="java.lang.Double"/>
+	<field name="carga_horaria_componente" class="java.lang.Integer"/>
+	<field name="carga_horaria_serie" class="java.lang.Double"/>
+	<field name="media" class="java.lang.String"/>
+	<field name="medianum" class="java.math.BigDecimal"/>
+	<field name="nota_exame" class="java.lang.String"/>
+	<field name="media_recuperacao" class="java.math.BigDecimal"/>
+	<field name="medianumturma" class="java.math.BigDecimal"/>
+	<field name="total_faltas_componente" class="java.math.BigDecimal"/>
+	<field name="media_frequencia" class="java.lang.String"/>
+	<field name="resultado_exame" class="java.lang.String"/>
+	<field name="media_grafico" class="java.math.BigDecimal"/>
+	<field name="quantidade_etapas" class="java.lang.Integer"/>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="69" uuid="93bd7303-23fc-4ae5-9f93-69be7fb833a3"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_instituicao">
+					<subreportParameterExpression><![CDATA[$P{instituicao}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="titulo">
+					<subreportParameterExpression><![CDATA["FICHA INDIVIDUAL DO RENDIMENTO DO ALUNO"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_escola">
+					<subreportParameterExpression><![CDATA[$P{escola}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="source">
+					<subreportParameterExpression><![CDATA[$P{source}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ano">
+					<subreportParameterExpression><![CDATA[$P{ano}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "header-portrait-report-card.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="64" splitType="Stretch">
+			<line>
+				<reportElement x="229" y="0" width="1" height="30" uuid="1fc4e5b5-477f-4830-b413-239c75c25c28"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="341" y="0" width="1" height="63" uuid="5ca9563d-3f81-40f4-9e98-e209557b4452"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="31" width="554" height="1" uuid="1b660944-1d92-4803-96c7-7269ad49ee7b"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="429" y="0" width="1" height="31" uuid="8f0fceed-629c-4456-9a23-f525525d3242"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="346" y="45" width="191" height="14" backcolor="#FFFFFF" uuid="612de4db-3b72-4a71-a0f2-217cbd1d04d5"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="554" y="0" width="1" height="63" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="345" y="15" width="79" height="14" uuid="c2322f74-63e3-4a04-8240-abab9fa228c0"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_serie}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="63" width="555" height="1" uuid="4ba42d82-f3f6-4890-91db-2ca1de3906b0"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="345" y="32" width="75" height="13" uuid="2f8ce82f-65eb-4328-9bfc-ec422b71523f"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[06 - SITUAÇÃO]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="4" y="15" width="209" height="14" uuid="ac4f72b9-d0a7-4860-a6d7-68040c1ed0af"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_curso}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="432" y="15" width="100" height="14" uuid="9f483e3d-fd74-40f6-b7a8-7c5ff0cb1366"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_turma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="45" width="242" height="14" uuid="c4f1f7be-528d-44dc-a723-c3a315eb6c36"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="345" y="2" width="58" height="13" uuid="0fbb3a4d-614f-480b-af57-1ebe315dc08e"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[03 - SÉRIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="32" width="100" height="13" uuid="545f865a-e37f-40e1-b298-63a6c04f20d9"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[05 - ALUNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="2" width="68" height="13" uuid="98bc6b5a-2737-478b-bdaa-cad1a87e2301"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[01 - CURSO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="2" width="64" height="13" uuid="ce0c8bb1-4f35-4833-a3f0-671cc3c71b8a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[02 - TURNO]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="233" y="15" width="100" height="14" uuid="d9feb046-c8a4-45e8-aa29-694b59cfe00c"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="64" uuid="3fbaa998-c528-4997-bc9d-8bf107387149"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="432" y="2" width="59" height="13" uuid="6bba32be-ef16-4597-af02-f9394e94cdcd"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[04 - TURMA]]></text>
+			</staticText>
+		</band>
+		<band height="64" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="64" uuid="3cff8a35-31d1-4d6d-bb83-07881782801c"/>
+				<subreportExpression><![CDATA[JasperCompileManager.compileReport($P{SUBREPORT_DIR} + "individual-student-sheet-frequency.jrxml")]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
