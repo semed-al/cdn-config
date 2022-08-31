@@ -343,7 +343,20 @@
 			<subreport>
 				<reportElement x="0" y="0" width="555" height="64" uuid="3cff8a35-31d1-4d6d-bb83-07881782801c"/>
 				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="nome_disciplina">
+					<subreportParameterExpression><![CDATA[$F{nome_disciplina}]]></subreportParameterExpression>
+				</subreportParameter>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "individual-student-sheet-frequency.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="64" uuid="3cff8a35-31d1-4d6d-bb83-07881782801c"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="nome_disciplina">
+					<subreportParameterExpression><![CDATA[$F{nome_disciplina}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "individual-student-sheet-performance.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
