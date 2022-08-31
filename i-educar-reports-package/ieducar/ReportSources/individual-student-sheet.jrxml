@@ -208,7 +208,7 @@
 			</subreport>
 		</band>
 	</pageHeader>
-	<detail>
+	<columnHeader>
 		<band height="64" splitType="Stretch">
 			<line>
 				<reportElement x="229" y="0" width="1" height="30" uuid="1fc4e5b5-477f-4830-b413-239c75c25c28"/>
@@ -337,10 +337,13 @@
 				<text><![CDATA[04 - TURMA]]></text>
 			</staticText>
 		</band>
+	</columnHeader>
+	<detail>
 		<band height="64" splitType="Stretch">
 			<subreport>
 				<reportElement x="0" y="0" width="555" height="64" uuid="3cff8a35-31d1-4d6d-bb83-07881782801c"/>
-				<subreportExpression><![CDATA[JasperCompileManager.compileReport($P{SUBREPORT_DIR} + "individual-student-sheet-frequency.jrxml")]]></subreportExpression>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "individual-student-sheet-frequency.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
