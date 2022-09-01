@@ -5,7 +5,6 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="202"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<parameter name="nome_disciplina" class="java.lang.String"/>
 	<parameter name="net.sf.jasperreports.json.source" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$P{source}]]></defaultValueExpression>
 	</parameter>
@@ -13,6 +12,7 @@
 	<queryString language="json">
 		<![CDATA[header]]>
 	</queryString>
+	<field name="nome_disciplina" class="java.lang.String"/>
 	<field name="frequencia" class="java.lang.Double"/>
 	<field name="total_faltas_et1" class="java.lang.Integer"/>
 	<field name="total_faltas_et2" class="java.lang.Integer"/>
@@ -30,225 +30,6 @@
 	<field name="total_faltas_componente" class="java.math.BigDecimal"/>
 	<field name="media_frequencia" class="java.lang.String"/>
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
-	<group name="frequencia" keepTogether="true">
-		<groupExpression><![CDATA[true]]></groupExpression>
-		<groupHeader>
-			<band height="20">
-				<printWhenExpression><![CDATA[$V{REPORT_COUNT}.intValue()==1]]></printWhenExpression>
-				<staticText>
-					<reportElement x="12" y="2" width="531" height="13" uuid="d8d10a43-c86a-4776-94b5-0e33545c3ede"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8" isBold="true"/>
-					</textElement>
-					<text><![CDATA[FREQUÊNCIA]]></text>
-				</staticText>
-			</band>
-			<band height="31">
-				<printWhenExpression><![CDATA[$V{REPORT_COUNT}.intValue()==1]]></printWhenExpression>
-				<staticText>
-					<reportElement x="210" y="15" width="25" height="11" uuid="13a3832a-d237-476f-9a1e-4a86c38feb22"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="6"/>
-					</textElement>
-					<text><![CDATA[1º BIM.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="209" y="1" width="112" height="11" uuid="abd51960-5edd-4b24-9329-d99bd1b7a079"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<text><![CDATA[AULAS DADAS]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="520" y="1" width="34" height="11" uuid="c61206e9-e54d-490f-aaf1-54623fad4cad"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8" isBold="false"/>
-					</textElement>
-					<text><![CDATA[FREQUÊNCIA TOTAL]]></text>
-				</staticText>
-				<line>
-					<reportElement x="447" y="0" width="1" height="26" uuid="d8b30594-04e0-4b88-a150-57cdab1d81ac"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="518" y="0" width="1" height="26" uuid="15278b62-c664-432c-8e3c-cb5a1d143f6a"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<staticText>
-					<reportElement x="5" y="5" width="198" height="14" uuid="11c2c683-a08c-4de7-9d92-7d9dc3249435"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<text><![CDATA[COMPONENTES CURRICULARES]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="448" y="1" width="26" height="24" uuid="ce87c2d4-146a-45c7-b8e5-979f1da0d789"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8" isBold="false"/>
-					</textElement>
-					<text><![CDATA[TOTAL]]></text>
-				</staticText>
-				<line>
-					<reportElement x="1" y="25" width="554" height="1" uuid="30df7c3f-c310-45b6-b5ce-238cc7fb6dec"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<staticText>
-					<reportElement x="237" y="15" width="25" height="11" uuid="25a416b8-725d-4fbc-a572-8d18c25ca125"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="6"/>
-					</textElement>
-					<text><![CDATA[2º BIM.]]></text>
-				</staticText>
-				<line>
-					<reportElement x="207" y="-1" width="1" height="27" uuid="22fa8161-5ba7-4071-ac8a-618877858ade"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="207" y="13" width="113" height="1" uuid="322816c3-1274-424a-b960-0b70e7e03b54"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="320" y="0" width="1" height="26" uuid="fc779f1c-9605-41f6-b6e6-8aef52265252"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="236" y="13" width="1" height="13" uuid="0c8adb9b-567c-4a44-8398-b51788544dbc"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<staticText>
-					<reportElement x="265" y="15" width="25" height="11" uuid="9d8bed3a-1f84-47a6-93a3-affddd04df59"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="6"/>
-					</textElement>
-					<text><![CDATA[3º BIM.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="294" y="15" width="25" height="11" uuid="5e6576cc-9678-4482-bc89-e663808c8dad"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="6"/>
-					</textElement>
-					<text><![CDATA[4º BIM.]]></text>
-				</staticText>
-				<line>
-					<reportElement x="263" y="14" width="1" height="13" uuid="6746cefe-64ee-4e7b-8b72-ac97e74e04c7"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<textField pattern="#,##0 ‰">
-					<reportElement x="525" y="14" width="26" height="11" uuid="4f90c7f3-3cf4-4f70-980c-ae20ace0070c"/>
-					<textElement textAlignment="Right">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{media_frequencia}]]></textFieldExpression>
-				</textField>
-				<line>
-					<reportElement x="291" y="13" width="1" height="13" uuid="46093370-18b8-4cdd-8534-32c2e14d5208"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="554" y="1" width="1" height="25" uuid="a820218f-be56-4b7e-98ef-5436e3128f93"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="0" y="-1" width="1" height="27" uuid="e09417ab-3bb4-4e45-9b4a-36d2c2a9f5f7"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<staticText>
-					<reportElement x="321" y="1" width="16" height="23" uuid="cd35aa8a-3b83-4b3c-a57e-844e6d86893f"/>
-					<textElement verticalAlignment="Middle" rotation="Left">
-						<font fontName="DejaVu Sans" size="7" isBold="false"/>
-					</textElement>
-					<text><![CDATA[TOTAL]]></text>
-				</staticText>
-				<line>
-					<reportElement x="337" y="0" width="1" height="26" uuid="a97dbd69-c325-4ab0-a143-35e43992850c"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<staticText>
-					<reportElement x="338" y="1" width="106" height="11" uuid="b0ef8216-4520-4b4d-951f-1ef2fa75cb99"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<text><![CDATA[FALTAS]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="338" y="15" width="25" height="11" uuid="8c0b921f-3769-4135-baf6-d1b22f32d048"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="6"/>
-					</textElement>
-					<text><![CDATA[1º BIM.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="365" y="15" width="25" height="11" uuid="8d42cf78-c583-49c5-8856-038f1f934b68"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="6"/>
-					</textElement>
-					<text><![CDATA[2º BIM.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="393" y="15" width="25" height="11" uuid="58181c2a-379d-4ff0-83cf-bc4128fd75e3"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="6"/>
-					</textElement>
-					<text><![CDATA[3º BIM.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="422" y="15" width="25" height="11" uuid="eea72ccd-e510-4def-b137-51c3880c2051"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="6"/>
-					</textElement>
-					<text><![CDATA[4º BIM.]]></text>
-				</staticText>
-				<line>
-					<reportElement x="365" y="13" width="1" height="13" uuid="385f49d1-d2cd-4bbd-aee0-8569cd0b5b55"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="393" y="13" width="1" height="13" uuid="def7e754-36ee-47c8-91ab-fc6d7a366b0f"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="421" y="13" width="1" height="13" uuid="f3865ebf-bc47-4b98-8631-6870d49d1316"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="338" y="12" width="109" height="1" uuid="a37688c8-fb78-4148-8038-49ee60a0de37"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-			</band>
-		</groupHeader>
-	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -289,7 +70,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nome_disciplina}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="236" y="-1" width="1" height="13" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
