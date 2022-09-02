@@ -452,6 +452,33 @@
 		<variableExpression><![CDATA[(!$V{max_carga_horaria9} || !$V{max_freq9}) ? "-" : (($V{max_carga_horaria9} * $V{max_freq9}) / 100)]]></variableExpression>
 		<initialValueExpression><![CDATA[]]></initialValueExpression>
 	</variable>
+	<variable name="resultado_global_1" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_1serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_1serie}).find() ? null : new java.lang.Float($F{nota_1serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="resultado_global_2" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_2serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_2serie}).find() ? null : new java.lang.Float($F{nota_2serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="resultado_global_3" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_3serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_3serie}).find() ? null : new java.lang.Float($F{nota_3serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="resultado_global_4" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_4serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_4serie}).find() ? null : new java.lang.Float($F{nota_4serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="resultado_global_5" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_5serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_5serie}).find() ? null : new java.lang.Float($F{nota_5serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="resultado_global_6" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_6serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_6serie}).find() ? null : new java.lang.Float($F{nota_6serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="resultado_global_7" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_7serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_7serie}).find() ? null : new java.lang.Float($F{nota_7serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="resultado_global_8" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_8serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_8serie}).find() ? null : new java.lang.Float($F{nota_8serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="resultado_global_9" class="java.lang.Float" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_9serie} != null && java.util.regex.Pattern.compile("[a-zA-Z]").matcher($F{nota_9serie}).find() ? null : new java.lang.Float($F{nota_9serie}.replace(",","."))]]></variableExpression>
+	</variable>
 	<group name="grupo1" isStartNewPage="true" keepTogether="true">
 		<groupExpression><![CDATA[true]]></groupExpression>
 		<groupFooter>
@@ -1321,6 +1348,7 @@
 					</staticText>
 					<staticText>
 						<reportElement positionType="Float" x="138" y="0" width="43" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<printWhenExpression><![CDATA[($V{max_status_serie1} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria1} == null]]></printWhenExpression>
 						</reportElement>
 						<box>
@@ -1367,6 +1395,114 @@
 						</textElement>
 						<text><![CDATA[-]]></text>
 					</staticText>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="138" y="28" width="43" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="dde17029-1095-428e-901d-385c92953358">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_1}==null?'-':$V{resultado_global_1}]]></textFieldExpression>
+					</textField>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="181" y="28" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="00aa8cd4-cc55-4eec-aeac-7f1476c67a0c">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_2}==null?'-':$V{resultado_global_2}]]></textFieldExpression>
+					</textField>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="225" y="28" width="46" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="a5905203-7785-4a1b-a180-4fd48d821e32">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_3}==null?'-':$V{resultado_global_3}]]></textFieldExpression>
+					</textField>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="271" y="28" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="6f34a1d2-d422-44bb-afc5-1e55f74293bf">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_4}==null?'-':$V{resultado_global_4}]]></textFieldExpression>
+					</textField>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="315" y="28" width="47" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="858c85b8-f294-41d2-b107-7fdeacf5046c">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_5}==null?'-':$V{resultado_global_5}]]></textFieldExpression>
+					</textField>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="362" y="28" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="ccedc053-d5cb-4350-9f82-3746cf019805">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_6}==null?'-':$V{resultado_global_6}]]></textFieldExpression>
+					</textField>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="406" y="28" width="46" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="dffacb0c-8b6a-4786-83d1-4072c99918ea">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_7}==null?'-':$V{resultado_global_7}]]></textFieldExpression>
+					</textField>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="452" y="28" width="43" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="c15da5af-43dc-4395-a558-946dc33b2fa5">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_8}==null?'-':$V{resultado_global_8}]]></textFieldExpression>
+					</textField>
+					<textField pattern="##.#" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="495" y="28" width="49" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="f313d2ff-12e9-49fb-96e2-191cb2d82a13">
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<pen lineWidth="0.25"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{resultado_global_9}==null?'-':$V{resultado_global_9}]]></textFieldExpression>
+					</textField>
 				</frame>
 			</band>
 			<band height="190">
@@ -2813,7 +2949,7 @@
 					<font fontName="DejaVu Sans" size="12"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Certificamos que " +$F{nome_aluno}+ ", matrícula "+$F{cod_aluno}+($F{cod_inep} == null ? "" : ", cód. INEP: "+$F{cod_inep}) +", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ ((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai})) +", "+ $F{nome_serie_aux} +" no ano letivo de " + $F{ano} + ", conforme Histórico Escolar."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Certificamos que " +$F{nome_aluno}+ ", matrícula "+$F{cod_aluno}+($F{cod_inep} == null ? "" : ", cód. INEP: "+$F{cod_inep}) +", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ ((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai})) +", "+ ($F{nome_serie_aux} != null ? $F{nome_serie_aux} +" no ano letivo de " + $F{ano} : "está cursando o 1º ano do ENSINO FUNDAMENTAL no ano letivo de 2022") + ", conforme Histórico Escolar."]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="188" y="185" width="44" height="13" uuid="ece0884f-da77-40d1-a067-a4d93dfaab5a"/>
