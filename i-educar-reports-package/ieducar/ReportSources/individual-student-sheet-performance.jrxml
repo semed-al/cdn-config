@@ -17,23 +17,10 @@
 	<parameter name="situacao_matricula" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="SUBREPORT_DIR" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
 	<parameter name="etapa" class="java.lang.String">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
-	<parameter name="database" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="source" class="java.lang.String"/>
-	<parameter name="nome_disciplina" class="java.lang.String"/>
-	<parameter name="net.sf.jasperreports.json.source" class="java.lang.String">
-		<defaultValueExpression><![CDATA[$P{source}]]></defaultValueExpression>
-	</parameter>
-	<queryString language="json">
-		<![CDATA[header]]>
-	</queryString>
+	<field name="nome_disciplina" class="java.lang.String"/>
 	<field name="situacao" class="java.lang.String"/>
 	<field name="nota1num" class="java.math.BigDecimal"/>
 	<field name="nota1" class="java.lang.String"/>
@@ -60,16 +47,10 @@
 	<variable name="mat" class="java.lang.Integer" resetType="Page" incrementType="Group" incrementGroup="matricula" calculation="DistinctCount">
 		<variableExpression><![CDATA[$F{matricula}]]></variableExpression>
 	</variable>
-	<group name="matricula"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band splitType="Stretch"/>
-	</title>
-	<columnHeader>
-		<band splitType="Stretch"/>
-	</columnHeader>
+	
 	<detail>
 		<band height="13" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 4 || true]]></printWhenExpression>
@@ -101,7 +82,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nome_disciplina}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="256" y="-1" width="1" height="13" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
@@ -256,7 +237,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nome_disciplina}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="271" y="-1" width="1" height="13" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
@@ -390,7 +371,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nome_disciplina}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="304" y="-1" width="1" height="13" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
@@ -494,7 +475,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nome_disciplina}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="-2" width="1" height="14" uuid="8c77f32f-8ada-48d3-bd83-1c845d4608f3"/>

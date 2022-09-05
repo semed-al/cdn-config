@@ -5,14 +5,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="202"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<parameter name="net.sf.jasperreports.json.source" class="java.lang.String">
-		<defaultValueExpression><![CDATA[$P{source}]]></defaultValueExpression>
-	</parameter>
-	<parameter name="source" class="java.lang.String"/>
-	<queryString language="json">
-		<![CDATA[header]]>
-	</queryString>
-	<field name="nome_disciplina" class="java.lang.String"/>
+	<parameter name="nome_disciplina" class="java.lang.String"/>
 	<field name="frequencia" class="java.lang.Double"/>
 	<field name="total_faltas_et1" class="java.lang.Integer"/>
 	<field name="total_faltas_et2" class="java.lang.Integer"/>
@@ -33,12 +26,6 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band splitType="Stretch"/>
-	</title>
-	<columnHeader>
-		<band splitType="Stretch"/>
-	</columnHeader>
 	<detail>
 		<band height="17" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 4 || true]]></printWhenExpression>
@@ -70,7 +57,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{nome_disciplina}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="236" y="-1" width="1" height="13" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
