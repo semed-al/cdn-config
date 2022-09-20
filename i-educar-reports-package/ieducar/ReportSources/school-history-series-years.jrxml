@@ -453,31 +453,31 @@
 		<initialValueExpression><![CDATA[]]></initialValueExpression>
 	</variable>
 	<variable name="resultado_global_1" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_1serie} == null || $F{nota_1serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_1serie}).find() ? null : new java.lang.Float($F{nota_1serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_1serie} == null || $F{nota_1serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_1serie}).find() ? null : new java.lang.Float($F{nota_1serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_2" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_2serie} == null || $F{nota_2serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_2serie}).find() ? null : new java.lang.Float($F{nota_2serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_2serie} == null || $F{nota_2serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_2serie}).find() ? null : new java.lang.Float($F{nota_2serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_3" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_3serie} == null || $F{nota_3serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_3serie}).find() ? null : new java.lang.Float($F{nota_3serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_3serie} == null || $F{nota_3serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_3serie}).find() ? null : new java.lang.Float($F{nota_3serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_4" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_4serie} == null || $F{nota_4serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_4serie}).find() ? null : new java.lang.Float($F{nota_4serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_4serie} == null || $F{nota_4serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_4serie}).find() ? null : new java.lang.Float($F{nota_4serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_5" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_5serie} == null || $F{nota_5serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_5serie}).find() ? null : new java.lang.Float($F{nota_5serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_5serie} == null || $F{nota_5serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_5serie}).find() ? null : new java.lang.Float($F{nota_5serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_6" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_6serie} == null || $F{nota_6serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_6serie}).find() ? null : new java.lang.Float($F{nota_6serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_6serie} == null || $F{nota_6serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_6serie}).find() ? null : new java.lang.Float($F{nota_6serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_7" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_7serie} == null || $F{nota_7serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_7serie}).find() ? null : new java.lang.Float($F{nota_7serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_7serie} == null || $F{nota_7serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_7serie}).find() ? null : new java.lang.Float($F{nota_7serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_8" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_8serie} == null || $F{nota_8serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_8serie}).find() ? null : new java.lang.Float($F{nota_8serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_8serie} == null || $F{nota_8serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_8serie}).find() ? null : new java.lang.Float($F{nota_8serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_9" class="java.lang.Float" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_9serie} == null || $F{nota_9serie} == "" || java.util.regex.Pattern.compile("[ a-zA-Z]").matcher($F{nota_9serie}).find() ? null : new java.lang.Float($F{nota_9serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_9serie} == null || $F{nota_9serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_9serie}).find() ? null : new java.lang.Float($F{nota_9serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<group name="grupo1" isStartNewPage="true" keepTogether="true">
 		<groupExpression><![CDATA[true]]></groupExpression>
@@ -3554,12 +3554,12 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="9"/>
+					<font fontName="DejaVu Sans" size="7"/>
 					<paragraph leftIndent="3"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nm_disciplina}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="502" y="0" width="25" height="15" isRemoveLineWhenBlank="true" uuid="fd56dabb-cfbb-4ef8-bb4b-6a69eb555c1c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3575,7 +3575,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_9serie} == null || $F{nota_9serie} == "" ? '-'     : !$F{nota_9serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_9serie}     : (Double.parseDouble($F{nota_9serie}.replace(",",".")) > 10)  ? '*' + $F{nota_9serie}     : $F{nota_9serie}) : ($F{nota_9serie} == null || $F{nota_9serie} == "" ? '-'     : !$F{nota_9serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_9serie}     : (Double.parseDouble($F{nota_9serie}.replace(",",".")) > 10)  ? $F{nota_9serie}     : $F{nota_9serie})]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="167" y="0" width="21" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF" uuid="d6646314-175c-41b8-bd9b-338c56f93789">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3591,7 +3591,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd1} == null || $F{chd1} == "" || $F{nota_1serie} == null || $F{nota_1serie} == "" ? '-' : $F{chd1} + $P{HORAS_ABREV}) : $F{chd1} + $P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="210" y="0" width="22" height="15" isRemoveLineWhenBlank="true" uuid="09926094-b63d-4d82-aa24-b19e6eda46e0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3607,7 +3607,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd2} == null || $F{chd2} == "" || $F{nota_2serie} == null || $F{nota_2serie} == "" ? '-' : $F{chd2} + $P{HORAS_ABREV}) : $F{chd2} + $P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="256" y="0" width="22" height="15" isRemoveLineWhenBlank="true" uuid="a5675308-a748-4e37-8118-bce8f3747a74">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3623,7 +3623,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd3} == null || $F{chd3} == "" || $F{nota_3serie} == null || $F{nota_3serie} == "" ? '-' : $F{chd3}+$P{HORAS_ABREV}) : $F{chd3}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="301" y="0" width="21" height="15" isRemoveLineWhenBlank="true" uuid="d0e2b9a7-dcd6-4374-93c3-a885e7de231c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3639,7 +3639,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd4} == null || $F{chd4} == "" || $F{nota_4serie} == null || $F{nota_4serie} == "" ? '-' : $F{chd4}+$P{HORAS_ABREV}) : $F{chd4}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="347" y="0" width="22" height="15" isRemoveLineWhenBlank="true" uuid="54042cbd-4743-43ba-9f8e-0db1cc258d94">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3655,7 +3655,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd5} == null || $F{chd5} == "" || $F{nota_5serie} == null || $F{nota_5serie} == "" ? '-' : $F{chd5}+$P{HORAS_ABREV}) : $F{chd5}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="390" y="0" width="23" height="15" isRemoveLineWhenBlank="true" uuid="6f58f2c3-8182-42cc-9c2c-fdb2d5ccba99">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3671,7 +3671,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd6} == null || $F{chd6} == "" || $F{nota_6serie} == null || $F{nota_6serie} == "" ? '-' : $F{chd6}+$P{HORAS_ABREV}) : $F{chd6}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="436" y="0" width="23" height="15" isRemoveLineWhenBlank="true" uuid="40c35fb4-682a-4270-b329-ea1a2fa1226f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3687,7 +3687,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd7} == null || $F{chd7} == "" || $F{nota_7serie} == null || $F{nota_7serie} == "" ? '-' : $F{chd7}+$P{HORAS_ABREV}) : $F{chd7}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="481" y="0" width="21" height="15" isRemoveLineWhenBlank="true" uuid="fd56dabb-cfbb-4ef8-bb4b-6a69eb555c1c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -3703,7 +3703,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd8} == null || $F{chd8} == "" || $F{nota_8serie} == null || $F{nota_8serie} == "" ? '-' : $F{chd8}+$P{HORAS_ABREV}) : $F{chd8}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="527" y="0" width="24" height="15" isRemoveLineWhenBlank="true" uuid="fd56dabb-cfbb-4ef8-bb4b-6a69eb555c1c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
