@@ -108,7 +108,7 @@ trait SchoolHistorySeriesYearsTrait
                     SELECT CASE
                         WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
                         WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
-                        ELSE phe.nm_serie 
+                        ELSE phe.nm_serie
                     END
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
@@ -120,7 +120,7 @@ trait SchoolHistorySeriesYearsTrait
                     SELECT CASE
                         WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
                         WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
-                        ELSE phe.nm_serie 
+                        ELSE phe.nm_serie
                     END
                     FROM pmieducar.historico_escolar phe
                     WHERE phe.ref_cod_aluno = vhsa.cod_aluno
@@ -130,7 +130,7 @@ trait SchoolHistorySeriesYearsTrait
                     ORDER BY phe.ano DESC LIMIT 1
                 ) AS nome_serie2,
                 (
-                    SELECT CASE
+                    SELECT CASE 
                         WHEN phe.historico_grade_curso_id = 1 AND LOWER(phe.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe.nm_serie,' Série')
                         WHEN phe.historico_grade_curso_id = 2 AND LOWER(phe.nm_serie) NOT LIKE '%ano%' THEN CONCAT(phe.nm_serie,' Ano')
                         ELSE phe.nm_serie 
