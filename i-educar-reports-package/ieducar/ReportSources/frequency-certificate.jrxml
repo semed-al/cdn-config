@@ -123,7 +123,11 @@
 					<font fontName="DejaVu Sans" size="11"/>
 					<paragraph lineSpacing="1_1_2" firstLineIndent="30"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{altera_atestado_para_declaracao} ? "Declaramos" : "Atestamos") +" para os devidos fins que, o(a) aluno(a) "+$F{nome}+", portador do CPF "+$F{cpf}+", nascido(a) em "+$F{data_nasc}+", natural de "+$F{municipio_uf_nascimento}+", filho(a) de "+(($F{nm_pai}.equals("") || $F{nm_pai} == null) && ($F{nm_mae}.equals("")  || $F{nm_mae} == null ) ? "não informado" : (!$F{nm_pai}.equals("") && ($F{nm_mae}.equals("") || $F{nm_mae} == null) ? $F{nm_pai} : (($F{nm_pai}.equals("") || $F{nm_pai} == null) && !$F{nm_mae}.equals("") ? $F{nm_mae} : ($F{nm_mae} + " e de " + $F{nm_pai}))))+", está regularmente frequentando o(a) "+$F{nm_serie}+" na turma "+$F{nm_turma}+" do(a) "+$F{nm_curso}+" no turno " + $F{periodo} + " no ano " + $P{ano} + (!$P{emitir_frequencia} ? "." : " com a frequência " + ($F{frequencia} == null ? "não informada." :"de " + $F{frequencia} + "%" + "."))]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{altera_atestado_para_declaracao} ? "Declaramos" : "Atestamos") +" para os devidos fins que, o(a) aluno(a) "+$F{nome}+", portador do CPF "+$F{cpf}+", nascido(a) em "+$F{data_nasc}+", natural de "+$F{municipio_uf_nascimento}+", filho(a) de "
+										+ ($F{nm_mae} == null || $F{nm_mae}.equals("") ? "mãe não informada" : $F{nm_mae})
+										+ " e de "
+										+ ($F{nm_pai} == null || $F{nm_pai}.equals("") ? "pai não informado" : $F{nm_pai})										
+										+", está regularmente frequentando o(a) "+$F{nm_serie}+" na turma "+$F{nm_turma}+" do(a) "+$F{nm_curso}+" no turno " + $F{periodo} + " no ano " + $P{ano} + (!$P{emitir_frequencia} ? "." : " com a frequência " + ($F{frequencia} == null ? "não informada." :"de " + $F{frequencia} + "%" + "."))]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement positionType="Float" x="92" y="232" width="442" height="55" uuid="ba7cb218-2999-4bf4-9b20-ce90405335b9"/>
@@ -134,7 +138,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="21" y="232" width="71" height="13" uuid="ab1f2689-54cc-433f-b62f-82b85d2a2d23">
-					<printWhenExpression><![CDATA[$P{observacao} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$P{observacao} != null && !$P{observacao}.equals("")]]></printWhenExpression>
 				</reportElement>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="10"/>
@@ -149,14 +153,18 @@
 				<textFieldExpression><![CDATA[$F{cod_inep}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="21" y="172" width="132" height="20" uuid="450097ec-70cd-4d94-92bf-65da72263dff"/>
+				<reportElement x="21" y="172" width="132" height="20" uuid="450097ec-70cd-4d94-92bf-65da72263dff">
+					<printWhenExpression><![CDATA[$F{cod_inep}]]></printWhenExpression>
+				</reportElement>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="10"/>
 				</textElement>
 				<text><![CDATA[Código nacional (INEP):]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="21" y="195" width="132" height="20" uuid="a7fef40f-5b83-4c6f-8ec4-55f8c8a68e23"/>
+				<reportElement x="21" y="195" width="132" height="20" uuid="a7fef40f-5b83-4c6f-8ec4-55f8c8a68e23">
+					<printWhenExpression><![CDATA[$F{cod_nis}]]></printWhenExpression>
+				</reportElement>
 				<textElement>
 					<font fontName="DejaVu Sans" size="10"/>
 				</textElement>
@@ -256,6 +264,15 @@
 					<printWhenExpression><![CDATA[$P{emitir_secretario_escolar} == true && $P{emitir_nome_diretor} == true]]></printWhenExpression>
 				</reportElement>
 			</line>
+			<staticText>
+				<reportElement x="20" y="140" width="513" height="13" uuid="ea48089b-d563-495f-918d-4eb78f7e9320">
+					<printWhenExpression><![CDATA[true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[Avenida Prefeito José Cícero de Santa Rosa, s/n, Centro, Belém-AL]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>
