@@ -81,6 +81,12 @@ class ClassRecordBookReport extends Portabilis_Report_ReportCore
                 instituicao.cidade,
 
                 (SELECT CASE
+                    WHEN {$buscar_disciplina} AND {$ref_cod_componente_curricular} <> 0 THEN
+                        (SELECT nome FROM modules.componente_curricular WHERE id = {$ref_cod_componente_curricular})
+                    ELSE '{$disciplina}'
+                END) AS disciplina,
+                
+                (SELECT CASE
                     WHEN {$buscar_professor} AND {$servidor_id} <> 0 THEN
                         (SELECT nome FROM cadastro.pessoa WHERE idpes = {$servidor_id} )
                     ELSE '{$professor}'
