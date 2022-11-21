@@ -1545,19 +1545,19 @@
 					<text><![CDATA[OBSERVAÇÃO: O referido histórico só terá validade com a autenticação do setor de legislação da SEMED.]]></text>
 				</staticText>
 				<textField>
-					<reportElement positionType="Float" x="43" y="115" width="150" height="18" uuid="8c0b871b-57b8-4965-85e2-c1856b909fe5"/>
+					<reportElement positionType="Float" x="43" y="123" width="150" height="18" uuid="8c0b871b-57b8-4965-85e2-c1856b909fe5"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="10"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{municipio} == null ? "Belém" : $F{municipio}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="200" y="115" width="279" height="18" uuid="73a97bcb-863f-4d93-b899-03f371521f31"/>
+					<reportElement positionType="Float" x="200" y="123" width="279" height="18" uuid="73a97bcb-863f-4d93-b899-03f371521f31"/>
 					<textElement verticalAlignment="Bottom"/>
 					<text><![CDATA[________ de __________________ de ___________]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="361" y="169" width="119" height="16" uuid="f66cb3b1-76b6-4ee1-aa9b-7cdc06ce4058"/>
+					<reportElement positionType="Float" x="361" y="175" width="119" height="16" uuid="f66cb3b1-76b6-4ee1-aa9b-7cdc06ce4058"/>
 					<box>
 						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -1570,33 +1570,33 @@
 					<textFieldExpression><![CDATA[$P{nm_diretor} ? $P{nm_diretor} : $P{emitir_nome_diretor} ? $F{diretor} : ""]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="312" y="168" width="48" height="16" uuid="f334f082-29f2-4799-91dc-3f3ac587f257"/>
+					<reportElement positionType="Float" x="312" y="175" width="48" height="16" uuid="f334f082-29f2-4799-91dc-3f3ac587f257"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<text><![CDATA[Diretor (a):]]></text>
 				</staticText>
 				<line>
-					<reportElement positionType="Float" x="295" y="168" width="204" height="1" uuid="032e1149-0bf7-4d68-8255-97c1e332817c"/>
+					<reportElement positionType="Float" x="295" y="175" width="204" height="1" uuid="032e1149-0bf7-4d68-8255-97c1e332817c"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="168" width="103" height="16" uuid="a7ea0998-c69f-419a-b1e8-d451e7ccd235"/>
+					<reportElement positionType="Float" x="125" y="175" width="103" height="16" uuid="a7ea0998-c69f-419a-b1e8-d451e7ccd235"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{nm_secretario} ? $P{nm_secretario} : $P{emitir_secretario_escolar} ? $F{secretario} : ""]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement positionType="Float" x="56" y="168" width="204" height="1" uuid="f23f009c-9145-41c1-9a4f-544f3a6323b0"/>
+					<reportElement positionType="Float" x="56" y="175" width="204" height="1" uuid="f23f009c-9145-41c1-9a4f-544f3a6323b0"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<staticText>
-					<reportElement positionType="Float" x="65" y="168" width="60" height="16" uuid="57055d8e-08e0-4fb8-bf0e-7f47981514f1"/>
+					<reportElement positionType="Float" x="65" y="175" width="60" height="16" uuid="57055d8e-08e0-4fb8-bf0e-7f47981514f1"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -3029,7 +3029,7 @@
 				<textFieldExpression><![CDATA[$V{max_nome_serie9}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" mode="Transparent" x="10" y="173" width="533" height="17" uuid="021421f4-e6c1-4be7-8ab1-0ef26ab43d84">
+				<reportElement positionType="Float" mode="Transparent" x="10" y="168" width="533" height="17" uuid="021421f4-e6c1-4be7-8ab1-0ef26ab43d84">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
