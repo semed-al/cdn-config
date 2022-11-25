@@ -32,15 +32,15 @@ trait SchoolHistorySeriesYearsTrait
                 COALESCE(vhsa.carga_horaria_disciplina7, hd7.carga_horaria_disciplina) AS chd7,
                 COALESCE(vhsa.carga_horaria_disciplina8, hd8.carga_horaria_disciplina) AS chd8,
                 COALESCE(vhsa.carga_horaria_disciplina9, hd9.carga_horaria_disciplina) AS chd9,
-                COALESCE(vhsa.status_serie1, CAST(phe1.aprovado AS VARCHAR(10))) AS status_serie1,
-                COALESCE(vhsa.status_serie2, CAST(phe2.aprovado AS VARCHAR(10))) AS status_serie2,
-                COALESCE(vhsa.status_serie3, CAST(phe3.aprovado AS VARCHAR(10))) AS status_serie3,
-                COALESCE(vhsa.status_serie4, CAST(phe4.aprovado AS VARCHAR(10))) AS status_serie4,
-                COALESCE(vhsa.status_serie5, CAST(phe5.aprovado AS VARCHAR(10))) AS status_serie5,
-                COALESCE(vhsa.status_serie6, CAST(phe6.aprovado AS VARCHAR(10))) AS status_serie6,
-                COALESCE(vhsa.status_serie7, CAST(phe7.aprovado AS VARCHAR(10))) AS status_serie7,
-                COALESCE(vhsa.status_serie8, CAST(phe8.aprovado AS VARCHAR(10))) AS status_serie8,
-                COALESCE(vhsa.status_serie9, CAST(phe9.aprovado AS VARCHAR(10))) AS status_serie9,
+                COALESCE(vhsa.status_serie1, relatorio.get_situacao_historico_abreviado(phe1.aprovado)) AS status_serie1,
+                COALESCE(vhsa.status_serie2, relatorio.get_situacao_historico_abreviado(phe2.aprovado)) AS status_serie2,
+                COALESCE(vhsa.status_serie3, relatorio.get_situacao_historico_abreviado(phe3.aprovado)) AS status_serie3,
+                COALESCE(vhsa.status_serie4, relatorio.get_situacao_historico_abreviado(phe4.aprovado)) AS status_serie4,
+                COALESCE(vhsa.status_serie5, relatorio.get_situacao_historico_abreviado(phe5.aprovado)) AS status_serie5,
+                COALESCE(vhsa.status_serie6, relatorio.get_situacao_historico_abreviado(phe6.aprovado)) AS status_serie6,
+                COALESCE(vhsa.status_serie7, relatorio.get_situacao_historico_abreviado(phe7.aprovado)) AS status_serie7,
+                COALESCE(vhsa.status_serie8, relatorio.get_situacao_historico_abreviado(phe8.aprovado)) AS status_serie8,
+                COALESCE(vhsa.status_serie9, relatorio.get_situacao_historico_abreviado(phe9.aprovado)) AS status_serie9,
                 COALESCE(vhsa.carga_horaria1, phe1.carga_horaria) AS carga_horaria1,
                 COALESCE(vhsa.carga_horaria2, phe2.carga_horaria) AS carga_horaria2,
                 COALESCE(vhsa.carga_horaria3, phe3.carga_horaria) AS carga_horaria3,
@@ -236,7 +236,7 @@ trait SchoolHistorySeriesYearsTrait
                 (
                     SELECT COALESCE(fcn_upper(nm_curso),'')
                     FROM pmieducar.historico_escolar he
-                    WHERE he.ref_cod_aluno = $aluno
+                    WHERE he.ref_cod_aluno = vhsa.cod_aluno
                     AND he.ativo = 1
                     ORDER BY ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                     LIMIT 1
@@ -266,18 +266,21 @@ trait SchoolHistorySeriesYearsTrait
                                             THEN
                                                 CASE
                                                     WHEN substring(nm_serie,1,1)::integer = '0' 
-                                                    THEN 'o ' || (substring(nm_serie,1,1)::integer::numeric +1) || 'º ano'
-                                                    ELSE 'a ' || substring(nm_serie,1,1)::integer || 'ª série/' || (substring(nm_serie,1,1)::integer::numeric +1) || 'º ano'
+                                                    THEN 'o ' || (substring(nm_serie,1,1)::integer::numeric +1) || 'º ano' || ' do Ensino Fundamental'
+                                                    ELSE 'a ' || substring(nm_serie,1,1)::integer || 'ª série/' || (substring(nm_serie,1,1)::integer::numeric +1) || 'º ano' || ' do Ensino Fundamental'
                                                 END
-                                            ELSE
+                                            WHEN historico_grade_curso_id = 2
+                                            THEN
                                                 CASE
                                                     WHEN (substring(nm_serie,1,1)::integer::numeric -1) = '0' 
-                                                    THEN 'o ' || substring(nm_serie,1,1)::integer || 'º ano'
-                                                    ELSE 'a ' || (substring(nm_serie,1,1)::integer::numeric -1) || 'ª série/' || substring(nm_serie,1,1)::integer || 'º ano'
+                                                    THEN 'o ' || substring(nm_serie,1,1)::integer || 'º ano' || ' do Ensino Fundamental'
+                                                    ELSE 'a ' || (substring(nm_serie,1,1)::integer::numeric -1) || 'ª série/' || substring(nm_serie,1,1)::integer || 'º ano' || ' do Ensino Fundamental'
                                                 END
+                                            ELSE 
+                                                nm_serie || ' da Educação de Jovens e Adultos (EJA)'
                                         END
                                 END
-                        ) || (' do ENSINO FUNDAMENTAL')
+                            )
                     FROM pmieducar.historico_escolar he
                     WHERE he.ref_cod_aluno = vhsa.cod_aluno
                     AND he.aprovado NOT IN (2,3,4,6)
