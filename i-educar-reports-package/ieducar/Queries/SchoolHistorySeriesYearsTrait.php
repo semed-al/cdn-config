@@ -68,15 +68,15 @@ trait SchoolHistorySeriesYearsTrait
                 COALESCE(vhsa.nota_7serie, hd7.nota) AS nota_7serie,
                 COALESCE(vhsa.nota_8serie, hd8.nota) AS nota_8serie,
                 COALESCE(vhsa.nota_9serie, hd9.nota) AS nota_9serie,
-                COALESCE(vhsa.ano_1serie, phe1.ano) AS ano_1serie,
-                COALESCE(vhsa.ano_2serie, phe2.ano) AS ano_2serie,
-                COALESCE(vhsa.ano_3serie, phe3.ano) AS ano_3serie,
-                COALESCE(vhsa.ano_4serie, phe4.ano) AS ano_4serie,
-                COALESCE(vhsa.ano_5serie, phe5.ano) AS ano_5serie,
-                COALESCE(vhsa.ano_6serie, phe6.ano) AS ano_6serie,
-                COALESCE(vhsa.ano_7serie, phe7.ano) AS ano_7serie,
-                COALESCE(vhsa.ano_8serie, phe8.ano) AS ano_8serie,
-                COALESCE(vhsa.ano_9serie, phe9.ano) AS ano_9serie,
+                COALESCE(phe1.ano, vhsa.ano_1serie) AS ano_1serie,
+                COALESCE(phe2.ano, vhsa.ano_2serie) AS ano_2serie,
+                COALESCE(phe3.ano, vhsa.ano_3serie) AS ano_3serie,
+                COALESCE(phe4.ano, vhsa.ano_4serie) AS ano_4serie,
+                COALESCE(phe5.ano, vhsa.ano_5serie) AS ano_5serie,
+                COALESCE(phe6.ano, vhsa.ano_6serie) AS ano_6serie,
+                COALESCE(phe7.ano, vhsa.ano_7serie) AS ano_7serie,
+                COALESCE(phe8.ano, vhsa.ano_8serie) AS ano_8serie,
+                COALESCE(phe9.ano, vhsa.ano_9serie) AS ano_9serie,
                 COALESCE(vhsa.escola_1serie, phe1.escola) AS escola_1serie,
                 COALESCE(vhsa.escola_2serie, phe2.escola) AS escola_2serie,
                 COALESCE(vhsa.escola_3serie, phe3.escola) AS escola_3serie,
@@ -277,7 +277,7 @@ trait SchoolHistorySeriesYearsTrait
                                                     ELSE 'a ' || (substring(nm_serie,1,1)::integer::numeric -1) || 'ª série/' || substring(nm_serie,1,1)::integer || 'º ano' || ' do Ensino Fundamental'
                                                 END
                                             ELSE 
-                                                nm_serie || ' da Educação de Jovens e Adultos (EJA)'
+                                               'o(a) ' || nm_serie || ' da Educação de Jovens e Adultos (EJA)'
                                         END
                                 END
                             )
@@ -397,9 +397,9 @@ trait SchoolHistorySeriesYearsTrait
                     AND ((phe4.posicao is not null AND phe4.posicao = 4) OR (phe4.ano = vhsa.ano_4serie AND phe4.nm_serie LIKE '%4%'))
                 LEFT JOIN pmieducar.historico_escolar phe5 ON phe5.ref_cod_aluno = vhsa.cod_aluno AND phe5.ativo = 1 
                     AND ((phe5.posicao is not null AND phe5.posicao = 5) OR (phe5.ano = vhsa.ano_5serie AND phe5.nm_serie LIKE '%5%'))
-                LEFT JOIN pmieducar.historico_escolar phe6 ON phe6.ref_cod_aluno = vhsa.cod_aluno AND phe6.ativo = 6 
+                LEFT JOIN pmieducar.historico_escolar phe6 ON phe6.ref_cod_aluno = vhsa.cod_aluno AND phe6.ativo = 1 
                     AND ((phe6.posicao is not null AND phe6.posicao = 6) OR (phe6.ano = vhsa.ano_6serie AND phe6.nm_serie LIKE '%6%'))
-                LEFT JOIN pmieducar.historico_escolar phe7 ON phe7.ref_cod_aluno = vhsa.cod_aluno AND phe7.ativo = 7 
+                LEFT JOIN pmieducar.historico_escolar phe7 ON phe7.ref_cod_aluno = vhsa.cod_aluno AND phe7.ativo = 1 
                     AND ((phe7.posicao is not null AND phe7.posicao = 7) OR (phe7.ano = vhsa.ano_7serie AND phe7.nm_serie LIKE '%7%'))
                 LEFT JOIN pmieducar.historico_escolar phe8 ON phe8.ref_cod_aluno = vhsa.cod_aluno AND phe8.ativo = 1 
                     AND ((phe8.posicao is not null AND phe8.posicao = 8) OR (phe8.ano = vhsa.ano_8serie AND phe8.nm_serie LIKE '%8%'))
