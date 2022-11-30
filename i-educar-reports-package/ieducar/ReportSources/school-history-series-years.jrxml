@@ -168,11 +168,9 @@
 	<field name="data_atual_extenso" class="java.lang.String"/>
 	<field name="nome_serie_aux" class="java.lang.String"/>
 	<field name="ano" class="java.lang.Integer"/>
-	<field name="qtde_notas_maiores_dez" class="java.lang.Long"/>
-	<field name="espaco_branco" class="java.lang.String"/>
 	<field name="possui_historico_dependencia" class="java.lang.Long"/>
 	<field name="observacao_all" class="java.lang.String"/>
-	<field name="ac_nome" class="java.lang.String"/>
+	<field name="area_nome" class="java.lang.String"/>
 	<variable name="max_nome_serie1" class="java.lang.String" calculation="Highest">
 		<variableExpression><![CDATA[$F{nome_serie1}]]></variableExpression>
 	</variable>
@@ -2853,8 +2851,8 @@
 			</band>
 		</groupFooter>
 	</group>
-	<group name="ac_grupo" keepTogether="true">
-		<groupExpression><![CDATA[$F{ac_nome}]]></groupExpression>
+	<group name="area_grupo" keepTogether="true">
+		<groupExpression><![CDATA[$F{area_nome}]]></groupExpression>
 	</group>
 	<pageHeader>
 		<band height="50" splitType="Stretch">
