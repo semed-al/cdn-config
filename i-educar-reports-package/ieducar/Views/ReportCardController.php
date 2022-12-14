@@ -75,12 +75,6 @@ class ReportCardController extends Portabilis_Controller_ReportCoreController
         ];
 
         $this->inputsHelper()->select('situacao_matricula', $options);
-        $this->inputsHelper()->checkbox('imprimir_mensagem_aniversario', ['label' => 'Imprimir mensagem de aniversário?']);
-        $this->inputsHelper()->textArea('mensagem_aniversario', [
-            'required' => false,
-            'label' => 'Mensagem de aniversário',
-            'value' => 'Feliz aniversário. Acredite nos seus sonhos, pois com muita dedicação e estudo se tornarão realidade.'
-        ]);
         $this->inputsHelper()->checkbox('grafico_media_turma', ['label' => 'Imprimir gráfico de média aluno x turma?']);
         $this->inputsHelper()->checkbox('grafico_preto', ['label' => 'Imprimir os gráficos em escala de cinza?']);
         $this->inputsHelper()->textArea('observacoes', [
@@ -104,8 +98,6 @@ class ReportCardController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
         $this->report->addArg('situacao_matricula', (int) $this->getRequest()->situacao_matricula);
-        $this->report->addArg('imprimir_mensagem_aniversario', (bool) $this->getRequest()->imprimir_mensagem_aniversario);
-        $this->report->addArg('mensagem_aniversario', $this->getRequest()->imprimir_mensagem_aniversario ? $this->getRequest()->mensagem_aniversario : '');
         $this->report->addArg('grafico_media_turma', (bool) $this->getRequest()->grafico_media_turma);
         $this->report->addArg('grafico_preto', (bool) $this->getRequest()->grafico_preto);
         $this->report->addArg('alunos_diferenciados', (int) ($this->getRequest()->alunos_diferenciados ?: 0));
