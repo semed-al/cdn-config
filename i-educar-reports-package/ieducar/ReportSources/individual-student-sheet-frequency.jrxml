@@ -111,7 +111,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[COMPONENTES CURRICULARES]]></text>
+					<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="455" y="1" width="12" height="24" uuid="ce87c2d4-146a-45c7-b8e5-979f1da0d789"/>
@@ -287,10 +287,10 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="17" splitType="Stretch">
+		<band height="14" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 4 || true]]></printWhenExpression>
 			<rectangle>
-				<reportElement mode="Opaque" x="1" y="0" width="510" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
+				<reportElement mode="Opaque" x="1" y="-2" width="510" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
 					<printWhenExpression><![CDATA[new Boolean(($V{COLUMN_COUNT} % 2) == 1)]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
@@ -313,7 +313,7 @@
 				<textFieldExpression><![CDATA[$F{faltas_componente_et2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="5" y="1" width="198" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
+				<reportElement x="5" y="0" width="198" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -332,7 +332,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="-2" width="1" height="14" uuid="8c77f32f-8ada-48d3-bd83-1c845d4608f3"/>
+				<reportElement x="0" y="-2" width="1" height="13" uuid="8c77f32f-8ada-48d3-bd83-1c845d4608f3"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>

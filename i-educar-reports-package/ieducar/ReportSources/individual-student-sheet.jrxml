@@ -216,7 +216,7 @@
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[06 - SITUAÇÃO]]></text>
+					<text><![CDATA[SITUAÇÃO]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
 					<reportElement x="4" y="15" width="209" height="14" uuid="ac4f72b9-d0a7-4860-a6d7-68040c1ed0af"/>
@@ -244,28 +244,28 @@
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[03 - SÉRIE]]></text>
+					<text><![CDATA[SÉRIE]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="4" y="32" width="100" height="13" uuid="545f865a-e37f-40e1-b298-63a6c04f20d9"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[05 - ALUNO]]></text>
+					<text><![CDATA[ALUNO]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="4" y="2" width="68" height="13" uuid="98bc6b5a-2737-478b-bdaa-cad1a87e2301"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[01 - CURSO]]></text>
+					<text><![CDATA[CURSO]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="233" y="2" width="64" height="13" uuid="ce0c8bb1-4f35-4833-a3f0-671cc3c71b8a"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[02 - TURNO]]></text>
+					<text><![CDATA[TURNO]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
 					<reportElement x="233" y="15" width="100" height="14" uuid="d9feb046-c8a4-45e8-aa29-694b59cfe00c"/>
@@ -285,7 +285,7 @@
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[04 - TURMA]]></text>
+					<text><![CDATA[TURMA]]></text>
 				</staticText>
 			</band>
 		</groupHeader>

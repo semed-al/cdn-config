@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_performance" language="groovy" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_performance" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="44cd7ba6-0acb-42d2-86a2-e0feb1905820">
 	<property name="ireport.zoom" value="1.6500000000000192"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="202"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="ano" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
 	</parameter>
@@ -69,17 +70,21 @@
 		<groupExpression><![CDATA[true]]></groupExpression>
 		<groupHeader>
 			<band height="20">
-				<printWhenExpression><![CDATA[$V{REPORT_COUNT}.intValue()==1]]></printWhenExpression>
 				<staticText>
-					<reportElement x="12" y="2" width="531" height="13" uuid="6c2a6908-8336-4efc-8be5-483d9a7c909d"/>
-					<textElement textAlignment="Center">
+					<reportElement x="0" y="2" width="478" height="13" uuid="6c2a6908-8336-4efc-8be5-483d9a7c909d"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<text><![CDATA[APROVEITAMENTO]]></text>
 				</staticText>
 			</band>
 			<band height="27">
-				<printWhenExpression><![CDATA[($F{quantidade_etapas} == 4 || true) && $V{REPORT_COUNT}.intValue()==1]]></printWhenExpression>
+				<printWhenExpression><![CDATA[$F{quantidade_etapas} == 4 || true]]></printWhenExpression>
 				<staticText>
 					<reportElement x="209" y="1" width="37" height="11" uuid="8322b3a9-4ee3-4a0c-ac53-7fe6decdc930"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -93,21 +98,15 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<line>
-					<reportElement x="518" y="0" width="1" height="26" uuid="fe400578-994e-47b9-8a20-9c8c6d31ed70"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
 				<staticText>
-					<reportElement x="5" y="5" width="198" height="14" uuid="703fa198-ea40-4933-a600-6ad811a236f7"/>
+					<reportElement x="5" y="5" width="198" height="14" uuid="fd780404-5397-4636-8d31-3e9c760605e8"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[DISCIPLINA]]></text>
+					<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 				</staticText>
 				<line>
-					<reportElement x="1" y="25" width="554" height="1" uuid="8d042382-2ea3-495f-abe2-66f49490c52e"/>
+					<reportElement x="1" y="25" width="478" height="1" uuid="8d042382-2ea3-495f-abe2-66f49490c52e"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
@@ -217,16 +216,10 @@
 						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 						<paragraph lineSpacing="Fixed" lineSpacingSize="13.5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{resultado_exame}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Rec. final"]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="355" y="0" width="1" height="26" uuid="ca550a57-89dc-4a66-ae0b-c7aaef84f998"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="554" y="1" width="1" height="25" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
@@ -253,21 +246,15 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<line>
-					<reportElement x="518" y="0" width="1" height="26" uuid="fe400578-994e-47b9-8a20-9c8c6d31ed70"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
 				<staticText>
-					<reportElement x="5" y="5" width="198" height="14" uuid="703fa198-ea40-4933-a600-6ad811a236f7"/>
+					<reportElement x="5" y="5" width="198" height="14" uuid="ea85a23c-77b7-45d7-9598-d8938935cdf6"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[DISCIPLINA]]></text>
+					<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 				</staticText>
 				<line>
-					<reportElement x="1" y="25" width="554" height="1" uuid="8d042382-2ea3-495f-abe2-66f49490c52e"/>
+					<reportElement x="1" y="25" width="478" height="1" uuid="8d042382-2ea3-495f-abe2-66f49490c52e"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
@@ -363,14 +350,8 @@
 						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 						<paragraph lineSpacing="Fixed" lineSpacingSize="13.5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{resultado_exame}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Rec. final"]]></textFieldExpression>
 				</textField>
-				<line>
-					<reportElement x="554" y="1" width="1" height="25" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
 				<line>
 					<reportElement x="0" y="-1" width="1" height="27" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
 					<graphicElement>
@@ -393,21 +374,15 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<line>
-					<reportElement x="518" y="0" width="1" height="26" uuid="fe400578-994e-47b9-8a20-9c8c6d31ed70"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
 				<staticText>
-					<reportElement x="5" y="5" width="198" height="14" uuid="703fa198-ea40-4933-a600-6ad811a236f7"/>
+					<reportElement x="5" y="5" width="198" height="14" uuid="a79fa7d0-c6ae-4f7d-9902-7188505c4182"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[DISCIPLINA]]></text>
+					<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 				</staticText>
 				<line>
-					<reportElement x="1" y="25" width="554" height="1" uuid="8d042382-2ea3-495f-abe2-66f49490c52e"/>
+					<reportElement x="1" y="25" width="478" height="1" uuid="8d042382-2ea3-495f-abe2-66f49490c52e"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
@@ -483,14 +458,8 @@
 						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 						<paragraph lineSpacing="Fixed" lineSpacingSize="13.5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{resultado_exame}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Rec. final"]]></textFieldExpression>
 				</textField>
-				<line>
-					<reportElement x="554" y="1" width="1" height="25" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
 				<line>
 					<reportElement x="0" y="-1" width="1" height="27" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
 					<graphicElement>
@@ -513,21 +482,15 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<line>
-					<reportElement x="518" y="0" width="1" height="26" uuid="fe400578-994e-47b9-8a20-9c8c6d31ed70"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
 				<staticText>
-					<reportElement x="5" y="5" width="292" height="14" uuid="703fa198-ea40-4933-a600-6ad811a236f7"/>
+					<reportElement x="5" y="5" width="292" height="14" uuid="478d1950-cc92-4ba2-bd52-7b90573b3efb"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[DISCIPLINA]]></text>
+					<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 				</staticText>
 				<line>
-					<reportElement x="1" y="25" width="554" height="1" uuid="8d042382-2ea3-495f-abe2-66f49490c52e"/>
+					<reportElement x="1" y="25" width="478" height="1" uuid="8d042382-2ea3-495f-abe2-66f49490c52e"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
@@ -570,14 +533,8 @@
 						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 						<paragraph lineSpacing="Fixed" lineSpacingSize="13.5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{resultado_exame}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Rec. final"]]></textFieldExpression>
 				</textField>
-				<line>
-					<reportElement x="554" y="1" width="1" height="25" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
 				<line>
 					<reportElement x="0" y="-1" width="1" height="27" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
 					<graphicElement>
@@ -594,7 +551,7 @@
 		<band height="13" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 4 || true]]></printWhenExpression>
 			<rectangle>
-				<reportElement mode="Opaque" x="1" y="0" width="554" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
+				<reportElement mode="Opaque" x="1" y="0" width="478" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
 					<printWhenExpression><![CDATA[new Boolean(($V{COLUMN_COUNT} % 2) == 1)]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
@@ -642,19 +599,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="554" y="-2" width="1" height="14" uuid="f65b1548-a2ae-45c4-9b3e-042ba75e3965"/>
+				<reportElement x="478" y="-2" width="1" height="14" uuid="f65b1548-a2ae-45c4-9b3e-042ba75e3965"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="306" y="-1" width="1" height="13" uuid="eb37618f-5a80-4315-9ab3-3b6cb2ee17a3"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="344" y="-1" width="1" height="13" uuid="d3f8bf75-5d7f-4d40-ad0e-5a4305aaceab"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -674,12 +625,6 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<line>
-				<reportElement x="391" y="-1" width="1" height="13" uuid="4d55e03f-430a-4234-8a0b-891e92a0cb8f"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="361" y="1" width="26" height="11" uuid="12c04f41-b44c-480f-8330-90d92250edbd">
 					<printWhenExpression><![CDATA[$F{nota4} != null]]></printWhenExpression>
@@ -689,12 +634,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nota4}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="478" y="-1" width="1" height="13" uuid="c966647a-2e12-49b3-b4e4-1c36b1e44ecd"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="448" y="1" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108"/>
 				<textElement textAlignment="Center" markup="html">
@@ -702,12 +641,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{media}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="518" y="-1" width="1" height="13" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="411" y="1" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
 				<textElement textAlignment="Center">
@@ -722,25 +655,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="245" y="-1" width="1" height="13" uuid="11f7085e-456d-4ef6-95cb-9ecfa3497ce7"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="295" y="-1" width="1" height="13" uuid="ede13212-e4e0-40c3-b4ae-36233d4c5efc"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
-			<line>
 				<reportElement x="355" y="-1" width="1" height="13" uuid="1239b2eb-bfdd-41a0-95a4-37d131a203ef"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="11" width="555" height="1" uuid="01046d3f-021e-4a09-b10d-9bd8532dfe41"/>
+				<reportElement x="0" y="11" width="478" height="1" uuid="01046d3f-021e-4a09-b10d-9bd8532dfe41"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -749,7 +670,7 @@
 		<band height="13" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 3]]></printWhenExpression>
 			<rectangle>
-				<reportElement mode="Opaque" x="1" y="0" width="554" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
+				<reportElement mode="Opaque" x="1" y="0" width="478" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
 					<printWhenExpression><![CDATA[new Boolean(($V{COLUMN_COUNT} % 2) == 1)]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
@@ -797,7 +718,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="554" y="-2" width="1" height="14" uuid="f65b1548-a2ae-45c4-9b3e-042ba75e3965"/>
+				<reportElement x="478" y="-2" width="1" height="14" uuid="f65b1548-a2ae-45c4-9b3e-042ba75e3965"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -829,12 +750,6 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<line>
-				<reportElement x="478" y="-1" width="1" height="13" uuid="c966647a-2e12-49b3-b4e4-1c36b1e44ecd"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="448" y="1" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108"/>
 				<textElement textAlignment="Center" markup="html">
@@ -842,12 +757,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{media}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="518" y="-1" width="1" height="13" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="411" y="1" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
 				<textElement textAlignment="Center">
@@ -874,7 +783,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="11" width="555" height="1" uuid="01046d3f-021e-4a09-b10d-9bd8532dfe41"/>
+				<reportElement x="0" y="11" width="478" height="1" uuid="01046d3f-021e-4a09-b10d-9bd8532dfe41"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -883,7 +792,7 @@
 		<band height="13" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 2]]></printWhenExpression>
 			<rectangle>
-				<reportElement mode="Opaque" x="1" y="0" width="554" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
+				<reportElement mode="Opaque" x="1" y="0" width="478" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
 					<printWhenExpression><![CDATA[new Boolean(($V{COLUMN_COUNT} % 2) == 1)]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
@@ -931,19 +840,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="554" y="-2" width="1" height="14" uuid="f65b1548-a2ae-45c4-9b3e-042ba75e3965"/>
+				<reportElement x="478" y="-2" width="1" height="14" uuid="f65b1548-a2ae-45c4-9b3e-042ba75e3965"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="402" y="-1" width="1" height="13" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="478" y="-1" width="1" height="13" uuid="c966647a-2e12-49b3-b4e4-1c36b1e44ecd"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -955,12 +858,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{media}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="518" y="-1" width="1" height="13" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="411" y="1" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
 				<textElement textAlignment="Center">
@@ -987,7 +884,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="11" width="555" height="1" uuid="01046d3f-021e-4a09-b10d-9bd8532dfe41"/>
+				<reportElement x="0" y="11" width="478" height="1" uuid="01046d3f-021e-4a09-b10d-9bd8532dfe41"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -996,7 +893,7 @@
 		<band height="13" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 1]]></printWhenExpression>
 			<rectangle>
-				<reportElement mode="Opaque" x="1" y="0" width="554" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
+				<reportElement mode="Opaque" x="1" y="0" width="478" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
 					<printWhenExpression><![CDATA[new Boolean(($V{COLUMN_COUNT} % 2) == 1)]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
@@ -1023,19 +920,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="554" y="-2" width="1" height="14" uuid="f65b1548-a2ae-45c4-9b3e-042ba75e3965"/>
+				<reportElement x="478" y="-2" width="1" height="14" uuid="f65b1548-a2ae-45c4-9b3e-042ba75e3965"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="402" y="-1" width="1" height="13" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="478" y="-1" width="1" height="13" uuid="c966647a-2e12-49b3-b4e4-1c36b1e44ecd"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -1047,12 +938,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{media}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="518" y="-1" width="1" height="13" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="411" y="1" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
 				<textElement textAlignment="Center">
@@ -1067,7 +952,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="11" width="555" height="1" uuid="01046d3f-021e-4a09-b10d-9bd8532dfe41"/>
+				<reportElement x="0" y="11" width="478" height="1" uuid="01046d3f-021e-4a09-b10d-9bd8532dfe41"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
