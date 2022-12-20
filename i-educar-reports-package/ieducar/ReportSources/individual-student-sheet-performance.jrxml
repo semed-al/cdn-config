@@ -71,10 +71,12 @@
 		<groupHeader>
 			<band height="20">
 				<staticText>
-					<reportElement x="0" y="2" width="478" height="13" uuid="6c2a6908-8336-4efc-8be5-483d9a7c909d"/>
+					<reportElement x="0" y="2" width="478" height="18" uuid="6c2a6908-8336-4efc-8be5-483d9a7c909d"/>
 					<box>
+						<pen lineWidth="0.25"/>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">

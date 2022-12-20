@@ -38,16 +38,6 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
             'turma'
         ]);
 
-        $this->inputsHelper()->select('orientacao', [
-            'label' => 'Orientação da página',
-            'resources' => [
-                1 => 'Retrato',
-                2 => 'Paisagem'
-            ],
-            'required' => false,
-            'value' => 1
-        ]);
-
         $this->inputsHelper()->dynamic('matricula', ['required' => false]);
 
         $resources = [
@@ -88,7 +78,6 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
         $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
         $this->report->addArg('situacao_matricula', (int) $this->getRequest()->situacao_matricula);
-        $this->report->addArg('orientacao', (int) $this->getRequest()->orientacao);
 
         if (is_null($this->getRequest()->ref_cod_matricula)) {
             $this->report->addArg('matricula', 0);
