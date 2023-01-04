@@ -3433,7 +3433,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 						<font fontName="DejaVu Sans" size="9"/>
 						<paragraph leftIndent="5" rightIndent="5"/>
 					</textElement>
-					<text><![CDATA[O Sistema de Avaliação de Aprendizagem da Rede Municipal de Ensino de Coité do Nóia até 2004 a média mínima para aprovação era 6,0 (seis). No período de 2005 até 2015 passou a ser 50 pontos. A partir de 2016 de acordo com a Portaria SEDUC nº 1.325/2016 a obtenção de média final igual ou superior a 6,0 (seis).]]></text>
+					<text><![CDATA[O Sistema de Avaliação de Aprendizagem da Rede Estadual de Ensino de Alagoas até 2004 a média mínima para aprovação era 6,0 (seis). No período de 2005 até 2015 passou a ser 50 pontos. A partir de 2016 de acordo com a Portaria SEDUC nº 1.325/2016 a obtenção de média final igual ou superior a 6,0 (seis).]]></text>
 				</staticText>
 			</frame>
 		</band>
