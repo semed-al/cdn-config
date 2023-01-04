@@ -43,6 +43,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                         CASE WHEN cpf IS NOT NULL AND LENGTH(concat(cpf,'')) < 11 THEN CONCAT('0',cpf) ELSE CONCAT(cpf,'') END
                     ) AS cpf,
                     fcn_upper(pessoa.nome) AS nome_aluno,
+                    municipio.nome AS naturalidade,
                     fisica.sus AS codigo_sus,
                     relatorio.get_pai_aluno(aluno.cod_aluno) AS nome_do_pai,
                     relatorio.get_mae_aluno(aluno.cod_aluno) AS nome_da_mae,
@@ -197,6 +198,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     AND cadastro.fisica.idpes = pmieducar.aluno.ref_idpes
                 INNER JOIN cadastro.pessoa ON TRUE
                     AND cadastro.pessoa.idpes = cadastro.fisica.idpes
+                LEFT JOIN public.municipio ON municipio.idmun = fisica.idmun_nascimento
                 LEFT JOIN cadastro.juridica ON TRUE
                     AND juridica.idpes = escola.ref_idpes
                 LEFT JOIN cadastro.documento ON TRUE
