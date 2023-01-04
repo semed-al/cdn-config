@@ -61,6 +61,7 @@
 	<field name="cor_raca" class="java.lang.String"/>
 	<field name="transporte_aluno" class="java.lang.String"/>
 	<field name="deficiencia" class="java.lang.String"/>
+	<field name="naturalidade" class="java.lang.String"/>
 	<field name="beneficio" class="java.lang.String"/>
 	<field name="idade" class="java.lang.Integer"/>
 	<field name="data_nasc" class="java.lang.String"/>
@@ -130,123 +131,130 @@
 					<textFieldExpression><![CDATA["Série: " + ($F{multisseriada} == 1 ? "MULTISSERIADA" : $F{nome_serie})]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="-10" y="32" width="14" height="13" uuid="687c656f-e35b-4cc1-b449-13fe2ebbf46b"/>
-					<textElement>
+					<reportElement x="-11" y="32" width="14" height="35" uuid="687c656f-e35b-4cc1-b449-13fe2ebbf46b"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Nº]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="6" y="32" width="62" height="13" uuid="64911ed2-4589-4dd7-8275-8cb573db5489"/>
-					<textElement>
+					<reportElement x="4" y="32" width="62" height="35" uuid="64911ed2-4589-4dd7-8275-8cb573db5489"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[CPF]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="69" y="32" width="150" height="13" uuid="e939bb3f-f2d8-4b35-8f61-bf3d18687718"/>
-					<textElement>
+					<reportElement x="67" y="32" width="150" height="35" uuid="e939bb3f-f2d8-4b35-8f61-bf3d18687718"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Nome do(a) aluno(a)]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="224" y="32" width="8" height="35" uuid="ec5a7bcf-954a-4fdc-94fc-c78c9477b37c"/>
+					<reportElement mode="Transparent" x="219" y="32" width="8" height="35" uuid="ec5a7bcf-954a-4fdc-94fc-c78c9477b37c"/>
 					<textElement textAlignment="Left" rotation="Left">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
 					<text><![CDATA[Cor]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="235" y="32" width="7" height="35" uuid="c7cccde4-d796-4751-b2ca-a585cf6e4050"/>
+					<reportElement x="230" y="32" width="7" height="35" uuid="c7cccde4-d796-4751-b2ca-a585cf6e4050"/>
 					<textElement rotation="Left">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
 					<text><![CDATA[Sexo]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="246" y="32" width="7" height="35" uuid="50daa8ac-3da7-407f-9a2c-2aea1e0cb72c"/>
+					<reportElement x="240" y="32" width="7" height="35" uuid="50daa8ac-3da7-407f-9a2c-2aea1e0cb72c"/>
 					<textElement rotation="Left">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
 					<text><![CDATA[Transporte]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="256" y="32" width="7" height="35" uuid="c285ec64-4d22-4f05-9f0e-a14a4eb0e741"/>
+					<reportElement x="249" y="32" width="7" height="35" uuid="c285ec64-4d22-4f05-9f0e-a14a4eb0e741"/>
 					<textElement rotation="Left">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
 					<text><![CDATA[AEE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="266" y="32" width="7" height="35" uuid="da390d62-ead3-4375-9305-5c511480eb3e"/>
+					<reportElement x="258" y="32" width="7" height="35" uuid="da390d62-ead3-4375-9305-5c511480eb3e"/>
 					<textElement rotation="Left">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
 					<text><![CDATA[Aux. Brasil]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="337" y="32" width="100" height="13" uuid="656cfbd4-aa39-14b8-a9ea-2428c36e4a80"/>
-					<textElement>
+					<reportElement x="359" y="32" width="100" height="35" uuid="656cfbd4-aa39-14b8-a9ea-2428c36e4a80"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Nome da mãe]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="442" y="32" width="35" height="13" uuid="2a0a1db5-4cac-471c-b548-61cfb8260455"/>
-					<textElement>
+					<reportElement x="464" y="32" width="35" height="35" uuid="2a0a1db5-4cac-471c-b548-61cfb8260455"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Profissão]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="483" y="32" width="100" height="13" uuid="656cfbd4-aa39-44b8-a9ea-2428c36e4a80"/>
-					<textElement>
+					<reportElement x="501" y="32" width="100" height="35" uuid="656cfbd4-aa39-44b8-a9ea-2428c36e4a80"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Nome do pai]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="588" y="32" width="35" height="13" uuid="710af1e2-04fe-45fa-9e44-3854fc091e2f"/>
-					<textElement>
+					<reportElement x="603" y="32" width="35" height="35" uuid="710af1e2-04fe-45fa-9e44-3854fc091e2f"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Profissão]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="277" y="32" width="10" height="35" uuid="96921443-6693-4bb4-a7ce-b25866a2117f"/>
+					<reportElement x="267" y="32" width="10" height="35" uuid="96921443-6693-4bb4-a7ce-b25866a2117f"/>
 					<textElement rotation="Left">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Idade]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="292" y="32" width="41" height="13" uuid="92f9b1d6-8562-42db-ab67-7720721b5c0b"/>
-					<textElement>
+					<reportElement x="317" y="32" width="41" height="35" uuid="92f9b1d6-8562-42db-ab67-7720721b5c0b"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Dt. nasc]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="627" y="32" width="70" height="13" uuid="82a2bf46-863b-4b09-8d5c-540067b4a2f6"/>
-					<textElement>
+					<reportElement x="640" y="32" width="70" height="35" uuid="82a2bf46-863b-4b09-8d5c-540067b4a2f6"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[SUS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="698" y="32" width="86" height="13" uuid="2a0c9fd6-8c97-482b-bb19-9dd8a2cdfb6d"/>
-					<textElement>
+					<reportElement x="711" y="32" width="86" height="35" uuid="2a0c9fd6-8c97-482b-bb19-9dd8a2cdfb6d"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Endereço]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="786" y="32" width="35" height="13" uuid="bd608220-fd6b-413c-969f-a3e0d1246353"/>
-					<textElement>
+					<reportElement x="799" y="32" width="25" height="35" uuid="bd608220-fd6b-413c-969f-a3e0d1246353"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
 					<text><![CDATA[Situação]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="278" y="32" width="41" height="35" uuid="3ba12fa3-bc9e-431c-b9c9-ffcde8dea893"/>
+					<textElement verticalAlignment="Middle" rotation="None">
+						<font fontName="DejaVu Sans" size="6"/>
+					</textElement>
+					<text><![CDATA[Naturalidade]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -331,12 +339,12 @@
 	<detail>
 		<band height="18" splitType="Stretch">
 			<rectangle>
-				<reportElement mode="Opaque" x="1" y="1" width="825" height="12" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
+				<reportElement mode="Opaque" x="-11" y="1" width="837" height="12" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
 					<printWhenExpression><![CDATA[new Boolean(($V{COLUMN_COUNT} % 2) == 1)]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<textField isBlankWhenNull="true">
-				<reportElement x="6" y="3" width="62" height="10" uuid="f2d583f9-12eb-41c3-b4a4-b6266cf22545"/>
+				<reportElement x="4" y="3" width="62" height="10" uuid="f2d583f9-12eb-41c3-b4a4-b6266cf22545"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -349,42 +357,42 @@
 				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="69" y="3" width="150" height="10" uuid="90e15dde-6e9f-4f2e-b735-ab822cb771b1"/>
+				<reportElement x="67" y="3" width="150" height="10" uuid="90e15dde-6e9f-4f2e-b735-ab822cb771b1"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{dependencia} ? "*" : "") + $F{nome_aluno}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="224" y="3" width="8" height="10" uuid="8a09e63a-3d86-42fc-ab71-c4363e56d9cf"/>
+				<reportElement x="219" y="3" width="8" height="10" uuid="8a09e63a-3d86-42fc-ab71-c4363e56d9cf"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cor_raca} == null ? "" : $F{cor_raca}.substring(0, 2)]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="235" y="3" width="7" height="10" uuid="abb1859c-61ff-4f61-bdc5-3926b1a665bc"/>
+				<reportElement x="230" y="3" width="7" height="10" uuid="abb1859c-61ff-4f61-bdc5-3926b1a665bc"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="246" y="3" width="7" height="10" uuid="7e0f493d-c8e7-4c57-9c53-5404d5135cf1"/>
+				<reportElement x="240" y="3" width="7" height="10" uuid="7e0f493d-c8e7-4c57-9c53-5404d5135cf1"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{transporte_aluno} == null ? "" : $F{transporte_aluno}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="256" y="3" width="7" height="10" uuid="c38e1c56-7621-4eb0-9fcc-f28762336312"/>
+				<reportElement x="249" y="3" width="7" height="10" uuid="c38e1c56-7621-4eb0-9fcc-f28762336312"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{deficiencia} == null ? "" : $F{deficiencia}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="266" y="3" width="7" height="10" uuid="e9685f50-fa12-4382-b412-998511ea3f61"/>
+				<reportElement x="258" y="3" width="7" height="10" uuid="e9685f50-fa12-4382-b412-998511ea3f61"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="7"/>
 					<paragraph lineSpacing="Double"/>
@@ -392,14 +400,14 @@
 				<textFieldExpression><![CDATA[$F{beneficio} == null ? "" : $F{beneficio}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="337" y="3" width="100" height="10" uuid="55b06f4d-7eff-439b-a38d-63ad3e55c18b"/>
+				<reportElement x="359" y="3" width="100" height="10" uuid="55b06f4d-7eff-439b-a38d-63ad3e55c18b"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_da_mae}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="442" y="3" width="35" height="10" uuid="034db271-a021-47a8-83a7-b56f5c489757"/>
+				<reportElement x="464" y="3" width="35" height="10" uuid="034db271-a021-47a8-83a7-b56f5c489757"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="6"/>
 				</textElement>
@@ -408,14 +416,14 @@
 					: ""]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="483" y="3" width="100" height="10" uuid="2137cf3e-6a99-4ce1-9701-2e141ec2c11b"/>
+				<reportElement x="501" y="3" width="100" height="10" uuid="2137cf3e-6a99-4ce1-9701-2e141ec2c11b"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_do_pai}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="588" y="3" width="35" height="10" uuid="e969d3e4-863d-4498-889b-6d5af40e514b"/>
+				<reportElement x="603" y="3" width="35" height="10" uuid="e969d3e4-863d-4498-889b-6d5af40e514b"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="6"/>
 				</textElement>
@@ -424,21 +432,21 @@
 					: ""]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="627" y="3" width="70" height="10" uuid="cd478d80-f266-46fb-ab6e-6d9ff8a5727d"/>
+				<reportElement x="640" y="3" width="70" height="10" uuid="cd478d80-f266-46fb-ab6e-6d9ff8a5727d"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{codigo_sus}.toString().replaceAll("[^\\d]", "")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="698" y="3" width="86" height="10" uuid="fc721837-3bfa-40d2-a624-a8d9697c71f1"/>
+				<reportElement x="711" y="3" width="86" height="10" uuid="fc721837-3bfa-40d2-a624-a8d9697c71f1"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="-10" y="3" width="14" height="10" uuid="2cab2d18-4400-4777-a35c-ace3e6779167"/>
+				<reportElement x="-11" y="3" width="14" height="10" uuid="2cab2d18-4400-4777-a35c-ace3e6779167"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -451,26 +459,69 @@
 				<textFieldExpression><![CDATA[$F{dependencia} ? $V{count_dependencia} : $V{count_sem_dependencia}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="291" y="3" width="41" height="10" uuid="873ef749-5afb-4916-b375-6768f9064860"/>
+				<reportElement x="316" y="3" width="41" height="10" uuid="873ef749-5afb-4916-b375-6768f9064860"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_nasc}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="276" y="3" width="10" height="10" uuid="cd478d80-f266-46fb-ab6e-6d9ff8a5727d"/>
+				<reportElement x="266" y="3" width="10" height="10" uuid="cd478d80-f266-46fb-ab6e-6d9ff8a5727d"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{idade}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="786" y="3" width="35" height="10" uuid="7fcf4908-ab80-4dc6-85f5-bf7c4f690a12"/>
+				<reportElement x="799" y="3" width="25" height="10" uuid="7fcf4908-ab80-4dc6-85f5-bf7c4f690a12"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="218" y="0" width="1" height="13" uuid="4aa921b7-bc71-4bb7-b580-004fb1280271"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="228" y="0" width="1" height="13" uuid="c7342297-0d61-42b8-9daa-0a343d403ad2"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="238" y="0" width="1" height="13" uuid="8c22b07d-f963-4933-ada1-3b4ad0e61b05"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="4" y="0" width="1" height="13" uuid="31348be7-b489-412e-bb5c-d74a34a56525"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="278" y="3" width="35" height="10" uuid="225b3ee9-3b64-4d12-b430-d90b0ed796d8"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{naturalidade}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="278" y="0" width="1" height="13" uuid="75fc6b7f-29c6-4f1d-9973-8eac4ee35e11"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="315" y="0" width="1" height="13" uuid="122887e9-71a2-45d5-8664-08cc3683813d"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
