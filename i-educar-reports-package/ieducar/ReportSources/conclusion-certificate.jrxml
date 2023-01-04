@@ -10,6 +10,7 @@
 	<parameter name="escola" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
 	</parameter>
+	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="observacao" class="java.lang.String"/>
 	<parameter name="logo" class="java.lang.String"/>
 	<parameter name="data_emissao" class="java.lang.Integer">
@@ -149,7 +150,7 @@ $F{municipio_uf_nascimento} + ", filho(a) de "+ ($F{nm_pai}.equals("") && $F{nm_
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Declaramos que o Histórico Escolar será expedido no prazo de " +  $P{prazo_entrega_historico} + " dia(s)."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Declaramos que o Histórico Escolar será expedido no prazo de " +  $P{prazo_entrega_historico} + " dias."]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="21" y="485" width="513" height="14" uuid="90b88942-ea8c-4d08-a9e9-63d3f59a46b0"/>
@@ -196,6 +197,15 @@ $F{municipio_uf_nascimento} + ", filho(a) de "+ ($F{nm_pai}.equals("") && $F{nm_
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement x="10" y="70" width="513" height="13" uuid="656339ef-c238-4610-9b83-34e086b000a7">
+					<printWhenExpression><![CDATA[$P{dominio}.contains("edu.belem.al.gov.br")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[Avenida Prefeito José Cícero de Santa Rosa, s/n, Centro, Belém-AL]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>
