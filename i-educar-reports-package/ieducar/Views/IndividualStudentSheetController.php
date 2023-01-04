@@ -1,16 +1,16 @@
 <?php
 
-class ReportCardController extends Portabilis_Controller_ReportCoreController
+class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreController
 {
     /**
      * @var int
      */
-    protected $_processoAp = 999202;
+    protected $_processoAp = 999204;
 
     /**
      * @var string
      */
-    protected $_titulo = 'Boletim Escolar';
+    protected $_titulo = 'Ficha individual do aluno';
 
     /**
      * @inheritdoc
@@ -19,9 +19,7 @@ class ReportCardController extends Portabilis_Controller_ReportCoreController
     {
         parent::_preRender();
 
-        $this->acao_enviar = 'customPrintReport()';
-
-        $this->breadcrumb('Boletim escolar', [
+        $this->breadcrumb('Ficha individual do aluno', [
             '/intranet/educar_index.php' => 'Escola'
         ]);
     }
@@ -37,18 +35,7 @@ class ReportCardController extends Portabilis_Controller_ReportCoreController
             'escola',
             'curso',
             'serie',
-            'turma',
-            // 'etapa'
-        ]);
-
-        $this->inputsHelper()->select('orientacao', [
-            'label' => 'Orientação da página',
-            'resources' => [
-                1 => 'Retrato',
-                2 => 'Paisagem'
-            ],
-            'required' => false,
-            'value' => 1
+            'turma'
         ]);
 
         $this->inputsHelper()->dynamic('matricula', ['required' => false]);
@@ -75,14 +62,7 @@ class ReportCardController extends Portabilis_Controller_ReportCoreController
         ];
 
         $this->inputsHelper()->select('situacao_matricula', $options);
-        $this->inputsHelper()->checkbox('grafico_media_turma', ['label' => 'Imprimir gráfico de média aluno x turma?']);
-        $this->inputsHelper()->checkbox('grafico_preto', ['label' => 'Imprimir os gráficos em escala de cinza?']);
-        $this->inputsHelper()->textArea('observacoes', [
-            'required' => false,
-            'label' => 'Observações',
-            'placeholder' => 'Utilize este espaço para exibir uma mensagem ou recado no boletim.'
-        ]);
-
+        
         $this->loadResourceAssets($this->getDispatcher());
     }
 
@@ -98,12 +78,6 @@ class ReportCardController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
         $this->report->addArg('situacao_matricula', (int) $this->getRequest()->situacao_matricula);
-        $this->report->addArg('grafico_media_turma', (bool) $this->getRequest()->grafico_media_turma);
-        $this->report->addArg('grafico_preto', (bool) $this->getRequest()->grafico_preto);
-        $this->report->addArg('alunos_diferenciados', (int) ($this->getRequest()->alunos_diferenciados ?: 0));
-        // $this->report->addArg('etapa', (int) ($this->getRequest()->etapa));
-        $this->report->addArg('observacoes', $this->getRequest()->observacoes);
-        $this->report->addArg('orientacao', (int) $this->getRequest()->orientacao);
 
         if (is_null($this->getRequest()->ref_cod_matricula)) {
             $this->report->addArg('matricula', 0);
@@ -119,6 +93,6 @@ class ReportCardController extends Portabilis_Controller_ReportCoreController
      */
     public function report()
     {
-        return new ReportCardReport();
+        return new IndividualStudentSheetReport();
     }
 }
