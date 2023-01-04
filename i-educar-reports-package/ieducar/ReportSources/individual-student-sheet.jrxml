@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_sheet" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_sheet" language="groovy" pageWidth="595" pageHeight="842" columnWidth="585" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="20" uuid="ab80d035-fee0-4652-ad3f-1dfa50b6e3c2">
 	<property name="ireport.zoom" value="1.6500000000000192"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="202"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="ano" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
 	</parameter>
@@ -118,7 +127,6 @@
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="source" class="java.lang.String"/>
-	
 	<field name="nome_instituicao" class="java.lang.String"/>
 	<field name="nome_responsavel" class="java.lang.String"/>
 	<field name="nm_escola" class="java.lang.String"/>
@@ -132,7 +140,6 @@
 	<field name="nome_aluno" class="java.lang.String"/>
 	<field name="periodo" class="java.lang.String"/>
 	<field name="situacao" class="java.lang.String"/>
-
 	<group name="info">
 		<groupExpression><![CDATA[true]]></groupExpression>
 		<groupHeader>
@@ -156,7 +163,7 @@
 					</subreportParameter>
 					<subreportParameter name="ano">
 						<subreportParameterExpression><![CDATA[$P{ano}]]></subreportParameterExpression>
-					</subreportParameter>						
+					</subreportParameter>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "header-portrait-report-card.jasper"]]></subreportExpression>
 				</subreport>
 			</band>
@@ -295,7 +302,7 @@
 		<groupHeader>
 			<band height="64">
 				<subreport>
-					<reportElement positionType="Float" x="0" y="0" width="555" height="64" />
+					<reportElement positionType="Float" x="0" y="0" width="555" height="64" uuid="ed4b6075-a7f8-49d0-acc6-256895f8831d"/>
 					<subreportParameter name="ano">
 						<subreportParameterExpression><![CDATA[$P{ano}]]></subreportParameterExpression>
 					</subreportParameter>
@@ -328,7 +335,7 @@
 					</subreportParameter>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "individual-student-sheet-frequency.jasper"]]></subreportExpression>
 				</subreport>
-			</band>			
+			</band>
 		</groupHeader>
 	</group>
 	<group name="performance">
@@ -336,7 +343,7 @@
 		<groupHeader>
 			<band height="64">
 				<subreport>
-					<reportElement positionType="Float" x="0" y="0" width="555" height="64" />
+					<reportElement positionType="Float" x="0" y="0" width="555" height="64" uuid="2cd32f82-82b8-4906-8857-d5acc4e6d13a"/>
 					<subreportParameter name="ano">
 						<subreportParameterExpression><![CDATA[$P{ano}]]></subreportParameterExpression>
 					</subreportParameter>

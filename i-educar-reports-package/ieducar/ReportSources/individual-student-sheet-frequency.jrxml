@@ -108,7 +108,7 @@
 					</graphicElement>
 				</line>
 				<staticText>
-					<reportElement x="5" y="3" width="198" height="19" uuid="11c2c683-a08c-4de7-9d92-7d9dc3249435"/>
+					<reportElement x="3" y="3" width="148" height="19" uuid="11c2c683-a08c-4de7-9d92-7d9dc3249435"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -185,7 +185,7 @@
 					</graphicElement>
 				</line>
 				<line>
-					<reportElement x="510" y="0" width="1" height="25" uuid="a820218f-be56-4b7e-98ef-5436e3128f93"/>
+					<reportElement x="511" y="0" width="1" height="25" uuid="a820218f-be56-4b7e-98ef-5436e3128f93"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
@@ -268,12 +268,6 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<line>
-					<reportElement x="0" y="-19" width="510" height="1" uuid="b5d8a7b9-5ad6-4db6-9815-476d98bd12fe"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
 			</band>
 		</groupHeader>
 	</group>
@@ -281,7 +275,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="15" splitType="Stretch">
+		<band height="14" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 4 || true]]></printWhenExpression>
 			<rectangle>
 				<reportElement mode="Opaque" x="1" y="-2" width="510" height="13" forecolor="#FFFFFF" backcolor="#F0F0F0" uuid="31f4ee65-09f0-489c-b178-f91ba385052f">
@@ -307,26 +301,26 @@
 				<textFieldExpression><![CDATA[$F{carga_horaria_componente_et}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="5" y="0" width="198" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
+				<reportElement x="3" y="-1" width="148" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="234" y="-1" width="1" height="13" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
+				<reportElement x="234" y="-2" width="1" height="14" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="207" y="-1" width="1" height="13" uuid="45b50c55-b79a-4a6d-8d9e-5253df7e20aa"/>
+				<reportElement x="207" y="-2" width="1" height="13" uuid="45b50c55-b79a-4a6d-8d9e-5253df7e20aa"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="-2" width="1" height="13" uuid="8c77f32f-8ada-48d3-bd83-1c845d4608f3"/>
+				<reportElement x="0" y="-3" width="1" height="14" uuid="8c77f32f-8ada-48d3-bd83-1c845d4608f3"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -338,7 +332,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="261" y="-1" width="1" height="13" uuid="eb37618f-5a80-4315-9ab3-3b6cb2ee17a3"/>
+				<reportElement x="261" y="-2" width="1" height="13" uuid="eb37618f-5a80-4315-9ab3-3b6cb2ee17a3"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -368,60 +362,60 @@
 				<textFieldExpression><![CDATA[$F{carga_horaria_componente_et}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="469" y="-1" width="1" height="13" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
+				<reportElement x="469" y="-2" width="1" height="14" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="345" y="0" width="11" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="d5ccefa6-8c9a-417b-9344-6c41431a4d77"/>
+				<reportElement x="345" y="-1" width="11" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="d5ccefa6-8c9a-417b-9344-6c41431a4d77"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{faltas_componente_et1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="372" y="0" width="11" height="11" uuid="0d944d1e-52d7-4973-8f40-65083e45567b"/>
+				<reportElement x="372" y="-1" width="11" height="11" uuid="0d944d1e-52d7-4973-8f40-65083e45567b"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{faltas_componente_et2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="400" y="0" width="11" height="11" uuid="af083824-13fe-43d4-bcb9-8e1ca2851cba"/>
+				<reportElement x="400" y="-1" width="11" height="11" uuid="af083824-13fe-43d4-bcb9-8e1ca2851cba"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{faltas_componente_et3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="1" width="11" height="11" uuid="07e876cc-77d8-4abb-bc84-8649be31f795"/>
+				<reportElement x="430" y="-1" width="11" height="11" uuid="07e876cc-77d8-4abb-bc84-8649be31f795"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{faltas_componente_et4}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="448" y="0" width="22" height="11" uuid="d62c2bab-5467-4d98-8368-592207b84207"/>
+				<reportElement x="448" y="-1" width="19" height="11" uuid="d62c2bab-5467-4d98-8368-592207b84207"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_faltas_componente}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="447" y="-1" width="1" height="13" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15"/>
+				<reportElement x="447" y="-2" width="1" height="13" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="289" y="-1" width="1" height="13" uuid="1239b2eb-bfdd-41a0-95a4-37d131a203ef"/>
+				<reportElement x="289" y="-2" width="1" height="13" uuid="1239b2eb-bfdd-41a0-95a4-37d131a203ef"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<textField pattern="#,#0 %" isBlankWhenNull="true">
-				<reportElement x="470" y="0" width="40" height="11" uuid="aa8070c8-9947-428a-bf94-dc59f5ca9d54"/>
+				<reportElement x="470" y="-1" width="40" height="11" uuid="aa8070c8-9947-428a-bf94-dc59f5ca9d54"/>
 				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -434,31 +428,31 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="337" y="-1" width="1" height="13" uuid="47d9ab58-da27-4c6b-8afa-9fe366567a55"/>
+				<reportElement x="337" y="-2" width="1" height="13" uuid="47d9ab58-da27-4c6b-8afa-9fe366567a55"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="421" y="-1" width="1" height="13" uuid="2f2a5364-e536-4367-b496-253d3993084a"/>
+				<reportElement x="421" y="-2" width="1" height="14" uuid="2f2a5364-e536-4367-b496-253d3993084a"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="393" y="-1" width="1" height="13" uuid="f5df4d5f-e537-4487-a49e-236b9195f4a9"/>
+				<reportElement x="393" y="-2" width="1" height="14" uuid="f5df4d5f-e537-4487-a49e-236b9195f4a9"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="365" y="-1" width="1" height="13" uuid="63027820-4afd-4027-9866-f7637450db2c"/>
+				<reportElement x="365" y="-2" width="1" height="13" uuid="63027820-4afd-4027-9866-f7637450db2c"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="318" y="0" width="19" height="11" uuid="d3206375-6fb4-4651-9306-8ba4ac3ed78f">
+				<reportElement x="318" y="-1" width="19" height="11" uuid="d3206375-6fb4-4651-9306-8ba4ac3ed78f">
 					<printWhenExpression><![CDATA[$F{carga_horaria_componente} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
