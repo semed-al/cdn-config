@@ -14,6 +14,7 @@
 	<parameter name="matricula" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
 	</parameter>
+	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="observacao" class="java.lang.String"/>
 	<parameter name="logo" class="java.lang.String"/>
 	<parameter name="data_emissao" class="java.lang.Integer">
@@ -266,7 +267,7 @@
 			</line>
 			<staticText>
 				<reportElement x="20" y="140" width="513" height="13" uuid="ea48089b-d563-495f-918d-4eb78f7e9320">
-					<printWhenExpression><![CDATA[true]]></printWhenExpression>
+					<printWhenExpression><![CDATA[${dominio}.contains("edu.belem.al.gov.br")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="10"/>
