@@ -129,6 +129,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 relatorio.get_total_faltas(matricula.cod_matricula) AS total_faltas,
                 componente_curricular_ano_escolar.carga_horaria::int AS carga_horaria_componente,
                 (componente_curricular_ano_escolar.carga_horaria::int)/4 AS carga_horaria_componente_et,
+                round(((componente_curricular_ano_escolar.carga_horaria::int)/4)/curso.hora_falta) AS aulas_dadas_et,
                 serie.carga_horaria AS carga_horaria_serie,
                 serie.dias_letivos,
                 falta_aluno.id AS falta_aluno_id,

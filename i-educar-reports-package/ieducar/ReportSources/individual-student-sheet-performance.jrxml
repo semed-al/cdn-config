@@ -64,6 +64,9 @@
 	<field name="medianumturma" class="java.math.BigDecimal"/>
 	<field name="resultado_exame" class="java.lang.String"/>
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
+	<variable name="situacao_final" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{situacao}]]></variableExpression>
+	</variable>
 	<group name="performance" keepTogether="true">
 		<groupExpression><![CDATA[true]]></groupExpression>
 		<groupHeader>
@@ -282,6 +285,25 @@
 				</line>
 			</band>
 		</groupHeader>
+		<groupFooter>
+			<band height="25" splitType="Stretch">
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="5" width="541" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3d4cba75-4845-4c96-8ee5-3693af5916c5"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8"/>
+						<paragraph leftIndent="5" spacingBefore="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Situação final: " + $V{situacao_final}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
