@@ -95,7 +95,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cnpj} != null ? $F{cnpj} : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="325" y="31" width="29" height="10" uuid="6e04a503-844c-4935-8258-fc62897fabda"/>

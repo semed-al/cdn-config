@@ -36,14 +36,8 @@
 		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
 	</parameter>
 	<parameter name="logo" class="java.lang.String"/>
-	<parameter name="observacoes" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
 	<parameter name="situacao" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
-	</parameter>
-	<parameter name="emitir_nota_exame" class="java.lang.Boolean">
-		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
 	</parameter>
 	<parameter name="situacao_matricula" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -52,72 +46,6 @@
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="etapa" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="orientacao" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="selecionar_areas_conhecimento" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="emitir_assinatura" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="componente_curricular" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="areas_conhecimento" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="manual" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="copia" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="professor" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="auxiliares_operacionais" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="servidor" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="buscar_professor" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="emitir_tabela_conversao" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="modelo" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="professor_regente" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="professores_regentes" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="professor_artes" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="professor_informatica" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="professor_ed_fisica" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="mostra_descricao" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="emitir_multiplas_assinaturas" class="java.lang.String">
-		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
-	</parameter>
-	<parameter name="assinatura_secretario" class="java.lang.String">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="database" class="java.lang.String">
@@ -379,4 +307,151 @@
 			</band>
 		</groupHeader>
 	</group>
+	<columnFooter>
+		<band height="6">
+			<break>
+				<reportElement x="0" y="2" width="100" height="1" uuid="b39f258e-f2e2-4c18-a870-52f85533a358"/>
+			</break>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band height="550" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="16" width="554" height="224" backcolor="#FFFFFF" uuid="41006b88-4bc5-4726-bb95-27d993ae4d14"/>
+				<box>
+					<pen lineColor="#F0F0F0"/>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					<paragraph lineSpacing="Double" lineSpacingSize="3.0" leftIndent="5" rightIndent="5" spacingBefore="10" spacingAfter="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["OBSERVAÇÕES"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="60" width="555" height="1" uuid="3d5ef7ae-dce6-4bb4-b700-c369df033b5a"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="80" width="555" height="1" uuid="06af4e3b-920a-4200-9a70-e39b26d8a02b"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="100" width="555" height="1" uuid="9373b68a-a39f-4c76-bd88-4c749a2533a1"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="120" width="555" height="1" uuid="81b13ba1-80bf-4683-806a-5b5ab0034367"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="140" width="555" height="1" uuid="bb6d935a-f342-47f6-a61f-7215090034ca"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="160" width="555" height="1" uuid="0a2c619e-afcb-4e60-ae2d-0efbabe383bc"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="180" width="555" height="1" uuid="8104f304-ef09-4201-adb1-2af525842d51"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="200" width="555" height="1" uuid="cef7ccad-783d-44d5-9575-7761103a997a"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="ContainerBottom" x="0" y="220" width="555" height="1" uuid="7b871a79-b97e-4130-a65a-19399d1e38f3"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="280" width="554" height="30" backcolor="#FFFFFF" uuid="6977375c-7989-4e55-b0d6-59aeb834e261"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					<paragraph lineSpacing="Double" lineSpacingSize="3.0" leftIndent="5" rightIndent="5" spacingBefore="10" spacingAfter="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Aos <b>" + java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH) +"</b> dias do mês de <b>" + new java.text.DateFormatSymbols(new java.util.Locale("pt", "BR")).getMonths()[java.util.Calendar.getInstance().get(java.util.Calendar.MONTH)] + "</b> do ano de <b>" + java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)+"</b>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="180" y="363" width="200" height="16" uuid="47cc840e-db9d-4f75-986e-b6d619aca3b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[Funcionário(a) responsável]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="177" y="361" width="210" height="1" uuid="21b17145-29c1-40db-b67a-87e54a8d2913"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="330" y="425" width="200" height="16" uuid="73402cd5-6bfe-49fb-a73e-019059c1758b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[Diretor(a) - registro ou matrícula nº _______]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="327" y="421" width="210" height="1" uuid="f2c17794-53ea-4692-af34-104747d2ff02"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerBottom" x="30" y="421" width="210" height="1" uuid="91fcf3d6-8100-4739-a84b-645209bd415a"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerBottom" x="31" y="425" width="203" height="16" uuid="f6d9cc00-347e-4115-8ab3-9a165c4d2339"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[Secretário(a) - registro ou matrícula nº _______]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="0" y="243" width="553" height="16" uuid="872f308c-6428-4713-a502-3d2697cf5fc5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<text><![CDATA[Espaço reservado para qualquer informação especial sobre a vida do(a) educando(a).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="0" y="470" width="553" height="70" uuid="3674cdf1-1c3a-4268-86b6-87b5371960b9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font fontName="DejaVu Sans" size="7"/>
+				</textElement>
+				<text><![CDATA[LEGENDA:<br>Resultado de desempenho:<br>&emsp A = Aprovado<br>&emsp R = Reprovado<br>&emsp APC = Aprovado em Progressão Continuada<br>&emsp APP = Aprovado com Progressão Parcial<br>
+				Resultado final:<br>&emsp A, R, APC ou APP
+
+]]></text>
+			</staticText>
+		</band>
+	</summary>
 </jasperReport>

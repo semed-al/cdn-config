@@ -68,8 +68,9 @@
 	<field name="total_faltas_componente" class="java.math.BigDecimal"/>
 	<field name="media_frequencia" class="java.lang.String"/>
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
+	<field name="tipo_presenca" class="java.lang.Integer"/>
 	<variable name="percentual_frequencia_final" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[100-$F{percentual_falta_componente}]]></variableExpression>
+		<variableExpression><![CDATA[$F{percentual_falta_componente} == null ? 100 : 100-$F{percentual_falta_componente}]]></variableExpression>
 	</variable>
 	<group name="frequencia">
 		<groupExpression><![CDATA[true]]></groupExpression>
@@ -511,7 +512,7 @@
 				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[ String.format("%.1f",  100-$F{percentual_falta_componente})+"%"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[String.format("%.1f",  100-$F{percentual_falta_componente})+"%"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="394" y="-2" width="1" height="13" uuid="47d9ab58-da27-4c6b-8afa-9fe366567a55"/>

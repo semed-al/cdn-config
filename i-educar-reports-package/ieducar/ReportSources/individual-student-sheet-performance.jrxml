@@ -60,10 +60,10 @@
 	<field name="media" class="java.lang.String"/>
 	<field name="medianum" class="java.math.BigDecimal"/>
 	<field name="nota_exame" class="java.lang.String"/>
-	<field name="media_recuperacao" class="java.math.BigDecimal"/>
 	<field name="medianumturma" class="java.math.BigDecimal"/>
 	<field name="resultado_exame" class="java.lang.String"/>
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
+	<field name="tipo_nota" class="java.lang.Integer"/>
 	<variable name="situacao_final" class="java.lang.String" calculation="Highest">
 		<variableExpression><![CDATA[$F{situacao}]]></variableExpression>
 	</variable>
@@ -286,21 +286,17 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="25" splitType="Stretch">
+			<band height="30" splitType="Stretch">
 				<textField isBlankWhenNull="true">
-					<reportElement x="1" y="5" width="541" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3d4cba75-4845-4c96-8ee5-3693af5916c5"/>
+					<reportElement x="1" y="10" width="541" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3d4cba75-4845-4c96-8ee5-3693af5916c5"/>
 					<box>
-						<pen lineWidth="0.25"/>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
+						<pen lineWidth="1.25"/>
 					</box>
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 						<paragraph leftIndent="5" spacingBefore="2"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Situação final: " + $V{situacao_final}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Situação final: " + $V{situacao_final}.toUpperCase()]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -319,21 +315,21 @@
 			</rectangle>
 			<textField pattern="" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e777cca9-d769-4e39-be43-01f55e78666d">
-					<printWhenExpression><![CDATA[$F{nota1} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{tipo_nota} == 0 || $F{nota1} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{nota1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="48b3461e-6c11-4eda-be2d-a5a9f2fb9fd3">
-					<printWhenExpression><![CDATA[$F{nota2} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{tipo_nota} == 0 || $F{nota2} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{nota2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="1" width="148" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
@@ -362,12 +358,12 @@
 			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3">
-					<printWhenExpression><![CDATA[$F{nota3} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{tipo_nota} == 0 || $F{nota3} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{nota3}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="393" y="0" width="1" height="13" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639"/>
@@ -377,19 +373,19 @@
 			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11" uuid="12c04f41-b44c-480f-8330-90d92250edbd">
-					<printWhenExpression><![CDATA[$F{nota4} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{tipo_nota} == 0 || $F{nota4} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota4}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{nota4}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="513" y="0" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108"/>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{media}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{media}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="469" y="0" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
