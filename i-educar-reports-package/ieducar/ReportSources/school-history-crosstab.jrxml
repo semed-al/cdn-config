@@ -140,6 +140,7 @@
 	<parameter name="ano_fim" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
+	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="source" class="java.lang.String"/>
 	<parameter name="cabecalho_alternativo" class="java.lang.Integer" isForPrompting="false"/>
 	<parameter name="nm_secretario" class="java.lang.String" isForPrompting="false"/>

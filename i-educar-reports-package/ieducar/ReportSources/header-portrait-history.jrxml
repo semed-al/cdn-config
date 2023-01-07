@@ -68,7 +68,7 @@
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="69" y="11" width="311" height="10" uuid="08a62240-61cb-401e-a8ac-a1b3a17541f1"/>
+				<reportElement x="69" y="11" width="321" height="10" uuid="08a62240-61cb-401e-a8ac-a1b3a17541f1"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
@@ -156,14 +156,14 @@
 				<text><![CDATA[E-MAIL:]]></text>
 			</staticText>
 			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="390" y="11" width="75" height="10" uuid="06243296-6ee9-41fb-bd07-960c019a46a1"/>
+				<reportElement x="390" y="1" width="75" height="10" uuid="06243296-6ee9-41fb-bd07-960c019a46a1"/>
 				<textElement textAlignment="Right" markup="html">
 					<font fontName="DejaVu Sans" size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["<b>Emitido em:</b>"]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy hh:mm" isBlankWhenNull="false">
-				<reportElement x="465" y="11" width="74" height="10" uuid="47ab2458-b7bc-491d-aa50-b25299ffb811"/>
+				<reportElement x="465" y="1" width="74" height="10" uuid="47ab2458-b7bc-491d-aa50-b25299ffb811"/>
 				<textElement textAlignment="Right" markup="html">
 					<font size="8"/>
 				</textElement>
