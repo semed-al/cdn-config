@@ -36,7 +36,7 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
 
         $this->inputsHelper()->checkbox('lote', ['label' => 'Emitir em lote?']);
 
-        $this->inputsHelper()->checkbox('imprime_diretor_secretario', [
+        /*$this->inputsHelper()->checkbox('imprime_diretor_secretario', [
             'label' => 'Imprimir o nome do(a) secretário(a) e diretor(a)?'
         ]);
 
@@ -44,7 +44,7 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
         $this->inputsHelper()->text('nm_diretor', $options);
 
         $options = ['label' => 'Secretário(a):', 'size' => 50, 'max_length' => 100, 'required' => false, 'placeholder' => ''];
-        $this->inputsHelper()->text('nm_secretario', $options);
+        $this->inputsHelper()->text('nm_secretario', $options);*/
 
         $this->inputsHelper()->checkbox('emitir_carga_horaria_frequentada', ['label' => 'Emitir Carga horária frequentada']);
 

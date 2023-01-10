@@ -200,6 +200,13 @@
 										</box>
 										<textField>
 											<reportElement mode="Transparent" x="20" y="0" width="259" height="15" uuid="26451b38-4f94-4f1a-879d-a39854e52a6d"/>
+											<box>
+												<pen lineWidth="0.25"/>
+												<topPen lineStyle="Solid"/>
+												<leftPen lineStyle="Solid"/>
+												<bottomPen lineStyle="Solid"/>
+												<rightPen lineStyle="Solid"/>
+											</box>
 											<textElement textAlignment="Left" verticalAlignment="Middle">
 												<font fontName="DejaVu Sans" size="8"/>
 											</textElement>
@@ -227,6 +234,13 @@
 									<cellContents mode="Opaque" style="linha-zebrado">
 										<textField isBlankWhenNull="true">
 											<reportElement mode="Transparent" x="0" y="0" width="32" height="15" uuid="815ac81e-a1c4-4ac0-ba55-bc9aabebb01b"/>
+											<box>
+												<pen lineWidth="0.25"/>
+												<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+												<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+												<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+											</box>
 											<textElement textAlignment="Center">
 												<font fontName="DejaVu Sans" size="8"/>
 											</textElement>
@@ -246,6 +260,13 @@
 									<cellContents mode="Opaque" style="linha-zebrado">
 										<textField isBlankWhenNull="true">
 											<reportElement mode="Transparent" x="0" y="0" width="32" height="15" uuid="051cef1f-d97b-49b5-8f0b-b5755efda5bb"/>
+											<box>
+												<pen lineWidth="0.25"/>
+												<topPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+												<leftPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+												<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+												<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+											</box>
 											<textElement textAlignment="Center">
 												<font fontName="DejaVu Sans" size="8"/>
 											</textElement>
@@ -271,7 +292,7 @@
 											<rightPen lineWidth="0.0"/>
 										</box>
 										<textField isStretchWithOverflow="true">
-											<reportElement style="Crosstab Data Text" x="1" y="0" width="32" height="48" uuid="0d33f862-3339-44cc-9676-9ea84b5ee545"/>
+											<reportElement style="Crosstab Data Text" x="0" y="0" width="32" height="48" uuid="0d33f862-3339-44cc-9676-9ea84b5ee545"/>
 											<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 												<font fontName="DejaVu Sans" size="7" isBold="false"/>
 											</textElement>
@@ -294,7 +315,7 @@
 							<measure name="mediaMeasure" class="java.lang.String" calculation="First">
 								<measureExpression><![CDATA[$F{media}]]></measureExpression>
 							</measure>
-							<crosstabCell width="34" height="15">
+							<crosstabCell width="32" height="15">
 								<cellContents mode="Opaque" style="linha-zebrado">
 									<box>
 										<pen lineWidth="0.0"/>
@@ -304,7 +325,14 @@
 										<rightPen lineWidth="0.0"/>
 									</box>
 									<textField pattern="###0.00" isBlankWhenNull="true">
-										<reportElement mode="Transparent" x="1" y="0" width="32" height="15" forecolor="#010101" uuid="5460d827-cdaa-4ea5-ab26-46e942baa06e"/>
+										<reportElement mode="Transparent" x="0" y="0" width="32" height="15" forecolor="#010101" uuid="5460d827-cdaa-4ea5-ab26-46e942baa06e"/>
+										<box>
+											<pen lineWidth="0.25"/>
+											<topPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
+											<leftPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
+											<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
+											<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
+										</box>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="DejaVu Sans" size="8"/>
 										</textElement>
