@@ -289,7 +289,7 @@ class ServantSheetReport extends Portabilis_Report_ReportCore
                 translate(upper(curso_dois.nome),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS curso_dois,
                 translate(upper(curso_tres.nome),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS curso_tres,
                 servidor.ano_inicio_curso_superior_1,
-                servidor.ano_conclusao_curso_superior_1,
+                eg.completion_year AS ano_conclusao_curso_superior_1,
                 servidor.situacao_curso_superior_1,
                 servidor.ano_inicio_curso_superior_2,
                 servidor.ano_conclusao_curso_superior_2,
@@ -340,8 +340,10 @@ class ServantSheetReport extends Portabilis_Report_ReportCore
                 AND pessoa.idpes = servidor.cod_servidor
             LEFT JOIN cadastro.escolaridade ON TRUE
                 AND escolaridade.idesco = servidor.ref_idesco
+            LEFT JOIN public.employee_graduations eg on TRUE 
+            	AND eg.employee_id = servidor.cod_servidor                        
             LEFT JOIN modules.educacenso_ies faculdade_um ON
-                TRUE AND faculdade_um.id = servidor.instituicao_curso_superior_1
+                TRUE AND faculdade_um.id = eg.college_id
             LEFT JOIN modules.educacenso_ies faculdade_dois ON
                 TRUE AND faculdade_dois.id = servidor.instituicao_curso_superior_2
             LEFT JOIN modules.educacenso_ies faculdade_tres ON
@@ -349,7 +351,7 @@ class ServantSheetReport extends Portabilis_Report_ReportCore
             LEFT JOIN pmieducar.servidor_alocacao ON TRUE
                 AND servidor_alocacao.ref_cod_servidor = servidor.cod_servidor
             LEFT JOIN modules.educacenso_curso_superior curso_um ON
-                TRUE AND curso_um.id = servidor.codigo_curso_superior_1
+                TRUE AND curso_um.id = eg.course_id
             LEFT JOIN modules.educacenso_curso_superior curso_dois ON
                 TRUE AND curso_dois.id = servidor.codigo_curso_superior_2
             LEFT JOIN modules.educacenso_curso_superior curso_tres ON
