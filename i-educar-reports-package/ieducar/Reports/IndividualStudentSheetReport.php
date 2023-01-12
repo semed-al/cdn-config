@@ -61,7 +61,9 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
             COALESCE(turma_turno.nome, 'não informado') as periodo,
             aluno.cod_aluno as cod_aluno,
             matricula.cod_matricula as cod_matricula,
-            view_situacao.texto_situacao AS situacao,
+            to_char(fisica.data_nasc,'DD/MM/YYYY') AS data_nasc,
+            INITCAP(relatorio.get_pai_aluno(aluno.cod_aluno)) AS nome_do_pai,
+            INITCAP(relatorio.get_mae_aluno(aluno.cod_aluno)) AS nome_da_mae,
             public.fcn_upper(pessoa.nome) as nome_aluno,
             public.data_para_extenso(CURRENT_DATE) as data_atual
         FROM pmieducar.instituicao
@@ -120,7 +122,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         $matricula = $this->args['matricula'] ?: 0;
 
     $studentSheetFrequency = "
-        SELECT  view_componente_curricular.nome AS nome_disciplina,
+        SELECT view_componente_curricular.nome AS nome_disciplina,
                 area_conhecimento.nome AS area_conhecimento,
                 falta_etapa1.quantidade AS total_faltas_et1,
                 falta_etapa2.quantidade AS total_faltas_et2,
@@ -130,16 +132,18 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 falta_componente2.quantidade AS faltas_componente_et2,
                 falta_componente3.quantidade AS faltas_componente_et3,
                 falta_componente4.quantidade AS faltas_componente_et4,
-                relatorio.get_total_geral_falta_componente(matricula.cod_matricula) AS total_geral_faltas_componente,
-                relatorio.get_total_faltas(matricula.cod_matricula) AS total_faltas,
+                COALESCE(relatorio.get_total_geral_falta_componente(matricula.cod_matricula),(falta_etapa1.quantidade + falta_etapa2.quantidade + falta_etapa3.quantidade + falta_etapa4.quantidade)) AS total_faltas,
+                --relatorio.get_total_faltas(matricula.cod_matricula) AS total_faltas,
                 COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria) AS carga_horaria_componente,
                 COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4 AS carga_horaria_componente_et,
-                round((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4)/curso.hora_falta) AS aulas_dadas_et,
+                CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4)/curso.hora_falta) AS aulas_dadas_componente,
+                CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4)/curso.hora_falta) AS aulas_dadas_componente_et,
                 serie.carga_horaria AS carga_horaria_serie,
+                curso.hora_falta AS hora_falta,
                 serie.dias_letivos,
                 falta_aluno.id AS falta_aluno_id,
                 relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id) AS total_faltas_componente,
-                (relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id)*curso.hora_falta/COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria))*100 AS percentual_falta_componente,
+                (relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id)*curso.hora_falta/COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria))*100 AS percentual_falta_componente,                
                 regra_avaliacao.tipo_presenca
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)

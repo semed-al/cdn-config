@@ -66,8 +66,11 @@
 	<field name="nome_serie" class="java.lang.String"/>
 	<field name="nome_turma" class="java.lang.String"/>
 	<field name="nome_aluno" class="java.lang.String"/>
+	<field name="data_nasc" class="java.lang.String"/>
 	<field name="periodo" class="java.lang.String"/>
 	<field name="situacao" class="java.lang.String"/>
+	<field name="nome_da_mae" class="java.lang.String"/>
+	<field name="nome_do_pai" class="java.lang.String"/>
 	<group name="info">
 		<groupExpression><![CDATA[true]]></groupExpression>
 		<groupHeader>
@@ -120,12 +123,12 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<textField>
-					<reportElement x="346" y="45" width="191" height="14" backcolor="#FFFFFF" uuid="612de4db-3b72-4a71-a0f2-217cbd1d04d5"/>
-					<textElement>
+				<textField isBlankWhenNull="true">
+					<reportElement x="410" y="34" width="140" height="11" backcolor="#FFFFFF" uuid="612de4db-3b72-4a71-a0f2-217cbd1d04d5"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{situacao}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{nome_da_mae}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="554" y="0" width="1" height="63" uuid="b3a90e4a-48f9-438e-bf2c-5858d5b6efb5"/>
@@ -147,11 +150,11 @@
 					</graphicElement>
 				</line>
 				<staticText>
-					<reportElement x="345" y="32" width="75" height="13" uuid="2f8ce82f-65eb-4328-9bfc-ec422b71523f"/>
-					<textElement>
+					<reportElement x="345" y="34" width="65" height="11" uuid="2f8ce82f-65eb-4328-9bfc-ec422b71523f"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[SITUAÇÃO]]></text>
+					<text><![CDATA[NOME DA MÃE:]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
 					<reportElement x="4" y="15" width="209" height="14" uuid="ac4f72b9-d0a7-4860-a6d7-68040c1ed0af"/>
@@ -168,7 +171,7 @@
 					<textFieldExpression><![CDATA[$F{nome_turma}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="4" y="45" width="242" height="14" uuid="c4f1f7be-528d-44dc-a723-c3a315eb6c36"/>
+					<reportElement x="4" y="45" width="226" height="14" uuid="c4f1f7be-528d-44dc-a723-c3a315eb6c36"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -222,6 +225,40 @@
 					</textElement>
 					<text><![CDATA[TURMA]]></text>
 				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="410" y="48" width="140" height="11" backcolor="#FFFFFF" uuid="7ff1de7e-b5e4-43f8-a473-ba7eb26a5e21"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome_do_pai}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="345" y="48" width="65" height="11" uuid="397114ce-9770-49f2-b5fa-532fcdfa5647"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<text><![CDATA[NOME DO PAI:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="229" y="32" width="1" height="31" uuid="78a34f9d-5f1c-4e29-8912-53faab5f1c98"/>
+					<graphicElement>
+						<pen lineWidth="0.25"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="234" y="33" width="99" height="13" uuid="8cf45e39-bcdd-45c5-a1b2-0b97f4d8549f"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<text><![CDATA[DATA DE NASCIMENTO:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="234" y="46" width="100" height="14" uuid="8b54f7e9-266c-451f-b064-67402cb732bb"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{data_nasc}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 	</group>

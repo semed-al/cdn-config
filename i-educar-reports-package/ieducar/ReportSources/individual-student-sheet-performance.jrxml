@@ -392,7 +392,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota_exame}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_exame} != null ? $F{nota_exame} : "-"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="506" y="0" width="1" height="13" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15"/>
@@ -413,13 +413,11 @@
 				</graphicElement>
 			</line>
 			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="274" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="82bee757-ccf3-4159-adfb-8e64448302bc">
-					<printWhenExpression><![CDATA[$F{nota1recuperacao} != null]]></printWhenExpression>
-				</reportElement>
+				<reportElement x="274" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="82bee757-ccf3-4159-adfb-8e64448302bc"/>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota1recuperacao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota1recuperacao} != null ? $F{nota1recuperacao} : "-"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="302" y="0" width="1" height="13" uuid="93437fa8-7350-4082-91e6-99b4d1aba1df"/>
@@ -428,13 +426,11 @@
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="304" y="1" width="26" height="11" uuid="4dc26629-3d6d-4f59-9be2-8c78f5a584e8">
-					<printWhenExpression><![CDATA[$F{nota2recuperacao} != null]]></printWhenExpression>
-				</reportElement>
+				<reportElement x="304" y="1" width="26" height="11" uuid="4dc26629-3d6d-4f59-9be2-8c78f5a584e8"/>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota2recuperacao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota2recuperacao} != null ? $F{nota2recuperacao} : "-"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="332" y="0" width="1" height="13" uuid="f79b7db9-9954-4fa2-b82a-8e8cdad097bc"/>
@@ -443,13 +439,11 @@
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="334" y="1" width="26" height="11" uuid="96a9f475-9555-451b-bb75-c7beb1b0214f">
-					<printWhenExpression><![CDATA[$F{nota3recuperacao} != null]]></printWhenExpression>
-				</reportElement>
+				<reportElement x="334" y="1" width="26" height="11" uuid="96a9f475-9555-451b-bb75-c7beb1b0214f"/>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota3recuperacao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota3recuperacao} != null ? $F{nota3recuperacao} : "-"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="364" y="0" width="1" height="13" uuid="f8a0a96f-7217-432c-b870-2a8a3bbd8da1"/>
@@ -458,13 +452,11 @@
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="366" y="1" width="26" height="11" uuid="0056fa40-12e6-4867-ac3c-6d0b56499b29">
-					<printWhenExpression><![CDATA[$F{nota4recuperacao} != null]]></printWhenExpression>
-				</reportElement>
+				<reportElement x="366" y="1" width="26" height="11" uuid="0056fa40-12e6-4867-ac3c-6d0b56499b29"/>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota4recuperacao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota4recuperacao} != null ? $F{nota4recuperacao} : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="399" y="0" width="26" height="11" uuid="bf1bd499-99fb-425b-b9a0-a0a19383a788"/>
