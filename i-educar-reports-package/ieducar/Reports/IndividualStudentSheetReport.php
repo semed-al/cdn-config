@@ -133,7 +133,6 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 falta_componente3.quantidade AS faltas_componente_et3,
                 falta_componente4.quantidade AS faltas_componente_et4,
                 COALESCE(relatorio.get_total_geral_falta_componente(matricula.cod_matricula),(falta_etapa1.quantidade + falta_etapa2.quantidade + falta_etapa3.quantidade + falta_etapa4.quantidade)) AS total_faltas,
-                --relatorio.get_total_faltas(matricula.cod_matricula) AS total_faltas,
                 COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria) AS carga_horaria_componente,
                 COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4 AS carga_horaria_componente_et,
                 CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4)/curso.hora_falta) AS aulas_dadas_componente,

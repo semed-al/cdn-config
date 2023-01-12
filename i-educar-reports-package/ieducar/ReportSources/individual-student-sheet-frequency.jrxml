@@ -59,10 +59,8 @@
 	<field name="faltas_componente_et4" class="java.lang.Integer"/>
 	<field name="aulas_dadas_componente" class="java.lang.Integer"/>
 	<field name="aulas_dadas_componente_et" class="java.lang.Integer"/>
-	<field name="total_faltas_soma_componentes" class="java.math.BigDecimal"/>
 	<field name="total_faltas" class="java.math.BigDecimal"/>
 	<field name="percentual_falta_componente" class="java.lang.Double"/>
-	<field name="percentual_falta_total" class="java.lang.Double"/>
 	<field name="carga_horaria_componente" class="java.lang.Integer"/>
 	<field name="carga_horaria_componente_et" class="java.lang.Integer"/>
 	<field name="carga_horaria_serie" class="java.lang.Double"/>
@@ -93,9 +91,6 @@
 	</variable>
 	<variable name="soma_faltas_componente_et4" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{faltas_componente_et4}]]></variableExpression>
-	</variable>
-	<variable name="soma_faltas_total" class="java.lang.Integer" calculation="Highest">
-		<variableExpression><![CDATA[$F{tipo_presenca} == 1 ? $F{total_faltas_et1}+$F{total_faltas_et2}+$F{total_faltas_et3}+$F{total_faltas_et4} : $V{soma_faltas_componente_et1}+$V{soma_faltas_componente_et2}+$V{soma_faltas_componente_et3}+$V{soma_faltas_componente_et4}]]></variableExpression>
 	</variable>
 	<variable name="percentual_frequencia_final" class="java.lang.Double" calculation="Highest">
 		<variableExpression><![CDATA[100-(($F{total_faltas}*$F{hora_falta}/$F{carga_horaria_serie})*100)]]></variableExpression>
