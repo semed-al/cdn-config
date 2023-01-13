@@ -37,6 +37,7 @@ class FinalResultReport extends Portabilis_Report_ReportCore
     {
         $escola = $this->args['escola'] ?: 0;
         $curso = $this->args['curso'] ?: 0;
+        $serie = $this->args['serie'] ?: 0;
         $situacao = $this->args['situacao'] ?: 0;
         $ano = $this->args['ano'] ?: 0;
         $turma = $this->args['turma'] ?: 0;
@@ -71,8 +72,6 @@ INNER JOIN pmieducar.escola_serie ON (escola_serie.ref_cod_escola = escola.cod_e
 INNER JOIN pmieducar.curso ON (curso.cod_curso = escola_curso.ref_cod_curso AND curso.ativo = 1)
 INNER JOIN pmieducar.serie ON (serie.cod_serie = escola_serie.ref_cod_serie AND serie.ativo = 1)
 INNER JOIN pmieducar.turma ON (turma.ref_ref_cod_escola = escola.cod_escola
-                          AND turma.ref_cod_curso = curso.cod_curso
-                          AND turma.ref_ref_cod_serie = serie.cod_serie
                           AND turma.ano = escola_ano_letivo.ano
                           AND turma.ativo = 1)
 INNER JOIN modules.regra_avaliacao_serie_ano rasa
@@ -86,7 +85,7 @@ INNER JOIN pmieducar.matricula ON (matricula.cod_matricula = matricula_turma.ref
       AND matricula.ref_cod_curso = curso.cod_curso
       AND matricula.ref_ref_cod_serie = serie.cod_serie
       AND matricula.ano = escola_ano_letivo.ano
-                              AND matricula.ativo = 1)
+      AND matricula.ativo = 1)
 INNER JOIN relatorio.view_situacao ON (view_situacao.cod_matricula = matricula.cod_matricula
                                        AND view_situacao.cod_turma = matricula_turma.ref_cod_turma
                                        AND matricula_turma.sequencial = view_situacao.sequencial)
@@ -101,6 +100,7 @@ WHERE escola_ano_letivo.ativo = 1
   AND escola_ano_letivo.ano = {$ano}
   AND matricula.ref_ref_cod_escola = {$escola}
   AND matricula.ref_cod_curso = {$curso}
+  AND serie.cod_serie = {$serie}
   AND view_situacao.cod_situacao = {$situacao}
   AND (SELECT 1
          FROM pmieducar.aluno
