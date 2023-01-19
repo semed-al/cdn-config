@@ -52,6 +52,7 @@ SELECT DISTINCT matricula.cod_matricula,
        round((modules.frequencia_da_matricula(matricula.cod_matricula))::numeric, 1) AS frequencia_geral,
        CASE WHEN matricula.aprovado IN (4,6) THEN '-'
             WHEN matricula_turma.remanejado THEN '-'
+            WHEN isnumeric(nccm.media_arredondada) AND nccm.media < 6 THEN CONCAT('<b>',replace(trunc(nccm.media_arredondada::numeric, ra.qtd_casas_decimais)::TEXT,'.',','),'</b>')
             WHEN isnumeric(nccm.media_arredondada) THEN replace(trunc(nccm.media_arredondada::numeric, ra.qtd_casas_decimais)::TEXT,'.',',')
             ELSE nccm.media_arredondada
        END AS media,
