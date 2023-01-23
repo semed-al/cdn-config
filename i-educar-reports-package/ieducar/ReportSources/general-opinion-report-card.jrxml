@@ -353,16 +353,16 @@
 	</pageHeader>
 	<detail>
 		<band height="40" splitType="Stretch">
-			<staticText>
-				<reportElement x="6" y="0" width="39" height="13" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044"/>
-				<textElement verticalAlignment="Bottom">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1" y="1" width="130" height="10" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<text><![CDATA[Parecer:]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["Parecer - " + $F{etapa} + ":"]]></textFieldExpression>
+			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="0" y="0" width="554" height="40" uuid="0fcda8ef-d5ef-4a28-bcb4-21f2c1898ad9"/>
-				<box topPadding="0" leftPadding="0" bottomPadding="10">
+				<box topPadding="14" leftPadding="0" bottomPadding="10">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -371,7 +371,7 @@
 				</box>
 				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
-					<paragraph leftIndent="49" rightIndent="10"/>
+					<paragraph leftIndent="20" rightIndent="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{parecer}]]></textFieldExpression>
 			</textField>

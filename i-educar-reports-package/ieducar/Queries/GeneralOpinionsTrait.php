@@ -52,7 +52,7 @@ trait GeneralOpinionsTrait
                     WHEN (SELECT padrao_ano_escolar FROM pmieducar.curso c WHERE cod_curso = curso.cod_curso) = 1 THEN
                         (
                             SELECT
-                                CONCAT(padrao.sequencial, 'º ', modulo.nm_tipo)
+                                CONCAT(pg.etapa, 'º ', modulo.nm_tipo)
                             FROM
                                 pmieducar.ano_letivo_modulo AS padrao,
                                 pmieducar.modulo
@@ -65,7 +65,7 @@ trait GeneralOpinionsTrait
                     ELSE
                         (
                             SELECT
-                                CONCAT(tm.sequencial, 'º ', modulo.nm_tipo)
+                                CONCAT(pg.etapa, 'º ', modulo.nm_tipo)
                             FROM
                                 pmieducar.turma_modulo AS tm,
                                 pmieducar.modulo
@@ -182,6 +182,7 @@ trait GeneralOpinionsTrait
             fisica.data_nasc,
             vs.texto_situacao,
             pg.parecer,
+            pg.etapa,
             fa.tipo_falta,
             fa.id,
             curso.cod_curso,
@@ -198,7 +199,7 @@ trait GeneralOpinionsTrait
                 END
             )
 
-        ORDER BY relatorio.get_texto_sem_caracter_especial(pessoa.nome)
+        ORDER BY pg.etapa ASC, relatorio.get_texto_sem_caracter_especial(pessoa.nome)
 SQL;
     }
 }
