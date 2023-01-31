@@ -313,23 +313,23 @@
 					<pen lineWidth="0.25" lineStyle="Solid" lineColor="#0A0A0A"/>
 				</graphicElement>
 			</rectangle>
-			<textField pattern="" isBlankWhenNull="true">
+			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e777cca9-d769-4e39-be43-01f55e78666d">
 					<printWhenExpression><![CDATA[$F{tipo_nota} == 0 || $F{nota1} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{nota1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="48b3461e-6c11-4eda-be2d-a5a9f2fb9fd3">
 					<printWhenExpression><![CDATA[$F{tipo_nota} == 0 || $F{nota2} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{nota2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="1" width="148" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
@@ -356,14 +356,14 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<textField isBlankWhenNull="true">
+			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3">
 					<printWhenExpression><![CDATA[$F{tipo_nota} == 0 || $F{nota3} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{nota3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="393" y="0" width="1" height="13" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639"/>
@@ -371,28 +371,28 @@
 					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
-			<textField isBlankWhenNull="true">
+			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11" uuid="12c04f41-b44c-480f-8330-90d92250edbd">
 					<printWhenExpression><![CDATA[$F{tipo_nota} == 0 || $F{nota4} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{nota4}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="513" y="0" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108"/>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : $F{media}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_nota} == 0  ? "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{media})).toString()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="469" y="0" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota_exame} != null ? $F{nota_exame} : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_exame} != null ? new DecimalFormat("##0.0").format(Double.parseDouble($F{nota_exame})).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="506" y="0" width="1" height="13" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15"/>
@@ -412,12 +412,12 @@
 					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
-			<textField pattern="" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="274" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="82bee757-ccf3-4159-adfb-8e64448302bc"/>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota1recuperacao} != null ? $F{nota1recuperacao} : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota1recuperacao} != null ? new DecimalFormat("##0.0").format($F{nota1recuperacao}.doubleValue()).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="302" y="0" width="1" height="13" uuid="93437fa8-7350-4082-91e6-99b4d1aba1df"/>
@@ -430,7 +430,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota2recuperacao} != null ? $F{nota2recuperacao} : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota2recuperacao} != null ? new DecimalFormat("##0.0").format($F{nota2recuperacao}.doubleValue()).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="332" y="0" width="1" height="13" uuid="f79b7db9-9954-4fa2-b82a-8e8cdad097bc"/>
@@ -443,7 +443,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota3recuperacao} != null ? $F{nota3recuperacao} : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota3recuperacao} != null ? new DecimalFormat("##0.0").format($F{nota3recuperacao}.doubleValue()).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="364" y="0" width="1" height="13" uuid="f8a0a96f-7217-432c-b870-2a8a3bbd8da1"/>
@@ -456,14 +456,14 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota4recuperacao} != null ? $F{nota4recuperacao} : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota4recuperacao} != null ? new DecimalFormat("##0.0").format($F{nota4recuperacao}.doubleValue()).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="399" y="0" width="26" height="11" uuid="bf1bd499-99fb-425b-b9a0-a0a19383a788"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{resultado_anual}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new DecimalFormat("##0.0").format($F{resultado_anual}.doubleValue()).toString()]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="430" y="0" width="1" height="13" uuid="45d90c4d-2d6f-4023-8992-12b1c446251b"/>
@@ -482,7 +482,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{media_anual}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new DecimalFormat("##0.0").format($F{media_anual}.doubleValue()).toString()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
