@@ -56,13 +56,23 @@ class EducationalProgressAndProceduresReport extends Portabilis_Report_ReportCor
                 serie.nm_serie AS nome_serie,
                 COUNT(matricula.cod_matricula) AS qtde_matricula,
 
+
                 (SELECT COUNT(m.cod_matricula)
                     FROM pmieducar.matricula m
                     INNER JOIN relatorio.view_situacao vs ON(vs.cod_matricula = m.cod_matricula AND vs.cod_situacao = m.aprovado)
                     WHERE m.ref_ref_cod_escola = escola.cod_escola
                     AND m.ref_ref_cod_serie = serie.cod_serie
                     AND m.ano = escola_ano_letivo.ano
-                    AND vs.cod_situacao IN (1, 12 ,13)
+                    AND vs.cod_situacao IN (3)
+                    AND COALESCE(m.dependencia, false) = false) AS qtde_cursando,
+
+                (SELECT COUNT(m.cod_matricula)
+                    FROM pmieducar.matricula m
+                    INNER JOIN relatorio.view_situacao vs ON(vs.cod_matricula = m.cod_matricula AND vs.cod_situacao = m.aprovado)
+                    WHERE m.ref_ref_cod_escola = escola.cod_escola
+                    AND m.ref_ref_cod_serie = serie.cod_serie
+                    AND m.ano = escola_ano_letivo.ano
+                    AND vs.cod_situacao IN (1, 12, 16)
                     AND COALESCE(m.dependencia, false) = false) AS qtde_aprovado,
 
                 (SELECT COUNT(m.cod_matricula)
@@ -107,7 +117,7 @@ class EducationalProgressAndProceduresReport extends Portabilis_Report_ReportCor
                     WHERE m.ref_ref_cod_escola = escola.cod_escola
                     AND m.ref_ref_cod_serie = serie.cod_serie
                     AND m.ano = escola_ano_letivo.ano
-                    AND vs.cod_situacao IN (1, 12 ,13)
+                    AND vs.cod_situacao IN (1, 12, 16)
                     AND COALESCE(m.dependencia, false) = false) AS perc_aprovado,
 
                 (SELECT round((COUNT(m.cod_matricula)*100)/COUNT(matricula.cod_matricula)::decimal, 1)
@@ -155,10 +165,12 @@ class EducationalProgressAndProceduresReport extends Portabilis_Report_ReportCor
             INNER JOIN pmieducar.curso ON (curso.cod_curso = escola_curso.ref_cod_curso AND curso.ativo = 1)
             INNER JOIN pmieducar.serie ON (serie.cod_serie = escola_serie.ref_cod_serie AND serie.ativo = 1)
             INNER JOIN pmieducar.turma ON (turma.ref_ref_cod_escola = escola.cod_escola AND turma.ref_cod_curso = escola_curso.ref_cod_curso
-                                                                                        AND turma.ref_ref_cod_serie = escola_serie.ref_cod_serie
+                                                                                        -- AND turma.ref_ref_cod_serie = escola_serie.ref_cod_serie
                                                                                         AND turma.ativo = 1)
             INNER JOIN pmieducar.matricula_turma ON (matricula_turma.ref_cod_turma = turma.cod_turma)
-            INNER JOIN pmieducar.matricula ON (matricula.cod_matricula = matricula_turma.ref_cod_matricula AND matricula.ativo = 1)
+            INNER JOIN pmieducar.matricula ON (matricula.cod_matricula = matricula_turma.ref_cod_matricula 
+                                                AND matricula.ref_ref_cod_serie = serie.cod_serie
+                                                AND matricula.ativo = 1)
             INNER JOIN relatorio.view_situacao ON (view_situacao.cod_matricula = matricula.cod_matricula AND view_situacao.cod_turma = turma.cod_turma
                                                                                                         AND view_situacao.cod_situacao = 10
                                                                                                         AND matricula_turma.sequencial = view_situacao.sequencial)
