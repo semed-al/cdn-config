@@ -170,17 +170,10 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 INNER JOIN pmieducar.turma ON TRUE
                     AND turma.ref_ref_cod_escola = escola.cod_escola
                     AND turma.ref_cod_curso = escola_curso.ref_cod_curso
-                    AND (turma.ref_ref_cod_serie = escola_serie.ref_cod_serie 
-                            OR turma.cod_turma IN 
-                                (SELECT DISTINCT turma_serie.turma_id 
-                                    FROM pmieducar.turma_serie 
-                                    WHERE turma_serie.escola_id = escola.cod_escola
-                                        AND turma_serie.serie_id = escola_serie.ref_cod_serie
-                                        AND turma_serie.turma_id = turma.cod_turma)
-                        )
                     AND turma.ativo = 1
                 INNER JOIN pmieducar.matricula_turma ON TRUE
                     AND matricula_turma.ref_cod_turma = turma.cod_turma
+                    AND matricula_turma.ativo = 1
                 INNER JOIN pmieducar.matricula ON TRUE
                     AND matricula.cod_matricula = matricula_turma.ref_cod_matricula
                     AND matricula.ativo = 1
@@ -193,9 +186,10 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     AND turma_turno.id = turma.turma_turno_id
                     AND turma.cod_turma = matricula_turma.ref_cod_turma
                 INNER JOIN pmieducar.aluno ON TRUE
-                    AND pmieducar.matricula.ref_cod_aluno = pmieducar.aluno.cod_aluno
+                    AND matricula.ref_cod_aluno = aluno.cod_aluno
+                    AND aluno.ativo = 1
                 INNER JOIN cadastro.fisica ON TRUE
-                    AND cadastro.fisica.idpes = pmieducar.aluno.ref_idpes
+                    AND cadastro.fisica.idpes = aluno.ref_idpes
                 INNER JOIN cadastro.pessoa ON TRUE
                     AND cadastro.pessoa.idpes = cadastro.fisica.idpes
                 LEFT JOIN public.municipio ON municipio.idmun = fisica.idmun_nascimento
