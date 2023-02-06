@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="educational-progress-and-procedures" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f8d8580-478d-4021-a547-d37af41d360a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
@@ -271,7 +272,7 @@
 					<text><![CDATA[Desistência]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="159" y="30" width="53" height="16" backcolor="#F7B0C2" uuid="290a7920-12e8-4be2-b16d-4bfdb968f1df"/>
+					<reportElement mode="Opaque" x="159" y="30" width="53" height="16" backcolor="#F0F0F0" uuid="290a7920-12e8-4be2-b16d-4bfdb968f1df"/>
 					<box>
 						<pen lineColor="#F0F0F0"/>
 						<topPen lineWidth="0.25" lineColor="#000000"/>
@@ -534,7 +535,26 @@
 				<textFieldExpression><![CDATA[$F{perc_desistencia} + " %"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Opaque" x="159" y="0" width="53" height="16" backcolor="#F7B0C2" uuid="0d905e00-b27d-4a11-8eb0-c039970c76f8"/>
+				<reportElement mode="Opaque" x="159" y="0" width="53" height="16" backcolor="#F7B0C2" uuid="0d905e00-b27d-4a11-8eb0-c039970c76f8">
+					<printWhenExpression><![CDATA[$F{qtde_cursando} > 0]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineColor="#F0F0F0"/>
+					<topPen lineWidth="0.0" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qtde_cursando}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="159" y="0" width="53" height="16" uuid="491ccf32-58b5-4a73-8062-d5e02908f4a6">
+					<printWhenExpression><![CDATA[$F{qtde_cursando} == 0]]></printWhenExpression>
+				</reportElement>
 				<box>
 					<pen lineColor="#F0F0F0"/>
 					<topPen lineWidth="0.0" lineColor="#000000"/>
