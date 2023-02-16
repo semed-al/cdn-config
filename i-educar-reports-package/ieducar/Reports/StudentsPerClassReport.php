@@ -173,7 +173,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     AND turma.ativo = 1
                 INNER JOIN pmieducar.matricula_turma ON TRUE
                     AND matricula_turma.ref_cod_turma = turma.cod_turma
-                    AND matricula_turma.ativo = 1
+                    AND (matricula_turma.ativo = 1 OR matricula_turma.transferido IS NOT NULL)
                 INNER JOIN pmieducar.matricula ON TRUE
                     AND matricula.cod_matricula = matricula_turma.ref_cod_matricula
                     AND matricula.ativo = 1
