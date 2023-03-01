@@ -215,9 +215,6 @@ return new class extends clsCadastro {
         // ao cadastrar pessoa do pai ou mãe apartir do cadastro de outra pessoa,
         // é enviado o tipo de cadastro (pai ou mae).
         $parentType = isset($_REQUEST['parent_type']) ? $_REQUEST['parent_type'] : '';
-        // Se a pessoa for pai ou mãe, não tera naturalidade obrigatoria
-
-        $naturalidadeObrigatoria = ($parentType == '' ? true : false);
 
         // sexo
 
@@ -673,7 +670,7 @@ return new class extends clsCadastro {
 
         // naturalidade
 
-        $options = ['label' => 'Naturalidade', 'required' => $naturalidadeObrigatoria && $camposObrigatorios];
+        $options = ['label' => 'Naturalidade', 'required' => false];
 
         $helperOptions = [
             'objectName' => 'naturalidade',
@@ -702,7 +699,7 @@ return new class extends clsCadastro {
                 1 => 'Urbana',
                 2 => 'Rural'
             ],
-            'required' => $obrigarCamposCenso,
+            'required' => ($parentType == 'pai' || $parentType == 'mae') ? false : $obrigarCamposCenso,
         ]);
 
         $this->inputsHelper()->select('localizacao_diferenciada', [
