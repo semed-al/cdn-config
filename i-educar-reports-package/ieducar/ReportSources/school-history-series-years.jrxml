@@ -2975,13 +2975,15 @@
 		<band height="210" splitType="Stretch">
 			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
 			<rectangle>
-				<reportElement positionType="Float" x="6" y="1" width="545" height="99" uuid="91c092c5-d0b0-4373-84f2-6ab5714e18ae"/>
+				<reportElement positionType="Float" x="6" y="1" width="545" height="85" uuid="91c092c5-d0b0-4373-84f2-6ab5714e18ae">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</rectangle>
 			<line>
-				<reportElement x="6" y="26" width="545" height="1" uuid="63f3ec45-4de9-4c62-a831-063ef7342fa7">
+				<reportElement x="6" y="20" width="545" height="1" uuid="63f3ec45-4de9-4c62-a831-063ef7342fa7">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -3018,7 +3020,7 @@
 				<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="10" y="30" width="533" height="50" uuid="76d4f30f-c664-4da6-a2b6-d77dd7af368c">
+				<reportElement positionType="Float" x="10" y="24" width="533" height="50" uuid="76d4f30f-c664-4da6-a2b6-d77dd7af368c">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Justified" markup="styled">
@@ -3137,7 +3139,7 @@
 				<textFieldExpression><![CDATA[$V{max_nome_serie9}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" mode="Transparent" x="7" y="145" width="545" height="16" uuid="021421f4-e6c1-4be7-8ab1-0ef26ab43d84">
+				<reportElement positionType="Float" mode="Transparent" x="7" y="136" width="545" height="16" uuid="021421f4-e6c1-4be7-8ab1-0ef26ab43d84">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<box>
@@ -3516,7 +3518,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<staticText>
-					<reportElement positionType="Float" x="0" y="-11" width="545" height="14" uuid="6f8cc8e6-8fd3-4a68-813d-2077111dbd53">
+					<reportElement positionType="Float" x="0" y="-24" width="545" height="14" uuid="6f8cc8e6-8fd3-4a68-813d-2077111dbd53">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -3533,8 +3535,9 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 					<text><![CDATA[CRITÉRIOS DE APURAÇÃO DO RENDIMENTO ESCOLAR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="3" width="545" height="32" isPrintInFirstWholeBand="true" uuid="e685d977-930a-4bcb-a158-047ac175b8c1">
+					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="-9" width="545" height="30" isPrintInFirstWholeBand="true" uuid="e685d977-930a-4bcb-a158-047ac175b8c1">
 						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.belem.al.gov.br") == true]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -3551,8 +3554,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 					<text><![CDATA[De conformidade com a Resolução Nº 08/2007-CEB/CEE-AL proveitamento: 1º ao 5º ano de Ensino Fundamental, através da análise da ficha de acompanhamento individual, em cada etapa, com parecer descritivo anual, sem atribuição de nota. Entretanto, no 3º ano e 5º ano o aluno foi submetido a um processo de avaliação somativa.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="3" width="545" height="32" isPrintInFirstWholeBand="true" uuid="188b0214-9a62-46ae-9ffe-2d8d7170be23">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="-9" width="545" height="30" isPrintInFirstWholeBand="true" uuid="188b0214-9a62-46ae-9ffe-2d8d7170be23">
 						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
 						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.belem.al.gov.br") == false]]></printWhenExpression>
 					</reportElement>
