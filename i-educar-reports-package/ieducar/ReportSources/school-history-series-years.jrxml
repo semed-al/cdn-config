@@ -763,7 +763,7 @@
 						<textFieldExpression><![CDATA[$V{max_status_serie2}]]></textFieldExpression>
 					</textField>
 					<staticText>
-						<reportElement positionType="Float" x="0" y="5" width="148" height="14" uuid="6598d79c-6af5-4cdf-844b-a0a65560fe7d"/>
+						<reportElement positionType="Float" x="0" y="4" width="148" height="14" uuid="6598d79c-6af5-4cdf-844b-a0a65560fe7d"/>
 						<box>
 							<topPen lineWidth="0.25"/>
 							<leftPen lineWidth="0.25"/>
@@ -2975,7 +2975,7 @@
 		<band height="210" splitType="Stretch">
 			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
 			<rectangle>
-				<reportElement positionType="Float" x="6" y="1" width="545" height="85" uuid="91c092c5-d0b0-4373-84f2-6ab5714e18ae">
+				<reportElement positionType="Float" x="6" y="1" width="545" height="82" uuid="91c092c5-d0b0-4373-84f2-6ab5714e18ae">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2983,7 +2983,7 @@
 				</graphicElement>
 			</rectangle>
 			<line>
-				<reportElement x="6" y="20" width="545" height="1" uuid="63f3ec45-4de9-4c62-a831-063ef7342fa7">
+				<reportElement x="6" y="17" width="545" height="1" uuid="63f3ec45-4de9-4c62-a831-063ef7342fa7">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -3020,8 +3020,9 @@
 				<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="10" y="24" width="533" height="50" uuid="76d4f30f-c664-4da6-a2b6-d77dd7af368c">
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<reportElement positionType="Float" x="8" y="20" width="539" height="53" uuid="76d4f30f-c664-4da6-a2b6-d77dd7af368c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Justified" markup="styled">
 					<font fontName="DejaVu Sans" size="11"/>
@@ -3153,115 +3154,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA["HISTÓRICO ESCOLAR"]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="171" y="16" width="372" height="13" uuid="42924f94-244a-4738-9617-02a2ba19fb07">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} != 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ato_poder_publico}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="10" y="16" width="160" height="13" uuid="dca7477a-7779-47e4-81d1-9487728207e5">
-					<printWhenExpression><![CDATA[$F{ato_poder_publico} != '' &&
-$P{cabecalho_alternativo} != 1]]></printWhenExpression>
-				</reportElement>
-				<textElement markup="none">
-					<font fontName="DejaVu Sans" size="7" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Autorização ou Reconhecimento do Curso:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="10" y="16" width="39" height="10" uuid="70ca347a-c846-49fc-961b-e8d300900d26">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Aluno(a):]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="49" y="16" width="358" height="10" uuid="b126a925-b180-4e00-a006-9046eebb9647">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="10" y="29" width="53" height="10" uuid="25c206fd-725c-4bb2-80e6-4024205108f6">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Natural de:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="60" y="29" width="147" height="10" uuid="b2b6bde5-4021-4cd1-8072-f013f66dca48">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cidade_nascimento}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="432" y="16" width="100" height="10" uuid="faa2172a-fbae-43b6-871a-e385cb691012">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cod_inep}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="407" y="16" width="30" height="10" uuid="23ab065c-f0e5-4319-b99d-c521aef5a2df">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7" isBold="true"/>
-				</textElement>
-				<text><![CDATA[INEP:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="10" y="26" width="84" height="10" uuid="3386696c-2f8b-4c80-ba9e-bf157fe1d1d8">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Data de nascimento:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="96" y="26" width="100" height="10" uuid="f5e188c9-99a4-45c5-8689-5a55718262df">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{data_nasc}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="10" y="38" width="39" height="10" uuid="4f2f23a6-596e-4e32-aae8-15141e85e25a">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Filho de:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="53" y="38" width="449" height="10" uuid="aa9972ae-cb55-4667-b507-dfa2713d7555">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai}))]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="10" y="1" width="532" height="15" uuid="36d67cdd-6613-4b28-b7c6-d6fac2598033">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -3270,24 +3162,6 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["CERTIFICADO DE CONCLUSÃO DE SÉRIE ESCOLAR E HISTÓRICO ESCOLAR"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="407" y="29" width="51" height="10" uuid="a4d18f2b-2954-4bfb-ad7b-ab8d20924912">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Estado:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="443" y="29" width="100" height="11" uuid="4b938a60-4571-4e09-843d-e66c37897986">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{uf_nascimento}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="FixRelativeToBottom" x="155" y="172" width="22" height="12" uuid="a7eb55a2-a74f-4e7c-8cf7-69e3c15253e3">
@@ -3514,11 +3388,9 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<text><![CDATA[NOTA]]></text>
 			</staticText>
 			<frame>
-				<reportElement positionType="Float" stretchType="ElementGroupHeight" x="6" y="111" width="545" height="35" uuid="ea0a4442-0e38-4431-b113-c8da0baa8280">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement positionType="Float" x="6" y="111" width="545" height="30" uuid="ea0a4442-0e38-4431-b113-c8da0baa8280"/>
 				<staticText>
-					<reportElement positionType="Float" x="0" y="-24" width="545" height="14" uuid="6f8cc8e6-8fd3-4a68-813d-2077111dbd53">
+					<reportElement x="0" y="-30" width="545" height="14" uuid="6f8cc8e6-8fd3-4a68-813d-2077111dbd53">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box>
@@ -3535,7 +3407,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 					<text><![CDATA[CRITÉRIOS DE APURAÇÃO DO RENDIMENTO ESCOLAR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="-9" width="545" height="30" isPrintInFirstWholeBand="true" uuid="e685d977-930a-4bcb-a158-047ac175b8c1">
+					<reportElement stretchType="ElementGroupHeight" x="0" y="-16" width="545" height="30" isPrintInFirstWholeBand="true" uuid="e685d977-930a-4bcb-a158-047ac175b8c1">
 						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.belem.al.gov.br") == true]]></printWhenExpression>
@@ -3554,7 +3426,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 					<text><![CDATA[De conformidade com a Resolução Nº 08/2007-CEB/CEE-AL proveitamento: 1º ao 5º ano de Ensino Fundamental, através da análise da ficha de acompanhamento individual, em cada etapa, com parecer descritivo anual, sem atribuição de nota. Entretanto, no 3º ano e 5º ano o aluno foi submetido a um processo de avaliação somativa.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="-9" width="545" height="30" isPrintInFirstWholeBand="true" uuid="188b0214-9a62-46ae-9ffe-2d8d7170be23">
+					<reportElement stretchType="ElementGroupHeight" x="0" y="-16" width="545" height="30" isPrintInFirstWholeBand="true" uuid="188b0214-9a62-46ae-9ffe-2d8d7170be23">
 						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
 						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.belem.al.gov.br") == false]]></printWhenExpression>
 					</reportElement>
