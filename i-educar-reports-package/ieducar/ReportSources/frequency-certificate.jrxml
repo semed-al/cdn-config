@@ -155,7 +155,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="21" y="172" width="132" height="20" uuid="450097ec-70cd-4d94-92bf-65da72263dff">
-					<printWhenExpression><![CDATA[$F{cod_inep}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{cod_inep} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="10"/>
@@ -164,7 +164,7 @@
 			</staticText>
 			<staticText>
 				<reportElement x="21" y="195" width="132" height="20" uuid="a7fef40f-5b83-4c6f-8ec4-55f8c8a68e23">
-					<printWhenExpression><![CDATA[$F{cod_nis}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{cod_nis} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font fontName="DejaVu Sans" size="10"/>
