@@ -199,7 +199,7 @@ trait GeneralOpinionsTrait
                 END
             )
 
-        ORDER BY pg.etapa ASC, relatorio.get_texto_sem_caracter_especial(pessoa.nome)
+        ORDER BY relatorio.get_texto_sem_caracter_especial(pessoa.nome) ASC, pg.etapa ASC
 SQL;
     }
 }

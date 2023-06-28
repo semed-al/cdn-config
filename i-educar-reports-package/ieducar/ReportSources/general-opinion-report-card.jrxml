@@ -280,39 +280,26 @@
 		<groupFooter>
 			<band height="49">
 				<line>
-					<reportElement x="22" y="34" width="151" height="1" uuid="ff884b9b-196b-4e84-928c-967ef3705d1d"/>
+					<reportElement x="22" y="34" width="181" height="1" uuid="ff884b9b-196b-4e84-928c-967ef3705d1d"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
-					<reportElement x="198" y="34" width="151" height="1" uuid="ff884b9b-196b-4e84-928c-967ef3705d1d"/>
-					<graphicElement>
-						<pen lineWidth="0.25"/>
-					</graphicElement>
-				</line>
-				<line>
-					<reportElement x="381" y="34" width="151" height="1" uuid="ff884b9b-196b-4e84-928c-967ef3705d1d"/>
+					<reportElement x="336" y="34" width="181" height="1" uuid="ff884b9b-196b-4e84-928c-967ef3705d1d"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<staticText>
-					<reportElement x="22" y="35" width="152" height="13" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044"/>
+					<reportElement x="35" y="35" width="152" height="13" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044"/>
 					<textElement textAlignment="Center">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<text><![CDATA[Assinatura do Docente]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="381" y="35" width="151" height="13" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<text><![CDATA[Assinatura do Pai/Responsável]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="173" y="35" width="203" height="13" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044"/>
+					<reportElement x="330" y="35" width="203" height="13" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044"/>
 					<textElement textAlignment="Center">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
