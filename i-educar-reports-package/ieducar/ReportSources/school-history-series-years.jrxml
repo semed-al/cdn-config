@@ -460,32 +460,32 @@
 		<variableExpression><![CDATA[(!$V{max_carga_horaria9} || !$V{max_freq9}) ? "-" : (($V{max_carga_horaria9} * $V{max_freq9}) / 100)]]></variableExpression>
 		<initialValueExpression><![CDATA[]]></initialValueExpression>
 	</variable>
-	<variable name="resultado_global_1" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_1serie} == null || $F{nota_1serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_1serie}).find() ? null : new java.lang.Double($F{nota_1serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_1" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_1serie} == null || $F{nota_1serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_1serie}).find() ? null : new java.math.BigDecimal($F{nota_1serie}.replace(",","."))]]></variableExpression>
 	</variable>
-	<variable name="resultado_global_2" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_2serie} == null || $F{nota_2serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_2serie}).find() ? null : new java.lang.Double($F{nota_2serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_2" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_2serie} == null || $F{nota_2serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_2serie}).find() ? null : new java.math.BigDecimal($F{nota_2serie}.replace(",","."))]]></variableExpression>
 	</variable>
-	<variable name="resultado_global_3" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_3serie} == null || $F{nota_3serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_3serie}).find() ? null : new java.lang.Double($F{nota_3serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_3" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_3serie} == null || $F{nota_3serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_3serie}).find() ? null : new java.math.BigDecimal($F{nota_3serie}.replace(",","."))]]></variableExpression>
 	</variable>
-	<variable name="resultado_global_4" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_4serie} == null || $F{nota_4serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_4serie}).find() ? null : new java.lang.Double($F{nota_4serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_4" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_4serie} == null || $F{nota_4serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_4serie}).find() ? null : new java.math.BigDecimal($F{nota_4serie}.replace(",","."))]]></variableExpression>
 	</variable>
-	<variable name="resultado_global_5" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_5serie} == null || $F{nota_5serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_5serie}).find() ? null : new java.lang.Double($F{nota_5serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_5" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_5serie} == null || $F{nota_5serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_5serie}).find() ? null : new java.math.BigDecimal($F{nota_5serie}.replace(",","."))]]></variableExpression>
 	</variable>
-	<variable name="resultado_global_6" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_6serie} == null || $F{nota_6serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_6serie}).find() ? null : new java.lang.Double($F{nota_6serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_6" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_6serie} == null || $F{nota_6serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_6serie}).find() ? null : new java.math.BigDecimal($F{nota_6serie}.replace(",","."))]]></variableExpression>
 	</variable>
-	<variable name="resultado_global_7" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_7serie} == null || $F{nota_7serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_7serie}).find() ? null : new java.lang.Double($F{nota_7serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_7" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_7serie} == null || $F{nota_7serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_7serie}).find() ? null : new java.math.BigDecimal($F{nota_7serie}.replace(",","."))]]></variableExpression>
 	</variable>
-	<variable name="resultado_global_8" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_8serie} == null || $F{nota_8serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_8serie}).find() ? null : new java.lang.Double($F{nota_8serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_8" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_8serie} == null || $F{nota_8serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_8serie}).find() ? null : new java.math.BigDecimal($F{nota_8serie}.replace(",","."))]]></variableExpression>
 	</variable>
-	<variable name="resultado_global_9" class="java.lang.Double" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_9serie} == null || $F{nota_9serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_9serie}).find() ? null : new java.lang.Double($F{nota_9serie}.replace(",","."))]]></variableExpression>
+	<variable name="resultado_global_9" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{nota_9serie} == null || $F{nota_9serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_9serie}).find() ? null : new java.math.BigDecimal($F{nota_9serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<group name="grupo1" keepTogether="true">
 		<groupExpression><![CDATA[true]]></groupExpression>
