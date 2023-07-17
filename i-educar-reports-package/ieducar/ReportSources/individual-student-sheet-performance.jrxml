@@ -69,7 +69,7 @@
 		<variableExpression><![CDATA[$F{situacao}]]></variableExpression>
 	</variable>
 	<variable name="media_global" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{medianum}]]></variableExpression>
+		<variableExpression><![CDATA[$F{medianum}.doubleValue()]]></variableExpression>
 	</variable>
 	<group name="performance" keepTogether="true">
 		<groupExpression><![CDATA[true]]></groupExpression>
@@ -317,7 +317,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 						<paragraph leftIndent="5" spacingBefore="2"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Resultado final: " + new DecimalFormat("##0.0").format($V{media_global}.doubleValue()).toString()]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Resultado final: " + new DecimalFormat("#0.0").format($V{media_global}.doubleValue()).toString()]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>

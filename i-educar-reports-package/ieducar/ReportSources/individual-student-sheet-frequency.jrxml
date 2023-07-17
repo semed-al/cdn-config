@@ -67,6 +67,7 @@
 	<field name="hora_falta" class="java.lang.Double"/>
 	<field name="total_faltas_componente" class="java.math.BigDecimal"/>
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
+	<field name="ativo_na_turma" class="java.lang.Integer"/>
 	<field name="tipo_presenca" class="java.lang.Integer"/>
 	<variable name="soma_carga_horaria_componente_et" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{carga_horaria_componente_et}]]></variableExpression>
