@@ -997,7 +997,7 @@
 				<text><![CDATA[CELULAR:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="244" y="369" width="32" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
+				<reportElement x="244" y="384" width="32" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1006,7 +1006,7 @@
 				<textFieldExpression><![CDATA[$F{ultima_matricula_ano}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="399" y="369" width="147" height="27" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
+				<reportElement x="424" y="369" width="127" height="27" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1015,7 +1015,7 @@
 				<textFieldExpression><![CDATA[$F{ultima_matricula_curso}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="278" y="369" width="27" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
+				<reportElement x="278" y="384" width="27" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1024,7 +1024,7 @@
 				<text><![CDATA[SÉRIE:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="306" y="369" width="58" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
+				<reportElement x="306" y="384" width="58" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1042,7 +1042,7 @@
 				<text><![CDATA[ESCOLA:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="366" y="369" width="32" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
+				<reportElement x="391" y="369" width="32" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1051,7 +1051,7 @@
 				<text><![CDATA[CURSO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="220" y="369" width="24" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
+				<reportElement x="220" y="384" width="24" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1067,7 +1067,7 @@
 				<text><![CDATA[PROCEDÊNCIA DO ALUNO]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="44" y="369" width="175" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
+				<reportElement x="44" y="369" width="339" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1134,7 +1134,7 @@
 				<textFieldExpression><![CDATA[$F{ultima_matricula_turno}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="220" y="417" width="24" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
+				<reportElement x="220" y="432" width="24" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1143,7 +1143,7 @@
 				<text><![CDATA[ANO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="366" y="417" width="32" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
+				<reportElement x="391" y="417" width="32" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1175,7 +1175,7 @@
 				<text><![CDATA[TURNO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="417" width="27" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
+				<reportElement x="278" y="432" width="27" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1184,7 +1184,7 @@
 				<text><![CDATA[SÉRIE:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="44" y="417" width="175" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
+				<reportElement x="44" y="417" width="339" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1193,7 +1193,7 @@
 				<textFieldExpression><![CDATA[$F{atual_matricula_escola}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="244" y="417" width="32" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
+				<reportElement x="244" y="432" width="32" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1202,7 +1202,7 @@
 				<textFieldExpression><![CDATA[$F{atual_matricula_ano}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="306" y="417" width="58" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
+				<reportElement x="306" y="432" width="58" height="12" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1211,7 +1211,7 @@
 				<textFieldExpression><![CDATA[$F{atual_matricula_serie}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="399" y="417" width="147" height="30" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
+				<reportElement x="424" y="417" width="127" height="30" uuid="e1cf1e75-5d18-4a2c-9a52-50b5806a698a">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>
@@ -1290,20 +1290,6 @@
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cor_raca} == null ? "" : $F{cor_raca}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="220" y="432" width="51" height="12" uuid="f4f6c640-1bb3-4e30-a3d3-fed1b5546dfe"/>
-				<textElement>
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<text><![CDATA[MATRÍCULA:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="271" y="432" width="100" height="12" uuid="4000157c-c148-4234-af8b-386365465193"/>
-				<textElement>
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{data_matricula} == null ? "" : $F{data_matricula}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="271" y="335" width="100" height="12" uuid="020045c1-d0ca-4016-b571-d6606afd6d55"/>

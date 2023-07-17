@@ -21,6 +21,7 @@
 	<field name="nm_responsavel" class="java.lang.String"/>
 	<field name="nm_escola" class="java.lang.String"/>
 	<field name="cnpj" class="java.lang.String"/>
+	<field name="inep" class="java.lang.String"/>
 	<field name="tipo_logradouro" class="java.lang.String"/>
 	<field name="logradouro" class="java.lang.String"/>
 	<field name="bairro" class="java.lang.String"/>
@@ -105,7 +106,7 @@
 				<text><![CDATA[CEP:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="350" y="31" width="93" height="10" uuid="3eb2334f-4588-4522-94bf-c3415ae03a37"/>
+				<reportElement x="350" y="31" width="86" height="10" uuid="3eb2334f-4588-4522-94bf-c3415ae03a37"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -169,6 +170,20 @@
 				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="471" y="31" width="68" height="10" uuid="8c58fd45-fd74-45d9-8059-9515e318bcf2"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inep} != null ? $F{inep} : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="442" y="31" width="29" height="10" uuid="462131df-abff-4287-bf9c-2dcd2cf89807"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INEP:]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 </jasperReport>
