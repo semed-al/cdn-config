@@ -1675,7 +1675,7 @@
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<text><![CDATA[Secretário(a):]]></text>
+					<text><![CDATA[Funcionário(a) responsável:]]></text>
 				</staticText>
 			</band>
 			<band height="570" splitType="Stretch">
@@ -2916,7 +2916,7 @@
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
-						<text><![CDATA[Secretário (a):]]></text>
+						<text><![CDATA[Funcionário(a) responsável:]]></text>
 					</staticText>
 				</frame>
 			</band>

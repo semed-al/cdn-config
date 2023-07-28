@@ -234,7 +234,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{emitir_secretario_escolar} ? (($F{secretario} == null || $F{secretario} == "") ? "Secretário(a) escolar" : $F{secretario} + "\n" + "Secretário(a) escolar") : ("Secretário(a) escolar")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{emitir_secretario_escolar} ? (($F{secretario} == null || $F{secretario} == "") ? "Funcionário(a) responsável" : $F{secretario} + "\n" + "Funcionário(a) responsável") : ("Funcionário(a) responsável")]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="170" y="95" width="193" height="1" uuid="0d179794-4148-414e-aa50-655ce102c43f">
@@ -248,7 +248,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{emitir_secretario_escolar} ? (($F{secretario} == null || $F{secretario} == "") ? "Secretário(a) escolar" : $F{secretario} + "\n" + "Secretário(a) escolar") : ("Secretário(a) escolar")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{emitir_secretario_escolar} ? (($F{secretario} == null || $F{secretario} == "") ? "Funcionário(a) responsável" : $F{secretario} + "\n" + "Funcionário(a) responsável") : ("Funcionário(a) responsável")]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="20" y="95" width="193" height="1" uuid="0d179794-4148-414e-aa50-655ce102c43f">
