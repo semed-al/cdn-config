@@ -3058,7 +3058,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$V{max_nome_serie3}]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report" isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement positionType="FixRelativeToBottom" x="287" y="153" width="44" height="19" uuid="c91fb5f1-8fd5-4fcf-b049-abcf8add97cf">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -3071,7 +3071,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$V{max_nome_serie4}]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report" isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement positionType="FixRelativeToBottom" x="331" y="153" width="44" height="19" uuid="d77b923f-42dc-4764-a91f-431b9dea4af8">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -3080,7 +3080,7 @@
 				<box>
 					<pen lineWidth="0.25"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{max_nome_serie5}]]></textFieldExpression>
