@@ -157,6 +157,7 @@ trait ReportCardTrait
          AND view_situacao.cod_situacao = {$situacao_matricula}
          AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
          AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
+         AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}'
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 view_componente_curricular.ordenamento,
