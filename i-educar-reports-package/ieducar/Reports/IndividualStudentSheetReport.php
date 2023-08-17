@@ -51,6 +51,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         $curso = $this->args['curso'] ?: 0;
         $serie = $this->args['serie'] ?: 0;
         $turma = $this->args['turma'] ?: 0;
+        $situacao_matricula = $this->args['situacao_matricula'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
 
         return "
@@ -94,9 +95,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         INNER JOIN pmieducar.aluno ON (matricula.ref_cod_aluno = aluno.cod_aluno)
         INNER JOIN cadastro.fisica ON (fisica.idpes = aluno.ref_idpes)
         INNER JOIN cadastro.pessoa ON (pessoa.idpes = fisica.idpes)
-        INNER JOIN relatorio.view_situacao ON (view_situacao.cod_matricula = matricula.cod_matricula
-                                        AND view_situacao.cod_turma = turma.cod_turma
-                                        AND view_situacao.cod_situacao = 10)
+        INNER JOIN relatorio.view_situacao ON (view_situacao.cod_matricula = matricula.cod_matricula AND view_situacao.cod_turma = turma.cod_turma)
         WHERE instituicao.cod_instituicao = {$instituicao}
             AND escola.cod_escola = {$escola}
             AND escola_ano_letivo.ano = {$ano}
@@ -105,6 +104,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
             AND (CASE WHEN {$serie} = 0 THEN true ELSE serie.cod_serie = {$serie} END)
             AND (CASE WHEN {$turma} = 0 THEN true ELSE turma.cod_turma = {$turma} END)
             AND (CASE WHEN {$matricula} = 0 THEN true ELSE matricula.cod_matricula = {$matricula} END)
+            AND view_situacao.cod_situacao = {$situacao_matricula}
         ORDER BY pessoa.nome
         ";
     }
@@ -142,8 +142,9 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 serie.dias_letivos,
                 falta_aluno.id AS falta_aluno_id,
                 relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id) AS total_faltas_componente,
-                (relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id)*curso.hora_falta/COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria))*100 AS percentual_falta_componente,                
-                regra_avaliacao.tipo_presenca
+                (relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id)*curso.hora_falta/COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria))*100 AS percentual_falta_componente,
+                regra_avaliacao.tipo_presenca,
+                matricula_turma.ativo AS ativo_na_turma
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
@@ -236,7 +237,8 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 nota_componente_curricular_media.media AS medianum,
                 nota_exame.nota_arredondada AS nota_exame,
                 regra_avaliacao.qtd_casas_decimais,
-                regra_avaliacao.tipo_nota             
+                regra_avaliacao.tipo_nota,
+                matricula_turma.ativo AS ativo_na_turma             
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)

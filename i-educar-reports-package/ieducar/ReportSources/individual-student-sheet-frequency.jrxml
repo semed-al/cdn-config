@@ -69,6 +69,9 @@
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
 	<field name="ativo_na_turma" class="java.lang.Integer"/>
 	<field name="tipo_presenca" class="java.lang.Integer"/>
+	<variable name="quantidade_etapas_cursadas" class="java.lang.Integer" calculation="First">
+		<variableExpression><![CDATA[$F{total_faltas_et4} != null || $V{soma_faltas_componente_et4} ? 4 : $F{total_faltas_et3} != null || $V{soma_faltas_componente_et3} ? 3 : $F{total_faltas_et2} != null || $V{soma_faltas_componente_et2} ? 2 : 1]]></variableExpression>
+	</variable>
 	<variable name="soma_carga_horaria_componente_et" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{carga_horaria_componente_et}]]></variableExpression>
 	</variable>
@@ -404,7 +407,7 @@
 				</staticText>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="151" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="ac46c52c-48ce-4ef2-bd74-366805a26873">
-						<printWhenExpression><![CDATA[$F{carga_horaria_componente_et} != null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) || ($V{soma_faltas_componente_et1} != null)]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -413,7 +416,7 @@
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="175" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="45a0b7cb-6565-4bd7-bdee-a4ddb7b8b985">
-						<printWhenExpression><![CDATA[$F{carga_horaria_componente_et} != null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) || ($V{soma_faltas_componente_et2} != null)]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -422,7 +425,7 @@
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="199" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="3c3d8dbf-93af-4baf-a81c-896466736c69">
-						<printWhenExpression><![CDATA[$F{carga_horaria_componente_et} != null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) || ($V{soma_faltas_componente_et3} != null)]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -431,7 +434,7 @@
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="223" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="4959c038-c4d1-467b-aaa0-e62cf35fa3a1">
-						<printWhenExpression><![CDATA[$F{carga_horaria_componente_et} != null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) || ($V{soma_faltas_componente_et4} != null)]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -439,28 +442,36 @@
 					<textFieldExpression><![CDATA[$V{soma_carga_horaria_componente_et}]]></textFieldExpression>
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
-					<reportElement x="272" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="40f65a68-605a-4992-8948-90266bed9b03"/>
+					<reportElement x="272" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="40f65a68-605a-4992-8948-90266bed9b03">
+						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) || ($V{soma_faltas_componente_et1} != null)]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{soma_aulas_dadas_et}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="297" y="0" width="22" height="11" uuid="19a825b5-5939-4877-8483-95e9bb3cbf9d"/>
+					<reportElement x="297" y="0" width="22" height="11" uuid="19a825b5-5939-4877-8483-95e9bb3cbf9d">
+						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) || ($V{soma_faltas_componente_et2} != null)]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{soma_aulas_dadas_et}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="321" y="0" width="22" height="11" uuid="4d81f8f4-f6a5-4045-9f98-0e6d95153edc"/>
+					<reportElement x="321" y="0" width="22" height="11" uuid="4d81f8f4-f6a5-4045-9f98-0e6d95153edc">
+						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) || ($V{soma_faltas_componente_et3} != null)]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{soma_aulas_dadas_et}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="346" y="0" width="22" height="11" uuid="b391c9d8-ef16-4ad9-aa2d-034f3ed07cdb"/>
+					<reportElement x="346" y="0" width="22" height="11" uuid="b391c9d8-ef16-4ad9-aa2d-034f3ed07cdb">
+						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) || ($V{soma_faltas_componente_et4} != null)]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -473,7 +484,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{soma_carga_horaria_total}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($V{soma_carga_horaria_total}/4)*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="150" y="-1" width="1" height="13" uuid="cba3e458-ce5f-4b69-912c-3017017f154d"/>
@@ -534,7 +545,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{soma_aulas_dadas_total}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($V{soma_aulas_dadas_total}/4)*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="369" y="-1" width="1" height="13" uuid="fbc11149-72a5-47c9-9c46-d33d07a74ff4"/>
@@ -653,14 +664,18 @@
 				</graphicElement>
 			</rectangle>
 			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="272" y="-1" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e777cca9-d769-4e39-be43-01f55e78666d"/>
+				<reportElement x="272" y="-1" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e777cca9-d769-4e39-be43-01f55e78666d">
+					<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) || ($F{faltas_componente_et1} != null)]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{aulas_dadas_componente_et}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="297" y="-1" width="22" height="11" uuid="48b3461e-6c11-4eda-be2d-a5a9f2fb9fd3"/>
+				<reportElement x="297" y="-1" width="22" height="11" uuid="48b3461e-6c11-4eda-be2d-a5a9f2fb9fd3">
+					<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) || ($F{faltas_componente_et2} != null)]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -692,7 +707,9 @@
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="321" y="-1" width="22" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3"/>
+				<reportElement x="321" y="-1" width="22" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3">
+					<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) || ($F{faltas_componente_et3} != null)]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -705,7 +722,9 @@
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="346" y="-1" width="22" height="11" uuid="12c04f41-b44c-480f-8330-90d92250edbd"/>
+				<reportElement x="346" y="-1" width="22" height="11" uuid="12c04f41-b44c-480f-8330-90d92250edbd">
+					<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) || ($F{faltas_componente_et4} != null)]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -800,11 +819,11 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{aulas_dadas_componente_et}*4]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{aulas_dadas_componente_et}*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="true">
 				<reportElement x="151" y="-1" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="4d1db161-c614-40b7-a2b9-7031b22b561f">
-					<printWhenExpression><![CDATA[$F{carga_horaria_componente_et} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) || ($F{faltas_componente_et1} != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -813,7 +832,7 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="175" y="-1" width="22" height="11" uuid="d206755f-8243-4d85-b34c-92ba7184a3b0">
-					<printWhenExpression><![CDATA[$F{carga_horaria_componente_et} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) || ($F{faltas_componente_et2} != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -834,7 +853,7 @@
 			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="199" y="-1" width="22" height="11" uuid="042b95f4-c748-4131-b2dc-465c712471f3">
-					<printWhenExpression><![CDATA[$F{carga_horaria_componente_et} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) || ($F{faltas_componente_et3} != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -843,7 +862,7 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="223" y="-1" width="22" height="11" uuid="7b636b5e-d9f4-45a9-a910-9c078a9a4921">
-					<printWhenExpression><![CDATA[$F{carga_horaria_componente_et} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) || ($F{faltas_componente_et4} != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -863,7 +882,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{carga_horaria_componente}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{carga_horaria_componente}/4)*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="174" y="-2" width="1" height="13" uuid="5dd5129a-6359-490b-813d-e54fbfd0e93b"/>
