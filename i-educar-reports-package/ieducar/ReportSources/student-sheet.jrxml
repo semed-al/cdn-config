@@ -936,37 +936,37 @@
 				<imageExpression><![CDATA[$F{foto}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="199" y="714" width="155" height="18" uuid="42f2d7ca-da39-447b-a5b5-05cc34b437e4"/>
+				<reportElement x="199" y="734" width="160" height="12" uuid="42f2d7ca-da39-447b-a5b5-05cc34b437e4"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<text><![CDATA[Assinatura Secretário(a) Escolar ou Funcionário(a) Responsável]]></text>
+				<text><![CDATA[Assinatura do(a) Funcionário(a) Responsável]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="8" y="715" width="155" height="12" uuid="42f2d7ca-da39-447b-a5b5-05cc34b437e4"/>
+				<reportElement x="8" y="734" width="155" height="12" uuid="42f2d7ca-da39-447b-a5b5-05cc34b437e4"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<text><![CDATA[Assinatura responsável pelo aluno(a)]]></text>
 			</staticText>
 			<line>
-				<reportElement x="8" y="714" width="155" height="1" uuid="f19b4da1-f396-49e9-a960-0f4fa407c556"/>
+				<reportElement x="8" y="733" width="155" height="1" uuid="f19b4da1-f396-49e9-a960-0f4fa407c556"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="199" y="713" width="155" height="1" uuid="f19b4da1-f396-49e9-a960-0f4fa407c556"/>
+				<reportElement x="201" y="733" width="155" height="1" uuid="f19b4da1-f396-49e9-a960-0f4fa407c556"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="178" y="732" width="369" height="13" uuid="6c8b239b-e594-4e94-ab25-ecbeab0934fb"/>
-				<textElement textAlignment="Right">
+				<reportElement x="79" y="696" width="369" height="13" uuid="6c8b239b-e594-4e94-ab25-ecbeab0934fb"/>
+				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="7" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cidade_instituicao}+" ("+$F{uf_instituicao}+")"+", "+new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cidade_instituicao}+"-"+$F{uf_instituicao}+", "+new java.text.SimpleDateFormat("______/_______/yyyy").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0" isBlankWhenNull="true">
 				<reportElement x="344" y="320" width="94" height="12" uuid="5195282a-b5fd-46de-a8c7-ff00d5fe18b6"/>
@@ -1692,13 +1692,13 @@
 				</textField>
 			</frame>
 			<line>
-				<reportElement x="392" y="713" width="155" height="1" uuid="26734cdd-6019-4318-b797-7ab320b09b72"/>
+				<reportElement x="396" y="733" width="155" height="1" uuid="26734cdd-6019-4318-b797-7ab320b09b72"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="392" y="714" width="155" height="12" uuid="39fc251f-dec8-4172-a646-be36abc994b7"/>
+				<reportElement x="396" y="734" width="155" height="12" uuid="39fc251f-dec8-4172-a646-be36abc994b7"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
@@ -1714,13 +1714,13 @@
 		<band height="550">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<rectangle>
-				<reportElement x="3" y="107" width="549" height="430" uuid="e830eff0-7ec8-437d-b303-04aeb722d8e1"/>
+				<reportElement x="3" y="120" width="549" height="430" uuid="e830eff0-7ec8-437d-b303-04aeb722d8e1"/>
 				<graphicElement>
 					<pen lineColor="#FFFFFF"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="141" y="115" width="268" height="20" uuid="966a0707-061b-4b40-9f95-ea41991f86ee">
+				<reportElement x="141" y="117" width="268" height="20" uuid="966a0707-061b-4b40-9f95-ea41991f86ee">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
