@@ -966,7 +966,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="7" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cidade_instituicao}+"-"+$F{uf_instituicao}+", "+new java.text.SimpleDateFormat("______/_______/yyyy").format(new java.util.Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cidade_instituicao}+"-"+$F{uf_instituicao}+", "+new java.text.SimpleDateFormat("______/_______/__________").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0" isBlankWhenNull="true">
 				<reportElement x="344" y="320" width="94" height="12" uuid="5195282a-b5fd-46de-a8c7-ff00d5fe18b6"/>
