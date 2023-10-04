@@ -16,10 +16,10 @@ trait SchoolHistorySeriesYearsTrait
                 SELECT he.ano
                 FROM pmieducar.historico_escolar he
                 WHERE he.ref_cod_aluno = $aluno
-                    AND he.ref_cod_escola = $escola
                     AND he.aprovado NOT IN (2,6,14)
                     AND he.extra_curricular = 0
                     AND ativo = 1
+                    AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $escola)                    
                 ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                 LIMIT 1
             )
