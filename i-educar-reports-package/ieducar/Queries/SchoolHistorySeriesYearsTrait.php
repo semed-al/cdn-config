@@ -12,8 +12,8 @@ trait SchoolHistorySeriesYearsTrait
         $nao_emitir_reprovado = $this->args['nao_emitir_reprovado'];
 
         return <<<SQL
-            WITH max_ano (ano) AS (
-                SELECT he.ano
+            WITH max_ano (chave,ano) AS (
+                SELECT 1,he.ano
                 FROM pmieducar.historico_escolar he
                 WHERE he.ref_cod_aluno = $aluno
                     AND he.aprovado NOT IN (2,6,14)
@@ -22,9 +22,20 @@ trait SchoolHistorySeriesYearsTrait
                     AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $escola)                    
                 ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                 LIMIT 1
+            ),
+            max_ano_aprovado (chave,ano) AS (
+                SELECT 1,he.ano
+                FROM pmieducar.historico_escolar he
+                WHERE he.ref_cod_aluno = $aluno
+                    AND he.aprovado NOT IN (2,3,4,6,14,15)
+                    AND he.extra_curricular = 0
+                    AND ativo = 1
+                    AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $escola)                    
+                ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
+                LIMIT 1
             )
             SELECT
-                max_ano.ano AS ano,
+                max_ano_aprovado.ano AS ano,
                 vhsa.cod_aluno,
                 trim(vhsa.disciplina) AS nm_disciplina,
                 pessoa.nome AS nome_aluno,
@@ -293,6 +304,7 @@ trait SchoolHistorySeriesYearsTrait
                     LIMIT 1
                 ) AS ordem_disciplina
                 FROM max_ano
+                INNER JOIN max_ano_aprovado ON max_ano_aprovado.chave = max_ano.chave
                 INNER JOIN relatorio.view_historico_series_anos vhsa ON vhsa.cod_aluno = $aluno AND (vhsa.ano_1serie <= max_ano.ano OR vhsa.ano_2serie <= max_ano.ano OR vhsa.ano_3serie <= max_ano.ano OR vhsa.ano_4serie <= max_ano.ano OR vhsa.ano_5serie <= max_ano.ano OR vhsa.ano_6serie <= max_ano.ano OR vhsa.ano_7serie <= max_ano.ano OR vhsa.ano_8serie <= max_ano.ano OR vhsa.ano_9serie <= max_ano.ano)
                 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = vhsa.cod_aluno)
                 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
