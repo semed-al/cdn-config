@@ -113,7 +113,7 @@
 				<textElement markup="html">
 					<font fontName="DejaVu Sans" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<b>E-mail: </b> "+($F{email} != null ? $F{email} : "")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["E-mail: "+($F{email} != null ? $F{email} : "")]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="true">
 				<reportElement x="414" y="0" width="56" height="10" uuid="87541580-69bf-4d1f-b67c-9a2fc57807bc">
@@ -153,7 +153,7 @@
 				</textField>
 			</frame>
 			<staticText>
-				<reportElement x="490" y="29" width="21" height="10" uuid="a4f9423c-3673-4708-8e06-0ce26812b063">
+				<reportElement x="485" y="29" width="21" height="10" uuid="a4f9423c-3673-4708-8e06-0ce26812b063">
 					<printWhenExpression><![CDATA[$F{inep} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -162,7 +162,7 @@
 				<text><![CDATA[INEP:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="512" y="29" width="60" height="10" uuid="d372ad04-b1b2-41b0-9386-e63983551227"/>
+				<reportElement x="507" y="29" width="60" height="10" uuid="d372ad04-b1b2-41b0-9386-e63983551227"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
