@@ -193,6 +193,7 @@ return new class extends clsCadastro {
         $this->campoTexto('nm_pessoa', 'Nome', $this->nm_pessoa, '50', '255', true);
         /*$this->campoTexto('nome_social', 'Nome social e/ou afetivo', $this->nome_social, '50', '255', false);*/
 
+        /*
         $foto = false;
         if (is_numeric($this->cod_pessoa_fj)) {
             $objFoto = new clsCadastroFisicaFoto($this->cod_pessoa_fj);
@@ -211,6 +212,7 @@ return new class extends clsCadastro {
         } else {
             $this->campoArquivo('photo', 'Foto', $this->arquivoFoto, 40, '<br/> <span style="font-style: italic; font-size= 10px;">* Recomenda-se imagens nos formatos jpeg, jpg, png e gif. Tamanho máximo: 2MB</span>');
         }
+        */
 
         // ao cadastrar pessoa do pai ou mãe apartir do cadastro de outra pessoa,
         // é enviado o tipo de cadastro (pai ou mae).
@@ -244,7 +246,7 @@ return new class extends clsCadastro {
 
         // estado civil
 
-        $this->inputsHelper()->estadoCivil(['label' => '', 'required' => empty($parentType) && $camposObrigatorios]);
+        //$this->inputsHelper()->estadoCivil(['label' => '', 'required' => empty($parentType) && $camposObrigatorios]);
 
         // data nascimento
 
@@ -254,7 +256,9 @@ return new class extends clsCadastro {
             'required' => empty($parentType) && $camposObrigatorios
         ];
 
-        $this->inputsHelper()->date('data_nasc', $options);
+        if (empty($parentType)) {
+            $this->inputsHelper()->date('data_nasc', $options);
+        }
 
         // pai, mãe
         if (empty($parentType) || $parentType == NULL) {
@@ -277,233 +281,234 @@ return new class extends clsCadastro {
         if ($required && config('legacy.app.rg_pessoa_fisica_pais_opcional')) {
             $required = false;
         }
+        
+        if (empty($parentType)) {
+            $options = [
+                'required' => false,
+                'label' => 'RG / Data emissão',
+                'placeholder' => 'Documento identidade',
+                'value' => $documentos['rg'],
+                'max_length' => 25,
+                'size' => 27,
+                'inline' => true
+            ];
 
-        $options = [
-            'required' => false,
-            'label' => 'RG / Data emissão',
-            'placeholder' => 'Documento identidade',
-            'value' => $documentos['rg'],
-            'max_length' => 25,
-            'size' => 27,
-            'inline' => true
-        ];
+            $this->inputsHelper()->integer('rg', $options);
 
-        $this->inputsHelper()->integer('rg', $options);
+            // data emissão rg
 
-        // data emissão rg
+            $options = [
+                'required' => false,
+                'label' => '',
+                'placeholder' => 'Data emissão',
+                'value' => $documentos['data_exp_rg'],
+                'size' => 19
+            ];
 
-        $options = [
-            'required' => false,
-            'label' => '',
-            'placeholder' => 'Data emissão',
-            'value' => $documentos['data_exp_rg'],
-            'size' => 19
-        ];
+            $this->inputsHelper()->date('data_emissao_rg', $options);
 
-        $this->inputsHelper()->date('data_emissao_rg', $options);
+            // orgão emissão rg
 
-        // orgão emissão rg
+            $selectOptions = [ null => 'Órgão emissor' ];
+            $orgaos = new clsOrgaoEmissorRg();
+            $orgaos = $orgaos->lista();
 
-        $selectOptions = [ null => 'Órgão emissor' ];
-        $orgaos = new clsOrgaoEmissorRg();
-        $orgaos = $orgaos->lista();
+            foreach ($orgaos as $orgao) {
+                $selectOptions[$orgao['idorg_rg']] = $orgao['sigla'];
+            }
 
-        foreach ($orgaos as $orgao) {
-            $selectOptions[$orgao['idorg_rg']] = $orgao['sigla'];
-        }
+            $selectOptions = Portabilis_Array_Utils::sortByValue($selectOptions);
 
-        $selectOptions = Portabilis_Array_Utils::sortByValue($selectOptions);
+            $options = [
+                'required' => false,
+                'label' => '',
+                'value' => $documentos['idorg_exp_rg'],
+                'resources' => $selectOptions,
+                'inline' => true
+            ];
 
-        $options = [
-            'required' => false,
-            'label' => '',
-            'value' => $documentos['idorg_exp_rg'],
-            'resources' => $selectOptions,
-            'inline' => true
-        ];
+            $this->inputsHelper()->select('orgao_emissao_rg', $options);
 
-        $this->inputsHelper()->select('orgao_emissao_rg', $options);
+            // uf emissão rg
 
-        // uf emissão rg
+            $options = [
+                'required' => false,
+                'label' => '',
+                'value' => $documentos['sigla_uf_exp_rg']
+            ];
 
-        $options = [
-            'required' => false,
-            'label' => '',
-            'value' => $documentos['sigla_uf_exp_rg']
-        ];
+            $helperOptions = [
+                'attrName' => 'uf_emissao_rg'
+            ];
 
-        $helperOptions = [
-            'attrName' => 'uf_emissao_rg'
-        ];
-
-        $this->inputsHelper()->uf($options, $helperOptions);
+            $this->inputsHelper()->uf($options, $helperOptions);
 
         // Código NIS (PIS/PASEP)
+            $options = [
+                'required' => false,
+                'label' => 'NIS (PIS/PASEP)',
+                'placeholder' => '',
+                'value' => $this->nis_pis_pasep,
+                'max_length' => 11,
+                'size' => 20
+            ];
 
-        $options = [
-            'required' => false,
-            'label' => 'NIS (PIS/PASEP)',
-            'placeholder' => '',
-            'value' => $this->nis_pis_pasep,
-            'max_length' => 11,
-            'size' => 20
-        ];
+            $this->inputsHelper()->integer('nis_pis_pasep', $options);
 
-        $this->inputsHelper()->integer('nis_pis_pasep', $options);
+            // Carteira do SUS
 
-        // Carteira do SUS
+            $options = [
+                'required' => config('legacy.app.fisica.exigir_cartao_sus'),
+                'label' => 'Número da carteira do SUS',
+                'placeholder' => '',
+                'value' => $this->sus,
+                'max_length' => 20,
+                'size' => 20
+            ];
 
-        $options = [
-            'required' => config('legacy.app.fisica.exigir_cartao_sus'),
-            'label' => 'Número da carteira do SUS',
-            'placeholder' => '',
-            'value' => $this->sus,
-            'max_length' => 20,
-            'size' => 20
-        ];
+            $this->inputsHelper()->text('sus', $options);
 
-        $this->inputsHelper()->text('sus', $options);
+            // tipo de certidao civil
 
-        // tipo de certidao civil
+            $selectOptions = [
+                null => 'Tipo certidão civil',
+                'certidao_nascimento_novo_formato' => 'Nascimento (novo formato)',
+                91 => 'Nascimento (antigo formato)',
+                'certidao_casamento_novo_formato' => 'Casamento (novo formato)',
+                92 => 'Casamento (antigo formato)'
+            ];
 
-        $selectOptions = [
-            null => 'Tipo certidão civil',
-            'certidao_nascimento_novo_formato' => 'Nascimento (novo formato)',
-            91 => 'Nascimento (antigo formato)',
-            'certidao_casamento_novo_formato' => 'Casamento (novo formato)',
-            92 => 'Casamento (antigo formato)'
-        ];
+            // caso certidao nascimento novo formato tenha sido informado,
+            // considera este o tipo da certidão
+            if (! empty($documentos['certidao_nascimento'])) {
+                $tipoCertidaoCivil = 'certidao_nascimento_novo_formato';
+            } elseif (! empty($documentos['certidao_casamento'])) {
+                $tipoCertidaoCivil = 'certidao_casamento_novo_formato';
+            } else {
+                $tipoCertidaoCivil = $documentos['tipo_cert_civil'];
+            }
 
-        // caso certidao nascimento novo formato tenha sido informado,
-        // considera este o tipo da certidão
-        if (! empty($documentos['certidao_nascimento'])) {
-            $tipoCertidaoCivil = 'certidao_nascimento_novo_formato';
-        } elseif (! empty($documentos['certidao_casamento'])) {
-            $tipoCertidaoCivil = 'certidao_casamento_novo_formato';
-        } else {
-            $tipoCertidaoCivil = $documentos['tipo_cert_civil'];
+            $options = [
+                'required' => false,
+                'label' => 'Tipo certidão civil',
+                'value' => $tipoCertidaoCivil,
+                'resources' => $selectOptions,
+                'inline' => true
+            ];
+
+            $this->inputsHelper()->select('tipo_certidao_civil', $options);
+
+            // termo certidao civil
+
+            $options = [
+                'required' => false,
+                'label' => '',
+                'placeholder' => 'Termo',
+                'value' => $documentos['num_termo'],
+                'max_length' => 8,
+                'inline' => true
+            ];
+
+            $this->inputsHelper()->integer('termo_certidao_civil', $options);
+
+            // livro certidao civil
+
+            $options = [
+                'required' => false,
+                'label' => '',
+                'placeholder' => 'Livro',
+                'value' => $documentos['num_livro'],
+                'max_length' => 8,
+                'size' => 15,
+                'inline' => true
+            ];
+
+            $this->inputsHelper()->text('livro_certidao_civil', $options);
+
+            // folha certidao civil
+
+            $options = [
+                'required' => false,
+                'label' => '',
+                'placeholder' => 'Folha',
+                'value' => $documentos['num_folha'],
+                'max_length' => 4,
+                'inline' => true
+            ];
+
+            $this->inputsHelper()->integer('folha_certidao_civil', $options);
+
+            // certidao nascimento (novo padrão)
+
+            $options = [
+                'required' => false,
+                'label' => '',
+                'placeholder' => 'Certidão nascimento',
+                'value' => $documentos['certidao_nascimento'],
+                'max_length' => 32,
+                'size' => 32,
+                'inline' => true
+            ];
+
+            $this->inputsHelper()->integer('certidao_nascimento', $options);
+
+            // certidao casamento (novo padrão)
+
+            $options = [
+                'required' => false,
+                'label' => '',
+                'placeholder' => 'Certidão casamento',
+                'value' => $documentos['certidao_casamento'],
+                'max_length' => 32,
+                'size' => 32
+            ];
+
+            $this->inputsHelper()->integer('certidao_casamento', $options);
+
+            // uf emissão certidão civil
+
+            $options = [
+                'required' => false,
+                'label' => 'Estado emissão / Data emissão',
+                'label_hint' => 'Informe o estado para poder informar o código do cartório',
+                'value' => $documentos['sigla_uf_cert_civil'],
+                'inline' => true
+            ];
+
+            $helperOptions = [
+                'attrName' => 'uf_emissao_certidao_civil'
+            ];
+
+            $this->inputsHelper()->uf($options, $helperOptions);
+
+            // data emissão certidão civil
+
+            $options = [
+                'required' => false,
+                'label' => '',
+                'placeholder' => 'Data emissão',
+                'value' => $documentos['data_emissao_cert_civil'],
+                'inline' => true
+            ];
+
+            $this->inputsHelper()->date('data_emissao_certidao_civil', $options);
+
+            $options = [
+                'label' => '',
+                'required' => false
+            ];
+
+            // cartório emissão certidão civil
+            $options = [
+                'required' => false,
+                'label' => 'Cartório emissão',
+                'value' => $documentos['cartorio_cert_civil'],
+                'cols' => 45,
+                'max_length' => 200,
+            ];
+
+            $this->inputsHelper()->textArea('cartorio_emissao_certidao_civil', $options);
         }
-
-        $options = [
-            'required' => false,
-            'label' => 'Tipo certidão civil',
-            'value' => $tipoCertidaoCivil,
-            'resources' => $selectOptions,
-            'inline' => true
-        ];
-
-        $this->inputsHelper()->select('tipo_certidao_civil', $options);
-
-        // termo certidao civil
-
-        $options = [
-            'required' => false,
-            'label' => '',
-            'placeholder' => 'Termo',
-            'value' => $documentos['num_termo'],
-            'max_length' => 8,
-            'inline' => true
-        ];
-
-        $this->inputsHelper()->integer('termo_certidao_civil', $options);
-
-        // livro certidao civil
-
-        $options = [
-            'required' => false,
-            'label' => '',
-            'placeholder' => 'Livro',
-            'value' => $documentos['num_livro'],
-            'max_length' => 8,
-            'size' => 15,
-            'inline' => true
-        ];
-
-        $this->inputsHelper()->text('livro_certidao_civil', $options);
-
-        // folha certidao civil
-
-        $options = [
-            'required' => false,
-            'label' => '',
-            'placeholder' => 'Folha',
-            'value' => $documentos['num_folha'],
-            'max_length' => 4,
-            'inline' => true
-        ];
-
-        $this->inputsHelper()->integer('folha_certidao_civil', $options);
-
-        // certidao nascimento (novo padrão)
-
-        $options = [
-            'required' => false,
-            'label' => '',
-            'placeholder' => 'Certidão nascimento',
-            'value' => $documentos['certidao_nascimento'],
-            'max_length' => 32,
-            'size' => 32,
-            'inline' => true
-        ];
-
-        $this->inputsHelper()->integer('certidao_nascimento', $options);
-
-        // certidao casamento (novo padrão)
-
-        $options = [
-            'required' => false,
-            'label' => '',
-            'placeholder' => 'Certidão casamento',
-            'value' => $documentos['certidao_casamento'],
-            'max_length' => 32,
-            'size' => 32
-        ];
-
-        $this->inputsHelper()->integer('certidao_casamento', $options);
-
-        // uf emissão certidão civil
-
-        $options = [
-            'required' => false,
-            'label' => 'Estado emissão / Data emissão',
-            'label_hint' => 'Informe o estado para poder informar o código do cartório',
-            'value' => $documentos['sigla_uf_cert_civil'],
-            'inline' => true
-        ];
-
-        $helperOptions = [
-            'attrName' => 'uf_emissao_certidao_civil'
-        ];
-
-        $this->inputsHelper()->uf($options, $helperOptions);
-
-        // data emissão certidão civil
-
-        $options = [
-            'required' => false,
-            'label' => '',
-            'placeholder' => 'Data emissão',
-            'value' => $documentos['data_emissao_cert_civil'],
-            'inline' => true
-        ];
-
-        $this->inputsHelper()->date('data_emissao_certidao_civil', $options);
-
-        $options = [
-            'label' => '',
-            'required' => false
-        ];
-
-        // cartório emissão certidão civil
-        $options = [
-            'required' => false,
-            'label' => 'Cartório emissão',
-            'value' => $documentos['cartorio_cert_civil'],
-            'cols' => 45,
-            'max_length' => 200,
-        ];
-
-        $this->inputsHelper()->textArea('cartorio_emissao_certidao_civil', $options);
 
         // Passaporte
 /*        $options = [
@@ -568,7 +573,7 @@ return new class extends clsCadastro {
         $this->inputsHelper()->date('data_emissao_carteira_trabalho', $options);
 */
         // titulo eleitor
-
+/*
         $options = [
             'required' => false,
             'label' => 'Titulo eleitor / Zona / Seção',
@@ -604,118 +609,121 @@ return new class extends clsCadastro {
         ];
 
         $this->inputsHelper()->integer('secao_titulo_eleitor', $options);
+*/
 
-        // Cor/raça.
+        if (empty($parentType)) {
+            // Cor/raça.
 
-        $racas = new clsCadastroRaca();
-        $racas = $racas->lista(null, null, null, null, null, null, null, true);
+            $racas = new clsCadastroRaca();
+            $racas = $racas->lista(null, null, null, null, null, null, null, true);
 
-        $selectOptionsRaca = [];
+            $selectOptionsRaca = [];
 
-        foreach ($racas as $raca) {
-            $selectOptionsRaca[$raca['cod_raca']] = $raca['nm_raca'];
+            foreach ($racas as $raca) {
+                $selectOptionsRaca[$raca['cod_raca']] = $raca['nm_raca'];
+            }
+
+            $selectOptionsRaca = Portabilis_Array_Utils::sortByValue($selectOptionsRaca);
+            $selectOptionsRaca = array_replace([null => 'Selecione'], $selectOptionsRaca);
+
+            $raca = new clsCadastroFisicaRaca($this->cod_pessoa_fj);
+            $raca = $raca->detalhe();
+            $this->cod_raca = is_array($raca) ? $raca['ref_cod_raca'] : $this->cor_raca;
+
+            $this->campoLista('cor_raca', 'Raça', $selectOptionsRaca, $this->cod_raca, '', false, '', '', '', $obrigarCamposCenso);
+
+            // nacionalidade
+
+            // tipos
+            $tiposNacionalidade = [
+                '1' => 'Brasileira',
+                '2' => 'Naturalizado brasileiro',
+                '3' => 'Estrangeira'
+            ];
+
+            $options = [
+                'label' => 'Nacionalidade',
+                'resources' => $tiposNacionalidade,
+                'required' => $obrigarCamposCenso,
+                'inline' => true,
+                'value' => $this->tipo_nacionalidade
+            ];
+
+            $this->inputsHelper()->select('tipo_nacionalidade', $options);
+
+            // pais origem
+
+            $options = [
+                'label' => '',
+                'placeholder' => 'Informe o nome do pais',
+                'required' => true
+            ];
+
+            $hiddenInputOptions = [
+                'options' => ['value' => $this->pais_origem_id]
+            ];
+
+            $helperOptions = [
+                'objectName' => 'pais_origem',
+                'hiddenInputOptions' => $hiddenInputOptions
+            ];
+
+            $this->inputsHelper()->simpleSearchPaisSemBrasil('nome', $options, $helperOptions);
+
+            //Falecido
+            $options = ['label' => 'Falecido?', 'required' => false, 'value' => dbBool($this->falecido)];
+
+            $this->inputsHelper()->checkbox('falecido', $options);
+
+            
+            // naturalidade
+            $options = ['label' => 'Naturalidade', 'required' => false];
+
+            $helperOptions = [
+                'objectName' => 'naturalidade',
+                'hiddenInputOptions' => ['options' => ['value' => $this->naturalidade_id]]
+            ];
+
+            $this->inputsHelper()->simpleSearchMunicipio('nome', $options, $helperOptions);
+
+            // Religião
+            /*$this->inputsHelper()->religiao(['required' => false, 'label' => 'Religião']);*/
+
+            $this->viewAddress();
+
+            $this->inputsHelper()->select('pais_residencia', [
+                'label' => 'País de residência',
+                'value' => $this->pais_residencia ?: PaisResidencia::BRASIL ,
+                'resources' => PaisResidencia::getDescriptiveValues(),
+                'required' => true,
+            ]);
+
+            $this->inputsHelper()->select('zona_localizacao_censo', [
+                'label' => 'Zona de residência',
+                'value' => $this->zona_localizacao_censo,
+                'resources' => [
+                    '' => 'Selecione',
+                    1 => 'Urbana',
+                    2 => 'Rural'
+                ],
+                'required' => $obrigarCamposCenso,
+            ]);
+
+            $this->inputsHelper()->select('localizacao_diferenciada', [
+                'label' => 'Localização diferenciada de residência',
+                'value' => $this->localizacao_diferenciada,
+                'resources' => SelectOptions::localizacoesDiferenciadasPessoa(),
+                'required' => false,
+            ]);
         }
-
-        $selectOptionsRaca = Portabilis_Array_Utils::sortByValue($selectOptionsRaca);
-        $selectOptionsRaca = array_replace([null => 'Selecione'], $selectOptionsRaca);
-
-        $raca = new clsCadastroFisicaRaca($this->cod_pessoa_fj);
-        $raca = $raca->detalhe();
-        $this->cod_raca = is_array($raca) ? $raca['ref_cod_raca'] : $this->cor_raca;
-
-        $this->campoLista('cor_raca', 'Raça', $selectOptionsRaca, $this->cod_raca, '', false, '', '', '', $obrigarCamposCenso);
-
-        // nacionalidade
-
-        // tipos
-        $tiposNacionalidade = [
-            '1' => 'Brasileira',
-            '2' => 'Naturalizado brasileiro',
-            '3' => 'Estrangeira'
-        ];
-
-        $options = [
-            'label' => 'Nacionalidade',
-            'resources' => $tiposNacionalidade,
-            'required' => $obrigarCamposCenso,
-            'inline' => true,
-            'value' => $this->tipo_nacionalidade
-        ];
-
-        $this->inputsHelper()->select('tipo_nacionalidade', $options);
-
-        // pais origem
-
-        $options = [
-            'label' => '',
-            'placeholder' => 'Informe o nome do pais',
-            'required' => true
-        ];
-
-        $hiddenInputOptions = [
-            'options' => ['value' => $this->pais_origem_id]
-        ];
-
-        $helperOptions = [
-            'objectName' => 'pais_origem',
-            'hiddenInputOptions' => $hiddenInputOptions
-        ];
-
-        $this->inputsHelper()->simpleSearchPaisSemBrasil('nome', $options, $helperOptions);
-
-        //Falecido
-        $options = ['label' => 'Falecido?', 'required' => false, 'value' => dbBool($this->falecido)];
-
-        $this->inputsHelper()->checkbox('falecido', $options);
-
-        // naturalidade
-
-        $options = ['label' => 'Naturalidade', 'required' => false];
-
-        $helperOptions = [
-            'objectName' => 'naturalidade',
-            'hiddenInputOptions' => ['options' => ['value' => $this->naturalidade_id]]
-        ];
-
-        $this->inputsHelper()->simpleSearchMunicipio('nome', $options, $helperOptions);
-
-        // Religião
-        /*$this->inputsHelper()->religiao(['required' => false, 'label' => 'Religião']);*/
-
-        $this->viewAddress();
-
-        $this->inputsHelper()->select('pais_residencia', [
-            'label' => 'País de residência',
-            'value' => $this->pais_residencia ?: PaisResidencia::BRASIL ,
-            'resources' => PaisResidencia::getDescriptiveValues(),
-            'required' => true,
-        ]);
-
-        $this->inputsHelper()->select('zona_localizacao_censo', [
-            'label' => 'Zona de residência',
-            'value' => $this->zona_localizacao_censo,
-            'resources' => [
-                '' => 'Selecione',
-                1 => 'Urbana',
-                2 => 'Rural'
-            ],
-            'required' => ($parentType == 'pai' || $parentType == 'mae') ? false : $obrigarCamposCenso,
-        ]);
-
-        $this->inputsHelper()->select('localizacao_diferenciada', [
-            'label' => 'Localização diferenciada de residência',
-            'value' => $this->localizacao_diferenciada,
-            'resources' => SelectOptions::localizacoesDiferenciadasPessoa(),
-            'required' => false,
-        ]);
 
         // contato
         $this->campoRotulo('contato', '<b>Contato</b>', '', '', 'Informações de contato da pessoa');
-        $this->inputTelefone('1', 'Telefone residencial');
+        //$this->inputTelefone('1', 'Telefone residencial');
         $this->inputTelefone('2', 'Celular');
         /*$this->inputTelefone('mov', 'Telefone adicional');
         $this->inputTelefone('fax', 'Fax');*/
-        $this->campoTexto('email', 'E-mail', $this->email, '50', '255', false);
+        //$this->campoTexto('email', 'E-mail', $this->email, '50', '255', false);
 
         // renda
         $this->campoRotulo('renda', '<b>Trabalho e renda</b>', '', '', 'Informações de trabalho e renda da pessoa');
@@ -728,10 +736,11 @@ return new class extends clsCadastro {
         $this->campoTexto('pessoa_contato', 'Pessoa de contato na empresa', $this->pessoa_contato, '50', '255', false);
         */
 
-        $fileService = new FileService(new UrlPresigner);
-        $files = $this->cod_pessoa_fj ? $fileService->getFiles(LegacyIndividual::find($this->cod_pessoa_fj)) : [];
-        $this->addHtml(view('uploads.upload', ['files' => $files])->render());
-
+        if (empty($parentType)) {
+            $fileService = new FileService(new UrlPresigner);
+            $files = $this->cod_pessoa_fj ? $fileService->getFiles(LegacyIndividual::find($this->cod_pessoa_fj)) : [];
+            $this->addHtml(view('uploads.upload', ['files' => $files])->render());
+        }
         // after change pessoa pai / mae
 
         if ($parentType) {
