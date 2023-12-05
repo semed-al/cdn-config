@@ -59,7 +59,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                             ELSE '{$this->args['ano']}' - EXTRACT (YEAR from fisica.data_nasc) - 1
                         END
                     ) AS idade,
-                    nis_pis_pasep,
+                    fisica.nis_pis_pasep AS nis,
                     curso.nm_curso AS nome_curso,
                     turma.nm_turma AS nome_turma,
                     turma.multiseriada AS multisseriada,
