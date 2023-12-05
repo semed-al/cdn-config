@@ -66,7 +66,7 @@
 	<field name="idade" class="java.lang.Integer"/>
 	<field name="data_nasc" class="java.lang.String"/>
 	<field name="codigo_sus" class="java.lang.String"/>
-	<field name="nis_pis_pasep" class="java.math.BigDecimal"/>
+	<field name="nis" class="java.math.BigDecimal"/>
 	<field name="nome_curso" class="java.lang.String"/>
 	<field name="nome_turma" class="java.lang.String"/>
 	<field name="nome_serie" class="java.lang.String"/>
@@ -233,7 +233,7 @@
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="7"/>
 					</textElement>
-					<text><![CDATA[SUS]]></text>
+					<text><![CDATA[SUS / NIS]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="711" y="32" width="86" height="35" uuid="2a0c9fd6-8c97-482b-bb19-9dd8a2cdfb6d"/>
@@ -488,7 +488,7 @@
 				<textFieldExpression><![CDATA[$F{nome_do_pai}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="603" y="1" width="35" height="10" uuid="e969d3e4-863d-4498-889b-6d5af40e514b"/>
+				<reportElement x="603" y="1" width="32" height="10" uuid="e969d3e4-863d-4498-889b-6d5af40e514b"/>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.25"/>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -503,8 +503,8 @@
 					? $F{profissao_pai}.substring(0, 1).toUpperCase() + $F{profissao_pai}.substring(1).toLowerCase()
 					: ""]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="640" y="1" width="70" height="10" uuid="cd478d80-f266-46fb-ab6e-6d9ff8a5727d"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="639" y="1" width="73" height="10" uuid="cd478d80-f266-46fb-ab6e-6d9ff8a5727d"/>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.25"/>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -513,9 +513,9 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="7"/>
+					<font fontName="DejaVu Sans" size="5.9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{codigo_sus}.toString().replaceAll("[^\\d]", "")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["sus: "+$F{codigo_sus}.toString().replaceAll("[^\\d]", "") + "\nnis: " + $F{nis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="711" y="1" width="86" height="10" uuid="fc721837-3bfa-40d2-a624-a8d9697c71f1"/>
