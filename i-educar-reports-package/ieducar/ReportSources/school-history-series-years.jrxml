@@ -3080,10 +3080,10 @@
 				<box>
 					<pen lineWidth="0.25"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{max_nome_serie5}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_serie5}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement positionType="FixRelativeToBottom" x="375" y="153" width="44" height="19" uuid="e3d2b289-8ce4-4e4e-963c-7dad28082906">
