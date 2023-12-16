@@ -128,6 +128,10 @@ WHERE escola_ano_letivo.ativo = 1
                 AND m.ref_cod_aluno = matricula.ref_cod_aluno 
                 AND m.ativo = 1 AND (mt.ativo = 1 OR mt.transferido IS NOT NULL)
             GROUP BY m.ref_cod_aluno)
+  AND (CASE WHEN turma.tipo_boletim = 1 
+            THEN componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}' 
+            ELSE TRUE 
+            END)
 GROUP BY matricula.cod_matricula,
          sequencial_fechamento,
          nm_aluno,
