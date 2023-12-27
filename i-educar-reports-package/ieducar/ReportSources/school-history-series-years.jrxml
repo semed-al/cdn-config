@@ -3554,7 +3554,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 						<font fontName="DejaVu Sans" size="8"/>
 						<paragraph leftIndent="5" rightIndent="5" spacingBefore="1"/>
 					</textElement>
-					<text><![CDATA[De conformidade com a Resolução Nº 08/2007-CEB/CEE-AL proveitamento: 1º ao 5º ano de Ensino Fundamental, através da análise da ficha de acompanhamento individual, em cada etapa, com parecer descritivo anual, sem atribuição de nota. Entretanto, no 3º ano e 5º ano o aluno foi submetido a um processo de avaliação somativa.]]></text>
+					<text><![CDATA[De conformidade com a Resolução Nº 08/2007 - CEB/CEE-AL aproveitamento: 1º ao 5º ano de Ensino Fundamental, através da análise da ficha de acompanhamento individual, em cada etapa, com parecer descritivo anual, sem atribuição de nota. Entretanto, no 3º ano e 5º ano o aluno foi submetido a um processo de avaliação somativa.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="-9" width="545" height="30" isPrintInFirstWholeBand="true" uuid="188b0214-9a62-46ae-9ffe-2d8d7170be23">
@@ -3590,7 +3590,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 						<font fontName="DejaVu Sans" size="8"/>
 						<paragraph leftIndent="5" rightIndent="5" spacingBefore="1"/>
 					</textElement>
-					<text><![CDATA[De Conformidade com a Resolução Nº 08/2007-CEB/CEE-AL proveitamento: 1º ao 5º ano de Ensino Fundamental, através da análise da ficha de acompanhamento individual, em cada etapa, com parecer descritivo anual, sem atribuição de nota. Entretanto, no 3º e 5º ano o aluno foi submetido a um processo de avaliação somativa.]]></text>
+					<text><![CDATA[De Conformidade com a Resolução Nº 08/2007 - CEB/CEE-AL aproveitamento: 1º ao 5º ano de Ensino Fundamental, através da análise da ficha de acompanhamento individual, em cada etapa, com parecer descritivo anual, sem atribuição de nota. Entretanto, no 3º e 5º ano o aluno foi submetido a um processo de avaliação somativa.]]></text>
 				</staticText>
 			</frame>
 		</band>

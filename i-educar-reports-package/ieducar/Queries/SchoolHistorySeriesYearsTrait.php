@@ -307,7 +307,7 @@ trait SchoolHistorySeriesYearsTrait
                     LIMIT 1
                 ) AS ordem_disciplina
                 FROM max_ano
-                LEFT JOIN max_ano_aprovado ON max_ano.ano = max_ano_aprovado.ano
+                INNER JOIN max_ano_aprovado ON max_ano.chave = max_ano_aprovado.chave
                 INNER JOIN relatorio.view_historico_series_anos vhsa ON vhsa.cod_aluno = $aluno AND (vhsa.ano_1serie <= max_ano.ano OR vhsa.ano_2serie <= max_ano.ano OR vhsa.ano_3serie <= max_ano.ano OR vhsa.ano_4serie <= max_ano.ano OR vhsa.ano_5serie <= max_ano.ano OR vhsa.ano_6serie <= max_ano.ano OR vhsa.ano_7serie <= max_ano.ano OR vhsa.ano_8serie <= max_ano.ano OR vhsa.ano_9serie <= max_ano.ano)
                 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = vhsa.cod_aluno)
                 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
