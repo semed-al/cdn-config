@@ -118,35 +118,6 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                             )
                         )
                     ) AS endereco,
-                    (
-                        SELECT
-                            infra_predio.nm_predio
-                        FROM
-                            pmieducar.infra_predio_comodo,
-                            pmieducar.infra_comodo_funcao,
-                            pmieducar.infra_predio
-                        WHERE TRUE
-                            AND infra_comodo_funcao.cod_infra_comodo_funcao = infra_predio_comodo.ref_cod_infra_comodo_funcao
-                            AND infra_comodo_funcao.ref_cod_escola = escola.cod_escola
-                            AND infra_predio.cod_infra_predio = infra_predio_comodo.ref_cod_infra_predio
-                            AND infra_predio.ref_cod_escola = escola.cod_escola
-                            AND infra_predio.ativo = 1
-                            AND infra_predio_comodo.cod_infra_predio_comodo = turma.ref_cod_infra_predio_comodo
-                    ) AS predio,
-                    (
-                        SELECT nm_comodo
-                        FROM
-                            pmieducar.infra_predio_comodo,
-                            pmieducar.infra_comodo_funcao,
-                            pmieducar.infra_predio
-                        WHERE TRUE
-                            AND infra_comodo_funcao.cod_infra_comodo_funcao = infra_predio_comodo.ref_cod_infra_comodo_funcao
-                            AND infra_comodo_funcao.ref_cod_escola = escola.cod_escola
-                            AND infra_predio.cod_infra_predio = infra_predio_comodo.ref_cod_infra_predio
-                            AND infra_predio.ref_cod_escola = escola.cod_escola
-                            AND infra_predio.ativo = 1
-                            AND infra_predio_comodo.cod_infra_predio_comodo = turma.ref_cod_infra_predio_comodo
-                    ) AS sala,
                     view_situacao.texto_situacao AS situacao,
                     matricula.dependencia
                 FROM
