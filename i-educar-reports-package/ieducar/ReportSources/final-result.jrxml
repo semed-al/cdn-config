@@ -174,14 +174,14 @@
 										<text><![CDATA[Aluno]]></text>
 									</staticText>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="239" y="35" width="32" height="15" uuid="2ba58a37-c9da-48d4-a2ac-086dc9849def"/>
+										<reportElement style="Crosstab Data Text" x="239" y="35" width="32" height="45" uuid="2ba58a37-c9da-48d4-a2ac-086dc9849def"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 											<font fontName="DejaVu Sans" size="8" isBold="true"/>
 										</textElement>
 										<text><![CDATA[Situação]]></text>
 									</staticText>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="271" y="35" width="32" height="15" uuid="93d25ded-82b7-42bd-800b-5c782568bed0"/>
+										<reportElement style="Crosstab Data Text" x="271" y="35" width="32" height="65" uuid="93d25ded-82b7-42bd-800b-5c782568bed0"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 											<font fontName="DejaVu Sans" size="8" isBold="true"/>
 										</textElement>
