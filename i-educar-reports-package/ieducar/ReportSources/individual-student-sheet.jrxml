@@ -426,13 +426,26 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="0" y="280" width="554" height="30" backcolor="#FFFFFF" uuid="6977375c-7989-4e55-b0d6-59aeb834e261"/>
+				<reportElement x="0" y="280" width="554" height="30" backcolor="#FFFFFF" uuid="6977375c-7989-4e55-b0d6-59aeb834e261">
+					<printWhenExpression><![CDATA[(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR) - $P{ano}) > 1]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					<paragraph lineSpacing="Double" lineSpacingSize="3.0" leftIndent="5" rightIndent="5" spacingBefore="10" spacingAfter="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Aos _________ dias do mês de ____________________________________ do ano de ____________"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="280" width="554" height="30" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR) - $P{ano}) <= 1]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
 					<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					<paragraph lineSpacing="Double" lineSpacingSize="3.0" leftIndent="5" rightIndent="5" spacingBefore="10" spacingAfter="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Aos <b>" + java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH) +"</b> dias do mês de <b>" + new java.text.DateFormatSymbols(new java.util.Locale("pt", "BR")).getMonths()[java.util.Calendar.getInstance().get(java.util.Calendar.MONTH)] + "</b> do ano de <b>" + java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)+"</b>"]]></textFieldExpression>
 			</textField>
+
 			<staticText>
 				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="180" y="363" width="200" height="16" uuid="47cc840e-db9d-4f75-986e-b6d619aca3b3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">

@@ -97,7 +97,10 @@
 		<variableExpression><![CDATA[100-(($F{total_faltas}*$F{hora_falta}/$F{carga_horaria_serie})*100)]]></variableExpression>
 	</variable>
 	<variable name="quantidade_etapas_cursadas" class="java.lang.Integer" calculation="Highest">
-		<variableExpression><![CDATA[$F{total_faltas_et4} != null || $V{soma_faltas_componente_et4} ? 4 : $F{total_faltas_et3} != null || $V{soma_faltas_componente_et3} ? 3 : $F{total_faltas_et2} != null || $V{soma_faltas_componente_et2} ? 2 : 1]]></variableExpression>
+		<variableExpression><![CDATA[$F{total_faltas_et4} != null || $F{faltas_componente_et4} != null || $V{soma_faltas_componente_et4} 
+    ? 4 : $F{total_faltas_et3} != null || $F{faltas_componente_et3} != null || $V{soma_faltas_componente_et3} 
+    ? 3 : $F{total_faltas_et2} != null || $F{faltas_componente_et2} != null || $V{soma_faltas_componente_et2} 
+    ? 2 : 1]]></variableExpression>
 	</variable>
 	
 	<group name="frequencia">
