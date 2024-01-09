@@ -43,6 +43,7 @@
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
 	<parameter name="source" class="java.lang.String"/>
+	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
@@ -341,7 +342,18 @@
 	<detail>
 		<band height="40" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="1" y="1" width="130" height="10" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044"/>
+				<reportElement x="1" y="1" width="130" height="10">
+					<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana")]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Parecer - " + ($F{etapa}.equalsIgnoreCase("1º Bimestre") || $F{etapa}.equalsIgnoreCase("2º Bimestre") ? "1º Semestre" : ($F{etapa}.equalsIgnoreCase("3º Bimestre") || $F{etapa}.equalsIgnoreCase("4º Bimestre") ? "2º Semestre" : $F{etapa}) ) + ":"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1" y="1" width="130" height="10" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044">
+					<printWhenExpression><![CDATA[!$P{dominio}.contains("taquarana")]]></printWhenExpression>
+				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
