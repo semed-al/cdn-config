@@ -3781,7 +3781,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd1} == null || $F{chd1} == ""  ? '-' : $F{chd1} + $P{HORAS_ABREV}) : $F{chd1} + $P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd1} == null || $F{chd1} == "" || $F{chd1} == 0 ? '-' : $F{chd1} + $P{HORAS_ABREV}) : $F{chd1} + $P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="221" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="09926094-b63d-4d82-aa24-b19e6eda46e0">
@@ -3797,7 +3797,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd2} == null || $F{chd2} == ""  ? '-' : $F{chd2} + $P{HORAS_ABREV}) : $F{chd2} + $P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd2} == null || $F{chd2} == "" || $F{chd2} == 0 ? '-' : $F{chd2} + $P{HORAS_ABREV}) : $F{chd2} + $P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="265" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="a5675308-a748-4e37-8118-bce8f3747a74">
@@ -3813,7 +3813,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd3} == null || $F{chd3} == ""  ? '-' : $F{chd3}+$P{HORAS_ABREV}) : $F{chd3}+$P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd3} == null || $F{chd3} == "" || $F{chd3} == 0 ? '-' : $F{chd3}+$P{HORAS_ABREV}) : $F{chd3}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="309" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="d0e2b9a7-dcd6-4374-93c3-a885e7de231c">
@@ -3830,7 +3830,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd4} == null || $F{chd4} == ""  ? '-' : $F{chd4}+$P{HORAS_ABREV}) : $F{chd4}+$P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd4} == null || $F{chd4} == "" || $F{chd4} == 0  ? '-' : $F{chd4}+$P{HORAS_ABREV}) : $F{chd4}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="353" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="54042cbd-4743-43ba-9f8e-0db1cc258d94">
@@ -3846,7 +3846,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd5} == null || $F{chd5} == "" ? '-' : $F{chd5}+$P{HORAS_ABREV}) : $F{chd5}+$P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd5} == null || $F{chd5} == "" || $F{chd5} == 0 ? '-' : $F{chd5}+$P{HORAS_ABREV}) : $F{chd5}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="397" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="6f58f2c3-8182-42cc-9c2c-fdb2d5ccba99">
@@ -3863,7 +3863,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd6} == null || $F{chd6} == ""  ? '-' : $F{chd6}+$P{HORAS_ABREV}) : $F{chd6}+$P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd6} == null || $F{chd6} == "" || $F{chd6} == 0 ? '-' : $F{chd6}+$P{HORAS_ABREV}) : $F{chd6}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="441" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="40c35fb4-682a-4270-b329-ea1a2fa1226f">
@@ -3880,7 +3880,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd7} == null || $F{chd7} == ""  ? '-' : $F{chd7}+$P{HORAS_ABREV}) : $F{chd7}+$P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd7} == null || $F{chd7} == "" || $F{chd7} == 0 ? '-' : $F{chd7}+$P{HORAS_ABREV}) : $F{chd7}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="485" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="fd56dabb-cfbb-4ef8-bb4b-6a69eb555c1c">
@@ -3897,7 +3897,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd8} == null || $F{chd8} == ""  ? '-' : $F{chd8}+$P{HORAS_ABREV}) : $F{chd8}+$P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd8} == null || $F{chd8} == "" || $F{chd8} == 0 ? '-' : $F{chd8}+$P{HORAS_ABREV}) : $F{chd8}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="529" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="fd56dabb-cfbb-4ef8-bb4b-6a69eb555c1c">
@@ -3914,7 +3914,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd9} == null || $F{chd9} == "" ? '-' : $F{chd9}+$P{HORAS_ABREV}) : $F{chd9}+$P{HORAS_ABREV}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{chd9} == null || $F{chd9} == "" || $F{chd9} == 0 ? '-' : $F{chd9}+$P{HORAS_ABREV}) : $F{chd9}+$P{HORAS_ABREV}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

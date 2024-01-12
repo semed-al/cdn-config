@@ -12,7 +12,7 @@ class ProcessamentoApiController extends Core_Controller_Page_EditController
     protected $_deleteOption = false;
     protected $_titulo = '';
     public $DISCIPLINA_DISPENSADA = 'Disp';
-
+    
     protected function validatesPresenceOf(
         &$value,
         $name,
@@ -763,7 +763,8 @@ class ProcessamentoApiController extends Core_Controller_Page_EditController
                         $notaConceitualNumerica = (string)$mediasCc[$ccId][0]->media;
                     } elseif ($tpNota == RegraAvaliacao_Model_Nota_TipoValor::NENHUM) { // parecer descritivo
                         if ($aprovado == true) {
-                            $nota = "APC";
+                            $dominio = $_SERVER['HTTP_HOST'];
+                            $nota = str_contains($dominio, "coitedonoia") ? "APC" : "PPC";
                         }                        
                     }
                 } else {
