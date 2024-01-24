@@ -32,7 +32,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LIMIT 1
             )
             SELECT
-                max_ano_aprovado.ano AS ano,
+                max_ano.ano AS ano,
                 vhsa.cod_aluno,
                 trim(vhsa.disciplina) AS nm_disciplina,
                 pessoa.nome AS nome_aluno,
@@ -124,6 +124,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 phe7.escola_cidade AS escola_cidade_7serie,
                 phe8.escola_cidade AS escola_cidade_8serie,
                 phe9.escola_cidade AS escola_cidade_9serie,
+                COALESCE(phe9.nm_serie, phe8.nm_serie, phe7.nm_serie, phe6.nm_serie, phe5.nm_serie, phe4.nm_serie, phe3.nm_serie, phe2.nm_serie, phe1.nm_serie) as ultima_serie_estudada,
                 (
                     CASE
                         WHEN phe1.historico_grade_curso_id = 1 AND LOWER(phe1.nm_serie) NOT LIKE '%série%' THEN CONCAT(phe1.nm_serie,' Série')
@@ -222,7 +223,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 (
                     SELECT
                         CASE
-                            WHEN he.aprovado = 3 THEN 'está cursando '
+                            WHEN he.aprovado in (3,4) THEN 'está cursando '
                             ELSE 'concluiu '
                         END || (
                                 CASE
@@ -301,7 +302,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                     LIMIT 1
                 ) AS ordem_disciplina
                 FROM max_ano
-                INNER JOIN max_ano_aprovado ON max_ano.chave = max_ano_aprovado.chave
+                LEFT JOIN max_ano_aprovado ON max_ano.chave = max_ano_aprovado.chave
                 INNER JOIN relatorio.view_historico_series_anos vhsa ON vhsa.cod_aluno = $P{aluno} AND (vhsa.ano_1serie <= max_ano.ano OR vhsa.ano_2serie <= max_ano.ano OR vhsa.ano_3serie <= max_ano.ano OR vhsa.ano_4serie <= max_ano.ano OR vhsa.ano_5serie <= max_ano.ano OR vhsa.ano_6serie <= max_ano.ano OR vhsa.ano_7serie <= max_ano.ano OR vhsa.ano_8serie <= max_ano.ano OR vhsa.ano_9serie <= max_ano.ano)
                     AND vhsa.disciplina !~ '([a-zA-Z]{2}[0-9]{2}){2}' 
                 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = vhsa.cod_aluno)
@@ -320,7 +321,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN pmieducar.historico_disciplinas hd1 ON hd1.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd1.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd1.ref_sequencial = phe1.sequencial
-                
                 LEFT JOIN pmieducar.historico_escolar phe2 ON phe2.ref_cod_aluno = vhsa.cod_aluno AND phe2.ativo = 1 
                     AND (
                             (phe2.posicao is not null AND phe2.posicao = 2)
@@ -335,7 +335,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN pmieducar.historico_disciplinas hd2 ON hd2.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd2.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd2.ref_sequencial = phe2.sequencial
-                
                 LEFT JOIN pmieducar.historico_escolar phe3 ON phe3.ref_cod_aluno = vhsa.cod_aluno AND phe3.ativo = 1 
                     AND (
                             (phe3.posicao is not null AND phe3.posicao = 3) 
@@ -350,7 +349,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN pmieducar.historico_disciplinas hd3 ON hd3.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd3.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd3.ref_sequencial = phe3.sequencial
-                
                 LEFT JOIN pmieducar.historico_escolar phe4 ON phe4.ref_cod_aluno = vhsa.cod_aluno AND phe4.ativo = 1 
                     AND (
                             (phe4.posicao is not null AND phe4.posicao = 4) 
@@ -364,7 +362,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN pmieducar.historico_disciplinas hd4 ON hd4.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd4.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd4.ref_sequencial = phe4.sequencial
-                
                 LEFT JOIN pmieducar.historico_escolar phe5 ON phe5.ref_cod_aluno = vhsa.cod_aluno AND phe5.ativo = 1 
                     AND ( 
                             ( phe5.posicao is not null AND phe5.posicao = 5 ) 
@@ -378,7 +375,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN pmieducar.historico_disciplinas hd5 ON hd5.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd5.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd5.ref_sequencial = phe5.sequencial
-                
                 LEFT JOIN pmieducar.historico_escolar phe6 ON phe6.ref_cod_aluno = vhsa.cod_aluno AND phe6.ativo = 1 
                     AND (
                             (phe6.posicao is not null AND phe6.posicao = 6) 
@@ -392,7 +388,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN pmieducar.historico_disciplinas hd6 ON hd6.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND hd6.ref_sequencial = phe6.sequencial
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd6.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
-
                 LEFT JOIN pmieducar.historico_escolar phe7 ON phe7.ref_cod_aluno = vhsa.cod_aluno AND phe7.ativo = 1 
                     AND (
                             (phe7.posicao is not null AND phe7.posicao = 7)
@@ -406,7 +401,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN pmieducar.historico_disciplinas hd7 ON hd7.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND hd7.ref_sequencial = phe7.sequencial
                     AND TRIM(relatorio.get_texto_sem_caracter_especial(hd7.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
-
                 LEFT JOIN pmieducar.historico_escolar phe8 ON phe8.ref_cod_aluno = vhsa.cod_aluno AND phe8.ativo = 1 
                     AND (
                             (phe8.posicao is not null AND phe8.posicao = 8)
@@ -420,7 +414,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN pmieducar.historico_disciplinas hd8 ON hd8.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND hd8.ref_sequencial = phe8.sequencial
                     AND TRIM(relatorio.get_texto_sem_caracter_especial(hd8.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
-                    
                 LEFT JOIN pmieducar.historico_escolar phe9 ON phe9.ref_cod_aluno = vhsa.cod_aluno AND phe9.ativo = 1 
                     AND (
                             (phe9.posicao is not null AND phe9.posicao = 9)
@@ -438,7 +431,6 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN public.municipio ON (municipio.idmun = fisica.idmun_nascimento)
                 ORDER BY ordem_disciplina ASC
                 ;
-
 SQL;
     }
 }

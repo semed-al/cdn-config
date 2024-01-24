@@ -78,6 +78,7 @@
 	<field name="data_nasc" class="java.lang.String"/>
 	<field name="nome_do_pai" class="java.lang.String"/>
 	<field name="nome_da_mae" class="java.lang.String"/>
+	<field name="ultima_serie_estudada" class="java.lang.String"/>
 	<field name="nome_serie1" class="java.lang.String"/>
 	<field name="nome_serie2" class="java.lang.String"/>
 	<field name="nome_serie3" class="java.lang.String"/>
@@ -1625,7 +1626,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[java.util.Calendar.getInstance().get(Calendar.DAY_OF_MONTH) +"/"+(java.util.Calendar.getInstance().get(Calendar.MONTH)+1)+"/"+java.util.Calendar.getInstance().get(Calendar.YEAR)]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{data_atual_extenso}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement positionType="FixRelativeToBottom" x="376" y="83" width="158" height="16" uuid="f66cb3b1-76b6-4ee1-aa9b-7cdc06ce4058">
@@ -3052,7 +3053,7 @@
 					<font fontName="DejaVu Sans" size="11"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Certificamos que " + "<style isBold='true' pdfFontName='Helvetica-Bold'>" +$F{nome_aluno}+ "</style>" + ", matrícula "+$F{cod_aluno}+($F{cod_inep} == null ? "" : ", cód. INEP: "+$F{cod_inep}) +", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ ((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai})) +", "+ ($F{nome_serie_aux} != null ? $F{nome_serie_aux} +" no ano letivo de " + $F{ano} : "está cursando o 1º ano do ENSINO FUNDAMENTAL no ano letivo de " + java.util.Calendar.getInstance().get(Calendar.YEAR)) + ", conforme Histórico Escolar."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Certificamos que " + "<style isBold='true' pdfFontName='Helvetica-Bold'>" +$F{nome_aluno}+ "</style>" + ", matrícula "+$F{cod_aluno}+($F{cod_inep} == null ? "" : ", cód. INEP: "+$F{cod_inep}) +", natural de "+$F{cidade_nascimento_uf}+", nascido(a) em "+$F{data_nasc}+", filho(a) de "+ ((($F{nome_do_pai} != null) && ($F{nome_da_mae} != null)) ? ($F{nome_do_pai} + " e " + $F{nome_da_mae}) : (($F{nome_do_pai} == null) ? $F{nome_da_mae} : $F{nome_do_pai})) +", "+ ($F{nome_serie_aux} != null ? $F{nome_serie_aux} : "está cursando o " + $F{ultima_serie_estudada} + " do ENSINO FUNDAMENTAL") +" no ano letivo de " + $F{ano} + ", conforme Histórico Escolar."]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement positionType="FixRelativeToBottom" x="199" y="153" width="44" height="19" uuid="ece0884f-da77-40d1-a067-a4d93dfaab5a">
