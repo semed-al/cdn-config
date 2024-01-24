@@ -1610,12 +1610,23 @@
 				<staticText>
 					<reportElement x="200" y="35" width="279" height="18" uuid="73a97bcb-863f-4d93-b899-03f371521f31">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana") == false]]></printWhenExpression>
 					</reportElement>
 					<textElement verticalAlignment="Bottom">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<text><![CDATA[________ de __________________ de ___________]]></text>
 				</staticText>
+				<textField>
+					<reportElement x="200" y="35" width="279" height="18">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana")]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.util.Calendar.getInstance().get(Calendar.DAY_OF_MONTH) +"/"+(java.util.Calendar.getInstance().get(Calendar.MONTH)+1)+"/"+java.util.Calendar.getInstance().get(Calendar.YEAR)]]></textFieldExpression>
+				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement positionType="FixRelativeToBottom" x="376" y="83" width="158" height="16" uuid="f66cb3b1-76b6-4ee1-aa9b-7cdc06ce4058">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -2864,11 +2875,22 @@
 						<textFieldExpression><![CDATA["<b>OBSERVAÇÕES</b><br>" + $F{observacao_all}]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement positionType="Float" x="197" y="150" width="159" height="16" uuid="40196625-d873-4c94-91d4-248c35f98bf3"/>
+						<reportElement positionType="Float" x="197" y="150" width="159" height="16" uuid="40196625-d873-4c94-91d4-248c35f98bf3">
+							<printWhenExpression><![CDATA[!$P{dominio}.contains("taquarana")]]></printWhenExpression>
+						</reportElement>						
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$F{municipio} + ", _____ / _____ / __________ "]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement positionType="Float" x="197" y="150" width="159" height="16">
+							<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana")]]></printWhenExpression>
+						</reportElement>
+						<textElement verticalAlignment="Middle">
+							<font fontName="DejaVu Sans" size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{municipio} + ", "+java.util.Calendar.getInstance().get(Calendar.DAY_OF_MONTH) +"/"+(java.util.Calendar.getInstance().get(Calendar.MONTH)+1)+"/"+java.util.Calendar.getInstance().get(Calendar.YEAR)]]></textFieldExpression>
 					</textField>
 					<textField isBlankWhenNull="true">
 						<reportElement positionType="Float" x="367" y="210" width="160" height="16" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe">
@@ -3577,7 +3599,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<staticText>
 					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="-9" width="545" height="30" isPrintInFirstWholeBand="true" uuid="188b0214-9a62-46ae-9ffe-2d8d7170be23">
 						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.taquarana.al.gov.br") == true]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana") == true]]></printWhenExpression>
 					</reportElement>
 					<box>
 						<pen lineWidth="0.25"/>

@@ -119,7 +119,7 @@
 					</textElement>
 					<text><![CDATA[03 - SÉRIE]]></text>
 				</staticText>
-				<textField isBlankWhenNull="true">
+				<textField isBlankWhenNull="true" isStretchWithOverflow="true">
 					<reportElement x="345" y="15" width="79" height="14" uuid="8d82c669-13b6-4a05-9ad4-9e4774106397"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
@@ -133,7 +133,7 @@
 					</textElement>
 					<text><![CDATA[04 - TURMA]]></text>
 				</staticText>
-				<textField isBlankWhenNull="true">
+				<textField isBlankWhenNull="true" isStretchWithOverflow="true">
 					<reportElement x="432" y="15" width="101" height="14" uuid="27bcee65-e1f0-4115-9dae-de15a599f5fd"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="8"/>
@@ -341,6 +341,10 @@
 	</pageHeader>
 	<detail>
 		<band height="40" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{parecer} != null && !$F{parecer}.isEmpty() 
+					&& !$F{parecer}.equals("<br>") 
+					&& !$F{parecer}.equals("<p><br></p>")
+					&& !$F{parecer}.equals("<p><br></p><p></p>")]]></printWhenExpression>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="1" y="1" width="130" height="10">
 					<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana")]]></printWhenExpression>
