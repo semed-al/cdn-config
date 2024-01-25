@@ -2891,7 +2891,7 @@
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{municipio} + ", "+java.util.Calendar.getInstance().get(Calendar.DAY_OF_MONTH) +"/"+(java.util.Calendar.getInstance().get(Calendar.MONTH)+1)+"/"+java.util.Calendar.getInstance().get(Calendar.YEAR)]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{municipio} + ", "+$F{data_atual_extenso}]]></textFieldExpression>
 					</textField>
 					<textField isBlankWhenNull="true">
 						<reportElement positionType="Float" x="367" y="210" width="160" height="16" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe">
