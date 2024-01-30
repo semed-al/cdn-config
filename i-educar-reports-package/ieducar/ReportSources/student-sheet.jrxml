@@ -33,6 +33,7 @@
 	<parameter name="matricula" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
+	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="modelo" class="java.lang.String"/>
 	<parameter name="database" class="java.lang.String"/>
 	<parameter name="source" class="java.lang.String"/>
@@ -962,11 +963,22 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="79" y="696" width="369" height="13" uuid="6c8b239b-e594-4e94-ab25-ecbeab0934fb"/>
+				<reportElement x="79" y="696" width="369" height="13" uuid="6c8b239b-e594-4e94-ab25-ecbeab0934fb">
+					<printWhenExpression><![CDATA[!$P{dominio}.contains("taquarana")]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="7" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cidade_instituicao}+"-"+$F{uf_instituicao}+", "+new java.text.SimpleDateFormat("______/_______/__________").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="696" width="369" height="13" uuid="6c8b239b-e594-4e94-ab25-ecbeab0934fb">
+					<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cidade_instituicao}+"-"+$F{uf_instituicao}+", " + $F{data_atual}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0" isBlankWhenNull="true">
 				<reportElement x="344" y="320" width="94" height="12" uuid="5195282a-b5fd-46de-a8c7-ff00d5fe18b6"/>
