@@ -32,7 +32,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LIMIT 1
             )
             SELECT
-                max_ano.ano AS ano,
+                COALESCE(max_ano_aprovado.ano, max_ano.ano) AS ano,
                 vhsa.cod_aluno,
                 trim(vhsa.disciplina) AS nm_disciplina,
                 pessoa.nome AS nome_aluno,
