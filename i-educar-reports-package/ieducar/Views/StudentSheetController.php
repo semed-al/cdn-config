@@ -39,6 +39,7 @@ class StudentSheetController extends Portabilis_Controller_ReportCoreController
                 1 => 'Modelo 1',
             ], 'value' => 1
         ]);
+        $this->inputsHelper()->checkbox('emitir_data_atual', ['label' => 'Emitir com data atual', 'value' => true]);
     }
 
     /**
@@ -55,6 +56,7 @@ class StudentSheetController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
         $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
+        $this->report->addArg('emitir_data_atual', (bool) $this->getRequest()->emitir_data_atual);
     }
 
     /**

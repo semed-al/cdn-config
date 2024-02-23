@@ -35,6 +35,9 @@
 	</parameter>
 	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="modelo" class="java.lang.String"/>
+	<parameter name="emitir_data_atual" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
 	<parameter name="database" class="java.lang.String"/>
 	<parameter name="source" class="java.lang.String"/>
 	<field name="cod_aluno" class="java.lang.Integer"/>
@@ -964,7 +967,7 @@
 			</line>
 			<textField>
 				<reportElement x="79" y="696" width="369" height="13" uuid="6c8b239b-e594-4e94-ab25-ecbeab0934fb">
-					<printWhenExpression><![CDATA[!$P{dominio}.contains("taquarana")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[!$P{emitir_data_atual}]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="7" isBold="false"/>
@@ -973,7 +976,7 @@
 			</textField>
 			<textField>
 				<reportElement x="79" y="696" width="369" height="13" uuid="6c8b239b-e594-4e94-ab25-ecbeab0934fb">
-					<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$P{emitir_data_atual}]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="7" isBold="false"/>
