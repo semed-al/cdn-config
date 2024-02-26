@@ -447,19 +447,6 @@
 			</textField>
 
 			<staticText>
-				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="180" y="363" width="200" height="16" uuid="47cc840e-db9d-4f75-986e-b6d619aca3b3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<text><![CDATA[Funcionário(a) responsável]]></text>
-			</staticText>
-			<line>
-				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="177" y="361" width="210" height="1" uuid="21b17145-29c1-40db-b67a-87e54a8d2913"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
-			<staticText>
 				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="330" y="425" width="200" height="16" uuid="73402cd5-6bfe-49fb-a73e-019059c1758b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -473,17 +460,17 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerBottom" x="30" y="421" width="210" height="1" uuid="91fcf3d6-8100-4739-a84b-645209bd415a"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerBottom" x="30" y="421" width="250" height="1" uuid="91fcf3d6-8100-4739-a84b-645209bd415a"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerBottom" x="31" y="425" width="203" height="16" uuid="f6d9cc00-347e-4115-8ab3-9a165c4d2339"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerBottom" x="31" y="425" width="253" height="16" uuid="f6d9cc00-347e-4115-8ab3-9a165c4d2339"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<text><![CDATA[Secretário(a) - registro ou matrícula nº _______]]></text>
+				<text><![CDATA[Funcionário(a) responsável - registro ou matrícula nº _______]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="0" y="243" width="553" height="16" uuid="872f308c-6428-4713-a502-3d2697cf5fc5"/>
