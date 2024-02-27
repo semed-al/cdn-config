@@ -269,7 +269,7 @@ trait SchoolHistorySeriesYearsTrait
                     AND he.extra_curricular = 0
                     AND he.ativo = 1
                     AND he.ano <= max_ano_aprovado.ano
-                    ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
+                    ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC, he.posicao DESC
                     LIMIT 1
                 ) AS nome_serie_aux,
                 (

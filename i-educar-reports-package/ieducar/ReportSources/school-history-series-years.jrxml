@@ -3564,7 +3564,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="-9" width="545" height="30" isPrintInFirstWholeBand="true" uuid="e685d977-930a-4bcb-a158-047ac175b8c1">
 						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.belem.al.gov.br") == true]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$P{dominio}.contains("belem") == true]]></printWhenExpression>
 					</reportElement>
 					<box>
 						<pen lineWidth="0.25"/>
@@ -3582,7 +3582,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<staticText>
 					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="-9" width="545" height="30" isPrintInFirstWholeBand="true" uuid="188b0214-9a62-46ae-9ffe-2d8d7170be23">
 						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
-						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.coitedonoia.al.gov.br") == true]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$P{dominio}.contains("coitedonoia") == true]]></printWhenExpression>
 					</reportElement>
 					<box>
 						<pen lineWidth="0.25"/>
