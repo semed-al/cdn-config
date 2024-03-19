@@ -69,7 +69,6 @@
 	<field name="nis" class="java.math.BigDecimal"/>
 	<field name="nome_curso" class="java.lang.String"/>
 	<field name="nome_turma" class="java.lang.String"/>
-	<field name="nome_serie" class="java.lang.String"/>
 	<field name="serie_matricula" class="java.lang.String"/>
 	<field name="cod_turma" class="java.lang.Integer"/>
 	<field name="cod_escola" class="java.lang.Integer"/>
@@ -103,7 +102,7 @@
 		<groupHeader>
 			<band height="70">
 				<textField>
-					<reportElement x="470" y="10" width="172" height="13" uuid="ffc67a05-c330-41aa-89fc-0bcdf8afd812"/>
+					<reportElement x="400" y="10" width="250" height="13" uuid="ffc67a05-c330-41aa-89fc-0bcdf8afd812"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
@@ -117,18 +116,11 @@
 					<textFieldExpression><![CDATA["Turno: "+$F{periodo}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="10" width="215" height="13" uuid="e5a437c6-58db-4ef8-8d26-399fa70c7b0a"/>
+					<reportElement x="0" y="10" width="285" height="13" uuid="e5a437c6-58db-4ef8-8d26-399fa70c7b0a"/>
 					<textElement>
 						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Curso: "+$F{nome_curso}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="220" y="10" width="200" height="13" uuid="28f88ba9-b6c5-427d-a8e9-1420cab8846e"/>
-					<textElement>
-						<font fontName="DejaVu Sans" size="8" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Série: " + ($F{multisseriada} == 1 ? "MULTISSERIADA" : $F{nome_serie})]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="-11" y="32" width="14" height="35" uuid="687c656f-e35b-4cc1-b449-13fe2ebbf46b"/>

@@ -63,7 +63,6 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     curso.nm_curso AS nome_curso,
                     turma.nm_turma AS nome_turma,
                     turma.multiseriada AS multisseriada,
-                    serie.nm_serie AS nome_serie,
                     (
                         SELECT s.nm_serie
                         FROM pmieducar.serie s
