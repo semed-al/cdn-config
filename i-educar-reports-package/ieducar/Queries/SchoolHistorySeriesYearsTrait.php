@@ -18,22 +18,21 @@ trait SchoolHistorySeriesYearsTrait
                 -- pega séries cursando ou transferido 
                 SELECT 1,he.ano
                 FROM pmieducar.historico_escolar he
-                WHERE he.ref_cod_aluno = $aluno
+                WHERE he.ref_cod_aluno = $P{aluno}
                     AND he.aprovado NOT IN (2,6,14,15)
                     AND he.extra_curricular = 0
                     AND he.ativo = 1
-                    AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $escola)                    
+                    AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $P{escola})                    
                 ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                 LIMIT 1
             ),
             max_ano_aprovado (chave,ano) AS (
                 SELECT 1,he.ano
                 FROM pmieducar.historico_escolar he
-                WHERE he.ref_cod_aluno = $aluno
+                WHERE he.ref_cod_aluno = $P{aluno}
                     AND he.aprovado NOT IN (2,3,4,6,14,15)
                     AND he.extra_curricular = 0
                     AND he.ativo = 1
-                    AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $escola)                    
                 ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                 LIMIT 1
             )
@@ -197,19 +196,19 @@ trait SchoolHistorySeriesYearsTrait
                 (
                     SELECT municipio
                     FROM relatorio.view_dados_escola
-                    WHERE cod_escola = $escola
+                    WHERE cod_escola = $P{escola}
                 ) AS municipio,
                 (
                     SELECT fcn_upper(p.nome)
                     FROM cadastro.pessoa p
                     INNER JOIN pmieducar.escola e ON (e.ref_idpes_gestor = p.idpes)
-                    WHERE e.cod_escola = $escola
+                    WHERE e.cod_escola = $P{escola}
                 ) AS diretor,
                 (
                     SELECT fcn_upper(p.nome)
                     FROM cadastro.pessoa p
                     INNER JOIN pmieducar.escola e ON (p.idpes = e.ref_idpes_secretario_escolar)
-                    WHERE e.cod_escola = $escola
+                    WHERE e.cod_escola = $P{escola}
                 ) AS secretario,
                 (
                     SELECT max(COALESCE(ato_poder_publico,''))
@@ -234,14 +233,14 @@ trait SchoolHistorySeriesYearsTrait
                         END || (
                                 CASE
                                     WHEN (
-                                        SELECT substring(nm_serie,1,1)::integer
+                                        SELECT substring(he.nm_serie,1,1)::integer
                                         FROM pmieducar.historico_escolar he
                                         WHERE he.ref_cod_aluno = vhsa.cod_aluno
                                         AND he.ativo = 1
                                         AND he.historico_grade_curso_id = 2
                                         ORDER BY he.ano DESC LIMIT 1
                                     ) = 1 
-                                    THEN 'o ' || (substring(nm_serie,1,1)::integer::numeric) || 'º ano'
+                                    THEN 'o ' || (substring(he.nm_serie,1,1)::integer::numeric) || 'º ano'
                                     ELSE
                                         CASE 
                                             WHEN historico_grade_curso_id = 1 
@@ -265,7 +264,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                     FROM pmieducar.historico_escolar he
                     WHERE he.ref_cod_aluno = vhsa.cod_aluno
-                    AND he.aprovado NOT IN (2,3,6,14,15)
+                    AND he.aprovado NOT IN (2,3,6,14,15) -- aprovado (1,12,13) ou reclassificado (5)
                     AND he.extra_curricular = 0
                     AND he.ativo = 1
                     AND he.ano <= max_ano_aprovado.ano
@@ -277,7 +276,7 @@ trait SchoolHistorySeriesYearsTrait
                     FROM pmieducar.historico_escolar he
                     WHERE he.ref_cod_aluno = vhsa.cod_aluno
                     AND he.ativo = 1
-                    AND (CASE WHEN $nao_emitir_reprovado THEN he.aprovado <> 2 ELSE 1=1 END)
+                    AND (CASE WHEN $P!{nao_emitir_reprovado} THEN he.aprovado <> 2 ELSE 1=1 END)
                     AND he.dependencia = 't'
                 ) AS possui_historico_dependencia,
                 (
@@ -289,7 +288,7 @@ trait SchoolHistorySeriesYearsTrait
                         AND phe.ativo = 1
                         AND phe.ano <= max_ano.ano
                         AND LENGTH(observacao) > 0
-                        AND (CASE WHEN $nao_emitir_reprovado THEN phe.aprovado <> 2 ELSE 1=1 END)                        
+                        AND (CASE WHEN $P!{nao_emitir_reprovado} THEN phe.aprovado <> 2 ELSE 1=1 END)                        
                         ORDER BY phe.ano
                     )tabl
                 ) AS observacao_all,
@@ -309,7 +308,7 @@ trait SchoolHistorySeriesYearsTrait
                 ) AS ordem_disciplina
                 FROM max_ano
                 LEFT JOIN max_ano_aprovado ON max_ano.chave = max_ano_aprovado.chave
-                INNER JOIN relatorio.view_historico_series_anos vhsa ON vhsa.cod_aluno = $aluno AND (vhsa.ano_1serie <= max_ano.ano OR vhsa.ano_2serie <= max_ano.ano OR vhsa.ano_3serie <= max_ano.ano OR vhsa.ano_4serie <= max_ano.ano OR vhsa.ano_5serie <= max_ano.ano OR vhsa.ano_6serie <= max_ano.ano OR vhsa.ano_7serie <= max_ano.ano OR vhsa.ano_8serie <= max_ano.ano OR vhsa.ano_9serie <= max_ano.ano)
+                INNER JOIN relatorio.view_historico_series_anos vhsa ON vhsa.cod_aluno = $P{aluno} AND (vhsa.ano_1serie <= max_ano.ano OR vhsa.ano_2serie <= max_ano.ano OR vhsa.ano_3serie <= max_ano.ano OR vhsa.ano_4serie <= max_ano.ano OR vhsa.ano_5serie <= max_ano.ano OR vhsa.ano_6serie <= max_ano.ano OR vhsa.ano_7serie <= max_ano.ano OR vhsa.ano_8serie <= max_ano.ano OR vhsa.ano_9serie <= max_ano.ano)
                     AND vhsa.disciplina !~ '([a-zA-Z]{2}[0-9]{2}){2}' 
                 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = vhsa.cod_aluno)
                 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
@@ -324,6 +323,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe1.ano <= max_ano.ano
+                    AND (CASE WHEN phe1.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe1.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd1 ON hd1.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd1.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd1.ref_sequencial = phe1.sequencial
@@ -338,6 +338,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe2.ano <= max_ano.ano
+                    AND (CASE WHEN phe2.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe2.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd2 ON hd2.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd2.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd2.ref_sequencial = phe2.sequencial
@@ -352,6 +353,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe3.ano <= max_ano.ano
+                    AND (CASE WHEN phe3.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe3.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd3 ON hd3.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd3.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd3.ref_sequencial = phe3.sequencial
@@ -365,6 +367,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe4.ano <= max_ano.ano
+                    AND (CASE WHEN phe4.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe4.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd4 ON hd4.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd4.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd4.ref_sequencial = phe4.sequencial
@@ -378,6 +381,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe5.ano <= max_ano.ano
+                    AND (CASE WHEN phe5.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe5.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd5 ON hd5.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd5.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
                     AND hd5.ref_sequencial = phe5.sequencial
@@ -391,6 +395,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe6.ano <= max_ano.ano
+                    AND (CASE WHEN phe6.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe6.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd6 ON hd6.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND hd6.ref_sequencial = phe6.sequencial
                     AND trim(relatorio.get_texto_sem_caracter_especial(hd6.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
@@ -404,6 +409,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe7.ano <= max_ano.ano
+                    AND (CASE WHEN phe7.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe7.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd7 ON hd7.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND hd7.ref_sequencial = phe7.sequencial
                     AND TRIM(relatorio.get_texto_sem_caracter_especial(hd7.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
@@ -417,6 +423,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe8.ano <= max_ano.ano
+                    AND (CASE WHEN phe8.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe8.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd8 ON hd8.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND hd8.ref_sequencial = phe8.sequencial
                     AND TRIM(relatorio.get_texto_sem_caracter_especial(hd8.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
@@ -430,6 +437,7 @@ trait SchoolHistorySeriesYearsTrait
                             )
                         )
                     AND phe9.ano <= max_ano.ano
+                    AND (CASE WHEN phe9.aprovado NOT IN (2,3,4,6,14,15) THEN 1=1 ELSE phe9.ref_cod_escola = $P{escola} END)
                 LEFT JOIN pmieducar.historico_disciplinas hd9 ON hd9.ref_ref_cod_aluno = vhsa.cod_aluno
                     AND hd9.ref_sequencial = phe9.sequencial
                     AND TRIM(relatorio.get_texto_sem_caracter_especial(hd9.nm_disciplina)) = trim(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina)) 
