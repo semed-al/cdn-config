@@ -69,6 +69,8 @@
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
 	<field name="ativo_na_turma" class="java.lang.Integer"/>
 	<field name="tipo_presenca" class="java.lang.Integer"/>
+	<field name="saiu_da_turma" class="java.lang.Boolean"/>
+	<field name="saiu_etapa" class="java.lang.Integer"/>
 	<variable name="soma_carga_horaria_componente_et" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{carga_horaria_componente_et}]]></variableExpression>
 	</variable>
@@ -411,7 +413,9 @@
 				</staticText>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="151" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="ac46c52c-48ce-4ef2-bd74-366805a26873">
-						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) || ($V{soma_faltas_componente_et1} != null)]]></printWhenExpression>
+						<printWhenExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} >= 1) 
+														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) 
+														|| ($V{soma_faltas_componente_et1} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -420,7 +424,9 @@
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="175" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="45a0b7cb-6565-4bd7-bdee-a4ddb7b8b985">
-						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) || ($V{soma_faltas_componente_et2} != null)]]></printWhenExpression>
+						<printWhenExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} >= 2) 
+														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) 
+														|| ($V{soma_faltas_componente_et2} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -429,7 +435,9 @@
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="199" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="3c3d8dbf-93af-4baf-a81c-896466736c69">
-						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) || ($V{soma_faltas_componente_et3} != null)]]></printWhenExpression>
+						<printWhenExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} >= 3)
+														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) 
+														|| ($V{soma_faltas_componente_et3} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -438,7 +446,9 @@
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="223" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="4959c038-c4d1-467b-aaa0-e62cf35fa3a1">
-						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) || ($V{soma_faltas_componente_et4} != null)]]></printWhenExpression>
+						<printWhenExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} >= 4)
+														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) 
+														|| ($V{soma_faltas_componente_et4} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -447,7 +457,9 @@
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="272" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="40f65a68-605a-4992-8948-90266bed9b03">
-						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) || ($V{soma_faltas_componente_et1} != null)]]></printWhenExpression>
+						<printWhenExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 1) 
+														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) 
+														|| ($V{soma_faltas_componente_et1} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -456,7 +468,8 @@
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="297" y="0" width="22" height="11" uuid="19a825b5-5939-4877-8483-95e9bb3cbf9d">
-						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) || ($V{soma_faltas_componente_et2} != null)]]></printWhenExpression>
+						<printWhenExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 2) && (($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) 
+														|| ($V{soma_faltas_componente_et2} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -465,7 +478,8 @@
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="321" y="0" width="22" height="11" uuid="4d81f8f4-f6a5-4045-9f98-0e6d95153edc">
-						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) || ($V{soma_faltas_componente_et3} != null)]]></printWhenExpression>
+						<printWhenExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 3) && (($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) 
+														|| ($V{soma_faltas_componente_et3} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -474,7 +488,8 @@
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="346" y="0" width="22" height="11" uuid="b391c9d8-ef16-4ad9-aa2d-034f3ed07cdb">
-						<printWhenExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) || ($V{soma_faltas_componente_et4} != null)]]></printWhenExpression>
+						<printWhenExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 4) && (($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) 
+														|| ($V{soma_faltas_componente_et4} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>

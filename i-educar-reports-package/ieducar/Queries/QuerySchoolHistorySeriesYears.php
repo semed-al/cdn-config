@@ -9,11 +9,11 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
     {
         return <<<'SQL'
             WITH max_ano (chave,ano) AS (
-                -- pega séries cursando ou transferido 
+                -- pega séries cursando, transferido ou reprovado ou reprovado por faltas
                 SELECT 1,he.ano
                 FROM pmieducar.historico_escolar he
                 WHERE he.ref_cod_aluno = $P{aluno}
-                    AND he.aprovado NOT IN (2,6,14,15)
+                    AND he.aprovado NOT IN (6,15)
                     AND he.extra_curricular = 0
                     AND he.ativo = 1
                     AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $P{escola})                    
