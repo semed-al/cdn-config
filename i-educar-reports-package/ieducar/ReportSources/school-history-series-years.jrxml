@@ -1214,7 +1214,7 @@
 							<font size="7"/>
 							<paragraph lineSpacingSize="1.0"/>
 						</textElement>
-						<text><![CDATA[Legenda do resultado final:<br>Apr: APROVADO; AprDep: APROVADO COM DEPENDÊNCIA; AprCo: APROVADO POR CONSELHO DE CLASSE; Repr: REPROVADO; RpFt: REPROVADO POR FALTA; Curs: CURSANDO; Trs: TRANSFERIDO; Aban: ABANDONO; Fal: FALECIDO]]></text>
+						<text><![CDATA[Legenda do resultado final:<br>Apr: APROVADO; AprDep: APROVADO COM DEPENDÊNCIA; AprCo: APROVADO POR CONSELHO DE CLASSE; Repr: REPROVADO; RpFt: REPROVADO POR FALTA; Curs: CURSANDO; Trs: TRANSFERIDO; Aban: ABANDONO; Fal: FALECIDO; Prom: PROMOVIDO]]></text>
 					</staticText>
 				</frame>
 				<frame>
