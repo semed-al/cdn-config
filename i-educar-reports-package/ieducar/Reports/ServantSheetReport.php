@@ -125,7 +125,7 @@ class ServantSheetReport extends Portabilis_Report_ReportCore
                 translate(upper(pessoa.nome),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS nm_servidor,
                 translate(upper(v_pessoa_fisica.email),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS email,
                 translate(upper(estado_civil.descricao),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS estado_civil,
-                translate(upper(religiao.nm_religiao),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS religiao,
+                translate(upper(religions.name),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS religiao,
                 translate(upper(documento.sigla_uf_exp_rg),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS sigla_uf_exp_rg,
                 translate(upper(documento.sigla_uf_cert_civil),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS sigla_uf_cert_civil,
                 translate(upper(orgao_emissor_rg.sigla),'áéíóúýàèìòùãõâêîôûäëïöüç','ÁÉÍÓÚÝÀÈÌÒÙÃÕÂÊÎÔÛÄËÏÖÜÇ') AS orgao_exp,
@@ -201,8 +201,8 @@ class ServantSheetReport extends Portabilis_Report_ReportCore
                 AND pessoa.idpes = servidor.cod_servidor
             LEFT JOIN cadastro.estado_civil ON TRUE
                 AND estado_civil.ideciv = fisica.ideciv
-            LEFT JOIN pmieducar.religiao ON TRUE
-                AND fisica.ref_cod_religiao = religiao.cod_religiao
+            LEFT JOIN pmieducar.religions ON TRUE
+                AND fisica.ref_cod_religiao = religions.id
             LEFT JOIN cadastro.documento ON TRUE
                 AND pessoa.idpes = documento.idpes
             LEFT JOIN cadastro.endereco_pessoa ON TRUE
