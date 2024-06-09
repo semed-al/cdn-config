@@ -1698,7 +1698,7 @@
 					</graphicElement>
 				</rectangle>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="104" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="104" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie7} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola7} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1732,7 +1732,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="90" width="144" height="14" uuid="74392640-5dc0-4cbb-89bc-3e721fc2b3ae">
+					<reportElement positionType="Float" x="408" y="90" width="114" height="14" uuid="74392640-5dc0-4cbb-89bc-3e721fc2b3ae">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie6} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1745,7 +1745,7 @@
 					<textFieldExpression><![CDATA[$V{max_escola_cidade6}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="62" width="253" height="14" uuid="67a67a75-5e33-4326-8c93-1a675562b811">
+					<reportElement positionType="Float" x="125" y="62" width="283" height="14" uuid="67a67a75-5e33-4326-8c93-1a675562b811">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie4} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1758,7 +1758,7 @@
 					<textFieldExpression><![CDATA[$V{max_escola4}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="118" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="118" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie8} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola8} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1770,7 +1770,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="132" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="132" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie9} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade9} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1793,7 +1793,7 @@
 					<textFieldExpression><![CDATA[$V{max_nome_serie3}.toUpperCase()]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="76" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="76" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie5} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola5} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1841,7 +1841,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="118" width="144" height="14" uuid="54cce100-3f4a-4d06-9c68-ebf85f872a07">
+					<reportElement positionType="Float" x="408" y="118" width="114" height="14" uuid="54cce100-3f4a-4d06-9c68-ebf85f872a07">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie8} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1866,7 +1866,7 @@
 					<textFieldExpression><![CDATA[$V{max_ano4}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="90" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="90" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie6} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola6} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1914,7 +1914,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="76" width="253" height="14" uuid="0ecdaf29-4adb-45fd-b6e7-8d6418407ec1">
+					<reportElement positionType="Float" x="125" y="76" width="283" height="14" uuid="0ecdaf29-4adb-45fd-b6e7-8d6418407ec1">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie5} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1937,7 +1937,7 @@
 					<textFieldExpression><![CDATA[$V{max_nome_serie5}.toUpperCase()]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="76" width="144" height="14" uuid="e93db816-e55a-41da-b6ff-f4557212cb9a">
+					<reportElement positionType="Float" x="408" y="76" width="114" height="14" uuid="e93db816-e55a-41da-b6ff-f4557212cb9a">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie5} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1974,7 +1974,7 @@
 					<textFieldExpression><![CDATA[$V{max_escola_uf6}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="34" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="34" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie2} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola2} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1986,7 +1986,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="132" width="253" height="14" uuid="e51215de-46ca-4723-a0a6-ea49ccf12415">
+					<reportElement positionType="Float" x="125" y="132" width="283" height="14" uuid="e51215de-46ca-4723-a0a6-ea49ccf12415">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie9} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -1999,7 +1999,7 @@
 					<textFieldExpression><![CDATA[$V{max_escola9}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="104" width="253" height="14" uuid="9ef3c96a-b858-4880-91f6-fbdd9d4a1069">
+					<reportElement positionType="Float" x="125" y="104" width="283" height="14" uuid="9ef3c96a-b858-4880-91f6-fbdd9d4a1069">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie7} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2034,7 +2034,7 @@
 					<textFieldExpression><![CDATA[$V{max_ano5}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="7" width="144" height="13" uuid="43d81046-544d-4c8b-a0ee-44dd0f92860b"/>
+					<reportElement positionType="Float" x="408" y="7" width="114" height="13" uuid="43d81046-544d-4c8b-a0ee-44dd0f92860b"/>
 					<box>
 						<pen lineWidth="0.25"/>
 					</box>
@@ -2045,7 +2045,7 @@
 					<text><![CDATA[MUNICÍPIO]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="62" width="144" height="14" uuid="78d31b16-c89c-4109-85cb-7e16beba15b5">
+					<reportElement positionType="Float" x="408" y="62" width="114" height="14" uuid="78d31b16-c89c-4109-85cb-7e16beba15b5">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie4} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2100,7 +2100,7 @@
 					<text><![CDATA[UF]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="34" width="144" height="14" uuid="e3d5548e-b346-4ae0-adc8-bfea1bd9595b">
+					<reportElement positionType="Float" x="408" y="34" width="114" height="14" uuid="e3d5548e-b346-4ae0-adc8-bfea1bd9595b">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie2} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2113,7 +2113,7 @@
 					<textFieldExpression><![CDATA[$V{max_escola_cidade2}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="48" width="144" height="14" uuid="d49597e4-af17-4e0d-a643-1255dda441be">
+					<reportElement positionType="Float" x="408" y="48" width="114" height="14" uuid="d49597e4-af17-4e0d-a643-1255dda441be">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie3} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2126,7 +2126,7 @@
 					<textFieldExpression><![CDATA[$V{max_escola_cidade3}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="118" width="253" height="14" uuid="e51215de-46ca-4723-a0a6-ea49ccf12415">
+					<reportElement positionType="Float" x="125" y="118" width="283" height="14" uuid="e51215de-46ca-4723-a0a6-ea49ccf12415">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie8} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2151,7 +2151,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="48" width="253" height="14" uuid="130fef00-ee4b-4c18-a2e5-7c1f3c927c5e">
+					<reportElement positionType="Float" x="125" y="48" width="283" height="14" uuid="130fef00-ee4b-4c18-a2e5-7c1f3c927c5e">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie3} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2186,7 +2186,7 @@
 					<textFieldExpression><![CDATA[$V{max_nome_serie7}.toUpperCase()]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="118" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="118" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie8} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade8} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2199,7 +2199,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="76" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="76" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie5} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade5} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2224,7 +2224,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="62" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="62" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie4} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola4} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2237,7 +2237,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="90" width="253" height="14" uuid="ec44de40-d317-48c9-be56-f4790b048042">
+					<reportElement positionType="Float" x="125" y="90" width="283" height="14" uuid="ec44de40-d317-48c9-be56-f4790b048042">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie6} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2260,7 +2260,7 @@
 					<textFieldExpression><![CDATA[$V{max_nome_serie4}.toUpperCase()]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="132" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="132" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie9} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola9} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2273,7 +2273,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="20" width="253" height="14" uuid="0e494a87-f107-4dd3-8062-4c912ad3936a">
+					<reportElement positionType="Float" x="125" y="20" width="283" height="14" uuid="0e494a87-f107-4dd3-8062-4c912ad3936a">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2298,7 +2298,7 @@
 					<textFieldExpression><![CDATA[$V{max_escola_uf4}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="48" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="48" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie3} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade3} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2311,7 +2311,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="125" y="34" width="253" height="14" uuid="d8df90c2-296b-4f70-bd8b-d6055bab9691">
+					<reportElement positionType="Float" x="125" y="34" width="283" height="14" uuid="d8df90c2-296b-4f70-bd8b-d6055bab9691">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie2} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2368,7 +2368,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="20" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="20" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie1} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade1} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2405,7 +2405,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="34" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="34" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie2} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade2} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2430,7 +2430,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="48" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="48" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie3} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola3} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2527,7 +2527,9 @@
 					<textFieldExpression><![CDATA[$V{max_escola_uf7}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="20" width="253" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="125" y="20" width="283" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<printWhenExpression><![CDATA[($V{max_status_serie1} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola1} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2540,7 +2542,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="104" width="144" height="14" uuid="a0bbfea0-6e67-42fd-9677-f038c860bd47">
+					<reportElement positionType="Float" x="408" y="104" width="114" height="14" uuid="a0bbfea0-6e67-42fd-9677-f038c860bd47">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie7} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2563,7 +2565,9 @@
 					<textFieldExpression><![CDATA[$V{max_nome_serie1}.toUpperCase()]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="104" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="104" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<printWhenExpression><![CDATA[($V{max_status_serie7} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade7} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2586,7 +2590,7 @@
 					<textFieldExpression><![CDATA[$V{max_ano8}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="20" width="144" height="14" uuid="3d4f9c03-353e-4c0e-a2d4-781bebb185a3">
+					<reportElement positionType="Float" x="408" y="20" width="114" height="14" uuid="3d4f9c03-353e-4c0e-a2d4-781bebb185a3">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2645,7 +2649,7 @@
 					<textFieldExpression><![CDATA[$V{max_ano1}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="125" y="7" width="253" height="13" uuid="2fc734c8-79af-45de-b9ab-4f5cd846b597"/>
+					<reportElement positionType="Float" x="125" y="7" width="283" height="13" uuid="2fc734c8-79af-45de-b9ab-4f5cd846b597"/>
 					<box>
 						<pen lineWidth="0.25"/>
 					</box>
@@ -2656,7 +2660,7 @@
 					<text><![CDATA[ESTABELECIMENTO DE ENSINO]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="Float" x="378" y="132" width="144" height="14" uuid="54cce100-3f4a-4d06-9c68-ebf85f872a07">
+					<reportElement positionType="Float" x="408" y="132" width="114" height="14" uuid="54cce100-3f4a-4d06-9c68-ebf85f872a07">
 						<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie9} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2681,7 +2685,7 @@
 					<text><![CDATA[-]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="62" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="62" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie4} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade4} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2706,7 +2710,7 @@
 					<textFieldExpression><![CDATA[$V{max_ano6}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement positionType="Float" x="378" y="90" width="144" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
+					<reportElement positionType="Float" x="408" y="90" width="114" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 						<printWhenExpression><![CDATA[($V{max_status_serie6} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_escola_cidade6} == null]]></printWhenExpression>
 					</reportElement>
 					<box>
@@ -2840,7 +2844,7 @@
 					</textField>
 				</frame>
 				<frame>
-					<reportElement key="" stretchType="ElementGroupHeight" x="6" y="150" width="544" height="160" uuid="59558dd6-75c0-4c2b-b57a-d3a6d0f796ff">
+					<reportElement key="" positionType="Float" stretchType="ElementGroupHeight" x="6" y="150" width="544" height="160" uuid="59558dd6-75c0-4c2b-b57a-d3a6d0f796ff">
 						<property name="com.jaspersoft.studio.element.name" value="Observacao"/>
 					</reportElement>
 					<staticText>
