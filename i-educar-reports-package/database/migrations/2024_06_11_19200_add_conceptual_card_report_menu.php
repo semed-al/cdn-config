@@ -3,7 +3,7 @@
 use App\Menu;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDescriptiveCardReportMenu extends Migration
+class AddConceptualCardReportMenu extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class AddDescriptiveCardReportMenu extends Migration
     {
         Menu::query()->create([
             'parent_id' => Menu::query()->where('old', 999450)->firstOrFail()->getKey(),
-            'title' => 'Parecer',
+            'title' => 'Conceitual',
             'description' => null,
-            'link' => '/module/Reports/ReportDescriptiveCard',
+            'link' => '/module/Reports/ReportConceptualCard',
             'order' => 0,
-            'old' => 19992021,
-            'process' => 19992021,
+            'old' => 19992022,
+            'process' => 19992022,
         ]);
     }
 
@@ -30,6 +30,6 @@ class AddDescriptiveCardReportMenu extends Migration
      */
     public function down()
     {
-        Menu::query()->where('process', 19992021)->delete();
+        Menu::query()->where('process', 19992022)->delete();
     }
 }
