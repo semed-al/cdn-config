@@ -4,9 +4,16 @@ use iEducar\Reports\JsonDataSource;
 
 class ReportConceptualCardReport extends Portabilis_Report_ReportCore
 {
-    use JsonDataSource, DescriptiveOpinionsTrait {
+    use JsonDataSource, ReportCardTrait {
         ReportCardTrait::query as QueryReportCard;
     }
+
+    /**
+     * @var array
+     */
+    public $modifiers = [
+        ReportCardModifier::class,
+    ];
 
     public function templateName()
     {
