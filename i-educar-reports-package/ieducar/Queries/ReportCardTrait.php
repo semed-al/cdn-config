@@ -16,7 +16,7 @@ trait ReportCardTrait
         $situacao_matricula = $this->args['situacao_matricula'] ?: 0;
         $alunos_diferenciados = $this->args['alunos_diferenciados'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
-        $tipo_nota = $this->args['tipo_nota'] ?: 1;
+        $tipo_nota = $this->args['tipo_nota'] ?: 0;
         
         return <<<SQL
             SELECT fcn_upper(instituicao.nm_instituicao) AS nome_instituicao,
@@ -158,7 +158,7 @@ trait ReportCardTrait
          AND view_situacao.cod_situacao = {$situacao_matricula}
          AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
          AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
-         AND componente_curricular_ano_escolar.tipo_nota = {$tipo_nota}
+         AND (CASE WHEN {$tipo_nota} = 0 THEN TRUE ELSE componente_curricular_ano_escolar.tipo_nota = {$tipo_nota} END)
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 area_conhecimento.ordenamento_ac,
