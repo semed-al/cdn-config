@@ -18,8 +18,8 @@ class AddIndividualStudentSheetReportMenu extends Migration
             'description' => null,
             'link' => '/module/Reports/IndividualStudentSheet',
             'order' => 0,
-            'old' => 999204,
-            'process' => 999204,
+            'old' => 19992041,
+            'process' => 19992041,
         ]);
     }
 
@@ -30,6 +30,6 @@ class AddIndividualStudentSheetReportMenu extends Migration
      */
     public function down()
     {
-        Menu::query()->where('process', 999204)->delete();
+        Menu::query()->where('process', 19992041)->delete();
     }
 }
