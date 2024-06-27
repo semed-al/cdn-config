@@ -19,7 +19,7 @@ class ReportDescriptiveCardController extends Portabilis_Controller_ReportCoreCo
     {
         parent::_preRender();
 
-        $this->acao_enviar = 'customPrintReport()';
+        $this->acao_enviar = 'printReport()';
 
         $this->breadcrumb('Parecer', [
             '/intranet/educar_index.php' => 'Escola'

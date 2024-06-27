@@ -145,9 +145,9 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 (relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id)*curso.hora_falta/COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria))*100 AS percentual_falta_componente,
                 regra_avaliacao.tipo_presenca,
                 matricula_turma.ativo AS ativo_na_turma,
-                matricula_turma.transferido AS saiu_da_turma,
+                COALESCE(matricula_turma.transferido, false) AS saiu_da_turma,
                 CAST(matricula_turma.data_exclusao as DATE) AS data_saida,
-                COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial) AS saiu_etapa
+                COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
@@ -250,7 +250,10 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 nota_exame.nota_arredondada AS nota_exame,
                 regra_avaliacao.qtd_casas_decimais,
                 regra_avaliacao.tipo_nota,
-                matricula_turma.ativo AS ativo_na_turma             
+                matricula_turma.ativo AS ativo_na_turma,
+                COALESCE(matricula_turma.transferido, false) AS saiu_da_turma,
+                CAST(matricula_turma.data_exclusao as DATE) AS data_saida,
+                COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
@@ -280,6 +283,13 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                                                 AND matricula_turma.sequencial = view_situacao.sequencial)
         LEFT JOIN pmieducar.turma_turno ON (turma_turno.id = turma.turma_turno_id
                                             AND turma.cod_turma = matricula_turma.ref_cod_turma)
+        LEFT JOIN pmieducar.turma_modulo ON (turma_modulo.ref_cod_turma = matricula_turma.ref_cod_turma
+                                            AND turma_modulo.data_inicio <= matricula_turma.data_exclusao 
+                                            AND matricula_turma.data_exclusao <= turma_modulo.data_fim)
+        LEFT JOIN pmieducar.ano_letivo_modulo ON (ano_letivo_modulo.ref_ref_cod_escola = turma.ref_ref_cod_escola
+                                            AND ano_letivo_modulo.ref_ano = {$ano} 
+                                            AND ano_letivo_modulo.data_inicio <= matricula_turma.data_exclusao
+                                            AND matricula_turma.data_exclusao <= ano_letivo_modulo.data_fim)
         INNER JOIN pmieducar.aluno ON (matricula.ref_cod_aluno = aluno.cod_aluno)
         INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
         INNER JOIN cadastro.fisica ON (fisica.idpes = aluno.ref_idpes)

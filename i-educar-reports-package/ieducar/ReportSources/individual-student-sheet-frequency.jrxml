@@ -468,7 +468,8 @@
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="297" y="0" width="22" height="11" uuid="19a825b5-5939-4877-8483-95e9bb3cbf9d">
-						<printWhenExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 2) && (($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) 
+						<printWhenExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 2) 
+														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) 
 														|| ($V{soma_faltas_componente_et2} != null))]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
