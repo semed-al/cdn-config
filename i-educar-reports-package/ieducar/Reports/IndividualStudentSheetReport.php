@@ -249,11 +249,19 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 nota_componente_curricular_media.media AS medianum,
                 nota_exame.nota_arredondada AS nota_exame,
                 regra_avaliacao.qtd_casas_decimais,
-                regra_avaliacao.tipo_nota,
+                CASE WHEN regra_avaliacao.media = 0 THEN false ELSE true END AS tem_nota,
                 matricula_turma.ativo AS ativo_na_turma,
                 COALESCE(matricula_turma.transferido, false) AS saiu_da_turma,
                 CAST(matricula_turma.data_exclusao as DATE) AS data_saida,
-                COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa
+                COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa,
+                (
+                    SELECT MAX(COALESCE(falta_etapa.etapa, falta_componente.etapa))
+                    FROM modules.falta_aluno
+                    LEFT JOIN modules.falta_geral falta_etapa ON (falta_etapa.falta_aluno_id = falta_aluno.id)
+                    LEFT JOIN modules.falta_componente_curricular falta_componente ON (falta_componente.falta_aluno_id = falta_aluno.id
+                        AND falta_componente.componente_curricular_id = view_componente_curricular.id)
+                    WHERE falta_aluno.matricula_id = matricula.cod_matricula
+                ) AS cursou_etapa_max
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
