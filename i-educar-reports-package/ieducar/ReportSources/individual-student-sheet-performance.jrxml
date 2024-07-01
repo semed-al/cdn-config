@@ -450,7 +450,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ativo_na_turma} == 0 ? $F{situacao}.toString().substring(0,3) : ($F{tem_nota} == false ?  "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{media})).toString())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ativo_na_turma} == 0 ? $F{situacao}.toString().substring(0,3) : ($F{cursou_etapa_max} >= 4 ? ($F{tem_nota} == false ? "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{media})).toString()) : "-")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="469" y="0" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
