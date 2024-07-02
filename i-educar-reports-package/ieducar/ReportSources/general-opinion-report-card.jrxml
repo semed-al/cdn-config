@@ -80,6 +80,7 @@
 	<field name="falta" class="java.lang.Long"/>
 	<field name="frequencia" class="java.lang.Double"/>
 	<field name="etapa" class="java.lang.String"/>
+	<field name="quantidade_etapas" class="java.lang.Integer"/>
 	<group name="matricula" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{matricula}]]></groupExpression>
 		<groupHeader>
@@ -347,7 +348,7 @@
 					&& !$F{parecer}.equals("<p><br></p><p></p>")]]></printWhenExpression>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="1" y="1" width="130" height="10">
-					<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana") && $F{quantidade_etapas} == 4]]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -356,7 +357,7 @@
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="1" y="1" width="130" height="10" uuid="6c62f321-1a14-4909-9c7c-5a37646e9044">
-					<printWhenExpression><![CDATA[!$P{dominio}.contains("taquarana")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[!$P{dominio}.contains("taquarana") || $F{quantidade_etapas} != 4]]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>

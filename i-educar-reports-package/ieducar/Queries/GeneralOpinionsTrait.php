@@ -75,7 +75,30 @@ trait GeneralOpinionsTrait
                                     AND modulo.ativo = 1 LIMIT 1                            
                         )
                     END
-            ) AS etapa
+            ) AS etapa,
+            (
+                SELECT CASE
+                    WHEN (SELECT padrao_ano_escolar FROM pmieducar.curso c WHERE cod_curso = curso.cod_curso) = 1 THEN
+                        (
+                            SELECT
+                                MAX(padrao.sequencial)
+                            FROM
+                                pmieducar.ano_letivo_modulo AS padrao
+                            WHERE
+                                padrao.ref_ano = turma.ano
+                                AND padrao.ref_ref_cod_escola = escola.cod_escola                                
+                        )
+                    ELSE
+                        (
+                            SELECT
+                                MAX(tm.sequencial)
+                            FROM
+                                pmieducar.turma_modulo AS tm
+                                WHERE
+                                    tm.ref_cod_turma = turma.cod_turma
+                        )
+                    END
+            ) AS quantidade_etapas
         FROM
             pmieducar.instituicao AS instituicao
         INNER JOIN
