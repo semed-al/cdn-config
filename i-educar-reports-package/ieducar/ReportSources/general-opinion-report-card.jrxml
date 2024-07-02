@@ -361,7 +361,7 @@
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Parecer - " + $F{etapa} + ":"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Parecer - " + ($F{etapa} != null ? $F{etapa} : "Anual") + ":"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="0" y="0" width="554" height="40" uuid="0fcda8ef-d5ef-4a28-bcb4-21f2c1898ad9"/>
