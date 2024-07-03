@@ -122,14 +122,30 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         $matricula = $this->args['matricula'] ?: 0;
 
     $studentSheetFrequency = "
-        WITH etapas AS (
-            -- 
-            SELECT COALESCE (MAX(turma_modulo.sequencial), MAX(ano_letivo_modulo.sequencial)) AS qtd
+        WITH etapa_desc AS (
+            SELECT COALESCE(modulo1.nm_tipo, modulo2.nm_tipo) as tipo
             FROM pmieducar.turma turma 
                 LEFT JOIN pmieducar.turma_modulo ON turma_modulo.ref_cod_turma = turma.cod_turma
-                INNER JOIN pmieducar.curso c on c.cod_curso = turma.ref_cod_curso
+                LEFT JOIN pmieducar.modulo modulo1 ON modulo1.cod_modulo = turma_modulo.ref_cod_modulo
+                LEFT JOIN pmieducar.ano_letivo_modulo ON ano_letivo_modulo.ref_ref_cod_escola = turma.ref_ref_cod_escola
+                LEFT JOIN pmieducar.modulo modulo2 ON modulo2.cod_modulo = ano_letivo_modulo.ref_cod_modulo
+            WHERE turma.cod_turma = {$turma}
+            GROUP BY tipo
+            LIMIT 1
+        ),
+        etapas AS (
+            -- 
+            SELECT (CASE WHEN etapa_desc.tipo LIKE '%Bimestre%' THEN 'Bim'  
+                        WHEN etapa_desc.tipo LIKE '%Semestre%' THEN 'Sem'
+                        ELSE etapa_desc.tipo END) AS tipo, 
+                    COALESCE(MAX(turma_modulo.sequencial), MAX(ano_letivo_modulo.sequencial)) AS qtd
+            FROM etapa_desc
+                INNER JOIN pmieducar.turma turma ON turma.ativo = 1
+                LEFT JOIN pmieducar.turma_modulo ON turma_modulo.ref_cod_turma = turma.cod_turma
                 LEFT JOIN pmieducar.ano_letivo_modulo ON ano_letivo_modulo.ref_ref_cod_escola = turma.ref_ref_cod_escola
             WHERE turma.cod_turma = {$turma}
+            GROUP BY tipo
+            LIMIT 1
         )
         SELECT view_componente_curricular.nome AS nome_disciplina,
                 area_conhecimento.nome AS area_conhecimento,
@@ -157,7 +173,8 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 COALESCE(matricula_turma.transferido, false) AS saiu_da_turma,
                 CAST(matricula_turma.data_exclusao as DATE) AS data_saida,
                 COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa,
-                etapas.qtd AS quantidade_etapas
+                etapas.qtd AS quantidade_etapas,
+                etapas.tipo AS etapa_tipo
         FROM etapas
         INNER JOIN pmieducar.instituicao ON instituicao.ativo = 1
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
@@ -242,14 +259,30 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         ";
 
     $studentSheetPerformance = "
-        WITH etapas AS (
-            -- 
-            SELECT COALESCE (MAX(turma_modulo.sequencial), MAX(ano_letivo_modulo.sequencial)) AS qtd
+        WITH etapa_desc AS (
+            SELECT COALESCE(modulo1.nm_tipo, modulo2.nm_tipo) as tipo
             FROM pmieducar.turma turma 
                 LEFT JOIN pmieducar.turma_modulo ON turma_modulo.ref_cod_turma = turma.cod_turma
-                INNER JOIN pmieducar.curso c on c.cod_curso = turma.ref_cod_curso
+                LEFT JOIN pmieducar.modulo modulo1 ON modulo1.cod_modulo = turma_modulo.ref_cod_modulo
+                LEFT JOIN pmieducar.ano_letivo_modulo ON ano_letivo_modulo.ref_ref_cod_escola = turma.ref_ref_cod_escola
+                LEFT JOIN pmieducar.modulo modulo2 ON modulo2.cod_modulo = ano_letivo_modulo.ref_cod_modulo
+            WHERE turma.cod_turma = {$turma}
+            GROUP BY tipo
+            LIMIT 1
+        ),
+        etapas AS (
+            -- 
+            SELECT (CASE WHEN etapa_desc.tipo LIKE '%Bimestre%' THEN 'Bim'  
+                        WHEN etapa_desc.tipo LIKE '%Semestre%' THEN 'Sem'
+                        ELSE etapa_desc.tipo END) AS tipo, 
+                    COALESCE(MAX(turma_modulo.sequencial), MAX(ano_letivo_modulo.sequencial)) AS qtd
+            FROM etapa_desc
+                INNER JOIN pmieducar.turma turma ON turma.ativo = 1
+                LEFT JOIN pmieducar.turma_modulo ON turma_modulo.ref_cod_turma = turma.cod_turma
                 LEFT JOIN pmieducar.ano_letivo_modulo ON ano_letivo_modulo.ref_ref_cod_escola = turma.ref_ref_cod_escola
             WHERE turma.cod_turma = {$turma}
+            GROUP BY tipo
+            LIMIT 1
         )
         SELECT view_situacao.texto_situacao AS situacao,
                 view_componente_curricular.nome AS nome_disciplina,
@@ -282,7 +315,8 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                         AND falta_componente.componente_curricular_id = view_componente_curricular.id)
                     WHERE falta_aluno.matricula_id = matricula.cod_matricula
                 ) AS cursou_etapa_max,
-                etapas.qtd AS quantidade_etapas
+                etapas.qtd AS quantidade_etapas,
+                etapas.tipo AS etapa_tipo
         FROM etapas
         INNER JOIN pmieducar.instituicao ON instituicao.ativo = 1
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)

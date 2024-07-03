@@ -61,6 +61,7 @@
 	<field name="medianum" class="java.math.BigDecimal"/>
 	<field name="nota_exame" class="java.lang.String"/>
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
+	<field name="etapa_tipo" class="java.lang.String"/>
 	<field name="ativo_na_turma" class="java.lang.Integer"/>
 	<field name="tem_nota" class="java.lang.Boolean"/>
 	<field name="saiu_da_turma" class="java.lang.Boolean"/>
@@ -113,15 +114,13 @@
 					</textElement>
 					<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 				</staticText>
-				<staticText>
-					<reportElement x="244" y="14" width="27" height="11" uuid="f60ef797-8e0f-48fe-b69b-9142b7d8d5c4">
-						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 4]]></printWhenExpression>
-					</reportElement>
+				<textField>
+					<reportElement x="244" y="14" width="27" height="11" uuid="f60ef797-8e0f-48fe-b69b-9142b7d8d5c4"/>						
 					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<text><![CDATA[4º BIM]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 4 ? "4º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+				</textField>
 				<line>
 					<reportElement x="150" y="0" width="1" height="27" uuid="7fc4d98b-4781-4c8b-b60d-596fe4e6b2cc"/>
 					<graphicElement>
@@ -146,30 +145,26 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<staticText>
-					<reportElement x="213" y="14" width="27" height="11" uuid="af36deaf-ca2f-4a8b-aa46-8860559791ca">
-						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 3]]></printWhenExpression>
-					</reportElement>
+				<textField>
+					<reportElement x="213" y="14" width="27" height="11" uuid="af36deaf-ca2f-4a8b-aa46-8860559791ca"/>
 					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<text><![CDATA[3º BIM]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 3 ? "3º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+				</textField>
 				<line>
 					<reportElement x="542" y="0" width="1" height="27" uuid="62edd78f-92f3-4233-b45b-f78d8618dc29"/>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<staticText>
-					<reportElement x="182" y="14" width="27" height="11" uuid="690ce1d1-d535-4bb7-bdfb-8174e0abb02e">
-						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 2]]></printWhenExpression>
-					</reportElement>
+				<textField>
+					<reportElement x="182" y="14" width="27" height="11" uuid="690ce1d1-d535-4bb7-bdfb-8174e0abb02e"/>
 					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<text><![CDATA[2º BIM]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 2 ? "2º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement x="507" y="1" width="35" height="24" uuid="7c5fa64e-691b-46bc-a19e-1e0d1a526eec"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -183,13 +178,13 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<staticText>
+				<textField>
 					<reportElement x="152" y="14" width="27" height="11" uuid="2115ac8e-99da-496f-925d-aa70dc38471d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<text><![CDATA[1º BIM]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 1 ? "1º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+				</textField>
 				<line>
 					<reportElement x="211" y="13" width="1" height="14" uuid="ce9aba7b-b070-4daa-ae70-48312024451e"/>
 					<graphicElement>
@@ -233,40 +228,34 @@
 						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
-				<staticText>
+				<textField>
 					<reportElement x="274" y="14" width="27" height="11" uuid="6719dbb7-4e1f-44f3-8713-637cff9ad5d6"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<text><![CDATA[1º BIM]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="304" y="14" width="27" height="11" uuid="1eb443a3-7dbd-4744-89a7-3ad9ff42233c">
-						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 2]]></printWhenExpression>
-					</reportElement>
+					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 1 ? "1º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="304" y="14" width="27" height="11" uuid="1eb443a3-7dbd-4744-89a7-3ad9ff42233c"/>
 					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<text><![CDATA[2º BIM]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="334" y="14" width="27" height="11" uuid="ba0c1185-db55-4bf7-a206-a3ef5296f681">
-						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 3]]></printWhenExpression>
-					</reportElement>
+					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 2 ? "2º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="334" y="14" width="27" height="11" uuid="ba0c1185-db55-4bf7-a206-a3ef5296f681"/>
 					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<text><![CDATA[3º BIM]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="366" y="14" width="27" height="11" uuid="35218d82-db48-40a8-bbb9-288d109d084f">
-						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 4]]></printWhenExpression>
-					</reportElement>
+					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 3 ? "3º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="366" y="14" width="27" height="11" uuid="35218d82-db48-40a8-bbb9-288d109d084f"/>						
 					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<text><![CDATA[4º BIM]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 4 ? "4º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement x="459" y="1" width="47" height="24" uuid="34ea8a3a-dd7b-4735-800e-a61aeea3dcea"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -538,7 +527,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new DecimalFormat("##0.0").format($F{resultado_anual}.doubleValue()).toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tem_nota} == false ? "-" : new DecimalFormat("##0.0").format($F{resultado_anual}.doubleValue()).toString()]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="430" y="0" width="1" height="13" uuid="45d90c4d-2d6f-4023-8992-12b1c446251b"/>
