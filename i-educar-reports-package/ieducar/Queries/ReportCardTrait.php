@@ -158,7 +158,7 @@ trait ReportCardTrait
          AND view_situacao.cod_situacao = {$situacao_matricula}
          AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
          AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
-         AND (CASE WHEN {$tipo_nota} = 0 THEN TRUE ELSE componente_curricular_ano_escolar.tipo_nota = {$tipo_nota} END)
+         AND (CASE WHEN {$tipo_nota} = 0 THEN TRUE ELSE componente_curricular_ano_escolar.tipo_nota IS NULL OR componente_curricular_ano_escolar.tipo_nota = {$tipo_nota} END)
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 area_conhecimento.ordenamento_ac,

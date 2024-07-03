@@ -120,6 +120,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         $situacao_matricula = $this->args['situacao_matricula'] ?: 0;
         $alunos_diferenciados = $this->args['alunos_diferenciados'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
+        $tipo_nota = $this->args['tipo_nota'] ?: 0;
 
     $studentSheetFrequency = "
         WITH etapa_desc AS (
@@ -191,8 +192,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         INNER JOIN pmieducar.turma ON (turma.ref_ref_cod_escola = escola.cod_escola
                                         AND turma.ativo = 1)
         INNER JOIN relatorio.view_componente_curricular ON (view_componente_curricular.cod_turma = turma.cod_turma 
-                AND view_componente_curricular.cod_serie = serie.cod_serie
-                AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}')
+                AND view_componente_curricular.cod_serie = serie.cod_serie)
         INNER JOIN modules.area_conhecimento ON (area_conhecimento.id = view_componente_curricular.area_conhecimento_id)
         INNER JOIN pmieducar.matricula_turma ON (matricula_turma.ref_cod_turma = turma.cod_turma)
         INNER JOIN pmieducar.matricula ON (matricula.cod_matricula = matricula_turma.ref_cod_matricula
@@ -252,6 +252,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         AND view_situacao.cod_situacao = {$situacao_matricula}
         AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
         AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
+        AND (CASE WHEN {$tipo_nota} = 0 THEN TRUE ELSE componente_curricular_ano_escolar.tipo_nota IS NULL OR componente_curricular_ano_escolar.tipo_nota = {$tipo_nota} END)
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 view_componente_curricular.ordenamento,
@@ -332,8 +333,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         INNER JOIN pmieducar.turma ON (turma.ref_ref_cod_escola = escola.cod_escola
                                         AND turma.ativo = 1)
         INNER JOIN relatorio.view_componente_curricular ON (view_componente_curricular.cod_turma = turma.cod_turma 
-                    AND view_componente_curricular.cod_serie = serie.cod_serie
-                    AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}')
+                    AND view_componente_curricular.cod_serie = serie.cod_serie)
         INNER JOIN modules.area_conhecimento ON (area_conhecimento.id = view_componente_curricular.area_conhecimento_id)
         INNER JOIN pmieducar.matricula_turma ON (matricula_turma.ref_cod_turma = turma.cod_turma)
         INNER JOIN pmieducar.matricula ON (matricula.cod_matricula = matricula_turma.ref_cod_matricula
@@ -375,6 +375,10 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                                                                     AND nota_exame.etapa = 'Rc')
         LEFT JOIN modules.nota_componente_curricular_media ON (nota_componente_curricular_media.nota_aluno_id = nota_aluno.id
                                                                 AND nota_componente_curricular_media.componente_curricular_id = view_componente_curricular.id)
+        LEFT JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie
+                                                                AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
+                                                                AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
+                                                                )
         LEFT JOIN modules.regra_avaliacao_serie_ano rasa on(serie.cod_serie = rasa.serie_id AND matricula.ano = rasa.ano_letivo)
         LEFT JOIN modules.regra_avaliacao on(rasa.regra_avaliacao_id = regra_avaliacao.id)
         WHERE instituicao.cod_instituicao = {$instituicao}
@@ -386,6 +390,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         AND view_situacao.cod_situacao = {$situacao_matricula}
         AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
         AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
+        AND (CASE WHEN {$tipo_nota} = 0 THEN TRUE ELSE componente_curricular_ano_escolar.tipo_nota IS NULL OR componente_curricular_ano_escolar.tipo_nota = {$tipo_nota} END)
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 view_componente_curricular.ordenamento,

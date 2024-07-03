@@ -53,6 +53,11 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
                     to_char(fisica.data_nasc,'dd/mm/yyyy') AS data_nasc,
                     religions.name AS religiao,
                     relatorio.get_nacionalidade(fisica.nacionalidade) AS nacionalidade,
+                    (CASE
+                         WHEN aluno.analfabeto = 0 THEN 'Sim'
+                         WHEN aluno.analfabeto = 1 THEN 'Não'
+                         ELSE ''
+                     END) AS alfabetizado,
 
   (SELECT municipio.nome
    FROM public.municipio
@@ -466,10 +471,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_serie = serie.cod_serie)
    INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
    INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
-   INNER JOIN pmieducar.turma_tipo tipo ON (tt.id = t.turma_turno_id)
    WHERE m.ref_cod_aluno = aluno.cod_aluno
-     AND tipo.nm_tipo = turma_tipo.nm_tipo
-     AND m.ref_cod_aluno = aluno.cod_aluno
      AND m.aprovado = 1
    GROUP BY m.ano
    ORDER BY m.ano DESC LIMIT 1) AS ultima_matricula_serie,
@@ -642,14 +644,14 @@ INNER JOIN pmieducar.escola_serie ON (escola_serie.ativo = 1
 INNER JOIN pmieducar.serie ON (serie.cod_serie = escola_serie.ref_cod_serie
                                AND serie.ativo = 1)
 INNER JOIN pmieducar.turma ON (turma.ref_ref_cod_escola = escola.cod_escola
+                               AND turma.ref_cod_curso = escola_curso.ref_cod_curso
+                               AND turma.ref_ref_cod_serie = escola_serie.ref_cod_serie
                                AND turma.ativo = 1)
 INNER JOIN pmieducar.turma_turno tt ON (tt.id = turma.turma_turno_id)
 INNER JOIN pmieducar.matricula_turma ON (matricula_turma.ref_cod_turma = turma.cod_turma
                                          AND matricula_turma.ativo = 1)
 INNER JOIN pmieducar.matricula ON (matricula.cod_matricula = matricula_turma.ref_cod_matricula
-				AND matricula.ref_cod_curso = curso.cod_curso
-		                    AND matricula.ref_ref_cod_serie = serie.cod_serie
-                    	          AND matricula.ativo = 1)
+                                   AND matricula.ativo = 1)
 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = matricula.ref_cod_aluno)
 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
 LEFT JOIN cadastro.fisica ON (fisica.idpes = pessoa.idpes)

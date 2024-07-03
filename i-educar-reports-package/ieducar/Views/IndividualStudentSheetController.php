@@ -84,6 +84,7 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
         } else {
             $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
         }
+        $this->report->addArg('tipo_nota', 1);
     }
 
     /**

@@ -45,6 +45,7 @@
 		<defaultValueExpression><![CDATA[$P{source}]]></defaultValueExpression>
 	</parameter>
 	<parameter name="source" class="java.lang.String"/>
+	<parameter name="tipo_nota" class="java.lang.Integer"/>
 	<queryString language="json">
 		<![CDATA[student_sheet_frequency]]>
 	</queryString>

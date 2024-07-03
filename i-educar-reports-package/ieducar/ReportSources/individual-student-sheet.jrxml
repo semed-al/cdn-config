@@ -55,6 +55,7 @@
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="source" class="java.lang.String"/>
+	<parameter name="tipo_nota" class="java.lang.Integer"/>
 	<field name="nome_instituicao" class="java.lang.String"/>
 	<field name="nome_responsavel" class="java.lang.String"/>
 	<field name="nm_escola" class="java.lang.String"/>
@@ -298,6 +299,9 @@
 					<subreportParameter name="source">
 						<subreportParameterExpression><![CDATA[$P{source}]]></subreportParameterExpression>
 					</subreportParameter>
+					<subreportParameter name="tipo_nota">
+						<subreportParameterExpression><![CDATA[$P{tipo_nota}]]></subreportParameterExpression>
+					</subreportParameter>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "individual-student-sheet-frequency.jasper"]]></subreportExpression>
 				</subreport>
 			</band>
@@ -338,6 +342,9 @@
 					</subreportParameter>
 					<subreportParameter name="source">
 						<subreportParameterExpression><![CDATA[$P{source}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="tipo_nota">
+						<subreportParameterExpression><![CDATA[$P{tipo_nota}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "individual-student-sheet-performance.jasper"]]></subreportExpression>
 				</subreport>

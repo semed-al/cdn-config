@@ -128,6 +128,7 @@
 	</parameter>
 	<parameter name="source" class="java.lang.String"/>
 	<parameter name="dominio" class="java.lang.String"/>
+	<parameter name="tipo_nota" class="java.lang.Integer"/>
 	<field name="nome_instituicao" class="java.lang.String"/>
 	<field name="nome_responsavel" class="java.lang.String"/>
 	<field name="nm_escola" class="java.lang.String"/>
