@@ -57,11 +57,9 @@
 	<field name="exame" class="java.math.BigDecimal"/>
 	<field name="matricula" class="java.lang.Integer"/>
 	<field name="total_geral_faltas_componente" class="java.math.BigDecimal"/>
-	<field name="media" class="java.lang.String"/>
+	<field name="media_final" class="java.lang.String"/>
 	<field name="medianum" class="java.math.BigDecimal"/>
 	<field name="nota_exame" class="java.lang.String"/>
-	<field name="medianumturma" class="java.math.BigDecimal"/>
-	<field name="resultado_exame" class="java.lang.String"/>
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
 	<field name="ativo_na_turma" class="java.lang.Integer"/>
 	<field name="tem_nota" class="java.lang.Boolean"/>
@@ -116,7 +114,9 @@
 					<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="244" y="14" width="27" height="11" uuid="f60ef797-8e0f-48fe-b69b-9142b7d8d5c4"/>
+					<reportElement x="244" y="14" width="27" height="11" uuid="f60ef797-8e0f-48fe-b69b-9142b7d8d5c4">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 4]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -147,7 +147,9 @@
 					</graphicElement>
 				</line>
 				<staticText>
-					<reportElement x="213" y="14" width="27" height="11" uuid="af36deaf-ca2f-4a8b-aa46-8860559791ca"/>
+					<reportElement x="213" y="14" width="27" height="11" uuid="af36deaf-ca2f-4a8b-aa46-8860559791ca">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 3]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -160,7 +162,9 @@
 					</graphicElement>
 				</line>
 				<staticText>
-					<reportElement x="182" y="14" width="27" height="11" uuid="690ce1d1-d535-4bb7-bdfb-8174e0abb02e"/>
+					<reportElement x="182" y="14" width="27" height="11" uuid="690ce1d1-d535-4bb7-bdfb-8174e0abb02e">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 2]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -237,21 +241,27 @@
 					<text><![CDATA[1º BIM]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="304" y="14" width="27" height="11" uuid="1eb443a3-7dbd-4744-89a7-3ad9ff42233c"/>
+					<reportElement x="304" y="14" width="27" height="11" uuid="1eb443a3-7dbd-4744-89a7-3ad9ff42233c">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 2]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<text><![CDATA[2º BIM]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="334" y="14" width="27" height="11" uuid="ba0c1185-db55-4bf7-a206-a3ef5296f681"/>
+					<reportElement x="334" y="14" width="27" height="11" uuid="ba0c1185-db55-4bf7-a206-a3ef5296f681">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 3]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<text><![CDATA[3º BIM]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="366" y="14" width="27" height="11" uuid="35218d82-db48-40a8-bbb9-288d109d084f"/>
+					<reportElement x="366" y="14" width="27" height="11" uuid="35218d82-db48-40a8-bbb9-288d109d084f">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} >= 4]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -450,7 +460,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ativo_na_turma} == 0 ? $F{situacao}.toString().substring(0,3) : ($F{cursou_etapa_max} >= 4 ? ($F{tem_nota} == false ? "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{media})).toString()) : "-")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ativo_na_turma} == 0 ? $F{situacao}.toString().substring(0,3) : ($F{cursou_etapa_max} >= $F{quantidade_etapas} ? ($F{tem_nota} == false ? "APC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{media_final})).toString()) : "-")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="469" y="0" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
@@ -547,7 +557,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new DecimalFormat("##0.0").format($F{media_anual}.doubleValue()).toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{media_anual} == null ? "-" : ($F{nota_exame} == null ? new DecimalFormat("##0.0").format(Double.parseDouble($F{media_final})).toString() : new DecimalFormat("##0.0").format($F{media_anual}.doubleValue()).toString())]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

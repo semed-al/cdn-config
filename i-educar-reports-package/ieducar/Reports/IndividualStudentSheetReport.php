@@ -122,6 +122,15 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         $matricula = $this->args['matricula'] ?: 0;
 
     $studentSheetFrequency = "
+        WITH etapas AS (
+            -- 
+            SELECT COALESCE (MAX(turma_modulo.sequencial), MAX(ano_letivo_modulo.sequencial)) AS qtd
+            FROM pmieducar.turma turma 
+                LEFT JOIN pmieducar.turma_modulo ON turma_modulo.ref_cod_turma = turma.cod_turma
+                INNER JOIN pmieducar.curso c on c.cod_curso = turma.ref_cod_curso
+                LEFT JOIN pmieducar.ano_letivo_modulo ON ano_letivo_modulo.ref_ref_cod_escola = turma.ref_ref_cod_escola
+            WHERE turma.cod_turma = {$turma}
+        )
         SELECT view_componente_curricular.nome AS nome_disciplina,
                 area_conhecimento.nome AS area_conhecimento,
                 falta_etapa1.quantidade AS total_faltas_et1,
@@ -134,9 +143,9 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 falta_componente4.quantidade AS faltas_componente_et4,
                 COALESCE(relatorio.get_total_geral_falta_componente(matricula.cod_matricula),(COALESCE(falta_etapa1.quantidade,0) + COALESCE(falta_etapa2.quantidade,0) + COALESCE(falta_etapa3.quantidade,0) + COALESCE(falta_etapa4.quantidade,0))) AS total_faltas,
                 COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria) AS carga_horaria_componente,
-                COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4 AS carga_horaria_componente_et,
-                CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4)/curso.hora_falta) AS aulas_dadas_componente,
-                CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/4)/curso.hora_falta) AS aulas_dadas_componente_et,
+                COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd AS carga_horaria_componente_et,
+                CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd)/curso.hora_falta) AS aulas_dadas_componente,
+                CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd)/curso.hora_falta) AS aulas_dadas_componente_et,
                 serie.carga_horaria AS carga_horaria_serie,
                 curso.hora_falta AS hora_falta,
                 serie.dias_letivos,
@@ -147,8 +156,10 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 matricula_turma.ativo AS ativo_na_turma,
                 COALESCE(matricula_turma.transferido, false) AS saiu_da_turma,
                 CAST(matricula_turma.data_exclusao as DATE) AS data_saida,
-                COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa
-        FROM pmieducar.instituicao
+                COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa,
+                etapas.qtd AS quantidade_etapas
+        FROM etapas
+        INNER JOIN pmieducar.instituicao ON instituicao.ativo = 1
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
         INNER JOIN relatorio.view_dados_escola ON (view_dados_escola.cod_escola = escola.cod_escola)
@@ -231,6 +242,15 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         ";
 
     $studentSheetPerformance = "
+        WITH etapas AS (
+            -- 
+            SELECT COALESCE (MAX(turma_modulo.sequencial), MAX(ano_letivo_modulo.sequencial)) AS qtd
+            FROM pmieducar.turma turma 
+                LEFT JOIN pmieducar.turma_modulo ON turma_modulo.ref_cod_turma = turma.cod_turma
+                INNER JOIN pmieducar.curso c on c.cod_curso = turma.ref_cod_curso
+                LEFT JOIN pmieducar.ano_letivo_modulo ON ano_letivo_modulo.ref_ref_cod_escola = turma.ref_ref_cod_escola
+            WHERE turma.cod_turma = {$turma}
+        )
         SELECT view_situacao.texto_situacao AS situacao,
                 view_componente_curricular.nome AS nome_disciplina,
                 area_conhecimento.nome AS area_conhecimento,
@@ -242,10 +262,10 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 nota_etapa3.nota_recuperacao AS nota3recuperacao,
                 nota_etapa4.nota_original AS nota4,
                 nota_etapa4.nota_recuperacao AS nota4recuperacao,
-                (nota_etapa1.nota + nota_etapa2.nota + nota_etapa3.nota + nota_etapa4.nota) AS resultado_anual,
-                ROUND((nota_etapa1.nota + nota_etapa2.nota + nota_etapa3.nota + nota_etapa4.nota)/4, 1) AS media_anual,
+                (COALESCE(nota_etapa1.nota,0) + COALESCE(nota_etapa2.nota,0) + COALESCE(nota_etapa3.nota,0) + COALESCE(nota_etapa4.nota,0)) AS resultado_anual,
+                ROUND((COALESCE(nota_etapa1.nota,0) + COALESCE(nota_etapa2.nota,0) + COALESCE(nota_etapa3.nota,0) + COALESCE(nota_etapa4.nota,0))/etapas.qtd, 2) AS media_anual,
                 nota_exame.nota AS nota_exame,
-                nota_componente_curricular_media.media_arredondada AS media,
+                nota_componente_curricular_media.media_arredondada AS media_final,
                 nota_componente_curricular_media.media AS medianum,
                 nota_exame.nota_arredondada AS nota_exame,
                 regra_avaliacao.qtd_casas_decimais,
@@ -261,8 +281,10 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                     LEFT JOIN modules.falta_componente_curricular falta_componente ON (falta_componente.falta_aluno_id = falta_aluno.id
                         AND falta_componente.componente_curricular_id = view_componente_curricular.id)
                     WHERE falta_aluno.matricula_id = matricula.cod_matricula
-                ) AS cursou_etapa_max
-        FROM pmieducar.instituicao
+                ) AS cursou_etapa_max,
+                etapas.qtd AS quantidade_etapas
+        FROM etapas
+        INNER JOIN pmieducar.instituicao ON instituicao.ativo = 1
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
         INNER JOIN pmieducar.escola_curso ON (escola_curso.ativo = 1

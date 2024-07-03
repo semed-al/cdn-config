@@ -81,7 +81,7 @@
 		<variableExpression><![CDATA[$F{aulas_dadas_componente_et}]]></variableExpression>
 	</variable>
 	<variable name="soma_aulas_dadas_total" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{aulas_dadas_componente_et}*4]]></variableExpression>
+		<variableExpression><![CDATA[$F{aulas_dadas_componente_et}*$F{quantidade_etapas}]]></variableExpression>
 	</variable>
 	<variable name="soma_faltas_componente_et1" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{faltas_componente_et1}]]></variableExpression>
@@ -504,7 +504,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[($V{soma_carga_horaria_total}/4)*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($V{soma_carga_horaria_total}/$F{quantidade_etapas})*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="150" y="-1" width="1" height="13" uuid="cba3e458-ce5f-4b69-912c-3017017f154d"/>
@@ -565,7 +565,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[($V{soma_aulas_dadas_total}/4)*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($V{soma_aulas_dadas_total}/$F{quantidade_etapas})*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="369" y="-1" width="1" height="13" uuid="fbc11149-72a5-47c9-9c46-d33d07a74ff4"/>
@@ -902,7 +902,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{carga_horaria_componente}/4)*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{carga_horaria_componente}/$F{quantidade_etapas})*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="174" y="-2" width="1" height="13" uuid="5dd5129a-6359-490b-813d-e54fbfd0e93b"/>
