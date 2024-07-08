@@ -463,8 +463,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
   (SELECT ano
    FROM pmieducar.matricula
    WHERE matricula.ref_cod_aluno = cod_aluno
-     AND matricula.aprovado = 1
-   ORDER BY ano DESC LIMIT 1) AS ultima_matricula_ano,
+   ORDER BY ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_ano,
 
   (SELECT max(nm_serie)
    FROM pmieducar.serie
@@ -472,9 +471,8 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
    INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
    WHERE m.ref_cod_aluno = aluno.cod_aluno
-     AND m.aprovado = 1
    GROUP BY m.ano
-   ORDER BY m.ano DESC LIMIT 1) AS ultima_matricula_serie,
+   ORDER BY m.ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_serie,
 
   (SELECT max(nm_curso)
    FROM pmieducar.curso
@@ -485,9 +483,8 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    WHERE m.ref_cod_aluno = aluno.cod_aluno
      AND tipo.nm_tipo = turma_tipo.nm_tipo
      AND m.ref_cod_aluno = aluno.cod_aluno
-     AND m.aprovado = 1
    GROUP BY m.ano
-   ORDER BY m.ano DESC LIMIT 1) AS ultima_matricula_curso,
+   ORDER BY m.ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_curso,
                     initcap(lower(
                                     (SELECT relatorio.get_nome_escola(escola.cod_escola)
                                      FROM pmieducar.escola
@@ -498,8 +495,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
                                      WHERE m.ref_cod_aluno = aluno.cod_aluno
                                        AND tipo.nm_tipo = turma_tipo.nm_tipo
                                        AND m.ref_cod_aluno = aluno.cod_aluno
-                                       AND m.aprovado = 1
-                                     ORDER BY m.ano DESC LIMIT 1))) AS ultima_matricula_escola,
+                                     ORDER BY m.ano DESC OFFSET 1 LIMIT 1))) AS ultima_matricula_escola,
 
   (SELECT max(tt.nome)
    FROM pmieducar.turma_turno tt
@@ -510,11 +506,23 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    WHERE m.ref_cod_aluno = aluno.cod_aluno
      AND tipo.nm_tipo = turma_tipo.nm_tipo
      AND m.ref_cod_aluno = aluno.cod_aluno
-     AND m.aprovado = 1
    GROUP BY m.ano,
             mt.sequencial
    ORDER BY m.ano,
-            mt.sequencial DESC LIMIT 1) AS ultima_matricula_turno,
+            mt.sequencial DESC OFFSET 1 LIMIT 1) AS ultima_matricula_turno,
+    
+    (SELECT CASE WHEN m.aprovado = 1 then 'Aprovado' 
+ 			WHEN m.aprovado = 2 THEN 'Reprovado'
+ 			WHEN m.aprovado = 3 THEN 'Cursando'
+ 			ELSE 'Não definida' END
+           FROM pmieducar.serie
+           INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_serie = serie.cod_serie)
+           INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
+           INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
+           WHERE m.ref_cod_aluno = aluno.cod_aluno
+           GROUP BY m.ano, m.aprovado
+           ORDER BY m.ano desc OFFSET 1 LIMIT 1) AS ultima_matricula_situacao,
+
                     escola_ano_letivo.ano AS atual_matricula_ano,
                     serie.nm_serie AS atual_matricula_serie,
                     curso.nm_curso AS atual_matricula_curso,
@@ -644,8 +652,6 @@ INNER JOIN pmieducar.escola_serie ON (escola_serie.ativo = 1
 INNER JOIN pmieducar.serie ON (serie.cod_serie = escola_serie.ref_cod_serie
                                AND serie.ativo = 1)
 INNER JOIN pmieducar.turma ON (turma.ref_ref_cod_escola = escola.cod_escola
-                               AND turma.ref_cod_curso = escola_curso.ref_cod_curso
-                               AND turma.ref_ref_cod_serie = escola_serie.ref_cod_serie
                                AND turma.ativo = 1)
 INNER JOIN pmieducar.turma_turno tt ON (tt.id = turma.turma_turno_id)
 INNER JOIN pmieducar.matricula_turma ON (matricula_turma.ref_cod_turma = turma.cod_turma

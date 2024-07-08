@@ -128,6 +128,7 @@
 	<field name="ultima_matricula_curso" class="java.lang.String"/>
 	<field name="ultima_matricula_escola" class="java.lang.String"/>
 	<field name="ultima_matricula_turno" class="java.lang.String"/>
+	<field name="ultima_matricula_situacao" class="java.lang.String"/>
 	<field name="atual_matricula_ano" class="java.lang.Integer"/>
 	<field name="atual_matricula_serie" class="java.lang.String"/>
 	<field name="atual_matricula_curso" class="java.lang.String"/>
@@ -1047,6 +1048,26 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ultima_matricula_serie}]]></textFieldExpression>
 			</textField>
+
+			<staticText>
+				<reportElement x="290" y="384" width="40" height="12">
+					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[SITUAÇÃO:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="335" y="384" width="100" height="12">
+					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ultima_matricula_situacao}]]></textFieldExpression>
+			</textField>
+
 			<staticText>
 				<reportElement x="7" y="369" width="36" height="12" uuid="44ee2910-1b29-4939-b546-c75bc1e4376b">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>

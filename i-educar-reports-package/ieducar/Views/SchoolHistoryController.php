@@ -61,6 +61,8 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
         $helperOptions = ['objectName' => 'cursoaluno'];
         $options = ['label' => 'Cursos do aluno', 'size' => 120, 'required' => false, 'placeholder' => 'Todas', 'options' => ['value' => null]];
         $this->inputsHelper()->multipleSearchCursoAluno('', $options, $helperOptions);
+        $this->inputsHelper()->checkbox('emitir_nome_diretor', ['label' => 'Emitir nome do diretor na assinatura', 'value' => true]);
+
         $this->inputsHelper()->checkbox('apenas_ultimo_registro', ['label' => 'Emitir informações do ano letivo apenas do último registro?']);
         $this->campoOculto('sequencial', $this->sequencial);
 
