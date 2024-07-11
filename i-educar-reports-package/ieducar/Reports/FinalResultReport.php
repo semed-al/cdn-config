@@ -11,6 +11,9 @@ class FinalResultReport extends Portabilis_Report_ReportCore
      */
     public function templateName()
     {
+        if ($this->args['orientacao'] == 'paisagem') {
+            return 'final-result-landscape';
+        }
         return 'final-result';
     }
 
@@ -45,6 +48,9 @@ class FinalResultReport extends Portabilis_Report_ReportCore
 
         return "
 SELECT DISTINCT matricula.cod_matricula,
+       fcn_upper(pessoa_gestor.nome) AS nome_diretor,
+       fcn_upper(pessoa_secr.nome) AS nome_secretario,
+       vde.municipio,
        matricula.dependencia AS dependencia,
        matricula.ref_cod_aluno AS cod_aluno,
        relatorio.get_texto_sem_caracter_especial(public.fcn_upper(pessoa.nome)) AS nm_aluno,
@@ -67,6 +73,9 @@ SELECT DISTINCT matricula.cod_matricula,
        sequencial_fechamento
 FROM pmieducar.instituicao
 INNER JOIN pmieducar.escola ON escola.ref_cod_instituicao = instituicao.cod_instituicao
+INNER JOIN relatorio.view_dados_escola vde ON vde.cod_escola = escola.cod_escola
+LEFT JOIN cadastro.pessoa pessoa_gestor ON pessoa_gestor.idpes = escola.ref_idpes_gestor
+LEFT JOIN cadastro.pessoa pessoa_secr ON pessoa_secr.idpes = escola.ref_idpes_secretario_escolar
 INNER JOIN pmieducar.escola_ano_letivo ON escola_ano_letivo.ref_cod_escola = escola.cod_escola
 INNER JOIN pmieducar.escola_curso ON (escola_curso.ref_cod_escola = escola.cod_escola AND escola_curso.ativo = 1)
 INNER JOIN pmieducar.escola_serie ON (escola_serie.ref_cod_escola = escola.cod_escola AND escola_serie.ativo = 1)
@@ -96,7 +105,6 @@ LEFT JOIN modules.nota_componente_curricular_media nccm ON nccm.nota_aluno_id = 
 INNER JOIN pmieducar.aluno ON (matricula.ref_cod_aluno = aluno.cod_aluno)
 INNER JOIN cadastro.fisica ON (fisica.idpes = aluno.ref_idpes)
 INNER JOIN cadastro.pessoa ON pessoa.idpes = fisica.idpes
-
 WHERE escola_ano_letivo.ativo = 1
   AND escola_ano_letivo.ano = {$ano}
   AND matricula.ref_ref_cod_escola = {$escola}
@@ -130,6 +138,9 @@ WHERE escola_ano_letivo.ativo = 1
             GROUP BY m.ref_cod_aluno)
   AND componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}'
 GROUP BY matricula.cod_matricula,
+         pessoa_gestor.nome,
+         pessoa_secr.nome,
+         vde.municipio,
          sequencial_fechamento,
          nm_aluno,
          view_situacao.texto_situacao_simplificado,

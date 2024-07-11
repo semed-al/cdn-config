@@ -1050,7 +1050,7 @@
 			</textField>
 
 			<staticText>
-				<reportElement x="290" y="384" width="40" height="12">
+				<reportElement x="290" y="384" width="44" height="12">
 					<printWhenExpression><![CDATA[$F{transferencia_matricula}==false]]></printWhenExpression>
 				</reportElement>
 				<textElement>

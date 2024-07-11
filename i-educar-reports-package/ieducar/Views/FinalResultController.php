@@ -47,7 +47,8 @@ class FinalResultController extends Portabilis_Controller_ReportCoreController
         $options = [
             'label' => 'Orientação',
             'resources' => [
-                'retrato' => 'Retrato'
+                'retrato' => 'Retrato',
+                'paisagem' => 'Paisagem'
             ],
             'required' => false,
             'value' => 1
@@ -72,29 +73,38 @@ class FinalResultController extends Portabilis_Controller_ReportCoreController
 
         $this->inputsHelper()->dynamic('situacaoMatricula', ['value' => 10]);
 
-        $this->inputsHelper()->text('criterio_aprovacao', [
-            'label' => 'Critérios de aprovação',
-            'size' => 39,
-            'required' => false
-        ]);
+        // $this->inputsHelper()->text('criterio_aprovacao', [
+        //     'label' => 'Critérios de aprovação',
+        //     'size' => 39,
+        //     'required' => false
+        // ]);
 
-        $this->inputsHelper()->text('texto_rodape', [
-            'label' => 'Texto do rodapé',
+        // $this->inputsHelper()->text('texto_rodape', [
+        //     'label' => 'Texto do rodapé',
+        //     'value' => '',
+        //     'placeholder' => '',
+        //     'size' => 42,
+        //     'required' => false
+        // ]);
+        $this->inputsHelper()->text('data', [
+            'label' => 'Data de finalização da Ata',
             'value' => '',
-            'placeholder' => '',
-            'size' => 42,
-            'required' => false
+            'placeholder' => 'DD/MM/AAAA',
+            'size' => 40,
+            'required' => true
         ]);
 
         $this->loadResourceAssets($this->getDispatcher());
 
-        $mensagemAprovacaoPontos = 'Se esta opção for selecionada, a informação (' . $GLOBALS['coreExt']['Config']->report->portaria_aprovacao_pontos . ') será apresentada';
+        // $mensagemAprovacaoPontos = 'Se esta opção for selecionada, a informação (' . $GLOBALS['coreExt']['Config']->report->portaria_aprovacao_pontos . ') será apresentada';
 
-        $this->inputsHelper()->checkbox('mostrar_msg', ['label' => 'Permitir aprovação de pontos?', $mensagemAprovacaoPontos]);
-        $this->inputsHelper()->checkbox('selecionar_areas_conhecimento', ['label' => 'Selecionar áreas de conhecimento']);
-        $helperOptions = ['objectName' => 'areaconhecimento'];
-        $options = ['label' => 'Áreas de conhecimento', 'size' => 50, 'required' => false, 'placeholder' => 'Todas', 'options' => ['value' => null]];
-        $this->inputsHelper()->multipleSearchAreasConhecimento('', $options, $helperOptions);
+        // $this->inputsHelper()->checkbox('mostrar_msg', ['label' => 'Permitir aprovação de pontos?', $mensagemAprovacaoPontos]);
+        // $this->inputsHelper()->checkbox('selecionar_areas_conhecimento', ['label' => 'Selecionar áreas de conhecimento']);
+        // $helperOptions = ['objectName' => 'areaconhecimento'];
+        // $options = ['label' => 'Áreas de conhecimento', 'size' => 50, 'required' => false, 'placeholder' => 'Todas', 'options' => ['value' => null]];
+        // $this->inputsHelper()->multipleSearchAreasConhecimento('', $options, $helperOptions);
+        $this->inputsHelper()->text('alterar_nome_diretor', ['label' => 'Alterar nome do(a) diretor(a)', 'value' => false, 'required' => false]);
+        $this->inputsHelper()->text('alterar_nome_secretario', ['label' => 'Alterar nome do(a) secretário(a) escolar', 'value' => false, 'required' => false]);
     }
 
     /**
@@ -112,14 +122,23 @@ class FinalResultController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('cabecalho_alternativo', (int) $GLOBALS['coreExt']['Config']->report->header->alternativo);
         $this->report->addArg('modelo', (int) $this->getRequest()->modelo);
         $this->report->addArg('orientacao', (string) $this->getRequest()->orientacao);
-        $this->report->addArg('texto_rodape', (string) $this->getRequest()->texto_rodape);
+        // $this->report->addArg('texto_rodape', (string) $this->getRequest()->texto_rodape);
         $this->report->addArg('situacao', (int) $this->getRequest()->situacao_matricula_id);
         $this->report->addArg('dependencia', (int) $this->getRequest()->dependencia);
-        $this->report->addArg('criterio_aprovacao', (string) Portabilis_String_Utils::toUtf8($this->getRequest()->criterio_aprovacao));
-        $this->report->addArg('portaria_aprovacao_pontos', Portabilis_String_Utils::toUtf8((string) $GLOBALS['coreExt']['Config']->report->portaria_aprovacao_pontos));
-        $this->report->addArg('mostrar_msg', (bool) $this->getRequest()->mostrar_msg);
+
+        $months = array (1=>'Janeiro',2=>'Fevereiro',3=>'Março',4=>'Abril',5=>'Maio',6=>'Junho',
+                        7=>'Julho',8=>'Agosto',9=>'Setembro',10=>'Outubro',11=>'Novembro',12=>'Dezembro');
+        $data_part = explode('/', $this->getRequest()->data);
+        $this->report->addArg('data_dia', (int) $data_part[0]);
+        $this->report->addArg('data_mes', $months[(int) $data_part[1]]);
+        $this->report->addArg('data_ano', (int) $data_part[2]);
+        // $this->report->addArg('criterio_aprovacao', (string) Portabilis_String_Utils::toUtf8($this->getRequest()->criterio_aprovacao));
+        // $this->report->addArg('portaria_aprovacao_pontos', Portabilis_String_Utils::toUtf8((string) $GLOBALS['coreExt']['Config']->report->portaria_aprovacao_pontos));
+        // $this->report->addArg('mostrar_msg', (bool) $this->getRequest()->mostrar_msg);
         $areasConhecimento = implode(',',  array_filter($this->getRequest()->areaconhecimento ?? []));
-        $this->report->addArg('areas_conhecimento', trim($areasConhecimento) == '' ? 0 : $areasConhecimento);
+        // $this->report->addArg('areas_conhecimento', trim($areasConhecimento) == '' ? 0 : $areasConhecimento);
+        $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
+        $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
     }
 
     /**
