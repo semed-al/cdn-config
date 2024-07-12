@@ -272,7 +272,7 @@
 							</rowGroup>
 							<rowGroup name="%fr" width="33">
 								<bucket class="java.lang.String">
-									<bucketExpression><![CDATA[$F{frequencia_geral}]]></bucketExpression>
+									<bucketExpression><![CDATA[String.format("%.1f", $F{frequencia_geral})]]></bucketExpression>
 								</bucket>
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">
