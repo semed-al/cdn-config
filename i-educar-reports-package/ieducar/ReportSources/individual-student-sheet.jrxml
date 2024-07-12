@@ -491,8 +491,8 @@
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<text><![CDATA[LEGENDA:<br>Resultado de desempenho:<br>&emsp A = Aprovado<br>&emsp R = Reprovado<br>&emsp APC = Aprovado em Progressão Continuada<br>&emsp APP = Aprovado com Progressão Parcial<br>
-				Resultado final:<br>&emsp A, R, APC ou APP]]></text>
+				<text><![CDATA[LEGENDA:<br>Resultado de desempenho:<br>&emsp A = Aprovado<br>&emsp R = Reprovado<br>&emsp PPC = Promovido em Progressão Continuada<br>&emsp APP = Aprovado com Progressão Parcial<br>
+				Resultado final:<br>&emsp A, R, PPC ou APP]]></text>
 			</staticText>
 		</band>
 	</summary>

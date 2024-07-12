@@ -375,7 +375,7 @@
 										<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
 										<font fontName="DejaVu Sans" size="8"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$V{mediaMeasure} ? ($V{situacao} == "Trs" || $V{situacao} == "Aba" ? "-" : $V{mediaMeasure}) : ($V{situacao} == "Apr" ? "APC" : "-")]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$V{mediaMeasure} ? ($V{situacao} == "Trs" || $V{situacao} == "Aba" ? "-" : $V{mediaMeasure}) : ($V{situacao} == "Apr" ? "PPC" : "-")]]></textFieldExpression>
 									</textField>
 								</cellContents>
 							</crosstabCell>
