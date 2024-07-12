@@ -16,7 +16,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                     AND he.aprovado NOT IN (6,15)
                     AND he.extra_curricular = 0
                     AND he.ativo = 1
-                    AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $P{escola})                    
+                    --  AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $P{escola})                    
                 ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                 LIMIT 1
             ),
