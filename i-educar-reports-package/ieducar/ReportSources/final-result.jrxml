@@ -158,7 +158,10 @@
 		<variableExpression><![CDATA[$P{alterar_nome_diretor} != null ? $P{alterar_nome_diretor}.toUpperCase() : $F{nome_diretor}.toUpperCase()]]></variableExpression>
 	</variable>
 	<variable name="secretario" class="java.lang.String">
-		<variableExpression><![CDATA[$P{alterar_nome_secretario} != null ? $P{alterar_nome_secretario}.toUpperCase() : $F{nome_secretario}.toUpperCase()]]></variableExpression>
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? $F{nome_secretario}.toUpperCase() : $P{alterar_nome_secretario}.toUpperCase()]]></variableExpression>
+	</variable>
+	<variable name="funcao" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
 	</variable>
 	<group name="crosstable">
 		<groupExpression><![CDATA[true]]></groupExpression>
@@ -601,7 +604,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{secretario} + "\nFuncionário(a) responsável"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{secretario} + "\n" + $V{funcao}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="370" y="164" width="151" height="34" uuid="5dc3e2b1-7ca4-402d-a704-740809fee527"/>
@@ -636,7 +639,7 @@
 					<font fontName="DejaVu Sans" size="9"/>
 					<paragraph lineSpacing="Double"/>
 				</textElement>
-				<textFieldExpression><![CDATA["E para constar, eu, <b>" + ($V{secretario} != null && !$V{secretario}.isEmpty() ? $V{secretario} : "_______________________________________________") + "</b>, Funcionário(a) Responsável, lavrei a presente ata que será assinada por mim e pelo(a) Diretor(a) deste estabelecimento."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["E para constar, eu, <b>" + ($V{secretario} != null && !$V{secretario}.isEmpty() ? $V{secretario} : "_______________________________________________") + "</b>, " + $V{funcao} + ", lavrei a presente ata que será assinada por mim e pelo(a) Diretor(a) deste estabelecimento."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="614" y="181" width="90" height="17" uuid="03c6d010-5a74-4bdb-b8ad-f97158b85b3a">
