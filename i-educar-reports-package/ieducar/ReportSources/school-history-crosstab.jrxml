@@ -380,7 +380,7 @@
 											<box>
 												<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 											</box>
-											<textField isBlankWhenNull="true">
+											<textField isBlankWhenNull="true" isStretchWithOverflow="true">
 												<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="60" height="18" uuid="f7a55310-9d92-421d-94b2-c3edc7e10d81"/>
 												<box>
 													<pen lineWidth="0.25"/>
@@ -421,8 +421,7 @@
 									<measureExpression><![CDATA[$F{carga_horaria_disciplina} == null ? '-' : $F{carga_horaria_disciplina} + 'h']]></measureExpression>
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="First">
-									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
-					? $F{nm_serie} : $F{nm_serie} + ' ' + $F{grade}]]></measureExpression>
+									<measureExpression><![CDATA[$F{nm_serie}]]></measureExpression>
 								</measure>
 								<crosstabCell width="60" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">
@@ -712,8 +711,7 @@
 									<measureExpression><![CDATA[$F{carga_horaria_disciplina} == null ? '-' : $F{carga_horaria_disciplina} + 'h']]></measureExpression>
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="Highest">
-									<measureExpression><![CDATA[$F{nm_serie}.toLowerCase().contains($F{grade}.toLowerCase()) 
-					? $F{nm_serie} : $F{nm_serie} + ' ' + $F{grade}]]></measureExpression>
+									<measureExpression><![CDATA[$F{nm_serie}]]></measureExpression>
 								</measure>
 								<crosstabCell width="60" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">

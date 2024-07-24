@@ -155,7 +155,7 @@
 		<variableExpression><![CDATA[$V{count_reprovado} == 0 ? "0" : $V{count_reprovado} + " -> " + new BigDecimal($V{count_reprovado} * 100 / $V{total}).setScale(1, java.math.RoundingMode.HALF_UP) + "%"]]></variableExpression>
 	</variable>
 	<variable name="diretor" class="java.lang.String">
-		<variableExpression><![CDATA[$P{alterar_nome_diretor} != null ? $P{alterar_nome_diretor}.toUpperCase() : $F{nome_diretor}.toUpperCase()]]></variableExpression>
+		<variableExpression><![CDATA[$P{alterar_nome_diretor} == null || $P{alterar_nome_diretor}.isEmpty() ? $F{nome_diretor}.toUpperCase() : $P{alterar_nome_diretor}.toUpperCase()]]></variableExpression>
 	</variable>
 	<variable name="secretario" class="java.lang.String">
 		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? $F{nome_secretario}.toUpperCase() : $P{alterar_nome_secretario}.toUpperCase()]]></variableExpression>

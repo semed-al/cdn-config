@@ -31,22 +31,12 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
      */
     public function form()
     {
-        $this->inputsHelper()->dynamic(['instituicao', 'escola', 'curso', 'serie', 'turma', 'ano']);
+        $this->inputsHelper()->dynamic(['ano', 'instituicao', 'escola', 'curso', 'serie', 'turma']);
         $this->inputsHelper()->simpleSearchAluno(null);
 
         $this->inputsHelper()->checkbox('lote', ['label' => 'Emitir em lote?']);
 
-        /*$this->inputsHelper()->checkbox('imprime_diretor_secretario', [
-            'label' => 'Imprimir o nome do(a) secretário(a) e diretor(a)?'
-        ]);
-
-        $options = ['label' => 'Diretor(a):', 'size' => 50, 'max_length' => 100, 'required' => false, 'placeholder' => ''];
-        $this->inputsHelper()->text('nm_diretor', $options);
-
-        $options = ['label' => 'Secretário(a):', 'size' => 50, 'max_length' => 100, 'required' => false, 'placeholder' => ''];
-        $this->inputsHelper()->text('nm_secretario', $options);*/
-
-        $this->inputsHelper()->checkbox('emitir_carga_horaria_frequentada', ['label' => 'Emitir Carga horária frequentada']);
+        // $this->inputsHelper()->checkbox('emitir_carga_horaria_frequentada', ['label' => 'Emitir Carga horária frequentada']);
 
         $resources = [
             1 => 'Série/Anos',
@@ -58,13 +48,15 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
         $this->inputsHelper()->integer('ano_ini', ['placeholder' => '', 'required' => false, 'label' => 'Ano início', 'max_length' => 4, 'size' => 4]);
         $this->inputsHelper()->integer('ano_fim', ['placeholder' => '','required' => false, 'label' => 'Ano final', 'max_length' => 4, 'size' => 4]);
 
-        $helperOptions = ['objectName' => 'cursoaluno'];
-        $options = ['label' => 'Cursos do aluno', 'size' => 120, 'required' => false, 'placeholder' => 'Todas', 'options' => ['value' => null]];
-        $this->inputsHelper()->multipleSearchCursoAluno('', $options, $helperOptions);
-        $this->inputsHelper()->checkbox('emitir_nome_diretor', ['label' => 'Emitir nome do diretor na assinatura', 'value' => true]);
-
-        $this->inputsHelper()->checkbox('apenas_ultimo_registro', ['label' => 'Emitir informações do ano letivo apenas do último registro?']);
+        // $helperOptions = ['objectName' => 'cursoaluno'];
+        // $options = ['label' => 'Cursos do aluno', 'size' => 120, 'required' => false, 'placeholder' => 'Todas', 'options' => ['value' => null]];
+        // $this->inputsHelper()->multipleSearchCursoAluno('', $options, $helperOptions);
+        
+        // $this->inputsHelper()->checkbox('apenas_ultimo_registro', ['label' => 'Emitir informações do ano letivo apenas do último registro?']);
         $this->campoOculto('sequencial', $this->sequencial);
+
+        $this->inputsHelper()->text('alterar_nome_diretor', ['label' => 'Alterar nome do(a) diretor(a)', 'value' => false, 'required' => false]);
+        $this->inputsHelper()->text('alterar_nome_secretario', ['label' => 'Alterar nome do(a) secretário(a) escolar', 'value' => false, 'required' => false]);
 
         $this->loadResourceAssets($this->getDispatcher());
     }
@@ -96,6 +88,8 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('cursoaluno', trim($cursoaluno) == '' ? 0 : $cursoaluno);
         $this->report->addArg('apenas_ultimo_registro', (bool)$this->getRequest()->apenas_ultimo_registro);
         $this->report->addArg('sequencial', (int)$this->getRequest()->sequencial);
+        $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
+        $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
     }
 
     /**

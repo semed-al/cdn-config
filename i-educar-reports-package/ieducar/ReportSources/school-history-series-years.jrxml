@@ -32,8 +32,6 @@
 	</parameter>
 	<parameter name="logo" class="java.lang.String"/>
 	<parameter name="cabecalho_alternativo" class="java.lang.Integer"/>
-	<parameter name="nm_secretario" class="java.lang.String"/>
-	<parameter name="nm_diretor" class="java.lang.String"/>
 	<parameter name="modelo" class="java.lang.Integer"/>
 	<parameter name="data_emissao" class="java.lang.String"/>
 	<parameter name="portaria_aprovacao_pontos" class="java.lang.String"/>
@@ -66,6 +64,8 @@
 	<parameter name="apenas_ultimo_registro" class="java.lang.Boolean">
 		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
 	</parameter>
+	<parameter name="alterar_nome_diretor" class="java.lang.String"/>
+	<parameter name="alterar_nome_secretario" class="java.lang.String"/>
 	<parameter name="source" class="java.lang.String"/>
 	<field name="cod_aluno" class="java.lang.Integer"/>
 	<field name="nm_disciplina" class="java.lang.String"/>
@@ -487,6 +487,15 @@
 	</variable>
 	<variable name="resultado_global_9" class="java.math.BigDecimal" calculation="Average">
 		<variableExpression><![CDATA[$F{nota_9serie} == null || $F{nota_9serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_9serie}).find() ? null : new java.math.BigDecimal($F{nota_9serie}.replace(",","."))]]></variableExpression>
+	</variable>
+	<variable name="diretor" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_diretor} == null || $P{alterar_nome_diretor}.isEmpty() ? $F{diretor}.toUpperCase() : $P{alterar_nome_diretor}.toUpperCase()]]></variableExpression>
+	</variable>
+	<variable name="secretario" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? $F{secretario}.toUpperCase() : $P{alterar_nome_secretario}.toUpperCase()]]></variableExpression>
+	</variable>
+	<variable name="funcao" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
 	</variable>
 	<group name="grupo1" keepTogether="true">
 		<groupExpression><![CDATA[true]]></groupExpression>
@@ -1629,7 +1638,7 @@
 					<textFieldExpression><![CDATA[$F{data_atual_extenso}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="FixRelativeToBottom" x="376" y="83" width="158" height="16" uuid="f66cb3b1-76b6-4ee1-aa9b-7cdc06ce4058">
+					<reportElement positionType="FixRelativeToBottom" x="330" y="73" width="158" height="26" uuid="f66cb3b1-76b6-4ee1-aa9b-7cdc06ce4058">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
 					<box>
@@ -1641,20 +1650,10 @@
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{diretor} != null ? $F{diretor} : ""]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($V{diretor} != null ? $V{diretor} : "") + "\nDiretor (a)"]]></textFieldExpression>
 				</textField>
-				<staticText>
-					<reportElement positionType="FixRelativeToBottom" x="330" y="83" width="46" height="16" uuid="f334f082-29f2-4799-91dc-3f3ac587f257">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					</reportElement>
-					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<text><![CDATA[Diretor (a):]]></text>
-				</staticText>
 				<line>
-					<reportElement positionType="FixRelativeToBottom" x="330" y="84" width="204" height="1" uuid="032e1149-0bf7-4d68-8255-97c1e332817c">
+					<reportElement positionType="FixRelativeToBottom" x="330" y="74" width="204" height="1" uuid="032e1149-0bf7-4d68-8255-97c1e332817c">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
 					<graphicElement>
@@ -1662,33 +1661,23 @@
 					</graphicElement>
 				</line>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="FixRelativeToBottom" x="132" y="84" width="150" height="16" uuid="a7ea0998-c69f-419a-b1e8-d451e7ccd235">
+					<reportElement positionType="FixRelativeToBottom" x="17" y="73" width="150" height="26" uuid="a7ea0998-c69f-419a-b1e8-d451e7ccd235">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{secretario} != null ? $F{secretario} : ""]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($V{secretario} != null ? $V{secretario} : "") + "\n" + $V{funcao}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement positionType="FixRelativeToBottom" x="18" y="84" width="244" height="1" uuid="f23f009c-9145-41c1-9a4f-544f3a6323b0">
+					<reportElement positionType="FixRelativeToBottom" x="18" y="74" width="244" height="1" uuid="f23f009c-9145-41c1-9a4f-544f3a6323b0">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
-				</line>
-				<staticText>
-					<reportElement positionType="FixRelativeToBottom" x="17" y="83" width="114" height="16" uuid="57055d8e-08e0-4fb8-bf0e-7f47981514f1">
-						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<textElement verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
-					</textElement>
-					<text><![CDATA[Funcionário(a) responsável:]]></text>
-				</staticText>
+				</line>				
 			</band>
 			<band height="570" splitType="Stretch">
 				<rectangle>
@@ -2898,7 +2887,7 @@
 						<textFieldExpression><![CDATA[$F{municipio} + ", "+$F{data_atual_extenso}]]></textFieldExpression>
 					</textField>
 					<textField isBlankWhenNull="true">
-						<reportElement positionType="Float" x="367" y="210" width="160" height="16" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe">
+						<reportElement positionType="Float" x="318" y="200" width="160" height="26" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<box>
@@ -2910,41 +2899,27 @@
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{diretor} != null ? $F{diretor} : ""]]></textFieldExpression>
+						<textFieldExpression><![CDATA[($V{diretor} != null ? $V{diretor} : "") + "\nDiretor (a)"]]></textFieldExpression>
 					</textField>
-					<staticText>
-						<reportElement positionType="Float" x="318" y="209" width="48" height="16" uuid="bb58c3b6-29ba-410e-87d6-4216bf8b69c0"/>
-						<textElement verticalAlignment="Middle">
-							<font fontName="DejaVu Sans" size="8"/>
-						</textElement>
-						<text><![CDATA[Diretor (a):]]></text>
-					</staticText>
 					<line>
-						<reportElement positionType="Float" x="318" y="209" width="204" height="1" uuid="9efb76da-0df4-41a3-9696-20974adb0fa5"/>
+						<reportElement positionType="Float" x="318" y="199" width="204" height="1" uuid="9efb76da-0df4-41a3-9696-20974adb0fa5"/>
 						<graphicElement>
 							<pen lineWidth="0.25"/>
 						</graphicElement>
 					</line>
 					<textField isBlankWhenNull="true">
-						<reportElement positionType="Float" x="123" y="210" width="158" height="16" uuid="323eb834-4bb0-4121-9a04-c3e7b208ef1f"/>
+						<reportElement positionType="Float" x="14" y="200" width="158" height="26" uuid="323eb834-4bb0-4121-9a04-c3e7b208ef1f"/>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{secretario} != null ? $F{secretario} : ""]]></textFieldExpression>
+						<textFieldExpression><![CDATA[($V{secretario} != null ? $V{secretario} : "") + "\n" + $V{funcao}]]></textFieldExpression>
 					</textField>
 					<line>
-						<reportElement positionType="Float" x="14" y="209" width="234" height="1" uuid="f1fb62bd-d042-4d79-941b-21db5878feb0"/>
+						<reportElement positionType="Float" x="14" y="199" width="234" height="1" uuid="f1fb62bd-d042-4d79-941b-21db5878feb0"/>
 						<graphicElement>
 							<pen lineWidth="0.25"/>
 						</graphicElement>
 					</line>
-					<staticText>
-						<reportElement positionType="Float" x="14" y="209" width="115" height="16" uuid="525c518d-519e-482e-97ab-34b24f70a88e"/>
-						<textElement verticalAlignment="Middle">
-							<font fontName="DejaVu Sans" size="8"/>
-						</textElement>
-						<text><![CDATA[Funcionário(a) responsável:]]></text>
-					</staticText>
 				</frame>
 				<staticText>
 					<reportElement positionType="Float" x="23" y="20" width="44" height="14" uuid="1caf7e40-c8a3-4dd0-a76a-8f71e040224f">
