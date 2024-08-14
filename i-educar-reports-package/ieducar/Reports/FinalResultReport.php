@@ -137,6 +137,7 @@ WHERE escola_ano_letivo.ativo = 1
                 AND m.ativo = 1 AND (mt.ativo = 1 OR mt.transferido IS NOT NULL)
             GROUP BY m.ref_cod_aluno)
   AND componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}'
+  AND componente_curricular.nome !~ '[0-9][0-9]?.'
 GROUP BY matricula.cod_matricula,
          pessoa_gestor.nome,
          pessoa_secr.nome,

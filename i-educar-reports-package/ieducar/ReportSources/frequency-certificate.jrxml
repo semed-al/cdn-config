@@ -57,6 +57,7 @@
 	<parameter name="modelo" class="java.lang.String"/>
 	<parameter name="lote" class="java.lang.Boolean"/>
 	<parameter name="source" class="java.lang.String"/>
+	<parameter name="alterar_nome_secretario" class="java.lang.String"/>
 	<field name="cod_escola" class="java.lang.Integer"/>
 	<field name="diretor" class="java.lang.String"/>
 	<field name="secretario" class="java.lang.String"/>
@@ -78,6 +79,12 @@
 	<field name="cod_inep" class="java.lang.Long"/>
 	<field name="cod_nis" class="java.math.BigDecimal"/>
 	<field name="data_atual" class="java.lang.String"/>
+	<variable name="secretario" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? $F{secretario}.toUpperCase() : $P{alterar_nome_secretario}.toUpperCase()]]></variableExpression>
+	</variable>
+	<variable name="funcao" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -234,7 +241,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{emitir_secretario_escolar} ? (($F{secretario} == null || $F{secretario} == "") ? "Funcionário(a) responsável" : $F{secretario} + "\n" + "Funcionário(a) responsável") : ("Funcionário(a) responsável")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{emitir_secretario_escolar} ? (($V{secretario} == null || $V{secretario} == "") ? "Funcionário(a) responsável" : $V{secretario} + "\n" + $V{funcao}) : ("Funcionário(a) responsável")]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="170" y="95" width="193" height="1" uuid="0d179794-4148-414e-aa50-655ce102c43f">
@@ -248,7 +255,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{emitir_secretario_escolar} ? (($F{secretario} == null || $F{secretario} == "") ? "Funcionário(a) responsável" : $F{secretario} + "\n" + "Funcionário(a) responsável") : ("Funcionário(a) responsável")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{emitir_secretario_escolar} ? (($V{secretario} == null || $V{secretario} == "") ? "Funcionário(a) responsável" : $V{secretario} + "\n" + $V{funcao}) : ("Funcionário(a) responsável")]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="20" y="95" width="193" height="1" uuid="0d179794-4148-414e-aa50-655ce102c43f">

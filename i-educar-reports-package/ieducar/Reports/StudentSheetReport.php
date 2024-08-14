@@ -627,7 +627,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    FROM cadastro.fisica AS pessoa_mae
    WHERE pessoa_mae.idpes = fisica.idpes_mae) AS profissao_mae,
                     (CASE
-                         WHEN transporte_aluno.responsavel = 0 THEN 'NÃO UTILIZA'
+                         WHEN COALESCE(aluno.tipo_transporte, transporte_aluno.responsavel) = 0 THEN 'NÃO UTILIZA'
                          ELSE 'UTILIZA'
                      END) AS transporte_aluno,
 

@@ -75,8 +75,6 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('portaria_aprovacao_pontos', (string) $GLOBALS['coreExt']['Config']->report->portaria_aprovacao_pontos);
         $this->report->addArg('nao_emitir_reprovado', (bool) $this->getRequest()->nao_emitir_reprovado);
         $this->report->addArg('mostrar_msg', (bool) $this->getRequest()->mostrar_msg);
-        $this->report->addArg('nm_diretor', $this->getRequest()->nm_diretor);
-        $this->report->addArg('nm_secretario', $this->getRequest()->nm_secretario);
         $this->report->addArg('curso', (int) $this->getRequest()->ref_cod_curso);
         $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);

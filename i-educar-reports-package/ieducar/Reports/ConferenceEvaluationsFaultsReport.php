@@ -130,6 +130,7 @@ SELECT matricula.cod_matricula AS cod_matricula,
       FROM relatorio.view_componente_curricular
       WHERE view_componente_curricular.cod_turma = turma.cod_turma
       AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}'
+      AND view_componente_curricular.nome !~ '[0-9][0-9]?.'
       ORDER BY abreviatura, nome)  tabl) as legenda,
 
   CASE
@@ -231,7 +232,9 @@ INNER JOIN pmieducar.matricula_turma ON (matricula_turma.ref_cod_turma = turma.c
 INNER JOIN pmieducar.matricula ON (matricula.cod_matricula = matricula_turma.ref_cod_matricula)
 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = matricula.ref_cod_aluno)
 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
-INNER JOIN relatorio.view_componente_curricular ON (view_componente_curricular.cod_turma = turma.cod_turma AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}')
+INNER JOIN relatorio.view_componente_curricular ON (view_componente_curricular.cod_turma = turma.cod_turma 
+    AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}'
+    AND view_componente_curricular.nome !~ '[0-9][0-9]?.')
 LEFT JOIN modules.nota_aluno ON (nota_aluno.matricula_id = matricula.cod_matricula)
 LEFT JOIN modules.nota_componente_curricular AS nota_componente_curricular_etapa1 ON (nota_componente_curricular_etapa1.nota_aluno_id = nota_aluno.id
                                                                                       AND nota_componente_curricular_etapa1.componente_curricular_id = view_componente_curricular.id

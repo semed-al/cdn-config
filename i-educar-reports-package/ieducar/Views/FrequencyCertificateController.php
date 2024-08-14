@@ -38,13 +38,14 @@ class FrequencyCertificateController extends Portabilis_Controller_ReportCoreCon
         $this->inputsHelper()->dynamic(['curso', 'serie', 'turma']);
         $this->inputsHelper()->select('modelo', ['label' => 'Modelo', 'resources' => [1 => 'Modelo 1'], 'value' => 1]);
         $this->inputsHelper()->simpleSearchMatricula(null, ['required' => false]);
-        $this->campoMemo('observacao', 'Observação', $this->observacao, 48, 5, false);
+        // $this->campoMemo('observacao', 'Observação', $this->observacao, 48, 3, false);
         $this->inputsHelper()->checkbox('emitir_frequencia', ['label' => 'Emitir a percentagem de frequência do aluno']);
-        $this->inputsHelper()->checkbox('emitir_nome_diretor', ['label' => 'Emitir assinatura do gestor escolar', 'value' => true]);
-        $this->inputsHelper()->checkbox('emitir_secretario_escolar', ['label' => 'Emitir assinatura do secretário escolar', 'value' => true]);
+        // $this->inputsHelper()->checkbox('emitir_nome_diretor', ['label' => 'Emitir assinatura do gestor escolar', 'value' => true]);
+        // $this->inputsHelper()->checkbox('emitir_secretario_escolar', ['label' => 'Emitir assinatura do secretário escolar', 'value' => true]);        
         $this->inputsHelper()->checkbox('lote', ['label' => 'Emitir em lote?']);
         $this->inputsHelper()->checkbox('emitir_validade', ['label' => 'Emitir a data de validade do documento?', 'value' => true]);
         $this->inputsHelper()->text('campo_validade', ['required' => true, 'label' => 'Validade', 'size' => 45, 'max_length' => 3, 'placeholder' => 'Informe o número de dias para a validade', 'value' => 30]);
+        $this->inputsHelper()->text('alterar_nome_secretario', ['label' => 'Alterar nome do(a) funcionário(a) responsável', 'value' => false, 'required' => false]);
         $this->loadResourceAssets($this->getDispatcher());
     }
 
@@ -62,12 +63,13 @@ class FrequencyCertificateController extends Portabilis_Controller_ReportCoreCon
         $this->report->addArg('modelo', $this->getRequest()->modelo);
         $this->report->addArg('emitir_frequencia', (bool) $this->getRequest()->emitir_frequencia);
         $this->report->addArg('cabecalho_alternativo', (int) $GLOBALS['coreExt']['Config']->report->header->alternativo);
-        $this->report->addArg('emitir_nome_diretor', (bool) $this->getRequest()->emitir_nome_diretor);
-        $this->report->addArg('emitir_secretario_escolar', (bool) $this->getRequest()->emitir_secretario_escolar);
+        $this->report->addArg('emitir_nome_diretor', false); //(bool) $this->getRequest()->emitir_nome_diretor);
+        $this->report->addArg('emitir_secretario_escolar', true); //(bool) $this->getRequest()->emitir_secretario_escolar);
         $this->report->addArg('lote', (bool) $this->getRequest()->lote);
         $this->report->addArg('emitir_validade', (bool) $this->getRequest()->emitir_validade);
         $this->report->addArg('campo_validade', (string) $this->getRequest()->campo_validade);
         $this->report->addArg('titulo', (string) $this->titulo());
+        $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
 
         if ((bool) $this->getRequest()->lote) {
             $this->report->addArg('curso', (int) $this->getRequest()->ref_cod_curso);

@@ -49,6 +49,7 @@
 	</parameter>
 	<parameter name="database" class="java.lang.String"/>
 	<parameter name="source" class="java.lang.String"/>
+	<parameter name="alterar_nome_secretario" class="java.lang.String"/>
 	<field name="nm_instituicao" class="java.lang.String"/>
 	<field name="nm_responsavel" class="java.lang.String"/>
 	<field name="cod_escola" class="java.lang.Integer"/>
@@ -87,6 +88,13 @@
 	<field name="aluno_estado_id" class="java.lang.String"/>
 	<field name="frequencia" class="java.math.BigDecimal"/>
 	<field name="diretor" class="java.lang.String"/>
+	<field name="secretario" class="java.lang.String"/>
+	<variable name="secretario" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? $F{secretario}.toUpperCase() : $P{alterar_nome_secretario}.toUpperCase()]]></variableExpression>
+	</variable>
+	<variable name="funcao" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -160,7 +168,9 @@ $F{municipio_uf_nascimento} + ", filho(a) de "+ ($F{nm_pai}.equals("") && $F{nm_
 				<textFieldExpression><![CDATA[$F{cidade}+", "+$F{data_atual}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="21" y="339" width="68" height="12" uuid="b1b6820c-9942-4dde-92b9-b73466b8f22b"/>
+				<reportElement x="21" y="339" width="68" height="12" uuid="b1b6820c-9942-4dde-92b9-b73466b8f22b">
+					<printWhenExpression><![CDATA[$P{observacao} != null && !$P{observacao}.isEmpty()]]></printWhenExpression>
+				</reportElement>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
@@ -184,13 +194,13 @@ $F{municipio_uf_nascimento} + ", filho(a) de "+ ($F{nm_pai}.equals("") && $F{nm_
 	</detail>
 	<pageFooter>
 		<band height="88">
-			<staticText>
-				<reportElement x="134" y="27" width="287" height="20" uuid="9877fef6-6597-4474-be5f-504b1757aed0"/>
+			<textField>
+				<reportElement x="134" y="27" width="287" height="30" uuid="9877fef6-6597-4474-be5f-504b1757aed0"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<text><![CDATA[Assinatura]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{secretario} + "\n" + $V{funcao}]]></textFieldExpression>
+			</textField>
 			<line>
 				<reportElement x="134" y="26" width="287" height="1" uuid="f7bd76a9-7cb8-4fa1-8a30-c513bce076a6"/>
 				<graphicElement>

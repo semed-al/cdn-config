@@ -36,7 +36,7 @@ class TransferenceCertificateController extends Portabilis_Controller_ReportCore
         $this->inputsHelper()->dynamic(['ano', 'instituicao']);
         $this->inputsHelper()->dynamic(['escola'], ['required' => false]);
         $this->inputsHelper()->simpleSearchMatricula(null, ['required' => false]);
-        $this->campoMemo('observacao', 'Observação', $this->observacao, 48, 5, false);
+        // $this->campoMemo('observacao', 'Observação', $this->observacao, 48, 3, false);
         $this->inputsHelper()->checkbox('emitir_nome_diretor', ['label' => 'Emitir assinatura do gestor escolar', 'value' => true]);
         $this->inputsHelper()->checkbox('emitir_secretario_escolar', ['label' => 'Emitir assinatura do secretário escolar', 'value' => true]);
         $this->inputsHelper()->checkbox('mostrar_prazo_entrega_historico', ['label' => 'Emitir prazo de entrega do histórico escolar?', 'value' => true]);

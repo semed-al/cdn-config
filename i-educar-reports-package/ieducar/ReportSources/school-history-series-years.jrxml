@@ -462,31 +462,31 @@
 		<initialValueExpression><![CDATA[]]></initialValueExpression>
 	</variable>
 	<variable name="resultado_global_1" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_1serie} == null || $F{nota_1serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_1serie}).find() ? null : new java.math.BigDecimal($F{nota_1serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_1serie} == null || $F{nota_1serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_1serie}).find() ? null : new java.math.BigDecimal($F{nota_1serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_2" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_2serie} == null || $F{nota_2serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_2serie}).find() ? null : new java.math.BigDecimal($F{nota_2serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_2serie} == null || $F{nota_2serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_2serie}).find() ? null : new java.math.BigDecimal($F{nota_2serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_3" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_3serie} == null || $F{nota_3serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_3serie}).find() ? null : new java.math.BigDecimal($F{nota_3serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_3serie} == null || $F{nota_3serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_3serie}).find() ? null : new java.math.BigDecimal($F{nota_3serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_4" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_4serie} == null || $F{nota_4serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_4serie}).find() ? null : new java.math.BigDecimal($F{nota_4serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_4serie} == null || $F{nota_4serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_4serie}).find() ? null : new java.math.BigDecimal($F{nota_4serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_5" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_5serie} == null || $F{nota_5serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_5serie}).find() ? null : new java.math.BigDecimal($F{nota_5serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_5serie} == null || $F{nota_5serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_5serie}).find() ? null : new java.math.BigDecimal($F{nota_5serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_6" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_6serie} == null || $F{nota_6serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_6serie}).find() ? null : new java.math.BigDecimal($F{nota_6serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_6serie} == null || $F{nota_6serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_6serie}).find() ? null : new java.math.BigDecimal($F{nota_6serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_7" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_7serie} == null || $F{nota_7serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_7serie}).find() ? null : new java.math.BigDecimal($F{nota_7serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_7serie} == null || $F{nota_7serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_7serie}).find() ? null : new java.math.BigDecimal($F{nota_7serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_8" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_8serie} == null || $F{nota_8serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_8serie}).find() ? null : new java.math.BigDecimal($F{nota_8serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_8serie} == null || $F{nota_8serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_8serie}).find() ? null : new java.math.BigDecimal($F{nota_8serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="resultado_global_9" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{nota_9serie} == null || $F{nota_9serie} == "" || java.util.regex.Pattern.compile("[- a-zA-Z]").matcher($F{nota_9serie}).find() ? null : new java.math.BigDecimal($F{nota_9serie}.replace(",","."))]]></variableExpression>
+		<variableExpression><![CDATA[$F{nota_9serie} == null || $F{nota_9serie} == "" || java.util.regex.Pattern.compile("[-+* a-zA-Z]").matcher($F{nota_9serie}).find() ? null : new java.math.BigDecimal($F{nota_9serie}.replace(",","."))]]></variableExpression>
 	</variable>
 	<variable name="diretor" class="java.lang.String">
 		<variableExpression><![CDATA[$P{alterar_nome_diretor} == null || $P{alterar_nome_diretor}.isEmpty() ? $F{diretor}.toUpperCase() : $P{alterar_nome_diretor}.toUpperCase()]]></variableExpression>
@@ -495,7 +495,7 @@
 		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? $F{secretario}.toUpperCase() : $P{alterar_nome_secretario}.toUpperCase()]]></variableExpression>
 	</variable>
 	<variable name="funcao" class="java.lang.String">
-		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
+		<variableExpression><![CDATA[($P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty()) && $F{secretario} != null ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
 	</variable>
 	<group name="grupo1" keepTogether="true">
 		<groupExpression><![CDATA[true]]></groupExpression>
@@ -2850,7 +2850,7 @@
 							<font fontName="DejaVu Sans" size="7" isBold="true"/>
 							<paragraph leftIndent="5" spacingBefore="2"/>
 						</textElement>
-						<text><![CDATA[ESPAÇO RESERVADO A SEMED]]></text>
+						<text><![CDATA[ESPAÇO RESERVADO A ESCOLA]]></text>
 					</staticText>
 					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 						<reportElement stretchType="ElementGroupHeight" x="0" y="0" width="281" height="120" uuid="1933ad7b-d00b-41c9-898c-9f40fba38f92">
@@ -3922,7 +3922,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_1serie} == null || $F{nota_1serie} == "" ? '-'     : !$F{nota_1serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_1serie}     : (Double.parseDouble($F{nota_1serie}.replace(",",".")) > 10) ? $F{nota_1serie}     : $F{nota_1serie}) : ($F{nota_1serie} == null || $F{nota_1serie} == "" ? '-'     : !$F{nota_1serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_1serie}     : (Double.parseDouble($F{nota_1serie}.replace(",",".")) > 10) ? $F{nota_1serie}     : $F{nota_1serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_1serie} == null || $F{nota_1serie} == "" ? '-' : $F{nota_1serie}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement x="199" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="09926094-b63d-4d82-aa24-b19e6eda46e0">
@@ -3938,7 +3938,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_2serie} == null || $F{nota_2serie} == "" ? '-'     : !$F{nota_2serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_2serie}     : (Double.parseDouble($F{nota_2serie}.replace(",",".")) > 10) ? $F{nota_2serie}     : $F{nota_2serie}) : ($F{nota_2serie} == null || $F{nota_2serie} == "" ? '-'     : !$F{nota_2serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_2serie}     : (Double.parseDouble($F{nota_2serie}.replace(",",".")) > 10) ? $F{nota_2serie} : $F{nota_2serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_2serie} == null || $F{nota_2serie} == "" ? '-' : $F{nota_2serie}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement x="243" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="d0e2b9a7-dcd6-4374-93c3-a885e7de231c">
@@ -3955,7 +3955,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_3serie} == null || $F{nota_3serie} == "" ? '-'     : !$F{nota_3serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_3serie}     : (Double.parseDouble($F{nota_3serie}.replace(",",".")) > 10) ? $F{nota_3serie}     : $F{nota_3serie}) : ($F{nota_3serie} == null || $F{nota_3serie} == "" ? '-'     : !$F{nota_3serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_3serie}     : (Double.parseDouble($F{nota_3serie}.replace(",",".")) > 10) ? $F{nota_3serie}     : $F{nota_3serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_3serie} == null || $F{nota_3serie} == "" ? '-' : $F{nota_3serie}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement x="287" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="a5675308-a748-4e37-8118-bce8f3747a74">
@@ -3972,7 +3972,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_4serie} == null || $F{nota_4serie} == "" ? '-'     : !$F{nota_4serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_4serie}     : (Double.parseDouble($F{nota_4serie}.replace(",",".")) > 10) ? $F{nota_4serie}     : $F{nota_4serie}) : ($F{nota_4serie} == null || $F{nota_4serie} == "" ? '-'     : !$F{nota_4serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_4serie}     : (Double.parseDouble($F{nota_4serie}.replace(",",".")) > 10) ? $F{nota_4serie}     : $F{nota_4serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_4serie} == null || $F{nota_4serie} == "" ? '-' : $F{nota_4serie}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement x="331" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="54042cbd-4743-43ba-9f8e-0db1cc258d94">
@@ -3989,7 +3989,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_5serie} == null || $F{nota_5serie} == "" ? '-'     : !$F{nota_5serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_5serie}     : (Double.parseDouble($F{nota_5serie}.replace(",",".")) > 10) ? $F{nota_5serie}     : $F{nota_5serie}) : ($F{nota_5serie} == null || $F{nota_5serie} == "" ? '-'     : !$F{nota_5serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_5serie}     : (Double.parseDouble($F{nota_5serie}.replace(",",".")) > 10) ? $F{nota_5serie}     : $F{nota_5serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_5serie} == null || $F{nota_5serie} == "" ? '-' : $F{nota_5serie}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement x="375" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="6f58f2c3-8182-42cc-9c2c-fdb2d5ccba99">
@@ -4006,7 +4006,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_6serie} == null || $F{nota_6serie} == "" ? '-'     : !$F{nota_6serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_6serie}     : (Double.parseDouble($F{nota_6serie}.replace(",",".")) > 10) ? $F{nota_6serie}     : $F{nota_6serie}) : ($F{nota_6serie} == null || $F{nota_6serie} == "" ? '-'     : !$F{nota_6serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_6serie}     : (Double.parseDouble($F{nota_6serie}.replace(",",".")) > 10) ? $F{nota_6serie}     : $F{nota_6serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_6serie} == null || $F{nota_6serie} == "" ? '-' : $F{nota_6serie}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement x="419" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="40c35fb4-682a-4270-b329-ea1a2fa1226f">
@@ -4023,7 +4023,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_7serie} == null || $F{nota_7serie} == "" ? '-'     : !$F{nota_7serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_7serie}     : (Double.parseDouble($F{nota_7serie}.replace(",",".")) > 10)  ? $F{nota_7serie}     : $F{nota_7serie}) : ($F{nota_7serie} == null || $F{nota_7serie} == "" ? '-'     : !$F{nota_7serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_7serie}     : (Double.parseDouble($F{nota_7serie}.replace(",",".")) > 10)  ? $F{nota_7serie}     : $F{nota_7serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_7serie} == null || $F{nota_7serie} == "" ? '-' : $F{nota_7serie}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement x="463" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" uuid="fd56dabb-cfbb-4ef8-bb4b-6a69eb555c1c">
@@ -4039,7 +4039,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_8serie} == null || $F{nota_8serie} == "" ? '-'     : !$F{nota_8serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_8serie}     : (Double.parseDouble($F{nota_8serie}.replace(",",".")) > 10)  ? $F{nota_8serie}     : $F{nota_8serie}) : ($F{nota_8serie} == null || $F{nota_8serie} == "" ? '-'     : !$F{nota_8serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_8serie}     : (Double.parseDouble($F{nota_8serie}.replace(",",".")) > 10)  ? $F{nota_8serie}     : $F{nota_8serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_8serie} == null || $F{nota_8serie} == "" ? '-' : $F{nota_8serie}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="7" y="-26" width="148" height="15" isRemoveLineWhenBlank="true" uuid="b737c141-8027-4d43-a0e2-52fae2c3ac3e">
@@ -4073,7 +4073,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($F{nota_9serie} == null || $F{nota_9serie} == "" ? '-'     : !$F{nota_9serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_9serie}     : (Double.parseDouble($F{nota_9serie}.replace(",",".")) > 10)  ? $F{nota_9serie}     : $F{nota_9serie}) : ($F{nota_9serie} == null || $F{nota_9serie} == "" ? '-'     : !$F{nota_9serie}.replace(",",".").matches("^[0-9]*(\\.[0-9]+)?\$") ? $F{nota_9serie}     : (Double.parseDouble($F{nota_9serie}.replace(",",".")) > 10)  ? $F{nota_9serie}     : $F{nota_9serie})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_9serie} == null || $F{nota_9serie} == "" ? '-' : $F{nota_9serie}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 				<reportElement x="177" y="-26" width="22" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF" uuid="d6646314-175c-41b8-bd9b-338c56f93789">

@@ -95,9 +95,11 @@ class ConclusionCertificateReport extends Portabilis_Report_ReportCore
 
                 aluno.aluno_estado_id as aluno_estado_id,
                 trunc(modules.frequencia_da_matricula(matricula.cod_matricula)::numeric,2) as frequencia,
-                (SELECT p.nome FROM cadastro.pessoa p WHERE escola.ref_idpes_gestor = p.idpes) as diretor
+                (SELECT p.nome FROM cadastro.pessoa p WHERE escola.ref_idpes_gestor = p.idpes) as diretor,
+                fcn_upper(pessoa_secr.nome) AS secretario
         FROM pmieducar.instituicao
             INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
+            LEFT JOIN cadastro.pessoa pessoa_secr ON pessoa_secr.idpes = escola.ref_idpes_secretario_escolar
             INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
             INNER JOIN pmieducar.escola_curso ON (escola_curso.ref_cod_escola = escola.cod_escola AND escola_curso.ativo = 1)
             INNER JOIN pmieducar.escola_serie ON (escola_serie.ref_cod_escola = escola.cod_escola AND escola_serie.ativo = 1)

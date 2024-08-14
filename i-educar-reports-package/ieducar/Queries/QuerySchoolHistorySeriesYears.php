@@ -304,6 +304,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                 LEFT JOIN max_ano_aprovado ON max_ano.chave = max_ano_aprovado.chave
                 INNER JOIN relatorio.view_historico_series_anos vhsa ON vhsa.cod_aluno = $P{aluno} AND (vhsa.ano_1serie <= max_ano.ano OR vhsa.ano_2serie <= max_ano.ano OR vhsa.ano_3serie <= max_ano.ano OR vhsa.ano_4serie <= max_ano.ano OR vhsa.ano_5serie <= max_ano.ano OR vhsa.ano_6serie <= max_ano.ano OR vhsa.ano_7serie <= max_ano.ano OR vhsa.ano_8serie <= max_ano.ano OR vhsa.ano_9serie <= max_ano.ano)
                     AND vhsa.disciplina !~ '([a-zA-Z]{2}[0-9]{2}){2}' 
+                    AND vhsa.disciplina !~ '[0-9][0-9]?.'
                 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = vhsa.cod_aluno)
                 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
                 INNER JOIN cadastro.fisica ON (fisica.idpes = aluno.ref_idpes)

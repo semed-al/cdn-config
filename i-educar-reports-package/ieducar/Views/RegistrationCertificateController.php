@@ -43,9 +43,11 @@ class RegistrationCertificateController extends Portabilis_Controller_ReportCore
             ],
             'value' => 1
         ]);
-        $this->campoMemo('observacoes', 'Observações', $this->observacao, 48, 5, false);
-        $this->inputsHelper()->checkbox('emitir_nome_diretor', ['label' => 'Emitir nome do diretor na assinatura', 'value' => true]);
-        $this->inputsHelper()->checkbox('emitir_secretario_escolar', ['label' => 'Emitir assinatura do secretário escolar', 'value' => true]);
+        $this->campoMemo('observacoes', 'Observações', $this->observacao, 48, 3, false);
+        // $this->inputsHelper()->checkbox('emitir_nome_diretor', ['label' => 'Emitir nome do diretor na assinatura', 'value' => true]);
+        // $this->inputsHelper()->checkbox('emitir_secretario_escolar', ['label' => 'Emitir assinatura do secretário escolar', 'value' => true]);
+        // $this->inputsHelper()->text('alterar_nome_diretor', ['label' => 'Alterar nome do(a) diretor(a)', 'value' => false, 'required' => false]);
+        $this->inputsHelper()->text('alterar_nome_secretario', ['label' => 'Alterar nome do(a) secretário(a) escolar', 'value' => false, 'required' => false]);
     }
 
     /**
@@ -59,8 +61,10 @@ class RegistrationCertificateController extends Portabilis_Controller_ReportCore
         $this->report->addArg('matricula', (int) $this->getRequest()->matricula_id);
         $this->report->addArg('modelo', (int) $this->getRequest()->modelo);
         $this->report->addArg('cabecalho_alternativo', (int) $GLOBALS['coreExt']['Config']->report->header->alternativo);
-        $this->report->addArg('emitir_nome_diretor', (bool) $this->getRequest()->emitir_nome_diretor);
-        $this->report->addArg('emitir_secretario_escolar', (bool) $this->getRequest()->emitir_secretario_escolar);
+        $this->report->addArg('emitir_nome_diretor', false); //(bool) $this->getRequest()->emitir_nome_diretor);
+        $this->report->addArg('emitir_secretario_escolar', true); //(bool) $this->getRequest()->emitir_secretario_escolar);
+        // $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
+        $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
         $this->report->addArg('observacoes', (string) $this->getRequest()->observacoes);
         $this->report->addArg('titulo', (string) $this->titulo());
     }
