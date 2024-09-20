@@ -130,8 +130,15 @@ INNER JOIN pmieducar.serie ON TRUE
 INNER JOIN pmieducar.turma ON TRUE
     AND turma.ref_ref_cod_escola = escola.cod_escola
     AND turma.ref_cod_curso = escola_curso.ref_cod_curso
-    AND turma.ref_ref_cod_serie = escola_serie.ref_cod_serie
     AND turma.ativo = 1
+    AND (turma.ref_ref_cod_serie = escola_serie.ref_cod_serie 
+                        OR turma.cod_turma IN 
+                            (SELECT DISTINCT turma_serie.turma_id 
+                                FROM pmieducar.turma_serie 
+                                WHERE turma_serie.escola_id = escola.cod_escola
+                                    AND turma_serie.serie_id = escola_serie.ref_cod_serie
+                                    AND turma_serie.turma_id = turma.cod_turma)
+                    )
 INNER JOIN modules.professor_turma ON TRUE
     AND professor_turma.turma_id = turma.cod_turma
     AND professor_turma.funcao_exercida IN(1,5,6)
