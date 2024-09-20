@@ -56,6 +56,14 @@ class EnrollmentQuantitativeMapSchoolGrade extends QueryBridge
                 AND CASE WHEN $P{escola} = 0 THEN TRUE ELSE escola.cod_escola = $P{escola} END
                 AND CASE WHEN $P{curso} = 0 THEN TRUE ELSE curso.cod_curso = $P{curso} END
                 AND CASE WHEN '$P!{cursos}' = '0' THEN TRUE ELSE curso.cod_curso IN ($P!{cursos}) END
+                AND CASE
+                    WHEN '$P!{data_ini}' <> '' THEN DATE(COALESCE(matricula.data_matricula,matricula.data_cadastro)) >= nullif('$P!{data_ini}', '')::date
+                    ELSE TRUE
+                END
+                AND CASE
+                    WHEN '$P!{data_fim}' <> '' THEN DATE(COALESCE(matricula.data_matricula,matricula.data_cadastro)) <= nullif('$P!{data_fim}', '')::date
+                    ELSE TRUE
+                END
                 AND view_situacao.cod_situacao = $P{situacao}
                 AND CASE
                     WHEN $P{dependencia} = 1 THEN matricula.dependencia = TRUE

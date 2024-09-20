@@ -56,7 +56,8 @@ class QuerySchoolHistoryCrosstabDataset extends QueryBridge
                         AND ativo = 1
                     )
                 )
-            );            
+            )
+            ORDER BY ano, posicao;            
 SQL;
     }
 }
