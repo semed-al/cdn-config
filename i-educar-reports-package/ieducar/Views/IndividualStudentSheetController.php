@@ -71,6 +71,7 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
      */
     public function beforeValidation()
     {
+        $this->report->addArg('dominio', $_SERVER['HTTP_HOST']);
         $this->report->addArg('ano', (int) $this->getRequest()->ano);
         $this->report->addArg('instituicao', (int) $this->getRequest()->ref_cod_instituicao);
         $this->report->addArg('escola', (int) $this->getRequest()->ref_cod_escola);

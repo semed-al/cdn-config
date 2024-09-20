@@ -65,6 +65,7 @@
 	<field name="carga_horaria_componente" class="java.lang.Integer"/>
 	<field name="carga_horaria_componente_et" class="java.lang.Integer"/>
 	<field name="carga_horaria_serie" class="java.lang.Double"/>
+	<field name="percentual_frequencia_final" class="java.lang.Double"/>	
 	<field name="hora_falta" class="java.lang.Double"/>
 	<field name="total_faltas_componente" class="java.math.BigDecimal"/>
 	<field name="quantidade_etapas" class="java.lang.Integer"/>
@@ -96,9 +97,6 @@
 	</variable>
 	<variable name="soma_faltas_componente_et4" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{faltas_componente_et4}]]></variableExpression>
-	</variable>
-	<variable name="percentual_frequencia_final" class="java.lang.Double" calculation="Highest">
-		<variableExpression><![CDATA[100-(($F{total_faltas}*$F{hora_falta}/$F{carga_horaria_serie})*100)]]></variableExpression>
 	</variable>
 	<variable name="quantidade_etapas_cursadas" class="java.lang.Integer" calculation="Highest">
 		<variableExpression><![CDATA[$F{total_faltas_et4} != null || $F{faltas_componente_et4} != null || $V{soma_faltas_componente_et4} 
@@ -642,7 +640,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Top">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[String.format("%.1f",  $V{percentual_frequencia_final})+"%"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[String.format("%.1f",  $F{percentual_frequencia_final})+"%"]]></textFieldExpression>
 				</textField>
 			</band>
 			<band height="25" splitType="Stretch">
@@ -659,7 +657,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 						<paragraph leftIndent="5" spacingBefore="1"/>
 					</textElement>
-					<textFieldExpression><![CDATA["O(a) educando(a) obteve um total de " + String.format("%.1f",  $V{percentual_frequencia_final}) + "% da frequência exigida conforme art. 24, VI da LDBEN 9.394/96."]]></textFieldExpression>
+					<textFieldExpression><![CDATA["O(a) educando(a) obteve um total de " + String.format("%.1f",  $F{percentual_frequencia_final}) + "% da frequência exigida conforme art. 24, VI da LDBEN 9.394/96."]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
