@@ -238,7 +238,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         LEFT JOIN modules.falta_componente_curricular falta_componente4 ON (falta_componente4.falta_aluno_id = falta_aluno.id
                                                                             AND falta_componente4.componente_curricular_id = view_componente_curricular.id
                                                                             AND falta_componente4.etapa = '4')
-        LEFT JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie
+        INNER JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie
                                                                 AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
                                                                 AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
                                                                 )
@@ -376,7 +376,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                                                                     AND nota_exame.etapa = 'Rc')
         LEFT JOIN modules.nota_componente_curricular_media ON (nota_componente_curricular_media.nota_aluno_id = nota_aluno.id
                                                                 AND nota_componente_curricular_media.componente_curricular_id = view_componente_curricular.id)
-        LEFT JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie
+        INNER JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie
                                                                 AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
                                                                 AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
                                                                 )
