@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_sheet" language="groovy" pageWidth="595" pageHeight="842" columnWidth="570" leftMargin="20" rightMargin="5" topMargin="20" bottomMargin="20" uuid="ab80d035-fee0-4652-ad3f-1dfa50b6e3c2">
 	<property name="ireport.zoom" value="1.6500000000000192"/>
 	<property name="ireport.x" value="0"/>
@@ -56,6 +56,7 @@
 	</parameter>
 	<parameter name="source" class="java.lang.String"/>
 	<parameter name="tipo_nota" class="java.lang.Integer"/>
+	<parameter name="dominio" class="java.lang.String"/>
 	<field name="nome_instituicao" class="java.lang.String"/>
 	<field name="nome_responsavel" class="java.lang.String"/>
 	<field name="nm_escola" class="java.lang.String"/>
@@ -433,8 +434,18 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="0" y="280" width="554" height="30" backcolor="#FFFFFF" uuid="6977375c-7989-4e55-b0d6-59aeb834e261">
-					<printWhenExpression><![CDATA[(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR) - $P{ano}) > 1]]></printWhenExpression>
+				<reportElement x="0" y="260" width="554" height="15" backcolor="#FFFFFF" uuid="a98c71e4-a7b1-4716-b75d-23b3acb3cdd4">
+					<printWhenExpression><![CDATA[true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					<paragraph lineSpacing="Double" lineSpacingSize="3.0" leftIndent="5" rightIndent="5" spacingBefore="10" spacingAfter="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Resultado final do(a) estudante " + $F{situacao}.toUpperCase() + ", "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="300" width="554" height="30" backcolor="#FFFFFF" uuid="6977375c-7989-4e55-b0d6-59aeb834e261">
+					<printWhenExpression><![CDATA[!$P{dominio}.contains("japaratinga") && (java.util.Calendar.getInstance().get(java.util.Calendar.YEAR) - $P{ano}) > 1]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
 					<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -443,7 +454,7 @@
 				<textFieldExpression><![CDATA["Aos _________ dias do mês de ____________________________________ do ano de ____________"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="280" width="554" height="30" backcolor="#FFFFFF">
+				<reportElement x="0" y="300" width="554" height="30" backcolor="#FFFFFF" uuid="20c3aa08-7eed-4e89-9265-83f360feaeb5">
 					<printWhenExpression><![CDATA[(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR) - $P{ano}) <= 1]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
@@ -452,7 +463,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Aos <b>" + java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH) +"</b> dias do mês de <b>" + new java.text.DateFormatSymbols(new java.util.Locale("pt", "BR")).getMonths()[java.util.Calendar.getInstance().get(java.util.Calendar.MONTH)] + "</b> do ano de <b>" + java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)+"</b>"]]></textFieldExpression>
 			</textField>
-
 			<staticText>
 				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="330" y="425" width="200" height="16" uuid="73402cd5-6bfe-49fb-a73e-019059c1758b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">

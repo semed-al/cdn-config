@@ -344,7 +344,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 1 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} > 1 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e777cca9-d769-4e39-be43-01f55e78666d">
@@ -363,7 +363,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 2 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} > 2 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="48b3461e-6c11-4eda-be2d-a5a9f2fb9fd3">
@@ -409,7 +409,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 3 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} > 3 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3">
@@ -434,7 +434,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 4 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} > 4 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11">
