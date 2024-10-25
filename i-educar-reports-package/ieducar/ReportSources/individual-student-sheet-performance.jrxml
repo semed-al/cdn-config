@@ -39,6 +39,7 @@
 		<defaultValueExpression><![CDATA[$P{source}]]></defaultValueExpression>
 	</parameter>
 	<parameter name="source" class="java.lang.String"/>
+	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="tipo_nota" class="java.lang.Integer"/>
 	<queryString language="json">
 		<![CDATA[student_sheet_performance]]>
@@ -344,7 +345,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 1 ? ($F{tem_nota} == false  ? ($F{saiu_etapa} == 1 ? "-" : "PPC") : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 1 ? ($F{tem_nota} == false  ? ($F{saiu_etapa} == 1 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e777cca9-d769-4e39-be43-01f55e78666d">
@@ -353,7 +354,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 1) ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 1) ? ($F{tem_nota} == false  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 
 			<textField pattern="#0.0" isBlankWhenNull="true">
@@ -363,7 +364,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 2 ? ($F{tem_nota} == false  ? ($F{saiu_etapa} == 2 ? "-" : "PPC") : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 2 ? ($F{tem_nota} == false  ? ($F{saiu_etapa} == 2 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="48b3461e-6c11-4eda-be2d-a5a9f2fb9fd3">
@@ -372,7 +373,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 2) ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 2) ? ($F{tem_nota} == false  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="1" width="148" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
@@ -409,7 +410,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 3 ? ($F{tem_nota} == false  ? ($F{saiu_etapa} == 3 ? "-" : "PPC") : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 3 ? ($F{tem_nota} == false  ? ($F{saiu_etapa} == 3 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3">
@@ -418,7 +419,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 3 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 3 ? ($F{tem_nota} == false  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 
 			<line>
@@ -434,7 +435,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 4 ? ($F{tem_nota} == false  ? ($F{saiu_etapa} == 4 ? "-" : "PPC") : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 4 ? ($F{tem_nota} == false  ? ($F{saiu_etapa} == 4 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11">
@@ -443,14 +444,14 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 4 ? ($F{tem_nota} == false  ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 4 ? ($F{tem_nota} == false  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="513" y="0" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108"/>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ativo_na_turma} == 0 ? $F{situacao}.toString().substring(0,3) : ($F{cursou_etapa_max} >= $F{quantidade_etapas} ? ($F{tem_nota} == false ? "PPC" : new DecimalFormat("##0.0").format(Double.parseDouble($F{media_final})).toString()) : "-")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ativo_na_turma} == 0 ? $F{situacao}.toString().substring(0,3) : ($F{cursou_etapa_max} >= $F{quantidade_etapas} ? ($F{tem_nota} == false ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") : new DecimalFormat("##0.0").format(Double.parseDouble($F{media_final})).toString()) : "-")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="469" y="0" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>

@@ -300,6 +300,9 @@
 					<subreportParameter name="source">
 						<subreportParameterExpression><![CDATA[$P{source}]]></subreportParameterExpression>
 					</subreportParameter>
+					<subreportParameter name="dominio">
+						<subreportParameterExpression><![CDATA[$P{dominio}]]></subreportParameterExpression>
+					</subreportParameter>
 					<subreportParameter name="tipo_nota">
 						<subreportParameterExpression><![CDATA[$P{tipo_nota}]]></subreportParameterExpression>
 					</subreportParameter>
@@ -343,6 +346,9 @@
 					</subreportParameter>
 					<subreportParameter name="source">
 						<subreportParameterExpression><![CDATA[$P{source}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="dominio">
+						<subreportParameterExpression><![CDATA[$P{dominio}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportParameter name="tipo_nota">
 						<subreportParameterExpression><![CDATA[$P{tipo_nota}]]></subreportParameterExpression>
