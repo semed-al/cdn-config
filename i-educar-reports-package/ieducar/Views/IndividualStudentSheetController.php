@@ -38,7 +38,7 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
             'turma'
         ]);
 
-        $this->inputsHelper()->dynamic('matricula', ['required' => true]);
+        $this->inputsHelper()->dynamic('matricula', ['required' => false]);
 
         $resources = [
             1 => 'Aprovado',
@@ -55,13 +55,24 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
             16 => 'Aprovado após exame'
         ];
 
-        $options = [
-            'label' => 'Situação do aluno',
-            'resources' => $resources,
-            'value' => 10
-        ];
+        // $options = [
+        //     'label' => 'Situação do aluno',
+        //     'resources' => $resources,
+        //     'value' => 10
+        // ];
 
-        $this->inputsHelper()->select('situacao_matricula', $options);
+        // $this->inputsHelper()->select('situacao_matricula', $options);
+
+        $this->inputsHelper()->text('data', [
+            'label' => 'Data de encerramento',
+            'value' => '',
+            'placeholder' => 'DD/MM/AAAA',
+            'size' => 40,
+            'required' => true
+        ]);
+
+        $this->inputsHelper()->text('alterar_nome_diretor', ['label' => 'Alterar nome do(a) diretor(a)', 'value' => false, 'required' => false]);
+        $this->inputsHelper()->text('alterar_nome_secretario', ['label' => 'Alterar nome do(a) secretário(a) escolar', 'value' => false, 'required' => false]);
         
         $this->loadResourceAssets($this->getDispatcher());
     }
@@ -78,7 +89,14 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
         $this->report->addArg('curso', (int) $this->getRequest()->ref_cod_curso);
         $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
-        $this->report->addArg('situacao_matricula', (int) $this->getRequest()->situacao_matricula);
+        $this->report->addArg('situacao_matricula', (int) 10);
+
+        $months = array (1=>'Janeiro',2=>'Fevereiro',3=>'Março',4=>'Abril',5=>'Maio',6=>'Junho',
+        7=>'Julho',8=>'Agosto',9=>'Setembro',10=>'Outubro',11=>'Novembro',12=>'Dezembro');
+        $data_part = explode('/', $this->getRequest()->data);
+        $this->report->addArg('data_dia', (int) $data_part[0]);
+        $this->report->addArg('data_mes', $months[(int) $data_part[1]]);
+        $this->report->addArg('data_ano', (int) $data_part[2]);
 
         if (is_null($this->getRequest()->ref_cod_matricula)) {
             $this->report->addArg('matricula', 0);
@@ -86,6 +104,9 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
             $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
         }
         $this->report->addArg('tipo_nota', 1);
+        
+        $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
+        $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
     }
 
     /**

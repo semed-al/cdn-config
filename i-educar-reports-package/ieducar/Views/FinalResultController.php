@@ -87,7 +87,7 @@ class FinalResultController extends Portabilis_Controller_ReportCoreController
         //     'required' => false
         // ]);
         $this->inputsHelper()->text('data', [
-            'label' => 'Data de finalização da Ata',
+            'label' => 'Data de encerramento',
             'value' => '',
             'placeholder' => 'DD/MM/AAAA',
             'size' => 40,

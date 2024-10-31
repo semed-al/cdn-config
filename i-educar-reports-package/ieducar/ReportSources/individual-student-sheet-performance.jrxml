@@ -29,6 +29,9 @@
 	<parameter name="emitir_nota_exame" class="java.lang.Boolean">
 		<defaultValueExpression><![CDATA[true]]></defaultValueExpression>
 	</parameter>
+	<parameter name="matricula" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
 	<parameter name="situacao_matricula" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -57,7 +60,6 @@
 	<field name="resultado_anual" class="java.math.BigDecimal"/>
 	<field name="media_anual" class="java.math.BigDecimal"/>
 	<field name="exame" class="java.math.BigDecimal"/>
-	<field name="matricula" class="java.lang.Integer"/>
 	<field name="total_geral_faltas_componente" class="java.math.BigDecimal"/>
 	<field name="media_final" class="java.lang.String"/>
 	<field name="medianum" class="java.math.BigDecimal"/>
@@ -76,7 +78,7 @@
 		<variableExpression><![CDATA[$F{medianum}.doubleValue()]]></variableExpression>
 	</variable>
 	<group name="performance" keepTogether="true">
-		<groupExpression><![CDATA[true]]></groupExpression>
+		<groupExpression><![CDATA[$P{matricula}]]></groupExpression>
 		<groupHeader>
 			<band height="20">
 				<staticText>
@@ -294,9 +296,9 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="40" splitType="Stretch">
+			<band height="50" splitType="Stretch">
 				<textField isBlankWhenNull="true">
-					<reportElement x="1" y="18" width="541" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3d4cba75-4845-4c96-8ee5-3693af5916c5"/>
+					<reportElement x="1" y="18" width="541" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="3d4cba75-4845-4c96-8ee5-3693af5916c5"/>
 					<box>
 						<pen lineWidth="1.25"/>
 					</box>
@@ -304,7 +306,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 						<paragraph leftIndent="5" spacingBefore="2"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Situação final: " + $V{situacao_final}.toUpperCase()]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Situação final: " + $V{situacao_final}.toUpperCase()+"\nAno letivo: " + $P{ano}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="1" y="-1" width="541" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ac8fd9a5-2f5b-42eb-bb60-b991170b191f">

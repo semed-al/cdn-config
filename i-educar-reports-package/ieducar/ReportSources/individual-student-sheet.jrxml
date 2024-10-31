@@ -56,9 +56,17 @@
 	</parameter>
 	<parameter name="source" class="java.lang.String"/>
 	<parameter name="tipo_nota" class="java.lang.Integer"/>
+	<parameter name="alterar_nome_diretor" class="java.lang.String"/>
+	<parameter name="alterar_nome_secretario" class="java.lang.String"/>
+	<parameter name="data_dia" class="java.lang.Integer"/>
+	<parameter name="data_mes" class="java.lang.String"/>
+	<parameter name="data_ano" class="java.lang.Integer"/>
+
 	<parameter name="dominio" class="java.lang.String"/>
 	<field name="nome_instituicao" class="java.lang.String"/>
 	<field name="nome_responsavel" class="java.lang.String"/>
+	<field name="nome_diretor" class="java.lang.String"/>
+	<field name="nome_secretario" class="java.lang.String"/>
 	<field name="nm_escola" class="java.lang.String"/>
 	<field name="ano" class="java.lang.Integer"/>
 	<field name="logradouro" class="java.lang.String"/>
@@ -68,13 +76,20 @@
 	<field name="nome_serie" class="java.lang.String"/>
 	<field name="nome_turma" class="java.lang.String"/>
 	<field name="nome_aluno" class="java.lang.String"/>
+	<field name="cod_matricula" class="java.lang.Integer"/>
 	<field name="data_nasc" class="java.lang.String"/>
 	<field name="periodo" class="java.lang.String"/>
 	<field name="situacao" class="java.lang.String"/>
 	<field name="nome_da_mae" class="java.lang.String"/>
 	<field name="nome_do_pai" class="java.lang.String"/>
+	<variable name="diretor" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_diretor} == null || $P{alterar_nome_diretor}.isEmpty() ? $F{nome_diretor}.toUpperCase() : $P{alterar_nome_diretor}.toUpperCase()]]></variableExpression>
+	</variable>
+	<variable name="secretario" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? $F{nome_secretario}.toUpperCase() : $P{alterar_nome_secretario}.toUpperCase()]]></variableExpression>
+	</variable>
 	<group name="info">
-		<groupExpression><![CDATA[true]]></groupExpression>
+		<groupExpression><![CDATA[$F{nome_aluno}]]></groupExpression>
 		<groupHeader>
 			<band height="69" splitType="Stretch">
 				<subreport>
@@ -265,7 +280,7 @@
 		</groupHeader>
 	</group>
 	<group name="frequencia">
-		<groupExpression><![CDATA[true]]></groupExpression>
+		<groupExpression><![CDATA[$F{nome_aluno}]]></groupExpression>
 		<groupHeader>
 			<band height="64">
 				<subreport>
@@ -289,7 +304,7 @@
 						<subreportParameterExpression><![CDATA[$P{turma}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportParameter name="matricula">
-						<subreportParameterExpression><![CDATA[$P{matricula}]]></subreportParameterExpression>
+						<subreportParameterExpression><![CDATA[$F{cod_matricula}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportParameter name="situacao_matricula">
 						<subreportParameterExpression><![CDATA[$P{situacao_matricula}]]></subreportParameterExpression>
@@ -312,7 +327,7 @@
 		</groupHeader>
 	</group>
 	<group name="performance">
-		<groupExpression><![CDATA[true]]></groupExpression>
+		<groupExpression><![CDATA[$F{nome_aluno}]]></groupExpression>
 		<groupHeader>
 			<band height="64">
 				<subreport>
@@ -336,7 +351,7 @@
 						<subreportParameterExpression><![CDATA[$P{turma}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportParameter name="matricula">
-						<subreportParameterExpression><![CDATA[$P{matricula}]]></subreportParameterExpression>
+						<subreportParameterExpression><![CDATA[$F{cod_matricula}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportParameter name="situacao_matricula">
 						<subreportParameterExpression><![CDATA[$P{situacao_matricula}]]></subreportParameterExpression>
@@ -451,17 +466,17 @@
 			</textField>
 			<textField>
 				<reportElement x="0" y="300" width="554" height="30" backcolor="#FFFFFF" uuid="6977375c-7989-4e55-b0d6-59aeb834e261">
-					<printWhenExpression><![CDATA[!$P{dominio}.contains("japaratinga") && (java.util.Calendar.getInstance().get(java.util.Calendar.YEAR) - $P{ano}) > 1]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$P{data_dia} != null && $P{data_mes} != null && $P{data_ano} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
 					<font fontName="DejaVu Sans" size="9" isBold="false"/>
 					<paragraph lineSpacing="Double" lineSpacingSize="3.0" leftIndent="5" rightIndent="5" spacingBefore="10" spacingAfter="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Aos _________ dias do mês de ____________________________________ do ano de ____________"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Aos <b>" + $P{data_dia} + "</b> dias do mês de <b>" + $P{data_mes} + "</b> do ano de <b>" + $P{data_ano} + "</b>"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="300" width="554" height="30" backcolor="#FFFFFF" uuid="20c3aa08-7eed-4e89-9265-83f360feaeb5">
-					<printWhenExpression><![CDATA[(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR) - $P{ano}) <= 1]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$P{data_dia} == null || $P{data_mes} == null || $P{data_ano} == null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
 					<font fontName="DejaVu Sans" size="9" isBold="false"/>
@@ -469,13 +484,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Aos <b>" + java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH) +"</b> dias do mês de <b>" + new java.text.DateFormatSymbols(new java.util.Locale("pt", "BR")).getMonths()[java.util.Calendar.getInstance().get(java.util.Calendar.MONTH)] + "</b> do ano de <b>" + java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)+"</b>"]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="330" y="425" width="200" height="16" uuid="73402cd5-6bfe-49fb-a73e-019059c1758b"/>
+			<textField>
+				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="330" y="425" width="200" height="32" uuid="73402cd5-6bfe-49fb-a73e-019059c1758b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<text><![CDATA[Diretor(a) - registro ou matrícula nº _______]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{diretor} + "\nDiretor(a) - registro ou matrícula nº _______"]]></textFieldExpression>
+			</textField>
 			<line>
 				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="327" y="421" width="210" height="1" uuid="f2c17794-53ea-4692-af34-104747d2ff02"/>
 				<graphicElement>
@@ -488,13 +503,13 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerBottom" x="31" y="425" width="253" height="16" uuid="f6d9cc00-347e-4115-8ab3-9a165c4d2339"/>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerBottom" x="31" y="425" width="253" height="32" uuid="f6d9cc00-347e-4115-8ab3-9a165c4d2339"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<text><![CDATA[Funcionário(a) responsável - registro ou matrícula nº _______]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$V{secretario} +"\nFuncionário(a) responsável - registro ou matrícula nº _______"]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement positionType="Float" stretchType="ElementGroupBottom" x="0" y="243" width="553" height="16" uuid="872f308c-6428-4713-a502-3d2697cf5fc5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">

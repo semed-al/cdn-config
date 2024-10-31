@@ -75,6 +75,7 @@
 	<field name="tipo_presenca" class="java.lang.Integer"/>
 	<field name="saiu_da_turma" class="java.lang.Boolean"/>
 	<field name="saiu_etapa" class="java.lang.Integer"/>
+	<field name="cursou_etapa_max" class="java.lang.Integer"/>	
 	<variable name="soma_carga_horaria_componente_et" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{carga_horaria_componente_et}]]></variableExpression>
 	</variable>
@@ -104,11 +105,14 @@
     ? 4 : $F{total_faltas_et3} != null || $F{faltas_componente_et3} != null || $V{soma_faltas_componente_et3} 
     ? 3 : $F{total_faltas_et2} != null || $F{faltas_componente_et2} != null || $V{soma_faltas_componente_et2} 
     ? 2 : 1]]></variableExpression> -->
-		<variableExpression><![CDATA[$F{saiu_etapa} > 0 ? $F{saiu_etapa} - 1 : $F{saiu_etapa}]]></variableExpression>
+		<variableExpression><![CDATA[$F{saiu_etapa} > 0 ? $F{saiu_etapa}: ($F{total_faltas_et4} != null || $F{faltas_componente_et4} != null || $V{soma_faltas_componente_et4} 
+    ? 4 : $F{total_faltas_et3} != null || $F{faltas_componente_et3} != null || $V{soma_faltas_componente_et3} 
+    ? 3 : $F{total_faltas_et2} != null || $F{faltas_componente_et2} != null || $V{soma_faltas_componente_et2} 
+    ? 2 : 1)]]></variableExpression>
 	</variable>
 	
 	<group name="frequencia">
-		<groupExpression><![CDATA[true]]></groupExpression>
+		<groupExpression><![CDATA[$P{matricula}]]></groupExpression>
 		<groupHeader>
 			<band height="20" splitType="Stretch">
 				<staticText>
@@ -417,7 +421,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} > 1) 
+					<textFieldExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} >= 1) 
 														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) 
 														|| ($V{soma_faltas_componente_et1} != null)) 
 													? $V{soma_carga_horaria_componente_et} : "-"]]></textFieldExpression>
@@ -427,7 +431,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} > 2) 
+					<textFieldExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} >= 2) 
 														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) 
 														|| ($V{soma_faltas_componente_et2} != null)) 
 													? $V{soma_carga_horaria_componente_et} : "-"]]></textFieldExpression>
@@ -437,7 +441,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} > 3)
+					<textFieldExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} >= 3)
 														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) 
 														|| ($V{soma_faltas_componente_et3} != null)) 
 													? $V{soma_carga_horaria_componente_et} : "-"]]></textFieldExpression>
@@ -447,7 +451,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} > 4)
+					<textFieldExpression><![CDATA[($F{saiu_da_turma} == false || $F{saiu_etapa} >= 4)
 														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) 
 														|| ($V{soma_faltas_componente_et4} != null)) 
 													? $V{soma_carga_horaria_componente_et} : "-"]]></textFieldExpression>
@@ -457,7 +461,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} > 1) 
+					<textFieldExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 1) 
 														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null) 
 														|| ($V{soma_faltas_componente_et1} != null)) 
 													? $V{soma_aulas_dadas_et} : "-"]]></textFieldExpression>
@@ -467,7 +471,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} > 2) 
+					<textFieldExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 2) 
 														&& (($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null) 
 														|| ($V{soma_faltas_componente_et2} != null)) 
 													? $V{soma_aulas_dadas_et} : "-"]]></textFieldExpression>
@@ -477,7 +481,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} > 3) && (($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) 
+					<textFieldExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 3) && (($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null) 
 														|| ($V{soma_faltas_componente_et3} != null)) 
 													? $V{soma_aulas_dadas_et} : "-"]]></textFieldExpression>
 				</textField>
@@ -486,7 +490,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} > 4) && (($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) 
+					<textFieldExpression><![CDATA[(new java.lang.Boolean($F{saiu_da_turma}) == false || $F{saiu_etapa} >= 4) && (($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null) 
 														|| ($V{soma_faltas_componente_et4} != null)) 
 													? $V{soma_aulas_dadas_et} : "-"]]></textFieldExpression>
 				</textField>
@@ -681,7 +685,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null && $F{saiu_etapa} > 1) 
+				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null && $F{saiu_etapa} >= 1) 
 													|| ($F{faltas_componente_et1} != null) ? $F{aulas_dadas_componente_et} : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -689,7 +693,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null && $F{saiu_etapa} > 2) 
+				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null && $F{saiu_etapa} >= 2) 
 													|| ($F{faltas_componente_et2} != null) ? $F{aulas_dadas_componente_et} : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -722,7 +726,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null && $F{saiu_etapa} > 3) 
+				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null && $F{saiu_etapa} >= 3) 
 											|| ($F{faltas_componente_et3} != null) ? $F{aulas_dadas_componente_et} : "-"]]></textFieldExpression>
 			</textField>
 			<line>
@@ -736,7 +740,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null && $F{saiu_etapa} > 4) 
+				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null && $F{saiu_etapa} >= 4) 
 													|| ($F{faltas_componente_et4} != null) ? $F{aulas_dadas_componente_et} : "-"]]></textFieldExpression>
 			</textField>
 			<line>
@@ -835,7 +839,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null && $F{saiu_etapa} > 1) 
+				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et1} != null && $F{saiu_etapa} >= 1) 
 												|| ($F{faltas_componente_et1} != null) 
 												? $F{carga_horaria_componente_et} : "-"]]></textFieldExpression>
 			</textField>
@@ -844,7 +848,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null && $F{saiu_etapa} > 2) 
+				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et2} != null && $F{saiu_etapa} >= 2) 
 												|| ($F{faltas_componente_et2} != null) 
 												? $F{carga_horaria_componente_et} : "-"]]></textFieldExpression>
 			</textField>
@@ -865,7 +869,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null && $F{saiu_etapa} > 3) || ($F{faltas_componente_et3} != null)
+				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et3} != null && $F{saiu_etapa} >= 3) || ($F{faltas_componente_et3} != null)
 												? $F{carga_horaria_componente_et} 
 												: "-"]]></textFieldExpression>
 			</textField>
@@ -874,7 +878,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null && $F{saiu_etapa} > 4) 
+				<textFieldExpression><![CDATA[($F{tipo_presenca} == 1 && $F{total_faltas_et4} != null && $F{saiu_etapa} >= 4) 
 												|| ($F{faltas_componente_et4} != null) 
 												? $F{carga_horaria_componente_et} 
 												: "-"]]></textFieldExpression>

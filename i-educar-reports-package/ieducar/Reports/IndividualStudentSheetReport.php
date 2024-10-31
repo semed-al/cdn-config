@@ -66,7 +66,9 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
             INITCAP(relatorio.get_pai_aluno(aluno.cod_aluno)) AS nome_do_pai,
             INITCAP(relatorio.get_mae_aluno(aluno.cod_aluno)) AS nome_da_mae,
             public.fcn_upper(pessoa.nome) as nome_aluno,
-            public.data_para_extenso(CURRENT_DATE) as data_atual
+            public.data_para_extenso(CURRENT_DATE) as data_atual,
+            fcn_upper(pessoa_gestor.nome) AS nome_diretor,
+            fcn_upper(pessoa_secr.nome) AS nome_secretario
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
@@ -96,6 +98,8 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         INNER JOIN cadastro.fisica ON (fisica.idpes = aluno.ref_idpes)
         INNER JOIN cadastro.pessoa ON (pessoa.idpes = fisica.idpes)
         INNER JOIN relatorio.view_situacao ON (view_situacao.cod_matricula = matricula.cod_matricula AND view_situacao.cod_turma = turma.cod_turma)
+        LEFT JOIN cadastro.pessoa pessoa_gestor ON pessoa_gestor.idpes = escola.ref_idpes_gestor
+        LEFT JOIN cadastro.pessoa pessoa_secr ON pessoa_secr.idpes = escola.ref_idpes_secretario_escolar
         WHERE instituicao.cod_instituicao = {$instituicao}
             AND escola.cod_escola = {$escola}
             AND escola_ano_letivo.ano = {$ano}
@@ -149,6 +153,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
             LIMIT 1
         )
         SELECT view_componente_curricular.nome AS nome_disciplina,
+                matricula.cod_matricula as cod_matricula,
                 area_conhecimento.nome AS area_conhecimento,
                 falta_etapa1.quantidade AS total_faltas_et1,
                 falta_etapa2.quantidade AS total_faltas_et2,
@@ -288,6 +293,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         )
         SELECT view_situacao.texto_situacao AS situacao,
                 view_componente_curricular.nome AS nome_disciplina,
+                matricula.cod_matricula as cod_matricula,
                 area_conhecimento.nome AS area_conhecimento,
                 nota_etapa1.nota_original AS nota1,
                 nota_etapa1.nota_recuperacao AS nota1recuperacao,
