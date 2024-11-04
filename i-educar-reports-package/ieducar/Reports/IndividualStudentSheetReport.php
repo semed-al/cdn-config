@@ -181,7 +181,8 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 CAST(matricula_turma.data_exclusao as DATE) AS data_saida,
                 COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa,
                 etapas.qtd AS quantidade_etapas,
-                etapas.tipo AS etapa_tipo
+                etapas.tipo AS etapa_tipo,
+                (CAST(matricula_turma.data_exclusao as DATE) - COALESCE(turma_modulo.data_inicio, ano_letivo_modulo.data_inicio))::float/(COALESCE(turma_modulo.data_fim, ano_letivo_modulo.data_fim) - COALESCE(turma_modulo.data_inicio, ano_letivo_modulo.data_inicio))::float AS percentual_cursado_na_etapa_decimal
         FROM etapas
         INNER JOIN pmieducar.instituicao ON instituicao.ativo = 1
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
