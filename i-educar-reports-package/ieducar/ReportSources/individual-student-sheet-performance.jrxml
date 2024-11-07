@@ -546,11 +546,22 @@
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="431" y="0" width="26" height="11" uuid="e011575d-cae1-46b9-abfe-d3f1d7317488"/>
+				<reportElement x="431" y="0" width="26" height="11">
+					<printWhenExpression><![CDATA[$F{tem_nota} == false]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{media_anual} == null ? "-" : ($F{nota_exame} == null ? new DecimalFormat("##0.0").format(Double.parseDouble($F{media_final})).toString() : new DecimalFormat("##0.0").format($F{media_anual}.doubleValue()).toString())]]></textFieldExpression>
+				<textFieldExpression><![CDATA["-"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="431" y="0" width="26" height="11" uuid="e011575d-cae1-46b9-abfe-d3f1d7317488">
+					<printWhenExpression><![CDATA[$F{tem_nota} == true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nota_exame} == null ? new DecimalFormat("##0.0").format(Double.parseDouble($F{media_final})).toString() : new DecimalFormat("##0.0").format($F{media_anual}.doubleValue()).toString()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
