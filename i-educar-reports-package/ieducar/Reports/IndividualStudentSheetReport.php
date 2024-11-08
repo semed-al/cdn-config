@@ -165,16 +165,16 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 falta_componente4.quantidade AS faltas_componente_et4,
                 COALESCE(relatorio.get_total_geral_falta_componente(matricula.cod_matricula),(COALESCE(falta_etapa1.quantidade,0) + COALESCE(falta_etapa2.quantidade,0) + COALESCE(falta_etapa3.quantidade,0) + COALESCE(falta_etapa4.quantidade,0))) AS total_faltas,
                 round((modules.frequencia_da_matricula(matricula.cod_matricula))::numeric, 1) AS percentual_frequencia_final,
-                COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria) AS carga_horaria_componente,
-                COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd AS carga_horaria_componente_et,
-                CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd)/curso.hora_falta) AS aulas_dadas_componente,
-                CEIL((COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd)/curso.hora_falta) AS aulas_dadas_componente_et,
+                COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria) AS carga_horaria_componente,
+                COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd AS carga_horaria_componente_et,
+                CEIL((COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd)/curso.hora_falta) AS aulas_dadas_componente,
+                CEIL((COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd)/curso.hora_falta) AS aulas_dadas_componente_et,
                 serie.carga_horaria AS carga_horaria_serie,
                 curso.hora_falta AS hora_falta,
                 serie.dias_letivos,
                 falta_aluno.id AS falta_aluno_id,
                 relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id) AS total_faltas_componente,
-                (relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id)*curso.hora_falta/COALESCE(componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria))*100 AS percentual_falta_componente,
+                (relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id)*curso.hora_falta/COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria))*100 AS percentual_falta_componente,
                 regra_avaliacao.tipo_presenca,
                 matricula_turma.ativo AS ativo_na_turma,
                 COALESCE(matricula_turma.transferido, false) AS saiu_da_turma,
@@ -248,6 +248,16 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                                                                 AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
                                                                 AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
                                                                 )
+        LEFT JOIN modules.componente_curricular_turma ON (componente_curricular_turma.ano_escolar_id = serie.cod_serie
+                                                                AND componente_curricular_turma.componente_curricular_id = view_componente_curricular.id
+                                                                AND componente_curricular_turma.turma_id = turma.cod_turma
+                                                                )
+        LEFT JOIN pmieducar.escola_serie_disciplina ON (escola_serie_disciplina.ref_ref_cod_serie = serie.cod_serie
+                                                                AND escola_serie_disciplina.ref_cod_disciplina = view_componente_curricular.id
+                                                                AND escola_serie_disciplina.ref_ref_cod_escola = escola.cod_escola
+                                                                AND escola_serie_disciplina.ativo = 1
+                                                                AND matricula.ano = any(escola_serie_disciplina.anos_letivos)
+                                                                )                                                        
         LEFT JOIN modules.regra_avaliacao_serie_ano rasa on(serie.cod_serie = rasa.serie_id AND matricula.ano = rasa.ano_letivo)
         LEFT JOIN modules.regra_avaliacao on(rasa.regra_avaliacao_id = regra_avaliacao.id)
         WHERE instituicao.cod_instituicao = {$instituicao}
