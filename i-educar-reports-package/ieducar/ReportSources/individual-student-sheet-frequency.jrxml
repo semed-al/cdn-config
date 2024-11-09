@@ -147,17 +147,17 @@
 				<line>
 					<reportElement x="478" y="0" width="1" height="26" uuid="d8b30594-04e0-4b88-a150-57cdab1d81ac"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="0.75"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="494" y="0" width="1" height="26" uuid="15278b62-c664-432c-8e3c-cb5a1d143f6a"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="1.25"/>
 					</graphicElement>
 				</line>
 				<staticText>
-					<reportElement x="2" y="3" width="148" height="19" uuid="11c2c683-a08c-4de7-9d92-7d9dc3249435"/>
+					<reportElement x="2" y="3" width="138" height="19" uuid="11c2c683-a08c-4de7-9d92-7d9dc3249435"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -186,7 +186,7 @@
 				<line>
 					<reportElement x="270" y="0" width="1" height="26" uuid="22fa8161-5ba7-4071-ac8a-618877858ade"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="1.25"/>
 					</graphicElement>
 				</line>
 				<line>
@@ -198,7 +198,7 @@
 				<line>
 					<reportElement x="369" y="0" width="1" height="26" uuid="fc779f1c-9605-41f6-b6e6-8aef52265252"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="0.75"/>
 					</graphicElement>
 				</line>
 				<line>
@@ -255,7 +255,7 @@
 				<line>
 					<reportElement x="394" y="0" width="1" height="26" uuid="a97dbd69-c325-4ab0-a143-35e43992850c"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="1.25"/>
 					</graphicElement>
 				</line>
 				<staticText>
@@ -379,13 +379,13 @@
 				<line>
 					<reportElement x="246" y="0" width="1" height="26" uuid="a94b051a-a80a-4bf1-be83-c2bf0c7487f8"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="0.75"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="150" y="0" width="1" height="26" uuid="09e81861-4add-440a-aefa-1301b07f4658"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="1.25"/>
 					</graphicElement>
 				</line>
 				<staticText>
@@ -541,7 +541,7 @@
 				<line>
 					<reportElement x="150" y="-1" width="1" height="13" uuid="cba3e458-ce5f-4b69-912c-3017017f154d"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="1.25"/>
 					</graphicElement>
 				</line>
 				<line>
@@ -565,13 +565,13 @@
 				<line>
 					<reportElement x="246" y="-1" width="1" height="13" uuid="09b86629-6525-455d-b551-6f0cf4a04290"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="0.75"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="270" y="-1" width="1" height="13" uuid="48be31e0-5318-4a67-a9e3-01faf9899172"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="1.25"/>
 					</graphicElement>
 				</line>
 				<line>
@@ -613,13 +613,13 @@
 				<line>
 					<reportElement x="369" y="-1" width="1" height="13" uuid="fbc11149-72a5-47c9-9c46-d33d07a74ff4"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="0.75"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="394" y="-1" width="1" height="13" uuid="5d1745c3-ec4e-412f-a27d-4979be3105c5"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="1.25"/>
 					</graphicElement>
 				</line>
 				<textField isBlankWhenNull="true">
@@ -678,13 +678,13 @@
 				<line>
 					<reportElement x="478" y="-1" width="1" height="13" uuid="e6bc6a2b-3574-4c21-bfa2-84d27e765479"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="0.75"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="494" y="-1" width="1" height="13" uuid="608f22b4-72dc-475f-965d-915ac7c63417"/>
 					<graphicElement>
-						<pen lineWidth="0.25"/>
+						<pen lineWidth="1.25"/>
 					</graphicElement>
 				</line>
 				<textField isBlankWhenNull="true">
@@ -787,7 +787,7 @@
 			<line>
 				<reportElement x="270" y="-2" width="1" height="13" uuid="45b50c55-b79a-4a6d-8d9e-5253df7e20aa"/>
 				<graphicElement>
-					<pen lineWidth="0.25"/>
+					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
 			<line>
@@ -821,7 +821,7 @@
 			<line>
 				<reportElement x="369" y="-2" width="1" height="13" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639"/>
 				<graphicElement>
-					<pen lineWidth="0.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
@@ -849,7 +849,7 @@
 			<line>
 				<reportElement x="494" y="-2" width="1" height="13" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
 				<graphicElement>
-					<pen lineWidth="0.25"/>
+					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
@@ -890,7 +890,7 @@
 			<line>
 				<reportElement x="478" y="-2" width="1" height="13" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15"/>
 				<graphicElement>
-					<pen lineWidth="0.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
@@ -909,7 +909,7 @@
 			<line>
 				<reportElement x="394" y="-2" width="1" height="13" uuid="47d9ab58-da27-4c6b-8afa-9fe366567a55"/>
 				<graphicElement>
-					<pen lineWidth="0.25"/>
+					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
 			<line>
@@ -965,7 +965,7 @@
 			<line>
 				<reportElement x="150" y="-2" width="1" height="13" uuid="0b94fbed-2955-4f4c-a9bf-7b40d3b3d241"/>
 				<graphicElement>
-					<pen lineWidth="0.25"/>
+					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
 			<line>
@@ -1014,7 +1014,7 @@
 			<line>
 				<reportElement x="246" y="-2" width="1" height="13" uuid="8bceea7b-54a2-45ca-b103-8f4cf1121950"/>
 				<graphicElement>
-					<pen lineWidth="0.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 		</band>
