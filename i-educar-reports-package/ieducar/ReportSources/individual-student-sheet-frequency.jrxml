@@ -77,6 +77,9 @@
 	<field name="saiu_etapa" class="java.lang.Integer"/>
 	<field name="cursou_etapa_max" class="java.lang.Integer"/>
 	<field name="percentual_cursado_na_etapa_decimal" class="java.lang.Float"/>
+	<variable name="soma_aulas_dadas_componenent_et_transf" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()]]></variableExpression>
+	</variable>
 	<variable name="soma_carga_horaria_componente_et" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{carga_horaria_componente_et}]]></variableExpression>
 	</variable>
@@ -84,7 +87,7 @@
 		<variableExpression><![CDATA[$F{carga_horaria_componente}]]></variableExpression>
 	</variable>
 	<variable name="soma_aulas_dadas_et" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{aulas_dadas_componente_et}]]></variableExpression>
+		<variableExpression><![CDATA[$F{aulas_dadas_componente_et}.intValue()]]></variableExpression>
 	</variable>
 	<variable name="soma_aulas_dadas_total" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{aulas_dadas_componente_et}*$F{quantidade_etapas}]]></variableExpression>
@@ -526,7 +529,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 4
-													? ($V{soma_aulas_dadas_et}*$F{percentual_cursado_na_etapa_decimal}).intValue() 
+													? $V{soma_aulas_dadas_componenent_et_transf}
 													: "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Auto" isBlankWhenNull="true">
@@ -608,7 +611,7 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[($V{soma_aulas_dadas_total}/$F{quantidade_etapas})*($V{quantidade_etapas_cursadas}-1) + (($V{soma_aulas_dadas_total}/$F{quantidade_etapas})*$F{percentual_cursado_na_etapa_decimal}).intValue()]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($V{soma_aulas_dadas_total}/$F{quantidade_etapas})*($V{quantidade_etapas_cursadas}-1) + $V{soma_aulas_dadas_componenent_et_transf}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="369" y="-1" width="1" height="13" uuid="fbc11149-72a5-47c9-9c46-d33d07a74ff4"/>
