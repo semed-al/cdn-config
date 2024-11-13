@@ -416,28 +416,36 @@
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
 				<textField pattern="" isBlankWhenNull="true">
-					<reportElement x="151" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="ac46c52c-48ce-4ef2-bd74-366805a26873"/>
+					<reportElement x="151" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="ac46c52c-48ce-4ef2-bd74-366805a26873">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{soma_carga_horaria_componente_et}]]></textFieldExpression>
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
-					<reportElement x="175" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="45a0b7cb-6565-4bd7-bdee-a4ddb7b8b985"/>
+					<reportElement x="175" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="45a0b7cb-6565-4bd7-bdee-a4ddb7b8b985">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 2 ? $V{soma_carga_horaria_componente_et} : "-"]]></textFieldExpression>
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
-					<reportElement x="199" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="3c3d8dbf-93af-4baf-a81c-896466736c69"/>
+					<reportElement x="199" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="3c3d8dbf-93af-4baf-a81c-896466736c69">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 3 ? $V{soma_carga_horaria_componente_et} : "-"]]></textFieldExpression>
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
-					<reportElement x="223" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="4959c038-c4d1-467b-aaa0-e62cf35fa3a1"/>
+					<reportElement x="223" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="4959c038-c4d1-467b-aaa0-e62cf35fa3a1">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
@@ -462,7 +470,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 1
-													? ($V{soma_aulas_dadas_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
+													? $V{soma_aulas_dadas_componenent_et_transf}
 													: $V{soma_aulas_dadas_et}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
@@ -485,7 +493,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 2
-													? ($V{soma_aulas_dadas_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
+													? $V{soma_aulas_dadas_componenent_et_transf}
 													: ($F{saiu_etapa} > 2 ? $V{soma_aulas_dadas_et} : "-")]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
@@ -507,7 +515,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 3 
-													? ($V{soma_aulas_dadas_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
+													? $V{soma_aulas_dadas_componenent_et_transf}
 													: ($F{saiu_etapa} > 2 ? $V{soma_aulas_dadas_et} : "-")]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
@@ -534,7 +542,7 @@
 				</textField>
 				<textField evaluationTime="Auto" isBlankWhenNull="true">
 					<reportElement x="247" y="0" width="22" height="11" uuid="6ac6ead0-8283-4329-836c-b3c3183314a9">
-						<printWhenExpression><![CDATA[$F{carga_horaria_componente} != null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
@@ -697,6 +705,57 @@
 					</textElement>
 					<textFieldExpression><![CDATA[String.format("%.1f",  $F{percentual_frequencia_final})+"%"]]></textFieldExpression>
 				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement x="223" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="93186535-cca6-442e-91e8-fb05bff40790">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" markup="html">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{saiu_etapa} == 4 ? $V{soma_aulas_dadas_componenent_et_transf} : "-"]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement x="199" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="70e871ac-98d8-463c-be9f-1d721d857dba">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" markup="html">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{saiu_etapa} == 3 
+? $V{soma_aulas_dadas_componenent_et_transf}
+: ($F{saiu_etapa} > 2 ? $V{soma_carga_horaria_componente_et} : "-")]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement x="175" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="1246e874-1d03-46bb-b626-7951c0436f4d">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" markup="html">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{saiu_etapa} == 2
+													? $V{soma_aulas_dadas_componenent_et_transf}
+													: ($F{saiu_etapa} > 2 ? $V{soma_carga_horaria_componente_et} : "-")]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement x="151" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="da537d09-741a-4782-93ff-1a2c819b3d81">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" markup="html">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{saiu_etapa} == 1
+ ? $V{soma_aulas_dadas_componenent_et_transf}
+ : $V{soma_carga_horaria_componente_et}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" isBlankWhenNull="true">
+					<reportElement x="247" y="0" width="22" height="11" uuid="a74864ff-c1d3-44cc-950f-5b55c8909c86">
+						<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" markup="html">
+						<font fontName="DejaVu Sans" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($V{soma_carga_horaria_total}/$F{quantidade_etapas})*($V{quantidade_etapas_cursadas}-1) + $V{soma_aulas_dadas_componenent_et_transf}]]></textFieldExpression>
+				</textField>
 			</band>
 			<band height="25" splitType="Stretch">
 				<textField isBlankWhenNull="true">
@@ -722,6 +781,7 @@
 	</background>
 	<detail>
 		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<printWhenExpression><![CDATA[true]]></printWhenExpression>
 			<rectangle>
 				<reportElement mode="Opaque" x="1" y="-2" width="534" height="13" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="31f4ee65-09f0-489c-b178-f91ba385052f"/>
@@ -952,14 +1012,18 @@
 				<textFieldExpression><![CDATA[$F{aulas_dadas_componente_et}*($V{quantidade_etapas_cursadas} - 1) + ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="151" y="-1" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="4d1db161-c614-40b7-a2b9-7031b22b561f"/>
+				<reportElement x="151" y="-1" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="4d1db161-c614-40b7-a2b9-7031b22b561f">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carga_horaria_componente_et}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="175" y="-1" width="22" height="11" uuid="d206755f-8243-4d85-b34c-92ba7184a3b0"/>
+				<reportElement x="175" y="-1" width="22" height="11" uuid="d206755f-8243-4d85-b34c-92ba7184a3b0">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -978,14 +1042,18 @@
 				</graphicElement>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="199" y="-1" width="22" height="11" uuid="042b95f4-c748-4131-b2dc-465c712471f3"/>
+				<reportElement x="199" y="-1" width="22" height="11" uuid="042b95f4-c748-4131-b2dc-465c712471f3">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 3 ? $F{carga_horaria_componente_et} : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="223" y="-1" width="22" height="11" uuid="7b636b5e-d9f4-45a9-a910-9c078a9a4921"/>
+				<reportElement x="223" y="-1" width="22" height="11" uuid="7b636b5e-d9f4-45a9-a910-9c078a9a4921">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -1001,12 +1069,12 @@
 			</line>
 			<textField evaluationTime="Auto" isBlankWhenNull="true">
 				<reportElement x="247" y="-1" width="22" height="11" uuid="bd3a8913-5c5e-47b2-94d9-ccc652c915af">
-					<printWhenExpression><![CDATA[$F{carga_horaria_componente} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{carga_horaria_componente}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{carga_horaria_componente}*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="174" y="-2" width="1" height="13" uuid="5dd5129a-6359-490b-813d-e54fbfd0e93b"/>
@@ -1020,6 +1088,59 @@
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="151" y="-1" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="0fce7163-02c0-44e4-884c-2404728f4456">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} == 1
+ ? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue() 
+ : $F{carga_horaria_componente_et}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="175" y="-1" width="22" height="11" uuid="d164c176-e8fa-452a-83c4-80f78c9c36f2">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} == 2 
+ ? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
+ : ($F{saiu_etapa} > 2 ? $F{carga_horaria_componente_et} : "-")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="-1" width="22" height="11" uuid="af5963a9-b085-4733-b468-535e40e22b48">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} == 3
+? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue() 
+											: ($F{saiu_etapa} > 3 ? $F{aulas_dadas_componente_et} : "-")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="-1" width="22" height="11" uuid="c5d5e035-005d-4f72-968c-d3b710566ca3">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saiu_etapa} == 4 
+ ? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
+ : "-"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto" isBlankWhenNull="true">
+				<reportElement x="247" y="-1" width="22" height="11" uuid="8b35d919-0c43-471c-b7c2-f72186d22ddf">
+					<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aulas_dadas_componente_et}*($V{quantidade_etapas_cursadas} - 1) + ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
