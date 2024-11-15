@@ -283,7 +283,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                         AND phe.ano <= max_ano.ano
                         AND LENGTH(observacao) > 0
                         AND (CASE WHEN $P!{nao_emitir_reprovado} THEN phe.aprovado <> 2 ELSE 1=1 END)                        
-                        ORDER BY phe.ano
+                        ORDER BY phe.ano, phe.sequencial
                     )tabl
                 ) AS observacao_all,
                 (
