@@ -14,6 +14,13 @@ class FinalResultReport extends Portabilis_Report_ReportCore
         if ($this->args['orientacao'] == 'paisagem') {
             return 'final-result-landscape';
         }
+        
+        var_dump($this->args['dominio']);
+        if (str_contains($this->args['dominio'], 'japaratinga') 
+            || str_contains($this->args['dominio'], 'coitedonoia')) {
+              return 'final-result-portrait-as-apc';
+        }
+
         return 'final-result';
     }
 
@@ -70,7 +77,8 @@ SELECT DISTINCT matricula.cod_matricula,
        serie.nm_serie AS nome_serie,
        turma.nm_turma AS nome_turma,
        turma_turno.nome AS periodo,
-       sequencial_fechamento
+       sequencial_fechamento,
+       CASE WHEN ra.media = 0 THEN false ELSE true END AS tem_nota
 FROM pmieducar.instituicao
 INNER JOIN pmieducar.escola ON escola.ref_cod_instituicao = instituicao.cod_instituicao
 INNER JOIN relatorio.view_dados_escola vde ON vde.cod_escola = escola.cod_escola
@@ -156,7 +164,8 @@ GROUP BY matricula.cod_matricula,
          componente_curricular.id,
          componente_curricular.nome,
          nccm.media,
-         nccm.media_arredondada
+         nccm.media_arredondada,
+         ra.media
 ORDER BY nm_aluno,
          sequencial_fechamento,
          cod_matricula,

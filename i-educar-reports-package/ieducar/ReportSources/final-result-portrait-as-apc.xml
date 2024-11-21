@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="final-result-landscape" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="817" leftMargin="15" rightMargin="10" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="final-result-portrait-as-apc" language="groovy" pageWidth="595" pageHeight="842" orientation="Portrait" columnWidth="500" leftMargin="15" rightMargin="10" topMargin="20" bottomMargin="20" uuid="0378c531-ef85-4c42-9c57-3c8660b99c2d">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Crosstab Data Text" hTextAlign="Center" hImageAlign="Center"/>
 	<style name="table">
@@ -156,10 +156,13 @@
 		<variableExpression><![CDATA[$V{count_reprovado} == 0 ? "0" : $V{count_reprovado} + " -> " + new BigDecimal($V{count_reprovado} * 100 / $V{total}).setScale(1, java.math.RoundingMode.HALF_UP) + "%"]]></variableExpression>
 	</variable>
 	<variable name="diretor" class="java.lang.String">
-		<variableExpression><![CDATA[$P{alterar_nome_diretor} != null ? $P{alterar_nome_diretor}.toUpperCase() : $F{nome_diretor}.toUpperCase()]]></variableExpression>
+		<variableExpression><![CDATA[$P{alterar_nome_diretor} == null || $P{alterar_nome_diretor}.isEmpty() ? $F{nome_diretor}.toUpperCase() : $P{alterar_nome_diretor}.toUpperCase()]]></variableExpression>
 	</variable>
 	<variable name="secretario" class="java.lang.String">
-		<variableExpression><![CDATA[$P{alterar_nome_secretario} != null ? $P{alterar_nome_secretario}.toUpperCase() : $F{nome_secretario}.toUpperCase()]]></variableExpression>
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? $F{nome_secretario}.toUpperCase() : $P{alterar_nome_secretario}.toUpperCase()]]></variableExpression>
+	</variable>
+	<variable name="funcao" class="java.lang.String">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
 	</variable>
 	<group name="crosstable">
 		<groupExpression><![CDATA[true]]></groupExpression>
@@ -168,7 +171,7 @@
 				<elementGroup>
 					<elementGroup>
 						<crosstab>
-							<reportElement x="0" y="0" width="800" height="110" uuid="4c50a099-4f7c-4636-951b-21df04d0e54a"/>
+							<reportElement x="0" y="0" width="570" height="110" uuid="4c50a099-4f7c-4636-951b-21df04d0e54a"/>
 							<crosstabDataset isDataPreSorted="true">
 								<dataset resetType="Report"/>
 							</crosstabDataset>
@@ -273,7 +276,7 @@
 							</rowGroup>
 							<rowGroup name="%fr" width="33">
 								<bucket class="java.lang.String">
-									<bucketExpression><![CDATA[String.format("%.1f", $F{frequencia_geral})]]></bucketExpression>
+									<bucketExpression><![CDATA[$F{frequencia_geral} == null ? '-' : String.format("%.1f", $F{frequencia_geral})]]></bucketExpression>
 								</bucket>
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">
@@ -351,36 +354,19 @@
 									</box>
 									<textField pattern="###0.00" isBlankWhenNull="true">
 										<reportElement mode="Transparent" x="0" y="0" width="25" height="15" forecolor="#010101" uuid="5460d827-cdaa-4ea5-ab26-46e942baa06e">
-										<printWhenExpression><![CDATA[$V{dominio}.contains("edu.belem.al.gov.br")]]></printWhenExpression>
 										</reportElement>
 										<box>
-										<pen lineWidth="0.25"/>
-										<topPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
-										<leftPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
-										<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
-										<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
+											<pen lineWidth="0.25"/>
+											<topPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
+											<leftPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
+											<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
+											<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
 										</box>
 										<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-										<font fontName="DejaVu Sans" size="8"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$V{tem_nota} == true ? ($V{situacao} == "Trs" || $V{situacao} == "Aba" ? "-" : $V{mediaMeasure}) : ($V{situacao} == "Apr" ? "PPC" : "-")]]></textFieldExpression>
-									</textField>
-									<textField pattern="###0.00" isBlankWhenNull="true">
-										<reportElement mode="Transparent" x="0" y="0" width="25" height="15" forecolor="#010101" uuid="09530b14-523e-471d-b376-421443c8b699">
-										<printWhenExpression><![CDATA[!($V{dominio}.contains("edu.belem.al.gov.br"))]]></printWhenExpression>
-										</reportElement>
-										<box>
-										<pen lineWidth="0.25"/>
-										<topPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
-										<leftPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
-										<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
-										<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#010101"/>
-										</box>
-										<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-										<font fontName="DejaVu Sans" size="8"/>
+											<font fontName="DejaVu Sans" size="8"/>
 										</textElement>
 										<textFieldExpression><![CDATA[$V{tem_nota} == true ? ($V{situacao} == "Trs" || $V{situacao} == "Aba" ? "-" : $V{mediaMeasure}) : ($V{situacao} == "Apr" ? "APC" : "-")]]></textFieldExpression>
-									</textField>
+									</textField>									
 								</cellContents>
 							</crosstabCell>
 							<crosstabCell width="0" height="15" columnTotalGroup="nm_componente_curricular">
@@ -449,7 +435,7 @@
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "header-portrait.jasper"]]></subreportExpression>
 			</subreport>
 			<textField isBlankWhenNull="true">
-				<reportElement x="5" y="110" width="800" height="62" uuid="d7c65010-2f0f-4033-b411-53f3da9a1d86">
+				<reportElement x="5" y="110" width="570" height="62" uuid="d7c65010-2f0f-4033-b411-53f3da9a1d86">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Justified" markup="html">
@@ -605,14 +591,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{secretario} + "\nFUNCIONÁRIO(A) RESPONSÁVEL"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{secretario} + "\n" + $V{funcao}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="370" y="164" width="151" height="34" uuid="5dc3e2b1-7ca4-402d-a704-740809fee527"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{diretor} + "\nDIRETOR(A)"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{diretor} + "\nDiretor(a)"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="613" y="93" width="92" height="17" uuid="0c8bc5a3-d753-42ac-9c4e-7a3a31d4d6ea">
@@ -633,14 +619,14 @@
 				<textFieldExpression><![CDATA[$V{total_cursando_dep}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="3" y="14" width="800" height="45" uuid="ba2d3bb1-d6a7-4cf5-abaf-6d7079d4b66b">
+				<reportElement x="3" y="14" width="570" height="45" uuid="ba2d3bb1-d6a7-4cf5-abaf-6d7079d4b66b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Justified" markup="html">
 					<font fontName="DejaVu Sans" size="9"/>
 					<paragraph lineSpacing="Double"/>
 				</textElement>
-				<textFieldExpression><![CDATA["E para constar, eu, <b>" + $V{secretario} + "</b>, Funcionário(a) Responsável, lavrei a presente ata que será assinada por mim e pelo(a) Diretor(a) deste estabelecimento."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["E para constar, eu, <b>" + ($V{secretario} != null && !$V{secretario}.isEmpty() ? $V{secretario} : "_______________________________________________") + "</b>, " + $V{funcao} + ", lavrei a presente ata que será assinada por mim e pelo(a) Diretor(a) deste estabelecimento."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="614" y="181" width="90" height="17" uuid="03c6d010-5a74-4bdb-b8ad-f97158b85b3a">
