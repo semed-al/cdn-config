@@ -470,7 +470,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 1
-													? $V{soma_aulas_dadas_componenent_et_transf}
+? ($V{soma_aulas_dadas_componenent_et_transf} < 1 ? "-" : $V{soma_aulas_dadas_componenent_et_transf})
 													: $V{soma_aulas_dadas_et}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
@@ -493,7 +493,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 2
-													? $V{soma_aulas_dadas_componenent_et_transf}
+? ($V{soma_aulas_dadas_componenent_et_transf} < 1 ? "-" : $V{soma_aulas_dadas_componenent_et_transf})
 													: ($F{saiu_etapa} > 2 ? $V{soma_aulas_dadas_et} : "-")]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
@@ -515,7 +515,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 3 
-													? $V{soma_aulas_dadas_componenent_et_transf}
+? ($V{soma_aulas_dadas_componenent_et_transf} < 1 ? "-" : $V{soma_aulas_dadas_componenent_et_transf})
 													: ($F{saiu_etapa} > 2 ? $V{soma_aulas_dadas_et} : "-")]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
@@ -537,7 +537,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 4
-													? $V{soma_aulas_dadas_componenent_et_transf}
+? ($V{soma_aulas_dadas_componenent_et_transf} < 1 ? "-" : $V{soma_aulas_dadas_componenent_et_transf})
 													: "-"]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Auto" isBlankWhenNull="true">
@@ -712,7 +712,9 @@
 					<textElement textAlignment="Center" markup="html">
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{saiu_etapa} == 4 ? $V{soma_aulas_dadas_componenent_et_transf} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{saiu_etapa} == 4 
+? ($V{soma_aulas_dadas_componenent_et_transf} < 1 ? "-" : $V{soma_aulas_dadas_componenent_et_transf})
+: "-"]]></textFieldExpression>
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
 					<reportElement x="199" y="0" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="70e871ac-98d8-463c-be9f-1d721d857dba">
@@ -722,7 +724,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 3 
-? $V{soma_aulas_dadas_componenent_et_transf}
+? ($V{soma_aulas_dadas_componenent_et_transf} < 1 ? "-" : $V{soma_aulas_dadas_componenent_et_transf})
 : ($F{saiu_etapa} > 2 ? $V{soma_carga_horaria_componente_et} : "-")]]></textFieldExpression>
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
@@ -733,7 +735,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 2
-													? $V{soma_aulas_dadas_componenent_et_transf}
+? ($V{soma_aulas_dadas_componenent_et_transf} < 1 ? "-" : $V{soma_aulas_dadas_componenent_et_transf})
 													: ($F{saiu_etapa} > 2 ? $V{soma_carga_horaria_componente_et} : "-")]]></textFieldExpression>
 				</textField>
 				<textField pattern="" isBlankWhenNull="true">
@@ -744,7 +746,7 @@
 						<font fontName="DejaVu Sans" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{saiu_etapa} == 1
- ? $V{soma_aulas_dadas_componenent_et_transf}
+? ($V{soma_aulas_dadas_componenent_et_transf} < 1 ? "-" : $V{soma_aulas_dadas_componenent_et_transf})
  : $V{soma_carga_horaria_componente_et}]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Auto" isBlankWhenNull="true">
@@ -809,7 +811,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{saiu_etapa} == 1
-													? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue() 
+											? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ?  "-" : ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue())
 													: $F{aulas_dadas_componente_et}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -831,7 +833,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{saiu_etapa} == 2 
-												? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
+											? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ?  "-" : ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue())
 												: ($F{saiu_etapa} > 2 ? $F{aulas_dadas_componente_et} : "-")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -878,7 +880,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{saiu_etapa} == 3
-											? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue() 
+											? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ?  "-" : ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()) 
 											: ($F{saiu_etapa} > 3 ? $F{aulas_dadas_componente_et} : "-")]]></textFieldExpression>
 			</textField>
 			<line>
@@ -1096,7 +1098,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{saiu_etapa} == 1
- ? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue() 
+? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ? "-" :  ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue())
  : $F{carga_horaria_componente_et}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1107,7 +1109,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{saiu_etapa} == 2 
- ? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
+? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ? "-" :  ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue())
  : ($F{saiu_etapa} > 2 ? $F{carga_horaria_componente_et} : "-")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1118,7 +1120,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{saiu_etapa} == 3
-? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue() 
+? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ? "-" :  ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue())
 											: ($F{saiu_etapa} > 3 ? $F{aulas_dadas_componente_et} : "-")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1129,7 +1131,7 @@
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{saiu_etapa} == 4 
- ? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
+? ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ? "-" :  ($F{carga_horaria_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue())
  : "-"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Auto" isBlankWhenNull="true">
