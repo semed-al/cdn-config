@@ -32,7 +32,8 @@ class EnrollmentQuantitativeMapCourse extends QueryBridge
                 COUNT(CASE WHEN fisica.sexo = 'F' THEN 1 ELSE null END) AS total_feminino
             FROM pmieducar.instituicao
             INNER JOIN pmieducar.escola ON (pmieducar.escola.ref_cod_instituicao = pmieducar.instituicao.cod_instituicao)
-            INNER JOIN pmieducar.escola_ano_letivo ON (pmieducar.escola_ano_letivo.ref_cod_escola = pmieducar.escola.cod_escola) INNER JOIN pmieducar.escola_curso ON (escola_curso.ativo = 1
+            INNER JOIN pmieducar.escola_ano_letivo ON (pmieducar.escola_ano_letivo.ref_cod_escola = pmieducar.escola.cod_escola) 
+            INNER JOIN pmieducar.escola_curso ON (escola_curso.ativo = 1
                 AND escola_curso.ref_cod_escola = escola.cod_escola)
             INNER JOIN pmieducar.curso ON (curso.cod_curso = escola_curso.ref_cod_curso
                 AND curso.ativo = 1)
@@ -61,7 +62,6 @@ class EnrollmentQuantitativeMapCourse extends QueryBridge
                 AND pmieducar.escola_ano_letivo.ano = $P{ano}
                 AND pmieducar.matricula.ano = pmieducar.escola_ano_letivo.ano
                 AND CASE WHEN $P{escola} = 0 THEN TRUE ELSE escola.cod_escola = $P{escola} END
-                AND CASE WHEN $P{curso} = 0 THEN TRUE ELSE curso.cod_curso = $P{curso} END
                 AND CASE
                     WHEN '$P!{data_ini}' <> '' THEN DATE(COALESCE(matricula.data_matricula,matricula.data_cadastro)) >= nullif('$P!{data_ini}', '')::date
                     ELSE TRUE
