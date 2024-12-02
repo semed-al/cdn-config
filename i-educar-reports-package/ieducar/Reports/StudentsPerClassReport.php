@@ -11,7 +11,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
      */
     public function templateName()
     {
-        return 'students-per-class';
+        return $this->args['modelo'] == 1 ? 'students-per-class' : 'students-per-class-simplified';
     }
 
     /**
@@ -22,6 +22,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
         $this->addRequiredArg('ano');
         $this->addRequiredArg('instituicao');
         $this->addRequiredArg('situacao');
+        $this->addRequiredArg('modelo');
     }
 
     /**
