@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_frequency" language="groovy" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="20" bottomMargin="20" uuid="57e58b7e-9044-48db-9b5a-070eef00e0b5">
 	<property name="ireport.zoom" value="1.6500000000000192"/>
 	<property name="ireport.x" value="0"/>
@@ -1076,7 +1076,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{carga_horaria_componente}*$V{quantidade_etapas_cursadas}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{carga_horaria_componente}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="174" y="-2" width="1" height="13" uuid="5dd5129a-6359-490b-813d-e54fbfd0e93b"/>

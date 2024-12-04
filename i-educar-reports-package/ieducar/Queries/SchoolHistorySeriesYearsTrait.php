@@ -281,7 +281,7 @@ trait SchoolHistorySeriesYearsTrait
                 (
                     SELECT textcat_all(obs)
                     FROM (
-                        SELECT concat(observacao,'<br>') AS obs
+                        SELECT concat(observacao,'<br><br>') AS obs
                         FROM pmieducar.historico_escolar phe
                         WHERE phe.ref_cod_aluno = vhsa.cod_aluno
                         AND phe.ativo = 1
