@@ -68,7 +68,15 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
             public.fcn_upper(pessoa.nome) as nome_aluno,
             public.data_para_extenso(CURRENT_DATE) as data_atual,
             fcn_upper(pessoa_gestor.nome) AS nome_diretor,
-            fcn_upper(pessoa_secr.nome) AS nome_secretario
+            fcn_upper(pessoa_secr.nome) AS nome_secretario,
+            (
+                SELECT STRING_AGG(componente_curricular.nome, ', ')
+                FROM relatorio.view_componente_curricular
+                INNER JOIN modules.componente_curricular ON (componente_curricular.id = view_componente_curricular.id)
+                WHERE view_componente_curricular.cod_turma = turma.cod_turma 
+                    AND view_componente_curricular.cod_serie = serie.cod_serie
+                    AND componente_curricular.desconsidera_para_progressao = true
+            ) AS merge_disciplinas_desconsideradas_aprovacao
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
@@ -304,6 +312,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         )
         SELECT view_situacao.texto_situacao AS situacao,
                 view_componente_curricular.nome AS nome_disciplina,
+                componente_curricular.desconsidera_para_progressao,
                 matricula.cod_matricula as cod_matricula,
                 area_conhecimento.nome AS area_conhecimento,
                 nota_etapa1.nota_original AS nota1,
@@ -397,6 +406,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                                                                 AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
                                                                 AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
                                                                 )
+        INNER JOIN modules.componente_curricular ON (componente_curricular.id = componente_curricular_ano_escolar.componente_curricular_id)
         LEFT JOIN modules.regra_avaliacao_serie_ano rasa on(serie.cod_serie = rasa.serie_id AND matricula.ano = rasa.ano_letivo)
         LEFT JOIN modules.regra_avaliacao on(rasa.regra_avaliacao_id = regra_avaliacao.id)
         WHERE instituicao.cod_instituicao = {$instituicao}

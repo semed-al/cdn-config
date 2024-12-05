@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_sheet" language="groovy" pageWidth="595" pageHeight="842" columnWidth="570" leftMargin="20" rightMargin="5" topMargin="20" bottomMargin="20" uuid="ab80d035-fee0-4652-ad3f-1dfa50b6e3c2">
 	<property name="ireport.zoom" value="1.6500000000000192"/>
 	<property name="ireport.x" value="0"/>
@@ -61,7 +61,6 @@
 	<parameter name="data_dia" class="java.lang.Integer"/>
 	<parameter name="data_mes" class="java.lang.String"/>
 	<parameter name="data_ano" class="java.lang.Integer"/>
-
 	<parameter name="dominio" class="java.lang.String"/>
 	<field name="nome_instituicao" class="java.lang.String"/>
 	<field name="nome_responsavel" class="java.lang.String"/>
@@ -82,6 +81,7 @@
 	<field name="situacao" class="java.lang.String"/>
 	<field name="nome_da_mae" class="java.lang.String"/>
 	<field name="nome_do_pai" class="java.lang.String"/>
+	<field name="merge_disciplinas_desconsideradas_aprovacao" class="java.lang.String"/>
 	<variable name="diretor" class="java.lang.String">
 		<variableExpression><![CDATA[$P{alterar_nome_diretor} == null || $P{alterar_nome_diretor}.isEmpty() ? $F{nome_diretor}.toUpperCase() : $P{alterar_nome_diretor}.toUpperCase()]]></variableExpression>
 	</variable>
@@ -401,12 +401,6 @@
 				<textFieldExpression><![CDATA["OBSERVAÇÕES"]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement stretchType="ContainerBottom" x="0" y="60" width="555" height="1" uuid="3d5ef7ae-dce6-4bb4-b700-c369df033b5a"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>
-			<line>
 				<reportElement stretchType="ContainerBottom" x="0" y="80" width="555" height="1" uuid="06af4e3b-920a-4200-9a70-e39b26d8a02b"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
@@ -523,8 +517,17 @@
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
 				<text><![CDATA[LEGENDA:<br>Resultado de desempenho:<br>&emsp A = Aprovado<br>&emsp R = Reprovado<br>&emsp PPC = Promovido em Progressão Continuada<br>&emsp APP = Aprovado com Progressão Parcial<br>
-				Resultado final:<br>&emsp A, R, PPC ou APP]]></text>
+				Resultado final:<br>&emsp A, R, APC, PPC, APP]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="4" y="45" width="551" height="56" uuid="6015b44e-33fd-4569-9c7b-7f6b2ceccd20">
+					<printWhenExpression><![CDATA[$F{merge_disciplinas_desconsideradas_aprovacao} != null && $F{merge_disciplinas_desconsideradas_aprovacao} != ""]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{merge_disciplinas_desconsideradas_aprovacao} + " não possuem nota para reter o estudante, apenas registram carga horária."]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>
