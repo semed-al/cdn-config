@@ -73,9 +73,13 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 SELECT STRING_AGG(componente_curricular.nome, ', ')
                 FROM relatorio.view_componente_curricular
                 INNER JOIN modules.componente_curricular ON (componente_curricular.id = view_componente_curricular.id)
+                INNER JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie 
+                                                                            AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
+                                                                            AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos))
                 WHERE view_componente_curricular.cod_turma = turma.cod_turma 
                     AND view_componente_curricular.cod_serie = serie.cod_serie
                     AND componente_curricular.desconsidera_para_progressao = true
+                    AND (componente_curricular_ano_escolar.tipo_nota IS NULL OR componente_curricular_ano_escolar.tipo_nota != 2)
             ) AS merge_disciplinas_desconsideradas_aprovacao
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
