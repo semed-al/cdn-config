@@ -40,6 +40,7 @@ trait SchoolHistorySeriesYearsTrait
                 COALESCE(max_ano_aprovado.ano, max_ano.ano) AS ano,
                 vhsa.cod_aluno,
                 trim(vhsa.disciplina) AS nm_disciplina,
+                COALESCE(cc.desconsidera_para_progressao, false) as desconsidera_para_progressao,                    
                 pessoa.nome AS nome_aluno,
                 eca.cod_aluno_inep AS cod_inep,
                 municipio.nome || ', Estado de ' || municipio.sigla_uf AS cidade_nascimento_uf,
@@ -309,6 +310,7 @@ trait SchoolHistorySeriesYearsTrait
                 INNER JOIN relatorio.view_historico_series_anos vhsa ON vhsa.cod_aluno = {$aluno} AND (vhsa.ano_1serie <= max_ano.ano OR vhsa.ano_2serie <= max_ano.ano OR vhsa.ano_3serie <= max_ano.ano OR vhsa.ano_4serie <= max_ano.ano OR vhsa.ano_5serie <= max_ano.ano OR vhsa.ano_6serie <= max_ano.ano OR vhsa.ano_7serie <= max_ano.ano OR vhsa.ano_8serie <= max_ano.ano OR vhsa.ano_9serie <= max_ano.ano)
                     AND vhsa.disciplina !~ '([a-zA-Z]{2}[0-9]{2}){2}' 
                     AND vhsa.disciplina !~ '[0-9][0-9]?.'
+                LEFT JOIN modules.componente_curricular cc ON UPPER(relatorio.get_texto_sem_caracter_especial(cc.nome)) = UPPER(relatorio.get_texto_sem_caracter_especial(vhsa.disciplina))
                 INNER JOIN pmieducar.aluno ON (aluno.cod_aluno = vhsa.cod_aluno)
                 INNER JOIN cadastro.pessoa ON (pessoa.idpes = aluno.ref_idpes)
                 INNER JOIN cadastro.fisica ON (fisica.idpes = aluno.ref_idpes)

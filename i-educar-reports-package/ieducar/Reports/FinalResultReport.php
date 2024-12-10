@@ -15,7 +15,6 @@ class FinalResultReport extends Portabilis_Report_ReportCore
             return 'final-result-landscape';
         }
         
-        var_dump($this->args['dominio']);
         if (str_contains($this->args['dominio'], 'japaratinga') 
             || str_contains($this->args['dominio'], 'coitedonoia')) {
               return 'final-result-portrait-as-apc';

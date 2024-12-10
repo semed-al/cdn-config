@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="final-result" language="groovy" pageWidth="595" pageHeight="842" columnWidth="500" leftMargin="15" rightMargin="10" topMargin="20" bottomMargin="20" uuid="0378c531-ef85-4c42-9c57-3c8660b99c2d">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Crosstab Data Text" hTextAlign="Center" hImageAlign="Center"/>
@@ -164,6 +164,9 @@
 	<variable name="funcao" class="java.lang.String">
 		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
 	</variable>
+	<variable name="frequencia_final" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{situacao} == "Aba" && $F{frequencia_geral} > 70 ? 100 - $F{frequencia_geral} : $F{frequencia_geral}]]></variableExpression>
+	</variable>
 	<group name="crosstable">
 		<groupExpression><![CDATA[true]]></groupExpression>
 		<groupFooter>
@@ -199,7 +202,7 @@
 									<staticText>
 										<reportElement style="Crosstab Data Text" x="271" y="35" width="32" height="45" uuid="93d25ded-82b7-42bd-800b-5c782568bed0"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
-											<font fontName="DejaVu Sans" size="8" isBold="true"/>
+											<font fontName="DejaVu Sans" size="7" isBold="true"/>
 										</textElement>
 										<text><![CDATA[Percentutal de Frequência]]></text>
 									</staticText>
@@ -274,7 +277,7 @@
 							</rowGroup>
 							<rowGroup name="%fr" width="33">
 								<bucket class="java.lang.String">
-									<bucketExpression><![CDATA[$F{frequencia_geral} == null ? '-' : String.format("%.1f", $F{frequencia_geral})]]></bucketExpression>
+									<bucketExpression><![CDATA[$F{frequencia_geral} == null ? '-' : String.format("%.1f", $V{frequencia_final})]]></bucketExpression>
 								</bucket>
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">

@@ -161,6 +161,9 @@
 	<variable name="secretario" class="java.lang.String">
 		<variableExpression><![CDATA[$P{alterar_nome_secretario} != null ? $P{alterar_nome_secretario}.toUpperCase() : $F{nome_secretario}.toUpperCase()]]></variableExpression>
 	</variable>
+	<variable name="frequencia_final" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{situacao} == "Aba" && $F{frequencia_geral} > 70 ? 100 - $F{frequencia_geral} : $F{frequencia_geral}]]></variableExpression>
+	</variable>
 	<group name="crosstable">
 		<groupExpression><![CDATA[true]]></groupExpression>
 		<groupFooter>
@@ -273,7 +276,7 @@
 							</rowGroup>
 							<rowGroup name="%fr" width="33">
 								<bucket class="java.lang.String">
-									<bucketExpression><![CDATA[String.format("%.1f", $F{frequencia_geral})]]></bucketExpression>
+									<bucketExpression><![CDATA[String.format("%.1f", $V{frequencia_final})]]></bucketExpression>
 								</bucket>
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">
