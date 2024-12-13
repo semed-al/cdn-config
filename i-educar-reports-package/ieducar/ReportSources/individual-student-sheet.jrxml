@@ -523,10 +523,10 @@
 				<reportElement x="4" y="45" width="551" height="56" uuid="6015b44e-33fd-4569-9c7b-7f6b2ceccd20">
 					<printWhenExpression><![CDATA[$F{merge_disciplinas_desconsideradas_aprovacao} != null && $F{merge_disciplinas_desconsideradas_aprovacao} != ""]]></printWhenExpression>
 				</reportElement>
-				<textElement>
+				<textElement markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{merge_disciplinas_desconsideradas_aprovacao} + " não possuem nota para reter o estudante, apenas registram carga horária."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["A(s) disciplina(s) <b>" + $F{merge_disciplinas_desconsideradas_aprovacao} + "</b> não possui(em) nota para reter o estudante, apenas registram carga horária."]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
