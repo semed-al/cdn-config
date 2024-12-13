@@ -165,7 +165,7 @@
 		<variableExpression><![CDATA[$P{alterar_nome_secretario} == null || $P{alterar_nome_secretario}.isEmpty() ? "Secretário(a) Escolar" : "Funcionário(a) Responsável"]]></variableExpression>
 	</variable>
 	<variable name="frequencia_final" class="java.lang.Double">
-		<variableExpression><![CDATA[$F{situacao} == "Aba" && $F{frequencia_geral} > 70 ? 100 - $F{frequencia_geral} : $F{frequencia_geral}]]></variableExpression>
+		<variableExpression><![CDATA[$F{situacao} == "Aba" && $F{frequencia_geral} > 50 ? 100 - $F{frequencia_geral} : $F{frequencia_geral}]]></variableExpression>
 	</variable>
 	<group name="crosstable">
 		<groupExpression><![CDATA[true]]></groupExpression>
