@@ -226,6 +226,8 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                             ELSE 'concluiu '
                         END || (
                                 CASE
+                                    WHEN isnumeric(substring(nm_serie,1,1)) = false
+                                        THEN 'o(a) ' || nm_serie || ' do Ensino Fundamental'
                                     WHEN (
                                         SELECT substring(he.nm_serie,1,1)::integer
                                         FROM pmieducar.historico_escolar he
