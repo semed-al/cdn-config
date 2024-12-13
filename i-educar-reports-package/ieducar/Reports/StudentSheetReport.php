@@ -463,6 +463,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
   (SELECT ano
    FROM pmieducar.matricula
    WHERE matricula.ref_cod_aluno = cod_aluno
+   AND matricula.ativo = 1
    ORDER BY ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_ano,
 
   (SELECT max(nm_serie)
@@ -471,6 +472,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
    INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
    WHERE m.ref_cod_aluno = aluno.cod_aluno
+   AND m.ativo = 1
    GROUP BY m.ano
    ORDER BY m.ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_serie,
 
@@ -483,19 +485,21 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    WHERE m.ref_cod_aluno = aluno.cod_aluno
      AND tipo.nm_tipo = turma_tipo.nm_tipo
      AND m.ref_cod_aluno = aluno.cod_aluno
+     AND m.ativo = 1
    GROUP BY m.ano
    ORDER BY m.ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_curso,
-                    initcap(lower(
-                                    (SELECT relatorio.get_nome_escola(escola.cod_escola)
-                                     FROM pmieducar.escola
-                                     INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_escola = escola.cod_escola)
-                                     INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
-                                     INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
-                                     INNER JOIN pmieducar.turma_tipo tipo ON (tt.id = t.turma_turno_id)
-                                     WHERE m.ref_cod_aluno = aluno.cod_aluno
-                                       AND tipo.nm_tipo = turma_tipo.nm_tipo
-                                       AND m.ref_cod_aluno = aluno.cod_aluno
-                                     ORDER BY m.ano DESC OFFSET 1 LIMIT 1))) AS ultima_matricula_escola,
+  initcap(lower(
+                  (SELECT relatorio.get_nome_escola(escola.cod_escola)
+                    FROM pmieducar.escola
+                    INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_escola = escola.cod_escola)
+                    INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
+                    INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
+                    INNER JOIN pmieducar.turma_tipo tipo ON (tt.id = t.turma_turno_id)
+                    WHERE m.ref_cod_aluno = aluno.cod_aluno
+                      AND tipo.nm_tipo = turma_tipo.nm_tipo
+                      AND m.ref_cod_aluno = aluno.cod_aluno
+                      AND m.ativo = 1
+                    ORDER BY m.ano DESC OFFSET 1 LIMIT 1))) AS ultima_matricula_escola,
 
   (SELECT max(tt.nome)
    FROM pmieducar.turma_turno tt
@@ -506,6 +510,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    WHERE m.ref_cod_aluno = aluno.cod_aluno
      AND tipo.nm_tipo = turma_tipo.nm_tipo
      AND m.ref_cod_aluno = aluno.cod_aluno
+     AND m.ativo = 1
    GROUP BY m.ano,
             mt.sequencial
    ORDER BY m.ano,
@@ -520,6 +525,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
            INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
            INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
            WHERE m.ref_cod_aluno = aluno.cod_aluno
+           AND m.ativo = 1
            GROUP BY m.ano, m.aprovado
            ORDER BY m.ano desc OFFSET 1 LIMIT 1) AS ultima_matricula_situacao,
 
