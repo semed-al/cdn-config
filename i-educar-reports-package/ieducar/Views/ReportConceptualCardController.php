@@ -40,15 +40,15 @@ class ReportConceptualCardController extends Portabilis_Controller_ReportCoreCon
             'turma',
         ]);
 
-        $this->inputsHelper()->select('orientacao', [
-            'label' => 'Orientação da página',
-            'resources' => [
-                1 => 'Retrato',
-                2 => 'Paisagem'
-            ],
-            'required' => false,
-            'value' => 1
-        ]);
+        // $this->inputsHelper()->select('orientacao', [
+        //     'label' => 'Orientação da página',
+        //     'resources' => [
+        //         1 => 'Retrato',
+        //         2 => 'Paisagem'
+        //     ],
+        //     'required' => false,
+        //     'value' => 1
+        // ]);
 
         $this->inputsHelper()->dynamic('matricula', ['required' => false]);
 
@@ -91,7 +91,7 @@ class ReportConceptualCardController extends Portabilis_Controller_ReportCoreCon
         $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
         $this->report->addArg('situacao_matricula', (int) $this->getRequest()->situacao_matricula);
-        $this->report->addArg('orientacao', (int) $this->getRequest()->orientacao);
+        $this->report->addArg('orientacao', (int) $this->getRequest()->orientacao ?: 1);
         $this->report->addArg('alunos_diferenciados', (int) ($this->getRequest()->alunos_diferenciados ?: 0));
 
         if (is_null($this->getRequest()->ref_cod_matricula)) {
@@ -100,6 +100,7 @@ class ReportConceptualCardController extends Portabilis_Controller_ReportCoreCon
             $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
         }
         $this->report->addArg('tipo_nota', 2);
+        $this->report->addArg('anual', 1);
     }
 
     /**

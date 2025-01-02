@@ -17,6 +17,7 @@ trait ReportCardTrait
         $alunos_diferenciados = $this->args['alunos_diferenciados'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
         $tipo_nota = $this->args['tipo_nota'] ?: 0;
+        $anual = $this->args['anual'] ?: 0;        
         
         return <<<SQL
             SELECT fcn_upper(instituicao.nm_instituicao) AS nome_instituicao,
@@ -35,8 +36,14 @@ trait ReportCardTrait
               view_componente_curricular.nome AS nome_disciplina,
               area_conhecimento.nome AS area_conhecimento,
               area_conhecimento.secao AS secao,
-              nota_etapa1.nota AS nota1num,
-              nota_etapa1.nota_arredondada AS nota1,
+              CASE WHEN {$anual} = 1 
+                THEN COALESCE(nota_etapa4.nota, nota_etapa3.nota, nota_etapa2.nota, nota_etapa1.nota)
+                ELSE nota_etapa1.nota 
+              END AS nota1num,
+              CASE WHEN {$anual} = 1 
+                THEN COALESCE(nota_etapa4.nota_arredondada, nota_etapa3.nota_arredondada, nota_etapa2.nota_arredondada, nota_etapa1.nota_arredondada)
+                ELSE nota_etapa1.nota_arredondada 
+              END AS nota1,
               nota_etapa2.nota AS nota2num,
               nota_etapa2.nota_arredondada AS nota2,
               nota_etapa3.nota AS nota3num,
