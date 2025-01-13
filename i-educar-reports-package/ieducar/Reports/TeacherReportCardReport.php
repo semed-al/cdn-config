@@ -146,7 +146,7 @@ class TeacherReportCardReport extends Portabilis_Report_ReportCore
                     nota_componente_curricular.nota_arredondada
                 END AS nota_arredondada_etapa,
             (CASE WHEN relatorio.get_situacao_componente(nota_componente_curricular_media.situacao) = '' THEN view_situacao.texto_situacao ELSE relatorio.get_situacao_componente(nota_componente_curricular_media.situacao) END) AS situacao,
-            replace(modules.frequencia_da_matricula(matricula.cod_matricula)::varchar,'.',',') AS frequencia,
+            replace(modules.frequencia_por_componente(matricula.cod_matricula, view_componente_curricular.id, matricula_turma.ref_cod_turma)::varchar,'.',',') AS frequencia,
             relatorio.get_nota_exame(view_componente_curricular.id, matricula.cod_matricula) AS nota_exame,
             nota_componente_curricular_media.media_arredondada AS media
 
