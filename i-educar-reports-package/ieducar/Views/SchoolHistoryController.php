@@ -40,7 +40,7 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
 
         $resources = [
             1 => 'Série/Anos',
-            2 => 'Modelo 1'
+            2 => 'EJA'
         ];
         $options = ['label' => 'Modelo', 'resources' => $resources, 'value' => 1];
         $this->inputsHelper()->select('modelo', $options);
@@ -66,11 +66,17 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
      */
     public function beforeValidation()
     {
-        $this->report->addArg('dominio', $_SERVER['HTTP_HOST']);
+        $modelo = (int) $this->getRequest()->modelo;
+        if ($modelo == 1) {
+            $this->report->addArg('dominio', $_SERVER['HTTP_HOST']);
+            $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
+            $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
+        }
+        
         $this->report->addArg('instituicao', (int) $this->getRequest()->ref_cod_instituicao);
         $this->report->addArg('escola', (int) $this->getRequest()->ref_cod_escola);
         $this->report->addArg('aluno', (int) $this->getRequest()->aluno_id);
-        $this->report->addArg('modelo', (int) $this->getRequest()->modelo);
+        $this->report->addArg('modelo', $modelo);
         $this->report->addArg('cabecalho_alternativo', (int) $GLOBALS['coreExt']['Config']->report->header->alternativo);
         $this->report->addArg('portaria_aprovacao_pontos', (string) $GLOBALS['coreExt']['Config']->report->portaria_aprovacao_pontos);
         $this->report->addArg('nao_emitir_reprovado', (bool) $this->getRequest()->nao_emitir_reprovado);
@@ -86,8 +92,7 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('cursoaluno', trim($cursoaluno) == '' ? 0 : $cursoaluno);
         $this->report->addArg('apenas_ultimo_registro', (bool)$this->getRequest()->apenas_ultimo_registro);
         $this->report->addArg('sequencial', (int)$this->getRequest()->sequencial);
-        $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
-        $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
+        
     }
 
     /**

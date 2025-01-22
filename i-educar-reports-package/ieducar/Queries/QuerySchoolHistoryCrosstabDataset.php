@@ -57,7 +57,7 @@ class QuerySchoolHistoryCrosstabDataset extends QueryBridge
                     )
                 )
             )
-            ORDER BY ano, posicao;            
+            ORDER BY ano ASC, nm_serie ASC;
 SQL;
     }
 }

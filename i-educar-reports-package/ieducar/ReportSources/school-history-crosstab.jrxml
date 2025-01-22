@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="school-history-crosstab" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="181ff70d-bdbf-4542-b68c-0eca261e088e">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
@@ -257,9 +257,7 @@
 					<elementGroup>
 						<elementGroup>
 							<crosstab>
-								<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="4" y="5" width="543" height="17" uuid="54f38ba3-d37a-4be8-8857-1a45fce70e03">
-									<printWhenExpression><![CDATA[!$P{emitir_carga_horaria_frequentada}]]></printWhenExpression>
-								</reportElement>
+								<reportElement style="Crosstab Data Text" stretchType="ContainerHeight" x="4" y="5" width="545" height="17" uuid="54f38ba3-d37a-4be8-8857-1a45fce70e04"/>
 								<box>
 									<pen lineWidth="0.25"/>
 									<topPen lineWidth="0.25"/>
@@ -270,288 +268,10 @@
 								<crosstabParameter name="mostrar_msg" class="java.lang.Boolean">
 									<parameterValueExpression><![CDATA[$P{mostrar_msg}]]></parameterValueExpression>
 								</crosstabParameter>
-								<crosstabDataset>
-									<dataset resetType="Report"/>
-								</crosstabDataset>
 								<crosstabHeaderCell>
 									<cellContents backcolor="#F2F1F0" mode="Transparent" style="Crosstab Data Text">
 										<staticText>
-											<reportElement style="table_TD" stretchType="RelativeToBandHeight" x="0" y="0" width="133" height="18" isPrintWhenDetailOverflows="true" uuid="e530db57-f4bd-4cf7-8c79-d668175338d2"/>
-											<box>
-												<pen lineWidth="0.25"/>
-												<topPen lineWidth="0.25"/>
-												<leftPen lineWidth="0.25"/>
-												<bottomPen lineWidth="0.25"/>
-												<rightPen lineWidth="0.25"/>
-											</box>
-											<textElement verticalAlignment="Middle">
-												<font fontName="DejaVu Sans" size="8" isBold="true"/>
-												<paragraph firstLineIndent="5"/>
-											</textElement>
-											<text><![CDATA[DISCIPLINA]]></text>
-										</staticText>
-									</cellContents>
-								</crosstabHeaderCell>
-								<rowGroup name="nm_disciplina" width="133" totalPosition="End">
-									<bucket class="java.lang.String">
-										<bucketExpression><![CDATA[$F{nm_disciplina}]]></bucketExpression>
-									</bucket>
-									<crosstabRowHeader>
-										<cellContents backcolor="#FAFAFA" mode="Opaque">
-											<box>
-												<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-											</box>
-											<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-												<reportElement style="Crosstab Data Text" x="0" y="0" width="133" height="17" uuid="6b950f4f-a55b-4cf7-a1b8-ba935c52a138"/>
-												<box>
-													<pen lineWidth="0.25"/>
-													<topPen lineWidth="0.25"/>
-													<leftPen lineWidth="0.25"/>
-													<bottomPen lineWidth="0.25"/>
-													<rightPen lineWidth="0.25"/>
-												</box>
-												<textElement textAlignment="Left" verticalAlignment="Middle">
-													<font fontName="DejaVu Sans" size="8"/>
-													<paragraph firstLineIndent="5"/>
-												</textElement>
-												<textFieldExpression><![CDATA[$V{nm_disciplina}]]></textFieldExpression>
-											</textField>
-										</cellContents>
-									</crosstabRowHeader>
-									<crosstabTotalRowHeader>
-										<cellContents backcolor="#FFFFFF" mode="Opaque">
-											<box>
-												<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-											</box>
-											<staticText>
-												<reportElement style="table_TD" x="0" y="0" width="133" height="18" uuid="eb51d25f-7003-46fa-85c5-f0364c44d088"/>
-												<box>
-													<pen lineWidth="0.25"/>
-													<topPen lineWidth="0.25"/>
-													<leftPen lineWidth="0.25"/>
-													<bottomPen lineWidth="0.25"/>
-													<rightPen lineWidth="0.25"/>
-												</box>
-												<textElement textAlignment="Left" verticalAlignment="Middle">
-													<font fontName="DejaVu Sans" size="8" isBold="true"/>
-													<paragraph firstLineIndent="5"/>
-												</textElement>
-												<text><![CDATA[CARGA HORÁRIA TOTAL]]></text>
-											</staticText>
-											<staticText>
-												<reportElement style="table_TD" x="0" y="18" width="133" height="18" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
-												<box>
-													<pen lineWidth="0.25"/>
-													<topPen lineWidth="0.25"/>
-													<leftPen lineWidth="0.25"/>
-													<bottomPen lineWidth="0.25"/>
-													<rightPen lineWidth="0.25"/>
-												</box>
-												<textElement textAlignment="Left" verticalAlignment="Middle">
-													<font fontName="DejaVu Sans" size="8" isBold="true"/>
-													<paragraph firstLineIndent="5"/>
-												</textElement>
-												<text><![CDATA[% FREQUÊNCIA]]></text>
-											</staticText>
-											<staticText>
-												<reportElement style="table_TD" x="0" y="36" width="133" height="18" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
-												<box>
-													<pen lineWidth="0.25"/>
-													<topPen lineWidth="0.25"/>
-													<leftPen lineWidth="0.25"/>
-													<bottomPen lineWidth="0.25"/>
-													<rightPen lineWidth="0.25"/>
-												</box>
-												<textElement textAlignment="Left" verticalAlignment="Middle">
-													<font fontName="DejaVu Sans" size="8" isBold="true"/>
-													<paragraph firstLineIndent="5"/>
-												</textElement>
-												<text><![CDATA[RESULTADO FINAL]]></text>
-											</staticText>
-										</cellContents>
-									</crosstabTotalRowHeader>
-								</rowGroup>
-								<columnGroup name="ano" height="18" totalPosition="End">
-									<bucket class="java.lang.String">
-										<bucketExpression><![CDATA[$F{ano} + $F{posicao} + $F{nm_serie}]]></bucketExpression>
-									</bucket>
-									<crosstabColumnHeader>
-										<cellContents backcolor="#FFFFFF" mode="Opaque">
-											<box>
-												<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-											</box>
-											<textField isBlankWhenNull="true" isStretchWithOverflow="true">
-												<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="60" height="18" uuid="f7a55310-9d92-421d-94b2-c3edc7e10d81"/>
-												<box>
-													<pen lineWidth="0.25"/>
-													<topPen lineWidth="0.25"/>
-													<leftPen lineWidth="0.25"/>
-													<bottomPen lineWidth="0.25"/>
-													<rightPen lineWidth="0.25"/>
-												</box>
-												<textElement verticalAlignment="Middle">
-													<font fontName="DejaVu Sans" size="8" isBold="true"/>
-													<paragraph tabStopWidth="60"/>
-												</textElement>
-												<textFieldExpression><![CDATA[$V{nm_serieMeasure}]]></textFieldExpression>
-											</textField>
-										</cellContents>
-									</crosstabColumnHeader>
-									<crosstabTotalColumnHeader>
-										<cellContents backcolor="#BFE1FF" mode="Opaque">
-											<box>
-												<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-											</box>
-										</cellContents>
-									</crosstabTotalColumnHeader>
-								</columnGroup>
-								<measure name="notaMeasure" class="java.lang.String" calculation="First">
-									<measureExpression><![CDATA[$F{nota}]]></measureExpression>
-								</measure>
-								<measure name="frequencia" class="java.lang.Double" calculation="First">
-									<measureExpression><![CDATA[$F{frequencia}]]></measureExpression>
-								</measure>
-								<measure name="situacao" class="java.lang.String" calculation="First">
-									<measureExpression><![CDATA[$F{situacao}]]></measureExpression>
-								</measure>
-								<measure name="carga_horaria" class="java.lang.Integer" calculation="First">
-									<measureExpression><![CDATA[$F{carga_horaria}]]></measureExpression>
-								</measure>
-								<measure name="chd" class="java.lang.String" calculation="First">
-									<measureExpression><![CDATA[$F{carga_horaria_disciplina} == null ? '-' : $F{carga_horaria_disciplina} + 'h']]></measureExpression>
-								</measure>
-								<measure name="nm_serieMeasure" class="java.lang.String" calculation="First">
-									<measureExpression><![CDATA[$F{nm_serie}]]></measureExpression>
-								</measure>
-								<crosstabCell width="60" height="17">
-									<cellContents backcolor="#FAFAFA" mode="Opaque">
-										<box>
-											<pen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
-											<topPen lineWidth="0.25"/>
-											<leftPen lineWidth="0.25"/>
-											<bottomPen lineWidth="0.25"/>
-											<rightPen lineWidth="0.25"/>
-										</box>
-										<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-											<reportElement style="Crosstab Data Text" mode="Transparent" x="0" y="0" width="60" height="17" backcolor="#FAFAFA" uuid="9f998cdf-e2ea-4bd3-892a-92ea604838ca"/>
-											<box>
-												<pen lineWidth="0.25"/>
-												<topPen lineWidth="0.25"/>
-												<leftPen lineWidth="0.25"/>
-												<bottomPen lineWidth="0.25"/>
-												<rightPen lineWidth="0.25"/>
-											</box>
-											<textElement verticalAlignment="Middle">
-												<font fontName="DejaVu Sans" size="7"/>
-											</textElement>
-											<textFieldExpression><![CDATA[$P{mostrar_msg} == false ? ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-' + '\n' + ($V{chd} == null ? '-' : $V{chd})
-		: !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd}
-		: Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? '*' + $V{notaMeasure} + '\n' + $V{chd}
-		: $V{notaMeasure} + '\n' + $V{chd}) 
-	: ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-' + '\n' + ($V{chd} == null ? '-' : $V{chd})
-		: !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd}
-		: Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? $V{notaMeasure} + '\n' + $V{chd}
-		: $V{notaMeasure} + '\n' + $V{chd})]]></textFieldExpression>
-										</textField>
-									</cellContents>
-								</crosstabCell>
-								<crosstabCell width="60" height="54" rowTotalGroup="nm_disciplina">
-									<cellContents backcolor="#FFFFFF" mode="Opaque">
-										<box>
-											<pen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
-											<topPen lineWidth="0.25"/>
-											<leftPen lineWidth="0.25"/>
-											<bottomPen lineWidth="0.25"/>
-											<rightPen lineWidth="0.25"/>
-										</box>
-										<elementGroup>
-											<textField pattern="###" isBlankWhenNull="true">
-												<reportElement style="table_TD" x="0" y="0" width="60" height="18" uuid="e3334ce8-1258-4b37-8d23-b832dbe1f117"/>
-												<box>
-													<pen lineWidth="0.25"/>
-													<topPen lineWidth="0.25"/>
-													<leftPen lineWidth="0.25"/>
-													<bottomPen lineWidth="0.25"/>
-													<rightPen lineWidth="0.25"/>
-												</box>
-												<textElement textAlignment="Center" verticalAlignment="Middle">
-													<font fontName="DejaVu Sans" size="8"/>
-												</textElement>
-												<textFieldExpression><![CDATA[!($V{carga_horaria} ? $V{carga_horaria} : $V{chd}) ? "-" : $V{carga_horaria} == null ? $V{chd} : $V{carga_horaria}]]></textFieldExpression>
-											</textField>
-										</elementGroup>
-										<textField isBlankWhenNull="true">
-											<reportElement style="table_TD" x="0" y="18" width="60" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
-											<box>
-												<pen lineWidth="0.25"/>
-												<topPen lineWidth="0.25"/>
-												<leftPen lineWidth="0.25"/>
-												<bottomPen lineWidth="0.25"/>
-												<rightPen lineWidth="0.25"/>
-											</box>
-											<textElement textAlignment="Center" verticalAlignment="Middle">
-												<font fontName="DejaVu Sans" size="8"/>
-											</textElement>
-											<textFieldExpression><![CDATA[$V{frequencia} == null ? '-' : $V{frequencia}]]></textFieldExpression>
-										</textField>
-										<textField isBlankWhenNull="true">
-											<reportElement style="table_TD" x="0" y="36" width="60" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
-											<box>
-												<pen lineWidth="0.25"/>
-												<topPen lineWidth="0.25"/>
-												<leftPen lineWidth="0.25"/>
-												<bottomPen lineWidth="0.25"/>
-												<rightPen lineWidth="0.25"/>
-											</box>
-											<textElement textAlignment="Center" verticalAlignment="Middle">
-												<font fontName="DejaVu Sans" size="8"/>
-											</textElement>
-											<textFieldExpression><![CDATA[$V{situacao}]]></textFieldExpression>
-										</textField>
-									</cellContents>
-								</crosstabCell>
-								<crosstabCell width="0" height="17" columnTotalGroup="ano">
-									<cellContents backcolor="#BFE1FF" mode="Opaque">
-										<box>
-											<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-										</box>
-									</cellContents>
-								</crosstabCell>
-								<crosstabCell width="0" height="54" rowTotalGroup="nm_disciplina" columnTotalGroup="ano">
-									<cellContents backcolor="#BFE1FF" mode="Opaque">
-										<box>
-											<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
-										</box>
-									</cellContents>
-								</crosstabCell>
-							</crosstab>
-						</elementGroup>
-					</elementGroup>
-				</elementGroup>
-				<elementGroup>
-					<elementGroup>
-						<elementGroup>
-							<crosstab>
-								<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="4" y="5" width="545" height="17" uuid="54f38ba3-d37a-4be8-8857-1a45fce70e04">
-									<printWhenExpression><![CDATA[$P{emitir_carga_horaria_frequentada}]]></printWhenExpression>
-								</reportElement>
-								<box>
-									<pen lineWidth="0.25"/>
-									<topPen lineWidth="0.25"/>
-									<leftPen lineWidth="0.25"/>
-									<bottomPen lineWidth="0.25"/>
-									<rightPen lineWidth="0.25"/>
-								</box>
-								<crosstabParameter name="mostrar_msg" class="java.lang.Boolean">
-									<parameterValueExpression><![CDATA[$P{mostrar_msg}]]></parameterValueExpression>
-								</crosstabParameter>
-								<crosstabDataset>
-									<dataset resetType="Report"/>
-								</crosstabDataset>
-								<crosstabHeaderCell>
-									<cellContents backcolor="#F2F1F0" mode="Transparent" style="Crosstab Data Text">
-										<staticText>
-											<reportElement style="table_TD" stretchType="RelativeToBandHeight" x="0" y="0" width="133" height="18" isPrintWhenDetailOverflows="true" uuid="e530db57-f4bd-4cf7-8c79-d668175338d2"/>
+											<reportElement style="table_TD" stretchType="ContainerHeight" x="0" y="0" width="133" height="18" isPrintWhenDetailOverflows="true" uuid="e530db57-f4bd-4cf7-8c79-d668175338d2"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25"/>
@@ -614,7 +334,7 @@
 												<text><![CDATA[CARGA HORÁRIA FREQ.]]></text>
 											</staticText>
 											<staticText>
-												<reportElement style="table_TD" x="0" y="36" width="133" height="18" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
+												<reportElement style="table_TD" x="0" y="18" width="133" height="18" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -629,7 +349,7 @@
 												<text><![CDATA[% FREQUÊNCIA]]></text>
 											</staticText>
 											<staticText>
-												<reportElement style="table_TD" x="0" y="54" width="133" height="18" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
+												<reportElement style="table_TD" x="0" y="36" width="133" height="18" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -644,7 +364,7 @@
 												<text><![CDATA[RESULTADO FINAL]]></text>
 											</staticText>
 											<staticText>
-												<reportElement style="table_TD" x="0" y="18" width="133" height="18" uuid="eb51d25f-7003-46fa-85c5-f0364c44d088"/>
+												<reportElement style="table_TD" x="0" y="54" width="133" height="18" uuid="eb51d25f-7003-46fa-85c5-f0364c44d088"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -670,8 +390,8 @@
 											<box>
 												<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 											</box>
-											<textField isBlankWhenNull="true">
-												<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="60" height="18" uuid="f7a55310-9d92-421d-94b2-c3edc7e10d81"/>
+											<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+												<reportElement style="Crosstab Data Text" stretchType="ContainerHeight" x="0" y="0" width="37" height="18" uuid="f7a55310-9d92-421d-94b2-c3edc7e10d81"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -680,10 +400,10 @@
 													<rightPen lineWidth="0.25"/>
 												</box>
 												<textElement verticalAlignment="Middle">
-													<font fontName="DejaVu Sans" size="8" isBold="true"/>
+													<font fontName="DejaVu Sans" size="6" isBold="true"/>
 													<paragraph tabStopWidth="60"/>
 												</textElement>
-												<textFieldExpression><![CDATA[$V{nm_serieMeasure}]]></textFieldExpression>
+												<textFieldExpression><![CDATA[$V{nm_serieMeasure}.toUpperCase()]]></textFieldExpression>
 											</textField>
 										</cellContents>
 									</crosstabColumnHeader>
@@ -713,7 +433,7 @@
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="Highest">
 									<measureExpression><![CDATA[$F{nm_serie}]]></measureExpression>
 								</measure>
-								<crosstabCell width="60" height="17">
+								<crosstabCell width="37" height="17">
 									<cellContents backcolor="#FAFAFA" mode="Opaque">
 										<box>
 											<pen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
@@ -723,7 +443,7 @@
 											<rightPen lineWidth="0.25"/>
 										</box>
 										<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-											<reportElement style="Crosstab Data Text" mode="Transparent" x="0" y="0" width="60" height="17" backcolor="#FAFAFA" uuid="9f998cdf-e2ea-4bd3-892a-92ea604838ca"/>
+											<reportElement style="Crosstab Data Text" mode="Transparent" x="0" y="0" width="37" height="17" backcolor="#FAFAFA" uuid="9f998cdf-e2ea-4bd3-892a-92ea604838ca"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25"/>
@@ -746,7 +466,7 @@
 										</textField>
 									</cellContents>
 								</crosstabCell>
-								<crosstabCell width="60" height="72" rowTotalGroup="nm_disciplina">
+								<crosstabCell width="37" height="72" rowTotalGroup="nm_disciplina">
 									<cellContents backcolor="#FFFFFF" mode="Opaque">
 										<box>
 											<pen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
@@ -757,7 +477,7 @@
 										</box>
 										<elementGroup>
 											<textField pattern="###" isBlankWhenNull="true">
-												<reportElement style="table_TD" x="0" y="18" width="60" height="18" uuid="e3334ce8-1258-4b37-8d23-b832dbe1f117"/>
+												<reportElement style="table_TD" x="0" y="0" width="37" height="18" uuid="e3334ce8-1258-4b37-8d23-b832dbe1f117"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -772,7 +492,7 @@
 											</textField>
 										</elementGroup>
 										<textField isStretchWithOverflow="true" pattern="###0.0" isBlankWhenNull="true">
-											<reportElement style="table_TD" x="0" y="0" width="60" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
+											<reportElement style="table_TD" x="0" y="18" width="37" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25"/>
@@ -786,7 +506,7 @@
 											<textFieldExpression><![CDATA[(!($V{carga_horaria} ? $V{carga_horaria} : $V{chd}) || !$V{frequencia}) ? "-" : ((($V{carga_horaria} ? $V{carga_horaria} : $V{chd}) * $V{frequencia}) / 100)]]></textFieldExpression>
 										</textField>
 										<textField isBlankWhenNull="true">
-											<reportElement style="table_TD" x="0" y="54" width="60" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
+											<reportElement style="table_TD" x="0" y="36" width="37" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25"/>
@@ -800,7 +520,7 @@
 											<textFieldExpression><![CDATA[$V{situacao}]]></textFieldExpression>
 										</textField>
 										<textField isBlankWhenNull="true">
-											<reportElement style="table_TD" x="0" y="36" width="60" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
+											<reportElement style="table_TD" x="0" y="54" width="37" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25"/>
@@ -836,7 +556,7 @@
 			</band>
 			<band height="15" splitType="Stretch">
 				<subreport>
-					<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="4" y="0" width="545" height="15" uuid="c0aede92-d36f-45fe-be53-f6bdf0b577c7"/>
+					<reportElement positionType="Float" stretchType="ContainerHeight" x="4" y="0" width="545" height="15" uuid="c0aede92-d36f-45fe-be53-f6bdf0b577c7"/>
 					<subreportParameter name="source">
 						<subreportParameterExpression><![CDATA[$P{source}]]></subreportParameterExpression>
 					</subreportParameter>
@@ -863,7 +583,7 @@
 	<pageHeader>
 		<band height="50" splitType="Stretch">
 			<subreport>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="4" y="0" width="545" height="50" uuid="c0aede92-d36f-45fe-be53-f6bdf0b577c7"/>
+				<reportElement positionType="Float" stretchType="ContainerHeight" x="4" y="0" width="545" height="50" uuid="c0aede92-d36f-45fe-be53-f6bdf0b577c7"/>
 				<subreportParameter name="logo">
 					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -985,12 +705,6 @@
 				</textElement>
 				<text><![CDATA[Município e Data:]]></text>
 			</staticText>
-			<!--<line>
-				<reportElement x="4" y="22" width="545" height="1" uuid="7b8eed87-99ea-4452-ade6-c47d2369ee7b"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>-->
 			<textField>
 				<reportElement x="78" y="6" width="142" height="13" uuid="8d1f8a33-abc5-4539-836a-46ea9c1b57bb"/>
 				<textElement>
@@ -1011,12 +725,6 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<!--<line>
-				<reportElement x="392" y="3" width="1" height="20" uuid="a1a66412-eb01-4bdf-9dbb-5eaaec30f2c7"/>
-				<graphicElement>
-					<pen lineWidth="0.25"/>
-				</graphicElement>
-			</line>-->
 			<staticText>
 				<reportElement x="7" y="26" width="218" height="13" uuid="66622429-0456-4f67-a469-a2484977c464">
 					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>

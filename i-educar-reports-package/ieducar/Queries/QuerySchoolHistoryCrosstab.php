@@ -353,7 +353,7 @@ class QuerySchoolHistoryCrosstab extends QueryBridge
                     )
                 )
             )
-            ORDER BY ano ASC;
+            ORDER BY ano ASC, nm_serie ASC;
 SQL;
     }
 }
