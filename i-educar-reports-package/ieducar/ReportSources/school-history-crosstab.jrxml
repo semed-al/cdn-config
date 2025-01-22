@@ -188,6 +188,8 @@
 	<parameter name="secretario" class="java.lang.String"/>
 	<parameter name="data_emissao" class="java.lang.String"/>
 	<parameter name="dataemissao" class="java.lang.String"/>
+	<parameter name="alterar_nome_diretor" class="java.lang.String"/>
+	<parameter name="alterar_nome_secretario" class="java.lang.String"/>
 	<parameter name="emitir_assinatura_secretario_diretor" class="java.lang.Boolean">
 		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
 	</parameter>
@@ -239,6 +241,12 @@
 	<field name="nome_serie_aux" class="java.lang.String"/>
 	<field name="nome_curso" class="java.lang.String"/>
 	<field name="notas_maiores_que_dez" class="java.lang.Long"/>
+	<variable name="nm_secretario" class="java.lang.String" calculation="First">
+		<variableExpression><![CDATA[$P{alterar_nome_secretario} != null ? $P{alterar_nome_secretario} : $P{nm_secretario}]]></variableExpression>
+	</variable>
+	<variable name="nm_diretor" class="java.lang.String" calculation="First">
+		<variableExpression><![CDATA[$P{alterar_nome_diretor} != null ? $P{alterar_nome_diretor} : $P{nm_diretor}]]></variableExpression>
+	</variable>
 	<variable name="test" class="java.lang.String"/>
 	<group name="teste">
 		<groupExpression><![CDATA[true]]></groupExpression>
@@ -706,36 +714,29 @@
 				<text><![CDATA[Município e Data:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="78" y="6" width="142" height="13" uuid="8d1f8a33-abc5-4539-836a-46ea9c1b57bb"/>
+				<reportElement x="5" y="19" width="156" height="21" uuid="8d1f8a33-abc5-4539-836a-46ea9c1b57bb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{municipio}+", "+$F{data_atual}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="394" y="6" width="42" height="13" uuid="3d9ac865-1e7b-4aa3-8e33-266fdc62fcfa"/>
+				<reportElement x="367" y="6" width="42" height="13" uuid="3d9ac865-1e7b-4aa3-8e33-266fdc62fcfa"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<text><![CDATA[Diretor(a):]]></text>
 			</staticText>
 			<line>
-				<reportElement x="218" y="4" width="1" height="19" uuid="5d35371f-9063-41eb-9b2a-7a192fcc71c4"/>
+				<reportElement x="161" y="4" width="1" height="19" uuid="5d35371f-9063-41eb-9b2a-7a192fcc71c4"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="7" y="26" width="218" height="13" uuid="66622429-0456-4f67-a469-a2484977c464">
-					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 1]]></printWhenExpression>
-				</reportElement>
-				<textElement>
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<text><![CDATA[* Disciplina da parte diversificada.]]></text>
-			</staticText>
 			<line>
-				<reportElement x="218" y="22" width="1" height="18" uuid="5d35371f-9063-41eb-9b2a-7a192fcc71c4">
+				<reportElement x="161" y="22" width="1" height="18" uuid="5d35371f-9063-41eb-9b2a-7a192fcc71c4">
 					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 0]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
@@ -743,27 +744,39 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="392" y="22" width="1" height="19" uuid="5d35371f-9063-41eb-9b2a-7a192fcc71c4">
+				<reportElement x="365" y="22" width="1" height="19" uuid="5d35371f-9063-41eb-9b2a-7a192fcc71c4">
 					<printWhenExpression><![CDATA[$P{cabecalho_alternativo} == 0]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
-			<textField isBlankWhenNull="true">
-				<reportElement x="220" y="6" width="169" height="13" uuid="e9928c8a-aa9c-404c-8326-52ed9dbf5f00"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="162" y="6" width="202" height="26" uuid="e9928c8a-aa9c-404c-8326-52ed9dbf5f00">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Secretário(a): " + ($P{nm_secretario} ? $P{nm_secretario} : $P{emitir_secretario_escolar} ? $F{secretario} : "")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Secretário(a): " + ($V{nm_secretario} ? $V{nm_secretario} : $P{emitir_secretario_escolar} == false ? "" : $F{secretario})]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="435" y="6" width="113" height="13" uuid="9eb5aa9b-6b1a-4a47-84a5-3f49b82676ed"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="409" y="6" width="139" height="26" uuid="9eb5aa9b-6b1a-4a47-84a5-3f49b82676ed">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nm_diretor} ? $P{nm_diretor} : $P{emitir_nome_diretor} ? $F{diretor} : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{nm_diretor} ? $V{nm_diretor} : $P{emitir_nome_diretor} ? "" : $F{diretor}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="365" y="5" width="1" height="19" uuid="0292b239-1177-4565-9a42-0cb268760634"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
 		</band>
 	</pageFooter>
 </jasperReport>

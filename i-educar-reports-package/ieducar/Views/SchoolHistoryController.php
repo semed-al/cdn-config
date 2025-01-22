@@ -67,11 +67,10 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
     public function beforeValidation()
     {
         $modelo = (int) $this->getRequest()->modelo;
-        if ($modelo == 1) {
-            $this->report->addArg('dominio', $_SERVER['HTTP_HOST']);
-            $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
-            $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
-        }
+        
+        $this->report->addArg('dominio', $_SERVER['HTTP_HOST']);
+        $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
+        $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
         
         $this->report->addArg('instituicao', (int) $this->getRequest()->ref_cod_instituicao);
         $this->report->addArg('escola', (int) $this->getRequest()->ref_cod_escola);
