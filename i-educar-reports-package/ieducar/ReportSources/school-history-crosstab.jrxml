@@ -327,7 +327,7 @@
 												<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 											</box>
 											<staticText>
-												<reportElement style="table_TD" x="0" y="0" width="133" height="18" uuid="eb51d25f-7003-46fa-85c5-f0364c44d088"/>
+												<reportElement style="table_TD" x="0" y="0" width="133" height="24" uuid="eb51d25f-7003-46fa-85c5-f0364c44d088"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -339,25 +339,10 @@
 													<font fontName="DejaVu Sans" size="8" isBold="true"/>
 													<paragraph firstLineIndent="5"/>
 												</textElement>
-												<text><![CDATA[CARGA HORÁRIA FREQ.]]></text>
+												<text><![CDATA[CARGA HORÁRIA TOTAL]]></text>
 											</staticText>
 											<staticText>
-												<reportElement style="table_TD" x="0" y="18" width="133" height="18" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
-												<box>
-													<pen lineWidth="0.25"/>
-													<topPen lineWidth="0.25"/>
-													<leftPen lineWidth="0.25"/>
-													<bottomPen lineWidth="0.25"/>
-													<rightPen lineWidth="0.25"/>
-												</box>
-												<textElement textAlignment="Left" verticalAlignment="Middle">
-													<font fontName="DejaVu Sans" size="8" isBold="true"/>
-													<paragraph firstLineIndent="5"/>
-												</textElement>
-												<text><![CDATA[% FREQUÊNCIA]]></text>
-											</staticText>
-											<staticText>
-												<reportElement style="table_TD" x="0" y="36" width="133" height="18" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
+												<reportElement style="table_TD" x="0" y="24" width="133" height="24" uuid="8d2111fb-87cc-4882-95ca-49c329eede08"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -372,7 +357,7 @@
 												<text><![CDATA[RESULTADO FINAL]]></text>
 											</staticText>
 											<staticText>
-												<reportElement style="table_TD" x="0" y="54" width="133" height="18" uuid="eb51d25f-7003-46fa-85c5-f0364c44d088"/>
+												<reportElement style="table_TD" x="0" y="48" width="133" height="24" uuid="eb51d25f-7003-46fa-85c5-f0364c44d088"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -384,7 +369,7 @@
 													<font fontName="DejaVu Sans" size="8" isBold="true"/>
 													<paragraph firstLineIndent="5"/>
 												</textElement>
-												<text><![CDATA[CARGA HORÁRIA TOTAL]]></text>
+												<text><![CDATA[% FREQUÊNCIA]]></text>
 											</staticText>
 										</cellContents>
 									</crosstabTotalRowHeader>
@@ -485,7 +470,7 @@
 										</box>
 										<elementGroup>
 											<textField pattern="###" isBlankWhenNull="true">
-												<reportElement style="table_TD" x="0" y="0" width="37" height="18" uuid="e3334ce8-1258-4b37-8d23-b832dbe1f117"/>
+												<reportElement style="table_TD" x="0" y="0" width="37" height="24" uuid="e3334ce8-1258-4b37-8d23-b832dbe1f117"/>
 												<box>
 													<pen lineWidth="0.25"/>
 													<topPen lineWidth="0.25"/>
@@ -499,22 +484,8 @@
 												<textFieldExpression><![CDATA[!($V{carga_horaria} ? $V{carga_horaria} : $V{chd}) ? "-" : $V{carga_horaria} == null ? $V{chd} : $V{carga_horaria}]]></textFieldExpression>
 											</textField>
 										</elementGroup>
-										<textField isStretchWithOverflow="true" pattern="###0.0" isBlankWhenNull="true">
-											<reportElement style="table_TD" x="0" y="18" width="37" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
-											<box>
-												<pen lineWidth="0.25"/>
-												<topPen lineWidth="0.25"/>
-												<leftPen lineWidth="0.25"/>
-												<bottomPen lineWidth="0.25"/>
-												<rightPen lineWidth="0.25"/>
-											</box>
-											<textElement textAlignment="Center" verticalAlignment="Middle">
-												<font fontName="DejaVu Sans" size="8"/>
-											</textElement>
-											<textFieldExpression><![CDATA[(!($V{carga_horaria} ? $V{carga_horaria} : $V{chd}) || !$V{frequencia}) ? "-" : ((($V{carga_horaria} ? $V{carga_horaria} : $V{chd}) * $V{frequencia}) / 100)]]></textFieldExpression>
-										</textField>
 										<textField isBlankWhenNull="true">
-											<reportElement style="table_TD" x="0" y="36" width="37" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
+											<reportElement style="table_TD" x="0" y="24" width="37" height="24" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25"/>
@@ -528,7 +499,7 @@
 											<textFieldExpression><![CDATA[$V{situacao}]]></textFieldExpression>
 										</textField>
 										<textField isBlankWhenNull="true">
-											<reportElement style="table_TD" x="0" y="54" width="37" height="18" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
+											<reportElement style="table_TD" x="0" y="48" width="37" height="24" uuid="10806aac-7b8c-45d9-a011-b01f67cf0415"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25"/>
