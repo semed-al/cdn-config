@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_lista_alunos_para_assinatura_dos_pais" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="08deedb8-d086-4385-833f-673fc1f78e04">
+	<property name="ireport.zoom" value="1.2100000000000042"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ano" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="instituicao" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new java.lang.Integer(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="curso" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="data_emissao" class="java.lang.String"/>
+	<parameter name="escola" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="serie" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="turma" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="situacao" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="titulo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="definir_titulo" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<parameter name="database" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="source" class="java.lang.String"/>
+	<parameter name="type" class="java.lang.String"/>
+	<parameter name="data_inicial" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="data_final" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proerd" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="modelo" class="java.lang.Integer"/>
+	<parameter name="dependencia" class="java.lang.Integer"/>
+	<field name="sequencial_fechamento" class="java.lang.Integer"/>
+	<field name="nome_aluno" class="java.lang.String"/>
+	<field name="cod_turma" class="java.lang.Integer"/>
+	<field name="nome_turma" class="java.lang.String"/>
+	<field name="periodo" class="java.lang.String"/>
+	<group name="turma" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{cod_turma}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<rectangle>
+					<reportElement x="0" y="7" width="555" height="19" backcolor="#CCCCCC" uuid="0224eede-6d66-4659-b25d-c60bac1e076e"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="29" y="12" width="521" height="11" uuid="9499c6d1-94b8-4e78-b58b-93bb03fa044d"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NOME DO ALUNO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="12" width="16" height="11" uuid="830b481a-b4a8-4b0c-b61d-494deadbd21e"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nº]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="7" width="1" height="20" uuid="aacec0f8-260c-43fa-863d-031eca69036a"/>
+				</line>
+				<line>
+					<reportElement x="554" y="7" width="1" height="20" uuid="930b7a87-774b-4596-9d6e-03abd0d69e95"/>
+				</line>
+				<line>
+					<reportElement x="25" y="7" width="1" height="20" uuid="64429383-fde1-4291-9645-1ef8bff60655"/>
+				</line>
+				<line>
+					<reportElement x="0" y="26" width="555" height="1" uuid="b2d34964-6095-49f5-8c72-0d69b56e62b4"/>
+				</line>
+				<line>
+					<reportElement x="0" y="7" width="555" height="1" uuid="b2d34964-6095-49f5-8c72-0d69b56e62b4"/>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="90" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="90" uuid="646e2187-aac8-4bdf-9e4f-2cc6f6fe9751"/>
+				<subreportParameter name="source">
+					<subreportParameterExpression><![CDATA[$P{source}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="titulo">
+					<subreportParameterExpression><![CDATA[$P{definir_titulo} && $P{titulo} != null && !$P{titulo}.equals("") ? $P{titulo}.toUpperCase() + " - " + $F{nome_turma} + " - " + $F{periodo}: "LISTA DE ALUNOS DA TURMA " + $F{nome_turma} + " - " + $F{periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_instituicao">
+					<subreportParameterExpression><![CDATA[$P{instituicao}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cod_escola">
+					<subreportParameterExpression><![CDATA[$P{escola}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="data_emissao">
+					<subreportParameterExpression><![CDATA[$P{data_emissao}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ano">
+					<subreportParameterExpression><![CDATA[$P{ano}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "header-portrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="29" y="4" width="521" height="11" uuid="a9b8d652-09c7-4488-a69f-83c7b4f3456b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_aluno}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="20" uuid="d1d8d399-1ac1-451a-8163-0684cecb9674"/>
+			</line>
+			<line>
+				<reportElement x="25" y="0" width="1" height="20" uuid="240a16c1-ccb3-4e41-9195-36adf7003fc0"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="20" uuid="8652221a-d03e-4eb6-9376-e8cb519b46cf"/>
+			</line>
+			<line>
+				<reportElement x="0" y="18" width="555" height="1" uuid="3783af89-177a-4d1d-9b9a-97dc6c31dd3b"/>
+			</line>
+			<textField>
+				<reportElement x="3" y="4" width="20" height="11" uuid="a9b8d652-09c7-4488-a69f-83c7b4f3456b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{turma_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
