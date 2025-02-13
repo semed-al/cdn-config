@@ -526,7 +526,7 @@
 				<textElement markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["A(s) disciplina(s) <b>" + $F{merge_disciplinas_desconsideradas_aprovacao} + "</b> não possui(em) nota para reter o estudante, apenas registram carga horária."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["A(s) disciplina(s) <b>" + $F{merge_disciplinas_desconsideradas_aprovacao} + "</b> não possui(em) qualificação para reter o estudante, observando-se apenas a carga horária."]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

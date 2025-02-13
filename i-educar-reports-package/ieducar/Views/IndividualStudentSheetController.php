@@ -38,7 +38,7 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
             'turma'
         ]);
 
-        $this->inputsHelper()->dynamic('matricula', ['required' => false]);
+        $this->inputsHelper()->dynamic('matricula', ['required' => true]);
 
         $resources = [
             1 => 'Aprovado',

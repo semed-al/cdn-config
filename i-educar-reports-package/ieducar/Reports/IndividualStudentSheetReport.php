@@ -180,7 +180,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria) AS carga_horaria_componente,
                 COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd AS carga_horaria_componente_et,
                 CEIL((COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd)/curso.hora_falta) AS aulas_dadas_componente,
-                CEIL((COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd)/curso.hora_falta) AS aulas_dadas_componente_et,
+                CEIL(COALESCE(componente_curricular_turma.carga_horaria::int, escola_serie_disciplina.carga_horaria::int, componente_curricular_ano_escolar.carga_horaria::int, view_componente_curricular.carga_horaria)/etapas.qtd) AS aulas_dadas_componente_et,
                 serie.carga_horaria AS carga_horaria_serie,
                 curso.hora_falta AS hora_falta,
                 serie.dias_letivos,
