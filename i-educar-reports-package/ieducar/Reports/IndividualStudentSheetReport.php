@@ -76,10 +76,11 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 INNER JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie 
                                                                             AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
                                                                             AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos))
+                INNER JOIN modules.area_conhecimento ON (area_conhecimento.id = view_componente_curricular.area_conhecimento_id)
                 WHERE view_componente_curricular.cod_turma = turma.cod_turma 
                     AND view_componente_curricular.cod_serie = serie.cod_serie
                     AND componente_curricular.desconsidera_para_progressao = true
-                    AND (componente_curricular_ano_escolar.tipo_nota IS NULL OR componente_curricular_ano_escolar.tipo_nota != 2)
+                    AND area_conhecimento.nome NOT LIKE '%Ficha%'
             ) AS merge_disciplinas_desconsideradas_aprovacao
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
@@ -281,7 +282,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         AND view_situacao.cod_situacao = {$situacao_matricula}
         AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
         AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
-        AND (CASE WHEN {$tipo_nota} = 0 THEN TRUE ELSE componente_curricular_ano_escolar.tipo_nota IS NULL OR componente_curricular_ano_escolar.tipo_nota = {$tipo_nota} END)
+        AND area_conhecimento.nome NOT LIKE '%Ficha%'
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 view_componente_curricular.ordenamento,
@@ -422,7 +423,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         AND view_situacao.cod_situacao = {$situacao_matricula}
         AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
         AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
-        AND (CASE WHEN {$tipo_nota} = 0 THEN TRUE ELSE componente_curricular_ano_escolar.tipo_nota IS NULL OR componente_curricular_ano_escolar.tipo_nota = {$tipo_nota} END)
+        AND area_conhecimento.nome NOT LIKE '%Ficha%'
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 view_componente_curricular.ordenamento,
