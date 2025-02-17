@@ -333,7 +333,7 @@
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="1" y="-1" width="541" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ac8fd9a5-2f5b-42eb-bb60-b991170b191f">
-						<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[0-9]+")]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 					</reportElement>
 					<box>
 						<pen lineWidth="1.25"/>
@@ -365,7 +365,7 @@
 			</rectangle>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="9840a00d-adea-4426-a3f6-1d778ed4d45e">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota1}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota1}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -374,7 +374,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="9b6ab458-c91b-4426-a4f8-ac3d8a1875b9">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota1}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota1}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -383,7 +383,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e777cca9-d769-4e39-be43-01f55e78666d">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota1}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota1}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -392,7 +392,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="62a0026a-3c6d-4d09-a1c4-38670ed0de16">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota1}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota1}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -401,7 +401,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="2344dec8-0e37-4c33-9841-4b3b7dade92c">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota2}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota2}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -410,7 +410,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="7738ec3a-eefa-4f27-a668-ae613ed6390d">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota2}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota2}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -419,7 +419,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="48b3461e-6c11-4eda-be2d-a5a9f2fb9fd3">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota2}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota2}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -428,7 +428,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="533fad99-7b6d-420c-81db-babc3eefcdad">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota2}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota2}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -462,7 +462,7 @@
 			</line>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="9577053f-dd74-42c5-b56e-dfebedb718aa">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota3}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota3}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -471,7 +471,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="f557e834-f0ac-4ea9-9d1a-0de967e7cc2e">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota3}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota3}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -480,7 +480,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota3}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota3}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -489,7 +489,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="033ea9a7-d070-463b-85de-c07bdc078c6b">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota3}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota3}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -504,7 +504,7 @@
 			</line>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11" uuid="12c04f41-b44c-480f-8330-90d92250edbd">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota4}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota4}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -513,7 +513,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11" uuid="64fde0f1-fce8-4718-a3ab-a1947f7fc892">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota4}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota4}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -522,7 +522,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11" uuid="d818fe14-48b0-44ac-8694-d718ff868105">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota4}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota4}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -531,7 +531,7 @@
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11" uuid="2e00c052-d229-4241-849d-97b87b2e4c77">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota4}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota4}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -540,7 +540,7 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="513" y="0" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108">
-					<printWhenExpression><![CDATA[$F{media_final}.matches("[0-9]")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{media_final}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -549,7 +549,7 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="513" y="0" width="26" height="11" uuid="9bc73d71-9dfd-4398-b421-df2f7bf93ad9">
-					<printWhenExpression><![CDATA[$F{media_final}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{media_final}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -629,7 +629,7 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="399" y="0" width="26" height="11" uuid="bf1bd499-99fb-425b-b9a0-a0a19383a788">
-					<printWhenExpression><![CDATA[$F{media_final}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{media_final}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -638,7 +638,7 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="399" y="0" width="26" height="11" uuid="88ad97fa-fbf6-4ecb-801e-a291a8966939">
-					<printWhenExpression><![CDATA[$F{media_final}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{media_final}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -668,7 +668,7 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="431" y="0" width="26" height="11" uuid="e011575d-cae1-46b9-abfe-d3f1d7317488">
-					<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[0-9]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -677,7 +677,7 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="431" y="0" width="26" height="11" uuid="43f732b4-eb0a-4d62-b3d9-59a51348d682">
-					<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[a-zA-Z]+")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
