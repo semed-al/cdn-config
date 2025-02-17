@@ -127,11 +127,22 @@
 			</band>
 			<band height="27">
 				<textField>
-					<reportElement x="272" y="15" width="22" height="11" uuid="13a3832a-d237-476f-9a1e-4a86c38feb22"/>
+					<reportElement x="272" y="15" width="22" height="11" uuid="13a3832a-d237-476f-9a1e-4a86c38feb22">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} > 1]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 1 ? "1º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["1º " + $F{etapa_tipo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="272" y="15" width="22" height="11" uuid="1a57f50d-daea-4e00-9ea4-c14472e4bd80">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} == 1]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Anual"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="271" y="1" width="97" height="11" uuid="abd51960-5edd-4b24-9329-d99bd1b7a079"/>
@@ -269,11 +280,22 @@
 					<text><![CDATA[FALTAS]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="395" y="14" width="22" height="11" uuid="8c0b921f-3769-4135-baf6-d1b22f32d048"/>
+					<reportElement x="395" y="14" width="22" height="11" uuid="8c0b921f-3769-4135-baf6-d1b22f32d048">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} > 1]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 1 ? "1º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["1º " + $F{etapa_tipo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="395" y="14" width="22" height="11" uuid="5c28010d-838e-406d-8f2f-15132a067036">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} == 1]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Anual"]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="416" y="14" width="22" height="11" uuid="8d42cf78-c583-49c5-8856-038f1f934b68"/>
@@ -321,11 +343,22 @@
 					</graphicElement>
 				</line>
 				<textField>
-					<reportElement x="151" y="14" width="22" height="11" uuid="3337831e-064c-4461-9b5a-8abcb82b18d7"/>
+					<reportElement x="151" y="14" width="22" height="11" uuid="3337831e-064c-4461-9b5a-8abcb82b18d7">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} > 1]]></printWhenExpression>
+					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 1 ? "1º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["1º " + $F{etapa_tipo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="151" y="14" width="22" height="11" uuid="73712360-1486-4f3e-a8b5-96579a2eaa1f">
+						<printWhenExpression><![CDATA[$F{quantidade_etapas} == 1]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Anual"]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="175" y="14" width="22" height="11" uuid="e20a1a0c-398b-4f86-8a5b-b3fbd62ddad1"/>
