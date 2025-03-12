@@ -91,7 +91,7 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
         $this->report->addArg('situacao_matricula', (int) 10);
 
-        $months = array (1=>'Janeiro',2=>'Fevereiro',3=>'Março',4=>'Abril',5=>'Maio',6=>'Junho',
+        $months = array (1=>'Janeiro',2=>'Fevereiro',3=>'Marco',4=>'Abril',5=>'Maio',6=>'Junho',
         7=>'Julho',8=>'Agosto',9=>'Setembro',10=>'Outubro',11=>'Novembro',12=>'Dezembro');
         $data_part = explode('/', $this->getRequest()->data);
         $this->report->addArg('data_dia', (int) $data_part[0]);

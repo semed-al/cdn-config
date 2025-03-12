@@ -126,7 +126,7 @@ class FinalResultController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('situacao', (int) $this->getRequest()->situacao_matricula_id);
         $this->report->addArg('dependencia', (int) $this->getRequest()->dependencia);
 
-        $months = array (1=>'Janeiro',2=>'Fevereiro',3=>'Março',4=>'Abril',5=>'Maio',6=>'Junho',
+        $months = array (1=>'Janeiro',2=>'Fevereiro',3=>'Marco',4=>'Abril',5=>'Maio',6=>'Junho',
                         7=>'Julho',8=>'Agosto',9=>'Setembro',10=>'Outubro',11=>'Novembro',12=>'Dezembro');
         $data_part = explode('/', $this->getRequest()->data);
         $this->report->addArg('data_dia', (int) $data_part[0]);
