@@ -97,12 +97,10 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                         FROM cadastro.fisica AS pessoa_mae
                         WHERE pessoa_mae.idpes = fisica.idpes_mae
                     ) AS profissao_mae,
-                    (
-                        CASE
-                            WHEN transporte_aluno.responsavel = 0 THEN 'N'
-                            ELSE 'S'
-                        END
-                    ) AS transporte_aluno,
+                    (CASE
+                         WHEN COALESCE(aluno.tipo_transporte, transporte_aluno.responsavel) = 0 THEN 'N'
+                         ELSE 'S'
+                     END) AS transporte_aluno,
                     (
                         SELECT CASE WHEN (COUNT(d.nm_deficiencia) > 0) THEN 'S' ELSE 'N' END
                         FROM cadastro.deficiencia d
