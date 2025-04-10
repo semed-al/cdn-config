@@ -161,13 +161,13 @@
 				<line>
 					<reportElement x="478" y="0" width="1" height="26" uuid="d8b30594-04e0-4b88-a150-57cdab1d81ac"/>
 					<graphicElement>
-						<pen lineWidth="0.75"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="494" y="0" width="1" height="26" uuid="15278b62-c664-432c-8e3c-cb5a1d143f6a"/>
 					<graphicElement>
-						<pen lineWidth="1.25"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<staticText>
@@ -200,7 +200,7 @@
 				<line>
 					<reportElement x="270" y="0" width="1" height="26" uuid="22fa8161-5ba7-4071-ac8a-618877858ade"/>
 					<graphicElement>
-						<pen lineWidth="1.25"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
@@ -212,7 +212,7 @@
 				<line>
 					<reportElement x="369" y="0" width="1" height="26" uuid="fc779f1c-9605-41f6-b6e6-8aef52265252"/>
 					<graphicElement>
-						<pen lineWidth="0.75"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
@@ -269,7 +269,7 @@
 				<line>
 					<reportElement x="394" y="0" width="1" height="26" uuid="a97dbd69-c325-4ab0-a143-35e43992850c"/>
 					<graphicElement>
-						<pen lineWidth="1.25"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<staticText>
@@ -415,13 +415,13 @@
 				<line>
 					<reportElement x="246" y="0" width="1" height="26" uuid="a94b051a-a80a-4bf1-be83-c2bf0c7487f8"/>
 					<graphicElement>
-						<pen lineWidth="0.75"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="150" y="0" width="1" height="26" uuid="09e81861-4add-440a-aefa-1301b07f4658"/>
 					<graphicElement>
-						<pen lineWidth="1.25"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<staticText>
@@ -585,7 +585,7 @@
 				<line>
 					<reportElement x="150" y="-1" width="1" height="13" uuid="cba3e458-ce5f-4b69-912c-3017017f154d"/>
 					<graphicElement>
-						<pen lineWidth="1.25"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
@@ -609,13 +609,13 @@
 				<line>
 					<reportElement x="246" y="-1" width="1" height="13" uuid="09b86629-6525-455d-b551-6f0cf4a04290"/>
 					<graphicElement>
-						<pen lineWidth="0.75"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="270" y="-1" width="1" height="13" uuid="48be31e0-5318-4a67-a9e3-01faf9899172"/>
 					<graphicElement>
-						<pen lineWidth="1.25"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
@@ -657,13 +657,13 @@
 				<line>
 					<reportElement x="369" y="-1" width="1" height="13" uuid="fbc11149-72a5-47c9-9c46-d33d07a74ff4"/>
 					<graphicElement>
-						<pen lineWidth="0.75"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="394" y="-1" width="1" height="13" uuid="5d1745c3-ec4e-412f-a27d-4979be3105c5"/>
 					<graphicElement>
-						<pen lineWidth="1.25"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<textField isBlankWhenNull="true">
@@ -722,13 +722,13 @@
 				<line>
 					<reportElement x="478" y="-1" width="1" height="13" uuid="e6bc6a2b-3574-4c21-bfa2-84d27e765479"/>
 					<graphicElement>
-						<pen lineWidth="0.75"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<line>
 					<reportElement x="494" y="-1" width="1" height="13" uuid="608f22b4-72dc-475f-965d-915ac7c63417"/>
 					<graphicElement>
-						<pen lineWidth="1.25"/>
+						<pen lineWidth="0.25"/>
 					</graphicElement>
 				</line>
 				<textField isBlankWhenNull="true">
@@ -819,7 +819,7 @@
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<printWhenExpression><![CDATA[true]]></printWhenExpression>
 			<rectangle>
-				<reportElement mode="Opaque" x="1" y="-2" width="534" height="13" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="31f4ee65-09f0-489c-b178-f91ba385052f"/>
+				<reportElement mode="Opaque" x="1" y="-2" width="534" height="13" forecolor="#FFFFFF" backcolor="#FFFFFF" stretchType="RelativeToTallestObject" uuid="31f4ee65-09f0-489c-b178-f91ba385052f"/>
 				<graphicElement>
 					<pen lineWidth="0.25" lineStyle="Solid" lineColor="#383636"/>
 				</graphicElement>
@@ -869,31 +869,31 @@
 											? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ?  "-" : ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue())
 												: ($F{saiu_etapa} > 2 ? $F{aulas_dadas_componente_et} : "-")]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isBlankWhenNull="true" isStretchWithOverflow="true">
 				<reportElement x="3" y="-1" width="148" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="295" y="-3" width="1" height="14" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
+			<rectangle>
+				<reportElement x="295" y="-3" width="1" height="14" stretchType="RelativeToTallestObject" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="270" y="-2" width="1" height="13" uuid="45b50c55-b79a-4a6d-8d9e-5253df7e20aa"/>
-				<graphicElement>
-					<pen lineWidth="1.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="320" y="-2" width="1" height="13" uuid="eb37618f-5a80-4315-9ab3-3b6cb2ee17a3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="270" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="45b50c55-b79a-4a6d-8d9e-5253df7e20aa"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</rectangle>
+			<rectangle>
+				<reportElement x="320" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="eb37618f-5a80-4315-9ab3-3b6cb2ee17a3"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
 			<textField isBlankWhenNull="true">
 				<reportElement x="321" y="-1" width="22" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3">
 					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
@@ -916,12 +916,12 @@
 											? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal} < 1 ?  "-" : ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()) 
 											: ($F{saiu_etapa} > 3 ? $F{aulas_dadas_componente_et} : "-")]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="369" y="-2" width="1" height="13" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639"/>
+			<rectangle>
+				<reportElement x="369" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639"/>
 				<graphicElement>
-					<pen lineWidth="0.75"/>
+					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</rectangle>
 			<textField isBlankWhenNull="true">
 				<reportElement x="346" y="-1" width="22" height="11" uuid="12c04f41-b44c-480f-8330-90d92250edbd">
 					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
@@ -944,12 +944,12 @@
 													? ($F{aulas_dadas_componente_et}*$F{percentual_cursado_na_etapa_decimal}).intValue()
 													: "-"]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="494" y="-2" width="1" height="13" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
+			<rectangle>
+				<reportElement x="494" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="2c102ff2-5a88-40f2-9c6f-c0907bf72b9e"/>
 				<graphicElement>
-					<pen lineWidth="1.25"/>
+					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</rectangle>
 			<textField isBlankWhenNull="true">
 				<reportElement x="398" y="-1" width="14" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="d5ccefa6-8c9a-417b-9344-6c41431a4d77"/>
 				<textElement textAlignment="Center">
@@ -985,18 +985,18 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_faltas_componente} != null ? $F{total_faltas_componente} : "-"]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="478" y="-2" width="1" height="13" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15"/>
-				<graphicElement>
-					<pen lineWidth="0.75"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="344" y="-2" width="1" height="13" uuid="1239b2eb-bfdd-41a0-95a4-37d131a203ef"/>
+			<rectangle>
+				<reportElement x="478" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</rectangle>
+			<rectangle>
+				<reportElement x="344" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="1239b2eb-bfdd-41a0-95a4-37d131a203ef"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
 			<textField isBlankWhenNull="true">
 				<reportElement x="498" y="-1" width="35" height="11" uuid="aa8070c8-9947-428a-bf94-dc59f5ca9d54"/>
 				<textElement textAlignment="Right">
@@ -1004,30 +1004,30 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{percentual_falta_componente} != null ? String.format("%.1f",  100-$F{percentual_falta_componente})+"%" : "-"]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="394" y="-2" width="1" height="13" uuid="47d9ab58-da27-4c6b-8afa-9fe366567a55"/>
-				<graphicElement>
-					<pen lineWidth="1.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="457" y="-2" width="1" height="13" uuid="2f2a5364-e536-4367-b496-253d3993084a"/>
+			<rectangle>
+				<reportElement x="394" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="47d9ab58-da27-4c6b-8afa-9fe366567a55"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="436" y="-2" width="1" height="13" uuid="f5df4d5f-e537-4487-a49e-236b9195f4a9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="457" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="2f2a5364-e536-4367-b496-253d3993084a"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="415" y="-2" width="1" height="13" uuid="63027820-4afd-4027-9866-f7637450db2c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="436" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="f5df4d5f-e537-4487-a49e-236b9195f4a9"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</rectangle>
+			<rectangle>
+				<reportElement x="415" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="63027820-4afd-4027-9866-f7637450db2c"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
 			<textField evaluationTime="Auto" isBlankWhenNull="true">
 				<reportElement x="371" y="-1" width="22" height="11" uuid="d3206375-6fb4-4651-9306-8ba4ac3ed78f">
 					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
@@ -1064,18 +1064,18 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 2 ? $F{carga_horaria_componente_et} : "-"]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="150" y="-2" width="1" height="13" uuid="0b94fbed-2955-4f4c-a9bf-7b40d3b3d241"/>
-				<graphicElement>
-					<pen lineWidth="1.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="198" y="-2" width="1" height="13" uuid="50730a82-8c8b-4abd-ae5e-4cb393c5a003"/>
+			<rectangle>
+				<reportElement x="150" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="0b94fbed-2955-4f4c-a9bf-7b40d3b3d241"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</rectangle>
+			<rectangle>
+				<reportElement x="198" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="50730a82-8c8b-4abd-ae5e-4cb393c5a003"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
 			<textField isBlankWhenNull="true">
 				<reportElement x="199" y="-1" width="22" height="11" uuid="042b95f4-c748-4131-b2dc-465c712471f3">
 					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
@@ -1096,12 +1096,12 @@
 												? $F{carga_horaria_componente_et}
 												: "-"]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="222" y="-2" width="1" height="13" uuid="72cf76a5-7eb4-4843-961f-2aadcc683d2b"/>
+			<rectangle>
+				<reportElement x="222" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="72cf76a5-7eb4-4843-961f-2aadcc683d2b"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</rectangle>
 			<textField evaluationTime="Auto" isBlankWhenNull="true">
 				<reportElement x="247" y="-1" width="22" height="11" uuid="bd3a8913-5c5e-47b2-94d9-ccc652c915af">
 					<printWhenExpression><![CDATA[$F{saiu_da_turma} == false]]></printWhenExpression>
@@ -1111,18 +1111,18 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{carga_horaria_componente}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="174" y="-2" width="1" height="13" uuid="5dd5129a-6359-490b-813d-e54fbfd0e93b"/>
+			<rectangle>
+				<reportElement x="174" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="5dd5129a-6359-490b-813d-e54fbfd0e93b"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="246" y="-2" width="1" height="13" uuid="8bceea7b-54a2-45ca-b103-8f4cf1121950"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="246" y="-2" width="1" height="13" stretchType="RelativeToTallestObject" uuid="8bceea7b-54a2-45ca-b103-8f4cf1121950"/>
 				<graphicElement>
-					<pen lineWidth="0.75"/>
+					<pen lineWidth="0.25"/>
 				</graphicElement>
-			</line>
+			</rectangle>
 			<textField pattern="" isBlankWhenNull="true">
 				<reportElement x="151" y="-1" width="22" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="0fce7163-02c0-44e4-884c-2404728f4456">
 					<printWhenExpression><![CDATA[$F{saiu_da_turma} == true]]></printWhenExpression>
