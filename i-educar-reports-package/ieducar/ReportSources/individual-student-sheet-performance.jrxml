@@ -358,7 +358,7 @@
 		<band height="14" splitType="Stretch">
 			<printWhenExpression><![CDATA[$F{quantidade_etapas} == 4 || true]]></printWhenExpression>
 			<rectangle>
-				<reportElement mode="Opaque" x="1" y="0" width="541" height="13" forecolor="#FFFFFF" backcolor="#FFFFFF" stretchType="RelativeToTallestObject" uuid="31f4ee65-09f0-489c-b178-f91ba385052f"/>
+				<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="1" y="0" width="541" height="13" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="31f4ee65-09f0-489c-b178-f91ba385052f"/>
 				<graphicElement>
 					<pen lineWidth="0.25" lineStyle="Solid" lineColor="#0A0A0A"/>
 				</graphicElement>
@@ -435,7 +435,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 2) ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : $F{nota2}) : "-"]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true" isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="2" y="1" width="148" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
@@ -443,19 +443,25 @@
 				<textFieldExpression><![CDATA[$F{nome_disciplina}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="180" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b"/>
+				<reportElement stretchType="ElementGroupHeight" x="180" y="0" width="0" height="13" uuid="554031cd-c35c-418a-9cba-0b7a3a06603b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="150" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="45b50c55-b79a-4a6d-8d9e-5253df7e20aa"/>
+				<reportElement stretchType="ElementGroupHeight" x="150" y="0" width="0" height="13" uuid="45b50c55-b79a-4a6d-8d9e-5253df7e20aa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="211" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="eb37618f-5a80-4315-9ab3-3b6cb2ee17a3"/>
+				<reportElement stretchType="ElementGroupHeight" x="211" y="0" width="0" height="13" uuid="eb37618f-5a80-4315-9ab3-3b6cb2ee17a3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -497,7 +503,9 @@
 				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 3 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false) ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : $F{nota3}) : "-"]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="393" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639"/>
+				<reportElement stretchType="ElementGroupHeight" x="393" y="0" width="0" height="13" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -564,19 +572,25 @@
 				<textFieldExpression><![CDATA[$F{nota_exame} != null ? new DecimalFormat("##0.0").format(Double.parseDouble($F{nota_exame})).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="506" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15"/>
+				<reportElement stretchType="ElementGroupHeight" x="506" y="0" width="0" height="13" uuid="6f48104d-1e9f-416e-be05-ac062cdc4e15">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="242" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="1239b2eb-bfdd-41a0-95a4-37d131a203ef"/>
+				<reportElement stretchType="ElementGroupHeight" x="242" y="0" width="0" height="13" uuid="1239b2eb-bfdd-41a0-95a4-37d131a203ef">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="272" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="b2c27c0d-29e5-4984-9758-639d488d9fc5"/>
+				<reportElement stretchType="ElementGroupHeight" x="272" y="0" width="0" height="13" uuid="b2c27c0d-29e5-4984-9758-639d488d9fc5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -589,7 +603,9 @@
 				<textFieldExpression><![CDATA[$F{nota1recuperacao} != null ? new DecimalFormat("##0.0").format($F{nota1recuperacao}.doubleValue()).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="302" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="93437fa8-7350-4082-91e6-99b4d1aba1df"/>
+				<reportElement stretchType="ElementGroupHeight" x="302" y="0" width="0" height="13" uuid="93437fa8-7350-4082-91e6-99b4d1aba1df">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -602,7 +618,9 @@
 				<textFieldExpression><![CDATA[$F{nota2recuperacao} != null ? new DecimalFormat("##0.0").format($F{nota2recuperacao}.doubleValue()).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="332" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="f79b7db9-9954-4fa2-b82a-8e8cdad097bc"/>
+				<reportElement stretchType="ElementGroupHeight" x="332" y="0" width="0" height="13" uuid="f79b7db9-9954-4fa2-b82a-8e8cdad097bc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -615,7 +633,9 @@
 				<textFieldExpression><![CDATA[$F{nota3recuperacao} != null ? new DecimalFormat("##0.0").format($F{nota3recuperacao}.doubleValue()).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="364" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="f8a0a96f-7217-432c-b870-2a8a3bbd8da1"/>
+				<reportElement stretchType="ElementGroupHeight" x="364" y="0" width="0" height="13" uuid="f8a0a96f-7217-432c-b870-2a8a3bbd8da1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -646,13 +666,17 @@
 				<textFieldExpression><![CDATA["-"]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="430" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="45d90c4d-2d6f-4023-8992-12b1c446251b"/>
+				<reportElement stretchType="ElementGroupHeight" x="430" y="0" width="0" height="13" uuid="45d90c4d-2d6f-4023-8992-12b1c446251b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="458" y="0" width="1" height="13" stretchType="RelativeToTallestObject" uuid="cab268df-f9de-498d-b24f-35697085486c"/>
+				<reportElement stretchType="ElementGroupHeight" x="458" y="0" width="0" height="13" uuid="cab268df-f9de-498d-b24f-35697085486c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
