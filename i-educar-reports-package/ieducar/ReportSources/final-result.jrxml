@@ -102,8 +102,7 @@
 		<variableExpression><![CDATA[$F{nota_maior_dez}]]></variableExpression>
 	</variable>
 	<variable name="media_global" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[!$F{situacao}.contains("Trs") && !$F{situacao}.contains("Aba") &&
-									$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ?
+		<variableExpression><![CDATA[$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ?
 										Double.parseDouble($F{media}.replace(",", ".")) :
 										null]]></variableExpression>
 	</variable>
@@ -282,7 +281,7 @@
 											<rightPen lineWidth="0.0"/>
 										</box>
 										<textField>
-											<reportElement mode="Transparent" x="0" y="0" width="239" height="35" uuid="26451b38-4f94-4f1a-879d-a39854e52a6d"/>
+											<reportElement mode="Transparent" x="0" y="0" width="239" height="15" uuid="26451b38-4f94-4f1a-879d-a39854e52a6d"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineStyle="Solid"/>
@@ -316,7 +315,7 @@
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">
 										<textField isBlankWhenNull="true">
-											<reportElement mode="Transparent" x="0" y="0" width="32" height="35" uuid="815ac81e-a1c4-4ac0-ba55-bc9aabebb01b"/>
+											<reportElement mode="Transparent" x="0" y="0" width="32" height="15" uuid="815ac81e-a1c4-4ac0-ba55-bc9aabebb01b"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -342,7 +341,7 @@
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">
 										<textField isBlankWhenNull="true">
-											<reportElement mode="Transparent" x="0" y="0" width="49" height="35" uuid="051cef1f-d97b-49b5-8f0b-b5755efda5bb"/>
+											<reportElement mode="Transparent" x="0" y="0" width="49" height="15" uuid="051cef1f-d97b-49b5-8f0b-b5755efda5bb"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
@@ -377,7 +376,7 @@
 												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 												<rightPen lineWidth="3.0" lineStyle="Solid" lineColor="#000000"/>
 											</box>
-											<textFieldExpression><![CDATA[$V{mediaGlobal}]]></textFieldExpression>
+											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : $V{mediaGlobal}]]></textFieldExpression>
 										</textField>
 										<textField>
 											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="1e5fc50e-05d6-4367-afc5-5659337e5435">
@@ -392,7 +391,7 @@
 												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 												<rightPen lineWidth="2.5" lineStyle="Solid" lineColor="#000000"/>
 											</box>
-											<textFieldExpression><![CDATA["PPC"]]></textFieldExpression>
+											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : "PPC"]]></textFieldExpression>
 										</textField>
 									</cellContents>
 								</crosstabRowHeader>
