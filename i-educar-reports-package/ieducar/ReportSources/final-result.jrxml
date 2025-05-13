@@ -371,7 +371,7 @@
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">
 										<textField>
-											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="8" uuid="f2f429a8-b5e1-4242-a796-8fbf635af627">
+											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="f2f429a8-b5e1-4242-a796-8fbf635af627">
 												<printWhenExpression><![CDATA[$V{mediaGlobal} != null]]></printWhenExpression>
 											</reportElement>
 											<box>
@@ -383,7 +383,7 @@
 											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : $V{mediaGlobal}]]></textFieldExpression>
 										</textField>
 										<textField>
-											<reportElement style="Crosstab Data Text" x="0" y="8" width="40" height="7" uuid="1e5fc50e-05d6-4367-afc5-5659337e5435">
+											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="1e5fc50e-05d6-4367-afc5-5659337e5435">
 												<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 												<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 												<printWhenExpression><![CDATA[$V{mediaGlobal} == null]]></printWhenExpression>
@@ -449,7 +449,7 @@
 							<measure name="dominio" class="java.lang.String" calculation="First">
 								<measureExpression><![CDATA[$P{dominio}]]></measureExpression>
 							</measure>
-							<measure name="conceito1" class="java.lang.String" calculation="First">
+							<measure name="conceito" class="java.lang.String" calculation="First">
 								<measureExpression><![CDATA[$V{conceito}]]></measureExpression>
 							</measure>
 							<crosstabCell width="25" height="15">
