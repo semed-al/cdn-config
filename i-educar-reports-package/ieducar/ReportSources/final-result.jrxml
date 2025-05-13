@@ -98,6 +98,9 @@
 	<field name="periodo" class="java.lang.String"/>
 	<field name="sequencial_fechamento" class="java.lang.Integer"/>
 	<field name="tem_nota" class="java.lang.Boolean"/>
+	<variable name="conceito" class="java.lang.String" calculation="First">
+		<variableExpression><![CDATA[$P{dominio}.contains("coite") || $P{dominio}.contains("japaratinga") ? "APC" : "PPC"]]></variableExpression>
+	</variable>
 	<variable name="nota_maior_dez" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{nota_maior_dez}]]></variableExpression>
 	</variable>
@@ -273,6 +276,7 @@
 								</bucket>
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
 										<box>
 											<pen lineWidth="0.0"/>
 											<topPen lineWidth="0.0"/>
@@ -367,7 +371,7 @@
 								<crosstabRowHeader>
 									<cellContents mode="Opaque" style="linha-zebrado">
 										<textField>
-											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="f2f429a8-b5e1-4242-a796-8fbf635af627">
+											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="8" uuid="f2f429a8-b5e1-4242-a796-8fbf635af627">
 												<printWhenExpression><![CDATA[$V{mediaGlobal} != null]]></printWhenExpression>
 											</reportElement>
 											<box>
@@ -379,7 +383,7 @@
 											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : $V{mediaGlobal}]]></textFieldExpression>
 										</textField>
 										<textField>
-											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="1e5fc50e-05d6-4367-afc5-5659337e5435">
+											<reportElement style="Crosstab Data Text" x="0" y="8" width="40" height="7" uuid="1e5fc50e-05d6-4367-afc5-5659337e5435">
 												<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 												<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 												<printWhenExpression><![CDATA[$V{mediaGlobal} == null]]></printWhenExpression>
@@ -391,7 +395,7 @@
 												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 												<rightPen lineWidth="2.5" lineStyle="Solid" lineColor="#000000"/>
 											</box>
-											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : "PPC"]]></textFieldExpression>
+											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : $V{conceito}]]></textFieldExpression>
 										</textField>
 									</cellContents>
 								</crosstabRowHeader>
@@ -445,6 +449,9 @@
 							<measure name="dominio" class="java.lang.String" calculation="First">
 								<measureExpression><![CDATA[$P{dominio}]]></measureExpression>
 							</measure>
+							<measure name="conceito1" class="java.lang.String" calculation="First">
+								<measureExpression><![CDATA[$V{conceito}]]></measureExpression>
+							</measure>
 							<crosstabCell width="25" height="15">
 								<cellContents mode="Opaque" style="linha-zebrado">
 									<box>
@@ -472,7 +479,7 @@
 													($V{mediaMeasure} != null ? String.valueOf($V{mediaMeasure}) : "-")
 												)
 											:
-												($V{situacao} != null && $V{situacao}.equals("Apr") ? "PPC" : "-")]]></textFieldExpression>
+												($V{situacao} != null && $V{situacao}.equals("Apr") ? $V{conceito} : "-")]]></textFieldExpression>
 									</textField>
 								</cellContents>
 							</crosstabCell>
@@ -505,10 +512,10 @@
 							<crosstabCell rowTotalGroup="%fr" columnTotalGroup="nm_componente_curricular">
 								<cellContents/>
 							</crosstabCell>
-							<crosstabCell height="20" rowTotalGroup="Média global">
+							<crosstabCell height="0" rowTotalGroup="Média global">
 								<cellContents/>
 							</crosstabCell>
-							<crosstabCell height="20" rowTotalGroup="Média global" columnTotalGroup="nm_componente_curricular">
+							<crosstabCell height="0" rowTotalGroup="Média global" columnTotalGroup="nm_componente_curricular">
 								<cellContents/>
 							</crosstabCell>
 						</crosstab>
