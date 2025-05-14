@@ -14,11 +14,6 @@ class FinalResultReport extends Portabilis_Report_ReportCore
         if ($this->args['orientacao'] == 'paisagem') {
             return 'final-result-landscape';
         }
-        
-        if (str_contains($this->args['dominio'], 'japaratinga') 
-            || str_contains($this->args['dominio'], 'coitedonoia')) {
-              return 'final-result-portrait-as-apc';
-        }
 
         return 'final-result';
     }
@@ -77,7 +72,7 @@ SELECT DISTINCT matricula.cod_matricula,
        turma.nm_turma AS nome_turma,
        turma_turno.nome AS periodo,
        sequencial_fechamento,
-       CASE WHEN ra.media = 0 THEN false ELSE true END AS tem_nota
+       CASE WHEN ra.tipo_nota = 0 THEN false ELSE true END AS tem_nota
 FROM pmieducar.instituicao
 INNER JOIN pmieducar.escola ON escola.ref_cod_instituicao = instituicao.cod_instituicao
 INNER JOIN relatorio.view_dados_escola vde ON vde.cod_escola = escola.cod_escola
@@ -107,6 +102,7 @@ INNER JOIN relatorio.view_situacao ON (view_situacao.cod_matricula = matricula.c
                                        AND view_situacao.cod_turma = matricula_turma.ref_cod_turma
                                        AND matricula_turma.sequencial = view_situacao.sequencial)
 INNER JOIN relatorio.view_componente_curricular componente_curricular ON componente_curricular.cod_turma = turma.cod_turma
+      AND componente_curricular.cod_serie = serie.cod_serie
 LEFT JOIN modules.nota_aluno ON nota_aluno.matricula_id = matricula.cod_matricula
 LEFT JOIN modules.nota_componente_curricular_media nccm ON nccm.nota_aluno_id = nota_aluno.id AND nccm.componente_curricular_id = componente_curricular.id
 INNER JOIN pmieducar.aluno ON (matricula.ref_cod_aluno = aluno.cod_aluno)
@@ -164,7 +160,7 @@ GROUP BY matricula.cod_matricula,
          componente_curricular.nome,
          nccm.media,
          nccm.media_arredondada,
-         ra.media
+         ra.tipo_nota
 ORDER BY nm_aluno,
          sequencial_fechamento,
          cod_matricula,

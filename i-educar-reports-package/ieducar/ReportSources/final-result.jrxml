@@ -104,11 +104,6 @@
 	<variable name="nota_maior_dez" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{nota_maior_dez}]]></variableExpression>
 	</variable>
-	<variable name="media_global" class="java.math.BigDecimal" calculation="Average">
-		<variableExpression><![CDATA[$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ?
-										Double.parseDouble($F{media}.replace(",", ".")) :
-										null]]></variableExpression>
-	</variable>
 	<variable name="count_cursando" class="java.lang.Integer" calculation="DistinctCount">
 		<variableExpression><![CDATA[($F{situacao} == "Cur"  && !$F{dependencia}) ? $F{cod_matricula}: null]]></variableExpression>
 	</variable>
@@ -380,7 +375,7 @@
 												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 												<rightPen lineWidth="3.0" lineStyle="Solid" lineColor="#000000"/>
 											</box>
-											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : $V{mediaGlobal}]]></textFieldExpression>
+											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : new java.text.DecimalFormat("#0.0").format($V{mediaGlobal})]]></textFieldExpression>
 										</textField>
 										<textField>
 											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="1e5fc50e-05d6-4367-afc5-5659337e5435">
@@ -440,8 +435,10 @@
 							<measure name="mediaMeasure" class="java.lang.String" calculation="First">
 								<measureExpression><![CDATA[$F{media}]]></measureExpression>
 							</measure>
-							<measure name="mediaGlobal" class="java.lang.Double" calculation="First">
-								<measureExpression><![CDATA[$V{media_global} != null ? $V{media_global} : null]]></measureExpression>
+							<measure name="mediaGlobal" class="java.lang.Double" calculation="Average">
+								<measureExpression><![CDATA[$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ?
+										Double.parseDouble($F{media}.replace(",", ".")) :
+										null]]></measureExpression>
 							</measure>
 							<measure name="tem_nota" class="java.lang.Boolean" calculation="First">
 								<measureExpression><![CDATA[$F{tem_nota}]]></measureExpression>

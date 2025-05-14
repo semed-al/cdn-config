@@ -1594,7 +1594,7 @@
 				<staticText>
 					<reportElement x="7" y="0" width="544" height="15" uuid="3bb0980f-43d5-4497-8b22-3edd54fb7553">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.belem.al.gov.br")]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$P{dominio}.contains("belem")]]></printWhenExpression>
 					</reportElement>
 					<box>
 						<topPen lineWidth="0.25"/>
@@ -2726,7 +2726,7 @@
 				<frame>
 					<reportElement positionType="Float" stretchType="ElementGroupHeight" x="7" y="330" width="544" height="240" uuid="3acfefa5-f516-4b06-abcf-b4989d22e99c">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<printWhenExpression><![CDATA[$P{dominio}.contains("edu.belem.al.gov.br")]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$P{dominio}.contains("belem")]]></printWhenExpression>
 					</reportElement>
 					<staticText>
 						<reportElement stretchType="RelativeToBandHeight" x="1" y="8" width="543" height="20" uuid="e4671903-1ed5-457f-b80f-abaca79d0bbe"/>
