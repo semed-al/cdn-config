@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="school-history-crosstab" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="181ff70d-bdbf-4542-b68c-0eca261e088e">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
@@ -421,7 +421,7 @@
 									<measureExpression><![CDATA[$F{carga_horaria}]]></measureExpression>
 								</measure>
 								<measure name="chd" class="java.lang.String" calculation="First">
-									<measureExpression><![CDATA[$F{carga_horaria_disciplina} == null ? '-' : $F{carga_horaria_disciplina} + 'h']]></measureExpression>
+									<measureExpression><![CDATA[$F{carga_horaria_disciplina} == null ? '-' : $F{carga_horaria_disciplina}]]></measureExpression>
 								</measure>
 								<measure name="nm_serieMeasure" class="java.lang.String" calculation="Highest">
 									<measureExpression><![CDATA[$F{nm_serie}]]></measureExpression>
@@ -436,7 +436,7 @@
 											<rightPen lineWidth="0.25"/>
 										</box>
 										<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-											<reportElement style="Crosstab Data Text" mode="Transparent" x="0" y="0" width="37" height="17" backcolor="#FAFAFA" uuid="9f998cdf-e2ea-4bd3-892a-92ea604838ca"/>
+											<reportElement style="Crosstab Data Text" mode="Transparent" x="0" y="0" width="19" height="17" backcolor="#FAFAFA" uuid="9f998cdf-e2ea-4bd3-892a-92ea604838ca"/>
 											<box>
 												<pen lineWidth="0.25"/>
 												<topPen lineWidth="0.25"/>
@@ -447,15 +447,21 @@
 											<textElement verticalAlignment="Middle">
 												<font fontName="DejaVu Sans" size="7"/>
 											</textElement>
-											<textFieldExpression><![CDATA[$P{mostrar_msg} == false 
-											? ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-' + '\n' + ($V{chd} == null ? '-' : $V{chd})
-		: !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd}
-		: Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? '*' + $V{notaMeasure} + '\n' + $V{chd}
-		: $V{notaMeasure} + '\n' + $V{chd}) 
-	: ($V{notaMeasure} == null || $V{notaMeasure} == "" ? '-' + '\n' + ($V{chd} == null ? '-' : $V{chd})
-		: !$V{notaMeasure}.matches("[0-9]+|[0-9,.]+") ? $V{notaMeasure} + '\n' + $V{chd}
-		: Double.parseDouble($V{notaMeasure}.replace(",",".")) > 10 ? $V{notaMeasure} + '\n' + $V{chd}
-		: $V{notaMeasure} + '\n' + $V{chd})]]></textFieldExpression>
+											<textFieldExpression><![CDATA[$V{notaMeasure} == null || $V{notaMeasure} == "" ? "-"  : $V{notaMeasure}]]></textFieldExpression>
+										</textField>
+										<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+											<reportElement style="Crosstab Data Text" mode="Transparent" x="19" y="0" width="18" height="17" backcolor="#FAFAFA" uuid="ef332f3c-37af-463e-b5d1-369c4d219608"/>
+											<box>
+												<pen lineWidth="0.25"/>
+												<topPen lineWidth="0.25"/>
+												<leftPen lineWidth="0.25"/>
+												<bottomPen lineWidth="0.25"/>
+												<rightPen lineWidth="0.25"/>
+											</box>
+											<textElement verticalAlignment="Middle">
+												<font fontName="DejaVu Sans" size="7"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{chd} == null ? "-" : $V{chd}]]></textFieldExpression>
 										</textField>
 									</cellContents>
 								</crosstabCell>

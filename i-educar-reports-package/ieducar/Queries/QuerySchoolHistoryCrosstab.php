@@ -304,6 +304,7 @@ class QuerySchoolHistoryCrosstab extends QueryBridge
                         AND he.ref_cod_aluno = historico_escolar.ref_cod_aluno
                         AND he.ativo = 1
                         AND he.aprovado NOT IN (2, 6, 14)
+                        AND (CASE WHEN $P{ano_fim} = 0 THEN 1=1 ELSE he.ano <= $P{ano_fim} END)
                         ORDER BY ano desc, he.posicao DESC, to_number(CONCAT('0',regexp_replace(nm_serie,'[^0-9]+','')),'99') DESC
                         LIMIT 1
                     )

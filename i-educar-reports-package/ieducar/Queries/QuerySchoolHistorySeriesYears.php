@@ -16,6 +16,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                     AND he.aprovado NOT IN (6,15)
                     AND he.extra_curricular = 0
                     AND he.ativo = 1
+                    AND (CASE WHEN $P{ano_fim} = 0 THEN 1=1 ELSE he.ano <= $P{ano_fim} END)
                     --  AND (he.ref_cod_escola IS NULL OR he.ref_cod_escola = $P{escola})                    
                 ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                 LIMIT 1
@@ -27,6 +28,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                     AND he.aprovado NOT IN (2,3,4,6,14,15)
                     AND he.extra_curricular = 0
                     AND he.ativo = 1
+                    AND (CASE WHEN $P{ano_fim} = 0 THEN 1=1 ELSE he.ano <= $P{ano_fim} END)
                 ORDER BY he.ano DESC, relatorio.prioridade_historico(he.aprovado) ASC
                 LIMIT 1
             )
@@ -234,6 +236,7 @@ class QuerySchoolHistorySeriesYears extends QueryBridge
                                         WHERE he.ref_cod_aluno = vhsa.cod_aluno
                                         AND he.ativo = 1
                                         AND he.historico_grade_curso_id = 2
+                                        AND (CASE WHEN $P{ano_fim} = 0 THEN 1=1 ELSE he.ano <= $P{ano_fim} END)
                                         ORDER BY he.ano DESC LIMIT 1
                                     ) = 1 
                                     THEN 'o ' || (substring(he.nm_serie,1,1)::integer::numeric) || 'º ano'
