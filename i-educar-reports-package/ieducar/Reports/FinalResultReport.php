@@ -64,15 +64,16 @@ SELECT DISTINCT matricula.cod_matricula,
             ELSE nccm.media_arredondada
        END AS media,
        CASE WHEN isnumeric(nccm.media_arredondada) AND nccm.media::decimal > 10 THEN 1 ELSE NULL END AS nota_maior_dez,
-       componente_curricular.nome AS nm_componente_curricular,
-       componente_curricular.ordenamento AS ordenamento,
+       view_componente_curricular.nome AS nm_componente_curricular,
+       view_componente_curricular.ordenamento AS ordenamento,
        matricula.ano AS ano,
        curso.nm_curso AS nome_curso,
        serie.nm_serie AS nome_serie,
        turma.nm_turma AS nome_turma,
        turma_turno.nome AS periodo,
        sequencial_fechamento,
-       CASE WHEN ra.tipo_nota = 0 THEN false ELSE true END AS tem_nota
+       CASE WHEN ra.tipo_nota = 0 THEN false ELSE true END AS tem_nota,
+       componente_curricular.desconsidera_para_progressao
 FROM pmieducar.instituicao
 INNER JOIN pmieducar.escola ON escola.ref_cod_instituicao = instituicao.cod_instituicao
 INNER JOIN relatorio.view_dados_escola vde ON vde.cod_escola = escola.cod_escola
@@ -101,10 +102,11 @@ INNER JOIN pmieducar.matricula ON (matricula.cod_matricula = matricula_turma.ref
 INNER JOIN relatorio.view_situacao ON (view_situacao.cod_matricula = matricula.cod_matricula
                                        AND view_situacao.cod_turma = matricula_turma.ref_cod_turma
                                        AND matricula_turma.sequencial = view_situacao.sequencial)
-INNER JOIN relatorio.view_componente_curricular componente_curricular ON componente_curricular.cod_turma = turma.cod_turma
-      AND componente_curricular.cod_serie = serie.cod_serie
+INNER JOIN relatorio.view_componente_curricular view_componente_curricular ON view_componente_curricular.cod_turma = turma.cod_turma
+      AND view_componente_curricular.cod_serie = serie.cod_serie
+INNER JOIN modules.componente_curricular componente_curricular ON componente_curricular.id = view_componente_curricular.id
 LEFT JOIN modules.nota_aluno ON nota_aluno.matricula_id = matricula.cod_matricula
-LEFT JOIN modules.nota_componente_curricular_media nccm ON nccm.nota_aluno_id = nota_aluno.id AND nccm.componente_curricular_id = componente_curricular.id
+LEFT JOIN modules.nota_componente_curricular_media nccm ON nccm.nota_aluno_id = nota_aluno.id AND nccm.componente_curricular_id = view_componente_curricular.id
 INNER JOIN pmieducar.aluno ON (matricula.ref_cod_aluno = aluno.cod_aluno)
 INNER JOIN cadastro.fisica ON (fisica.idpes = aluno.ref_idpes)
 INNER JOIN cadastro.pessoa ON pessoa.idpes = fisica.idpes
@@ -139,8 +141,8 @@ WHERE escola_ano_letivo.ativo = 1
                 AND m.ref_cod_aluno = matricula.ref_cod_aluno 
                 AND m.ativo = 1 AND (mt.ativo = 1 OR mt.transferido IS NOT NULL)
             GROUP BY m.ref_cod_aluno)
-  AND componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}'
-  AND componente_curricular.nome !~ '[0-9][0-9]?.'
+  AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}'
+  AND view_componente_curricular.nome !~ '[0-9][0-9]?.'
 GROUP BY matricula.cod_matricula,
          pessoa_gestor.nome,
          pessoa_secr.nome,
@@ -156,8 +158,8 @@ GROUP BY matricula.cod_matricula,
          turma.nm_turma,
          turma_turno.nome,
          ra.qtd_casas_decimais,
-         componente_curricular.id,
-         componente_curricular.nome,
+         view_componente_curricular.id,
+         view_componente_curricular.nome,
          nccm.media,
          nccm.media_arredondada,
          ra.tipo_nota

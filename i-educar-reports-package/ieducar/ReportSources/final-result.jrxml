@@ -98,6 +98,7 @@
 	<field name="periodo" class="java.lang.String"/>
 	<field name="sequencial_fechamento" class="java.lang.Integer"/>
 	<field name="tem_nota" class="java.lang.Boolean"/>
+	<field name="desconsidera_para_progressao" class="java.lang.Boolean"/>
 	<variable name="conceito" class="java.lang.String" calculation="First">
 		<variableExpression><![CDATA[$P{dominio}.contains("coite") || $P{dominio}.contains("japaratinga") ? "APC" : "PPC"]]></variableExpression>
 	</variable>
@@ -476,7 +477,7 @@
 										<textFieldExpression><![CDATA[$V{tem_nota} != null && $V{tem_nota} == true ?
 												($V{situacao} != null && ($V{situacao}.equals("Trs") || $V{situacao}.equals("Aba")) ?
 													"-" :
-													($V{mediaMeasure} != null ? String.valueOf($V{mediaMeasure}) : "-")
+													($V{mediaMeasure} != null ? String.valueOf($V{mediaMeasure}) : $V{conceito})
 												)
 											:
 												($V{situacao} != null && $V{situacao}.equals("Apr") ? $V{conceito} : "-")]]></textFieldExpression>
