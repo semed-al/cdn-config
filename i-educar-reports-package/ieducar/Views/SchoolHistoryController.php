@@ -45,7 +45,7 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
         $options = ['label' => 'Modelo', 'resources' => $resources, 'value' => 1];
         $this->inputsHelper()->select('modelo', $options);
 
-        $this->inputsHelper()->integer('ano_ini', ['placeholder' => '', 'required' => false, 'label' => 'Ano início', 'max_length' => 4, 'size' => 4]);
+        //$this->inputsHelper()->integer('ano_ini', ['placeholder' => '', 'required' => false, 'label' => 'Ano início', 'max_length' => 4, 'size' => 4]);
         $this->inputsHelper()->integer('ano_fim', ['placeholder' => '','required' => false, 'label' => 'Ano final', 'max_length' => 4, 'size' => 4]);
 
         // $helperOptions = ['objectName' => 'cursoaluno'];

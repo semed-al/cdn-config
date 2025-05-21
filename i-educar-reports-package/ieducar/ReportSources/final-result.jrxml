@@ -367,7 +367,7 @@
 									<cellContents mode="Opaque" style="linha-zebrado">
 										<textField>
 											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="f2f429a8-b5e1-4242-a796-8fbf635af627">
-												<printWhenExpression><![CDATA[$V{mediaGlobal} != null]]></printWhenExpression>
+												<printWhenExpression><![CDATA[$V{mediaGlobal} != null && $V{temMediaValida} > 0]]></printWhenExpression>
 											</reportElement>
 											<box>
 												<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -381,7 +381,7 @@
 											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="1e5fc50e-05d6-4367-afc5-5659337e5435">
 												<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 												<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-												<printWhenExpression><![CDATA[$V{mediaGlobal} == null]]></printWhenExpression>
+												<printWhenExpression><![CDATA[$V{mediaGlobal} == null || $V{temMediaValida} == 0]]></printWhenExpression>
 											</reportElement>
 											<box>
 												<pen lineWidth="0.25"/>
@@ -439,6 +439,9 @@
 								<measureExpression><![CDATA[$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ?
 										Double.parseDouble($F{media}.replace(",", ".")) :
 										null]]></measureExpression>
+							</measure>
+							<measure name="temMediaValida" class="java.lang.Integer" calculation="Sum">
+								<measureExpression><![CDATA[$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ? 1 : 0]]></measureExpression>
 							</measure>
 							<measure name="tem_nota" class="java.lang.Boolean" calculation="First">
 								<measureExpression><![CDATA[$F{tem_nota}]]></measureExpression>
