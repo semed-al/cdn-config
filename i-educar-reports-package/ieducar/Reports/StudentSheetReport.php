@@ -319,7 +319,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    FROM cadastro.fisica fs
    WHERE fs.idpes = fisica.idpes_responsavel) AS ocupacao_responsavel,
 
-  (SELECT fs.cpf
+  (SELECT public.formata_cpf(fs.cpf)
    FROM cadastro.fisica fs
    WHERE fs.idpes = fisica.idpes_responsavel) AS cpf_responsavel,
 

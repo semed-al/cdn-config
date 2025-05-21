@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student-sheet" pageWidth="595" pageHeight="900" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="80c96018-59aa-4572-b3d5-66ec29e78417">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="instituicao" class="java.lang.Integer">
@@ -102,7 +102,7 @@
 	<field name="certidao_nascimento" class="java.lang.String"/>
 	<field name="nome_responsavel" class="java.lang.String"/>
 	<field name="ocupacao_responsavel" class="java.lang.String"/>
-	<field name="cpf_responsavel" class="java.math.BigDecimal"/>
+	<field name="cpf_responsavel" class="java.lang.String"/>
 	<field name="sexo_responsavel" class="java.lang.String"/>
 	<field name="ddd_responsavel" class="java.math.BigDecimal"/>
 	<field name="fone_responsavel" class="java.math.BigDecimal"/>
@@ -522,7 +522,7 @@
 				<textFieldExpression><![CDATA[$F{orgao_emissor_rg}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="295" y="596" width="25" height="12" uuid="d08ded7b-1d21-4bce-a4ef-f6203b86ca0f"/>
+				<reportElement x="385" y="596" width="25" height="12" uuid="d08ded7b-1d21-4bce-a4ef-f6203b86ca0f"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -543,7 +543,7 @@
 				<text><![CDATA[DADOS PESSOAIS DO ALUNO]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="198" y="596" width="63" height="12" uuid="a7778129-2f5e-4fe0-92b4-8319b644c3aa"/>
+				<reportElement x="198" y="596" width="136" height="12" uuid="a7778129-2f5e-4fe0-92b4-8319b644c3aa"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -641,33 +641,19 @@
 				<text><![CDATA[SEXO:]]></text>
 			</staticText>
 			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="366" y="596" width="19" height="12" uuid="8a36d309-e3e5-4108-9e79-617eef4efaa6"/>
+				<reportElement x="456" y="596" width="19" height="12" uuid="8a36d309-e3e5-4108-9e79-617eef4efaa6"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ddd_responsavel}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="388" y="596" width="50" height="12" uuid="32750d2b-736b-458c-89b8-fa6c2ea293e7"/>
+				<reportElement x="478" y="596" width="50" height="12" uuid="32750d2b-736b-458c-89b8-fa6c2ea293e7"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fone_responsavel}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="366" y="597" width="3" height="12" uuid="fd6b7010-e862-4f34-80fe-2ad8fc4d615a"/>
-				<textElement>
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<text><![CDATA[(]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="383" y="597" width="3" height="12" uuid="163b039b-b355-4452-98a5-c98565450f18"/>
-				<textElement>
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<text><![CDATA[)]]></text>
-			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="220" y="611" width="21" height="12" uuid="6eb6fdd1-5680-474f-8d99-01c7ecc6a383"/>
 				<textElement>
@@ -697,7 +683,7 @@
 				<text><![CDATA[CPF:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="262" y="596" width="33" height="12" uuid="eee29665-5e4c-40d5-a734-b297139ea48e"/>
+				<reportElement x="352" y="596" width="33" height="12" uuid="eee29665-5e4c-40d5-a734-b297139ea48e"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -746,7 +732,7 @@
 				<text><![CDATA[CEP:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="321" y="596" width="45" height="12" uuid="bc019ee6-7b8c-4380-a535-25f794890910"/>
+				<reportElement x="411" y="596" width="45" height="12" uuid="bc019ee6-7b8c-4380-a535-25f794890910"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>

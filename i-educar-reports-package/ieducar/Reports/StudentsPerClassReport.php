@@ -53,9 +53,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                 SELECT
                     DISTINCT ON (aluno.cod_aluno) aluno.cod_aluno AS cod_aluno,
                     matricula_turma.sequencial_fechamento AS sequencial_fechamento,
-                    (
-                        CASE WHEN cpf IS NOT NULL AND LENGTH(concat(cpf,'')) < 11 THEN CONCAT('0',cpf) ELSE CONCAT(cpf,'') END
-                    ) AS cpf,
+                    public.formata_cpf(cpf) AS cpf,
                     fcn_upper(pessoa.nome) AS nome_aluno,
                     municipio.nome AS naturalidade,
                     fisica.sus AS codigo_sus,
