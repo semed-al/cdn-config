@@ -100,7 +100,6 @@ class ReportConceptualCardController extends Portabilis_Controller_ReportCoreCon
             $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
         }
         $this->report->addArg('tipo_nota', 2);
-        $this->report->addArg('anual', 1);
     }
 
     /**
