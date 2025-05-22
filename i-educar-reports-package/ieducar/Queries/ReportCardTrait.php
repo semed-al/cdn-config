@@ -57,14 +57,74 @@ trait ReportCardTrait
               relatorio.get_media_turma(turma.cod_turma, view_componente_curricular.id, 2) AS nota2numturma,
               relatorio.get_media_turma(turma.cod_turma, view_componente_curricular.id, 3) AS nota3numturma,
               relatorio.get_media_turma(turma.cod_turma, view_componente_curricular.id, 4) AS nota4numturma,
-              falta_etapa1.quantidade AS total_faltas_et1,
-              falta_etapa2.quantidade AS total_faltas_et2,
-              falta_etapa3.quantidade AS total_faltas_et3,
-              falta_etapa4.quantidade AS total_faltas_et4,
-              falta_componente1.quantidade AS faltas_componente_et1,
-              falta_componente2.quantidade AS faltas_componente_et2,
-              falta_componente3.quantidade AS faltas_componente_et3,
-              falta_componente4.quantidade AS faltas_componente_et4,
+              (
+                SELECT falta_etapa.quantidade
+                    FROM modules.falta_aluno falta_aluno 
+                    INNER JOIN modules.falta_geral falta_etapa ON falta_etapa.falta_aluno_id = falta_aluno.id
+                    WHERE falta_aluno.matricula_id = matricula.cod_matricula 
+                    AND falta_aluno.tipo_falta = 1
+                    AND falta_etapa.etapa = '1' 
+              ) AS total_faltas_et1,
+              (
+                SELECT falta_etapa.quantidade
+                    FROM modules.falta_aluno falta_aluno 
+                    INNER JOIN modules.falta_geral falta_etapa ON falta_etapa.falta_aluno_id = falta_aluno.id
+                    WHERE falta_aluno.matricula_id = matricula.cod_matricula
+                    AND falta_aluno.tipo_falta = 1
+                    AND falta_etapa.etapa = '2' 
+              ) AS total_faltas_et2,
+              (
+                  SELECT falta_etapa.quantidade
+                    FROM modules.falta_aluno falta_aluno 
+                    INNER JOIN modules.falta_geral falta_etapa ON falta_etapa.falta_aluno_id = falta_aluno.id
+                    WHERE falta_aluno.matricula_id = matricula.cod_matricula
+                    AND falta_aluno.tipo_falta = 1
+                    AND falta_etapa.etapa = '3'
+              ) AS total_faltas_et3,
+              (
+                  SELECT falta_etapa.quantidade
+                    FROM modules.falta_aluno falta_aluno 
+                    INNER JOIN modules.falta_geral falta_etapa ON falta_etapa.falta_aluno_id = falta_aluno.id
+                    WHERE falta_aluno.matricula_id = matricula.cod_matricula
+                    AND falta_aluno.tipo_falta = 1
+                    AND falta_etapa.etapa = '4'
+              ) AS total_faltas_et4,
+              (
+                SELECT falta_componente.quantidade
+                FROM modules.falta_aluno falta_aluno
+                INNER JOIN modules.falta_componente_curricular falta_componente ON falta_componente.falta_aluno_id = falta_aluno.id
+                WHERE falta_aluno.matricula_id = matricula.cod_matricula
+                  AND falta_aluno.tipo_falta = 2
+                  AND falta_componente.componente_curricular_id = view_componente_curricular.id
+                  AND falta_componente.etapa = '1'
+              ) AS faltas_componente_et1,
+              (
+                SELECT falta_componente.quantidade
+                FROM modules.falta_aluno falta_aluno
+                INNER JOIN modules.falta_componente_curricular falta_componente ON falta_componente.falta_aluno_id = falta_aluno.id
+                WHERE falta_aluno.matricula_id = matricula.cod_matricula
+                  AND falta_aluno.tipo_falta = 2
+                  AND falta_componente.componente_curricular_id = view_componente_curricular.id
+                  AND falta_componente.etapa = '2'
+              ) AS faltas_componente_et2,
+              (
+                SELECT falta_componente.quantidade
+                FROM modules.falta_aluno falta_aluno
+                INNER JOIN modules.falta_componente_curricular falta_componente ON falta_componente.falta_aluno_id = falta_aluno.id
+                WHERE falta_aluno.matricula_id = matricula.cod_matricula
+                  AND falta_aluno.tipo_falta = 2
+                  AND falta_componente.componente_curricular_id = view_componente_curricular.id
+                  AND falta_componente.etapa = '3'
+              ) AS faltas_componente_et3,			   
+              (
+                SELECT falta_componente.quantidade
+                FROM modules.falta_aluno falta_aluno
+                INNER JOIN modules.falta_componente_curricular falta_componente ON falta_componente.falta_aluno_id = falta_aluno.id
+                WHERE falta_aluno.matricula_id = matricula.cod_matricula
+                  AND falta_aluno.tipo_falta = 2
+                  AND falta_componente.componente_curricular_id = view_componente_curricular.id
+                  AND falta_componente.etapa = '4'
+              ) AS faltas_componente_et4,
               relatorio.get_total_geral_falta_componente(matricula.cod_matricula) AS total_geral_faltas_componente,
               relatorio.get_total_faltas(matricula.cod_matricula) AS total_faltas,
               curso.hora_falta AS curso_hora_falta,
@@ -76,7 +136,6 @@ trait ReportCardTrait
               nota_exame.nota_arredondada AS nota_exame,
               regra_avaliacao.qtd_casas_decimais,
               regra_avaliacao.tipo_presenca,
-              falta_aluno.id AS falta_aluno_id,
               coalesce(regra_avaliacao.media, 0.00) AS media_recuperacao,
               relatorio.get_media_geral_turma(turma.cod_turma, view_componente_curricular.id) AS medianumturma,
               relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id) AS total_faltas_componente
@@ -129,27 +188,6 @@ trait ReportCardTrait
                                                                    AND nota_exame.etapa = 'Rc')
         LEFT JOIN modules.nota_componente_curricular_media ON (nota_componente_curricular_media.nota_aluno_id = nota_aluno.id
                                                               AND nota_componente_curricular_media.componente_curricular_id = view_componente_curricular.id)
-        LEFT JOIN modules.falta_aluno ON (falta_aluno.matricula_id = matricula.cod_matricula)
-        LEFT JOIN modules.falta_geral falta_etapa1 ON (falta_etapa1.falta_aluno_id = falta_aluno.id
-                                                      AND falta_etapa1.etapa = '1')
-        LEFT JOIN modules.falta_geral falta_etapa2 ON (falta_etapa2.falta_aluno_id = falta_aluno.id
-                                                      AND falta_etapa2.etapa = '2')
-        LEFT JOIN modules.falta_geral falta_etapa3 ON (falta_etapa3.falta_aluno_id = falta_aluno.id
-                                                      AND falta_etapa3.etapa = '3')
-        LEFT JOIN modules.falta_geral falta_etapa4 ON (falta_etapa4.falta_aluno_id = falta_aluno.id
-                                                      AND falta_etapa4.etapa = '4')
-        LEFT JOIN modules.falta_componente_curricular falta_componente1 ON (falta_componente1.falta_aluno_id = falta_aluno.id
-                                                                           AND falta_componente1.componente_curricular_id = view_componente_curricular.id
-                                                                           AND falta_componente1.etapa = '1')
-        LEFT JOIN modules.falta_componente_curricular falta_componente2 ON (falta_componente2.falta_aluno_id = falta_aluno.id
-                                                                           AND falta_componente2.componente_curricular_id = view_componente_curricular.id
-                                                                           AND falta_componente2.etapa = '2')
-        LEFT JOIN modules.falta_componente_curricular falta_componente3 ON (falta_componente3.falta_aluno_id = falta_aluno.id
-                                                                           AND falta_componente3.componente_curricular_id = view_componente_curricular.id
-                                                                           AND falta_componente3.etapa = '3')
-        LEFT JOIN modules.falta_componente_curricular falta_componente4 ON (falta_componente4.falta_aluno_id = falta_aluno.id
-                                                                           AND falta_componente4.componente_curricular_id = view_componente_curricular.id
-                                                                           AND falta_componente4.etapa = '4')
         LEFT JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie
                                                                AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
                                                                AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
