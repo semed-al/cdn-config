@@ -17,7 +17,7 @@ trait ReportCardTrait
         $alunos_diferenciados = $this->args['alunos_diferenciados'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
         $tipo_nota = $this->args['tipo_nota'] ?: 0;
-        $anual = $this->args['anual'] ?: 0;        
+        $anual = strpos($this->args['dominio'], 'japaratinga') !== false ? 1 : 0;
         
         return <<<SQL
             SELECT fcn_upper(instituicao.nm_instituicao) AS nome_instituicao,
@@ -198,7 +198,7 @@ trait ReportCardTrait
          AND escola.cod_escola = {$escola}
          AND curso.cod_curso = {$curso}
          AND serie.cod_serie = {$serie}
-         AND turma.cod_turma = {$turma}
+         AND (CASE WHEN {$turma} = 0 THEN TRUE ELSE turma.cod_turma = {$turma} END)
          AND escola_ano_letivo.ano = {$ano}
          AND view_situacao.cod_situacao = {$situacao_matricula}
          AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
