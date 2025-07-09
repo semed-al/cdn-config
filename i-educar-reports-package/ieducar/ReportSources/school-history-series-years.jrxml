@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="school-history-series-years" language="groovy" pageWidth="595" pageHeight="900" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="15" bottomMargin="15" isFloatColumnFooter="true" uuid="a79dda7b-5eab-4f10-b9e4-88b7ba7d8664">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -1231,7 +1231,7 @@
 					<staticText>
 						<reportElement positionType="Float" x="324" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[($V{max_status_serie5} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria5} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie5} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria5} == null || $V{max_status_serie5} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1255,7 +1255,7 @@
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="148" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie1} != "Repr" && $V{max_status_serie1} != "Trs")]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1267,7 +1267,7 @@
 					</textField>
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="192" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie2} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie2} != "Repr" && $V{max_status_serie2} != "Trs")]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1280,7 +1280,7 @@
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="236" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie3} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie3} != "Repr" && $V{max_status_serie3} != "Trs")]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1292,7 +1292,7 @@
 					</textField>
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="280" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie4} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[$V{max_status_serie4} != "Repr" && $V{max_status_serie4} != "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1305,7 +1305,7 @@
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="324" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie5} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[$V{max_status_serie5} != "Repr" && $V{max_status_serie5} != "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1317,7 +1317,7 @@
 					</textField>
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="368" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie6} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[$V{max_status_serie6} != "Repr" && $V{max_status_serie6} != "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1330,7 +1330,7 @@
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="412" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie7} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[$V{max_status_serie7} != "Repr" && $V{max_status_serie7} != "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1343,7 +1343,7 @@
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="456" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie8} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[$V{max_status_serie8} != "Repr" && $V{max_status_serie8} != "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1355,7 +1355,7 @@
 					</textField>
 					<textField pattern="###" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="500" y="-11" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="e19c0600-1181-483f-9d80-31c6dc4f0f72">
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie9} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[$V{max_status_serie9} != "Repr" && $V{max_status_serie9} != "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1368,7 +1368,7 @@
 					<staticText>
 						<reportElement positionType="Float" x="412" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[($V{max_status_serie7} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria7} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie7} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria7} == null || $V{max_status_serie7} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1380,7 +1380,7 @@
 					</staticText>
 					<staticText>
 						<reportElement positionType="Float" x="280" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
-							<printWhenExpression><![CDATA[($V{max_status_serie4} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria4} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie4} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria4} == null || $V{max_status_serie4} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1392,7 +1392,7 @@
 					</staticText>
 					<staticText>
 						<reportElement positionType="Float" x="192" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
-							<printWhenExpression><![CDATA[($V{max_status_serie2} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria2} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie2} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria2} == null || $V{max_status_serie2} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1405,7 +1405,7 @@
 					<staticText>
 						<reportElement positionType="Float" x="456" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[($V{max_status_serie8} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria8} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie8} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria8} == null || $V{max_status_serie8} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1419,7 +1419,7 @@
 						<reportElement positionType="Float" x="148" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[($V{max_status_serie1} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria1} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie1} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria1} == null || $V{max_status_serie1} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1431,7 +1431,7 @@
 					</staticText>
 					<staticText>
 						<reportElement positionType="Float" x="500" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
-							<printWhenExpression><![CDATA[($V{max_status_serie9} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria9} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie9} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria9} == null || $V{max_status_serie9} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1444,7 +1444,7 @@
 					<staticText>
 						<reportElement positionType="Float" x="236" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[($V{max_status_serie3} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria3} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie3} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria3} == null || $V{max_status_serie3} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1456,7 +1456,7 @@
 					</staticText>
 					<staticText>
 						<reportElement positionType="Float" x="368" y="-11" width="44" height="14" uuid="f7a0fef5-8edd-41b3-a935-5e17e9282b42">
-							<printWhenExpression><![CDATA[($V{max_status_serie6} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria6} == null]]></printWhenExpression>
+							<printWhenExpression><![CDATA[($V{max_status_serie6} == "Repr" && $P{nao_emitir_reprovado} ) || $V{max_carga_horaria6} == null || $V{max_status_serie6} == "Trs"]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1481,7 +1481,7 @@
 					</textField>
 					<textField pattern="#0.0" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="192" y="18" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="00aa8cd4-cc55-4eec-aeac-7f1476c67a0c">
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie2} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1494,7 +1494,7 @@
 					<textField pattern="#0.0" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="236" y="18" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="a5905203-7785-4a1b-a180-4fd48d821e32">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie3} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1506,7 +1506,7 @@
 					</textField>
 					<textField pattern="#0.0" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="280" y="18" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="6f34a1d2-d422-44bb-afc5-1e55f74293bf">
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie4} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1519,7 +1519,7 @@
 					<textField pattern="#0.0" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="324" y="18" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="858c85b8-f294-41d2-b107-7fdeacf5046c">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie5} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1531,7 +1531,7 @@
 					</textField>
 					<textField pattern="#0.0" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="368" y="18" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="ccedc053-d5cb-4350-9f82-3746cf019805">
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie6} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1544,7 +1544,7 @@
 					<textField pattern="#0.0" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="412" y="18" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="dffacb0c-8b6a-4786-83d1-4072c99918ea">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie7} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1557,7 +1557,7 @@
 					<textField pattern="#0.0" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="456" y="18" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="c15da5af-43dc-4395-a558-946dc33b2fa5">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie8} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1569,7 +1569,7 @@
 					</textField>
 					<textField pattern="#0.0" isBlankWhenNull="true">
 						<reportElement positionType="Float" x="500" y="18" width="44" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="f313d2ff-12e9-49fb-96e2-191cb2d82a13">
-							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie1} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
+							<printWhenExpression><![CDATA[!$P{nao_emitir_reprovado} || ($V{max_status_serie9} != "Repr" && $P{nao_emitir_reprovado} )]]></printWhenExpression>
 						</reportElement>
 						<box>
 							<pen lineWidth="0.25"/>
@@ -1677,7 +1677,7 @@
 					<graphicElement>
 						<pen lineWidth="0.25"/>
 					</graphicElement>
-				</line>				
+				</line>
 			</band>
 			<band height="570" splitType="Stretch">
 				<rectangle>
@@ -2729,7 +2729,7 @@
 						<printWhenExpression><![CDATA[$P{dominio}.contains("belem")]]></printWhenExpression>
 					</reportElement>
 					<staticText>
-						<reportElement stretchType="RelativeToBandHeight" x="1" y="8" width="543" height="20" uuid="e4671903-1ed5-457f-b80f-abaca79d0bbe"/>
+						<reportElement stretchType="ContainerHeight" x="1" y="8" width="543" height="20" uuid="e4671903-1ed5-457f-b80f-abaca79d0bbe"/>
 						<box>
 							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -3074,7 +3074,7 @@
 	<pageHeader>
 		<band height="50" splitType="Stretch">
 			<frame>
-				<reportElement stretchType="RelativeToBandHeight" x="6" y="0" width="545" height="50" uuid="6a9a6ffa-0323-4fce-97bc-66f00d976f2c">
+				<reportElement stretchType="ContainerHeight" x="6" y="0" width="545" height="50" uuid="6a9a6ffa-0323-4fce-97bc-66f00d976f2c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
@@ -3101,7 +3101,7 @@
 				</subreport>
 			</frame>
 			<frame>
-				<reportElement stretchType="RelativeToBandHeight" x="6" y="0" width="545" height="20" isRemoveLineWhenBlank="true" uuid="ae6f5923-ba9e-44a0-81a9-4ca044aa805a">
+				<reportElement stretchType="ContainerHeight" x="6" y="0" width="545" height="20" isRemoveLineWhenBlank="true" uuid="ae6f5923-ba9e-44a0-81a9-4ca044aa805a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==2]]></printWhenExpression>
 				</reportElement>
@@ -3229,7 +3229,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nome_serie5}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{max_nome_serie5}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report" isBlankWhenNull="true">
 				<reportElement positionType="FixRelativeToBottom" x="375" y="153" width="44" height="19" uuid="e3d2b289-8ce4-4e4e-963c-7dad28082906">
@@ -3831,7 +3831,7 @@ $P{cabecalho_alternativo} != 1]]></printWhenExpression>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="337" y="155" width="32" height="14" uuid="a47d14dc-5b60-43a6-b871-7c7321c60558">
+				<reportElement positionType="Float" x="337" y="156" width="32" height="14" uuid="a47d14dc-5b60-43a6-b871-7c7321c60558">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<printWhenExpression><![CDATA[$V{max_nome_serie5} == null]]></printWhenExpression>

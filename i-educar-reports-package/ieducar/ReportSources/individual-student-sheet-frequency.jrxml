@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_frequency" language="groovy" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="20" bottomMargin="20" uuid="57e58b7e-9044-48db-9b5a-070eef00e0b5">
 	<property name="ireport.zoom" value="1.6500000000000192"/>
 	<property name="ireport.x" value="0"/>
@@ -146,17 +146,18 @@
 				</textField>
 				<staticText>
 					<reportElement x="271" y="1" width="97" height="11" uuid="abd51960-5edd-4b24-9329-d99bd1b7a079"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6.4" isBold="true"/>
 					</textElement>
-					<text><![CDATA[AULAS DADAS]]></text>
+					<text><![CDATA[CARGA HORÁRIA CURSADA]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="496" y="1" width="39" height="23" uuid="c61206e9-e54d-490f-aaf1-54623fad4cad"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="6" isBold="false"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="5.4" isBold="true"/>
 					</textElement>
-					<text><![CDATA[FREQUÊNCIA TOTAL (AD-F)]]></text>
+					<text><![CDATA[FREQUÊNCIA TOTAL 
+(AD-F)]]></text>
 				</staticText>
 				<line>
 					<reportElement x="478" y="0" width="1" height="26" uuid="d8b30594-04e0-4b88-a150-57cdab1d81ac"/>
@@ -173,14 +174,14 @@
 				<staticText>
 					<reportElement x="2" y="3" width="138" height="19" uuid="11c2c683-a08c-4de7-9d92-7d9dc3249435"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8"/>
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
 					</textElement>
 					<text><![CDATA[COMPONENTE CURRICULAR]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="482" y="1" width="10" height="24" uuid="ce87c2d4-146a-45c7-b8e5-979f1da0d789"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
-						<font fontName="DejaVu Sans" size="7" isBold="false"/>
+						<font fontName="DejaVu Sans" size="6.1" isBold="true"/>
 					</textElement>
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
@@ -262,7 +263,7 @@
 				<staticText>
 					<reportElement x="373" y="1" width="16" height="23" uuid="cd35aa8a-3b83-4b3c-a57e-844e6d86893f"/>
 					<textElement verticalAlignment="Middle" rotation="Left">
-						<font fontName="DejaVu Sans" size="7" isBold="false"/>
+						<font fontName="DejaVu Sans" size="6.1" isBold="true"/>
 					</textElement>
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
@@ -274,8 +275,8 @@
 				</line>
 				<staticText>
 					<reportElement x="395" y="1" width="83" height="11" uuid="b0ef8216-4520-4b4d-951f-1ef2fa75cb99"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="7" isBold="true"/>
 					</textElement>
 					<text><![CDATA[FALTAS]]></text>
 				</staticText>
@@ -408,7 +409,7 @@
 				<staticText>
 					<reportElement x="247" y="1" width="22" height="23" uuid="a09561c6-e63b-4020-8b53-ae9b2f729a4d"/>
 					<textElement verticalAlignment="Middle" rotation="Left">
-						<font fontName="DejaVu Sans" size="7" isBold="false"/>
+						<font fontName="DejaVu Sans" size="6.1" isBold="true"/>
 					</textElement>
 					<text><![CDATA[TOTAL]]></text>
 				</staticText>
@@ -426,10 +427,10 @@
 				</line>
 				<staticText>
 					<reportElement x="152" y="1" width="93" height="11" uuid="624dbf04-c479-45a9-853e-103bd05238f4"/>
-					<textElement textAlignment="Center">
-						<font fontName="DejaVu Sans" size="8"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="6.1" isBold="true"/>
 					</textElement>
-					<text><![CDATA[CARGA HORÁRIA]]></text>
+					<text><![CDATA[CARGA HORÁRIA PREVISTA]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
