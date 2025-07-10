@@ -49,6 +49,8 @@ class EducationalProgressAndProceduresReport extends Portabilis_Report_ReportCor
     {
         $ano = $this->args['ano'] ?: 0;
         $escola = $this->args['escola'] ?: 0;
+        $curso = $this->args['curso'] ?: 0;
+        $serie = $this->args['serie'] ?: 0;
 
         return "
             SELECT relatorio.get_nome_escola(escola.cod_escola) AS nome_escola,
@@ -180,6 +182,8 @@ class EducationalProgressAndProceduresReport extends Portabilis_Report_ReportCor
             AND matricula.aprovado <> 5 -- Não contabiliza reclassificados
             AND COALESCE(matricula_turma.remanejado, false) = false
             AND (SELECT CASE WHEN {$escola} = 0 THEN TRUE ELSE escola.cod_escola = {$escola} END)
+            AND (SELECT CASE WHEN {$curso} = 0 THEN TRUE ELSE curso.cod_curso = {$curso} END)
+            AND (SELECT CASE WHEN {$serie} = 0 THEN TRUE ELSE serie.cod_serie = {$serie} END)
 
             GROUP BY escola_ano_letivo.ano, escola.cod_escola, curso.nm_curso, serie.nm_serie, serie.cod_serie
             ORDER BY nome_escola, nome_curso, nome_serie
@@ -200,42 +204,59 @@ class EducationalProgressAndProceduresReport extends Portabilis_Report_ReportCor
     {
         $ano = $this->args['ano'] ?: 0;
         $escola = $this->args['escola'] ?: 0;
+        $curso = $this->args['curso'] ?: 0;
+        $serie = $this->args['serie'] ?: 0;
 
         $quantitativeChart = "
-            SELECT round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos({$ano}, {$escola})::decimal, 1) AS percentual,
+            SELECT count(m.cod_matricula) AS qtd, 
+                 round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos2({$ano}, {$escola}, {$curso}, {$serie})::decimal, 1) AS percentual,
                 'Aprovado' AS situacao
             FROM pmieducar.matricula m
             WHERE (CASE WHEN 0 = {$escola} THEN TRUE ELSE m.ref_ref_cod_escola = {$escola} END)
-            AND m.ano = {$ano}
-            AND m.aprovado = 1
+                AND (CASE WHEN 0 = {$curso} THEN TRUE ELSE m.ref_cod_curso = {$curso} END)
+                AND (CASE WHEN 0 = {$serie} THEN TRUE ELSE m.ref_ref_cod_serie = {$serie} END)
+                AND m.ano = {$ano}
+                AND m.aprovado = 1
             UNION ALL
-            SELECT round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos({$ano}, {$escola})::decimal, 1),
+            SELECT count(m.cod_matricula),
+                round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos2({$ano}, {$escola}, {$curso}, {$serie})::decimal, 1),
                 'Reprovado'
             FROM pmieducar.matricula m
             WHERE (CASE WHEN 0 = {$escola} THEN TRUE ELSE m.ref_ref_cod_escola = {$escola} END)
-            AND m.ano = {$ano}
-            AND m.aprovado = 2
+                AND (CASE WHEN 0 = {$curso} THEN TRUE ELSE m.ref_cod_curso = {$curso} END)
+                AND (CASE WHEN 0 = {$serie} THEN TRUE ELSE m.ref_ref_cod_serie = {$serie} END)
+                AND m.ano = {$ano}
+                AND m.aprovado = 2
             UNION ALL
-            SELECT round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos({$ano}, {$escola})::decimal, 1),
+            SELECT count(m.cod_matricula),
+                round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos2({$ano}, {$escola}, {$curso}, {$serie})::decimal, 1),
                 'Transferido'
             FROM pmieducar.matricula m
             WHERE (CASE WHEN 0 = {$escola} THEN TRUE ELSE m.ref_ref_cod_escola = {$escola} END)
-            AND m.ano = {$ano}
-            AND m.aprovado = 4
+                AND (CASE WHEN 0 = {$curso} THEN TRUE ELSE m.ref_cod_curso = {$curso} END)
+                AND (CASE WHEN 0 = {$serie} THEN TRUE ELSE m.ref_ref_cod_serie = {$serie} END)
+                AND m.ano = {$ano}
+                AND m.aprovado = 4
             UNION ALL
-            SELECT round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos({$ano}, {$escola})::decimal, 1),
+            SELECT count(m.cod_matricula),
+                round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos2({$ano}, {$escola}, {$curso}, {$serie})::decimal, 1),
                 'Falecidos'
             FROM pmieducar.matricula m
             WHERE (CASE WHEN 0 = {$escola} THEN TRUE ELSE m.ref_ref_cod_escola = {$escola} END)
-            AND m.ano = {$ano}
-            AND m.ref_cod_abandono_tipo = 2
+                AND (CASE WHEN 0 = {$curso} THEN TRUE ELSE m.ref_cod_curso = {$curso} END)
+                AND (CASE WHEN 0 = {$serie} THEN TRUE ELSE m.ref_ref_cod_serie = {$serie} END)
+                AND m.ano = {$ano}
+                AND m.ref_cod_abandono_tipo = 2
             UNION ALL
-            SELECT round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos({$ano}, {$escola})::decimal, 1),
+            SELECT count(m.cod_matricula),
+                round((count(m.cod_matricula)*100)/relatorio.get_qtde_alunos2({$ano}, {$escola}, {$curso}, {$serie})::decimal, 1),
                 'Desistências'
             FROM pmieducar.matricula m
             WHERE (CASE WHEN 0 = {$escola} THEN TRUE ELSE m.ref_ref_cod_escola = {$escola} END)
-            AND m.ano = {$ano}
-            AND m.ref_cod_abandono_tipo = 1
+                AND (CASE WHEN 0 = {$curso} THEN TRUE ELSE m.ref_cod_curso = {$curso} END)
+                AND (CASE WHEN 0 = {$serie} THEN TRUE ELSE m.ref_ref_cod_serie = {$serie} END)
+                AND m.ano = {$ano}
+                AND m.ref_cod_abandono_tipo = 1
         ";
         return [
             'quantitative_chart' => $quantitativeChart
