@@ -16,7 +16,7 @@
 	<field name="situacao" class="java.lang.String"/>
 	<summary>
 		<band height="200" splitType="Stretch">
-			<barChart>
+			<bar3DChart>
 				<chart theme="default">
 					<reportElement stretchType="ContainerHeight" x="10" y="0" width="553" height="200" isPrintWhenDetailOverflows="true" uuid="826e40d0-92b0-432a-9add-76d5d43b1e99"/>
 					<chartTitle/>
@@ -25,23 +25,56 @@
 				</chart>
 				<categoryDataset>
 					<categorySeries>
-						<seriesExpression><![CDATA[$F{situacao}]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{qtd} +" (" + $F{percentual} + "%)"]]></categoryExpression>
+						<seriesExpression><![CDATA[$F{percentual} + "% (" + $F{qtd} +" matrículas)"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{situacao}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{percentual}]]></valueExpression>
-						<labelExpression><![CDATA[$F{situacao}]]></labelExpression>
+						<labelExpression><![CDATA[$F{percentual} + "%"]]></labelExpression>
 					</categorySeries>
 				</categoryDataset>
-				<barPlot>
+				<bar3DPlot>
 					<plot/>
-					<itemLabel/>
+					<itemLabel>
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</itemLabel>
 					<categoryAxisFormat>
 						<axisFormat/>
 					</categoryAxisFormat>
 					<valueAxisFormat>
 						<axisFormat/>
 					</valueAxisFormat>
-				</barPlot>
-			</barChart>
+				</bar3DPlot>
+			</bar3DChart>
+			<!-- <pieChart>
+				<chart theme="default">
+					<reportElement 
+						stretchType="ContainerHeight" 
+						x="10" y="0" 
+						width="553" height="200" 
+						isPrintWhenDetailOverflows="true" 
+						uuid="826e40d0-92b0-432a-9add-76d5d43b1e99"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<pieSeries>
+						<keyExpression><![CDATA[$F{situacao} + " (" + $F{percentual} + "%)"]]></keyExpression>
+						<valueExpression><![CDATA[
+							$F{percentual} != null ? $F{percentual} : new java.math.BigDecimal("0.0001")
+						]]></valueExpression>
+						<labelExpression><![CDATA[
+							$F{percentual} != null && $F{percentual} > 0 ? $F{situacao} : ""
+						]]></labelExpression>
+					</pieSeries>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					 <itemLabel>
+						<font fontName="SansSerif" size="10" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+					</itemLabel>
+				</piePlot>
+			</pieChart> -->
+
 		</band>
 	</summary>
 </jasperReport>
