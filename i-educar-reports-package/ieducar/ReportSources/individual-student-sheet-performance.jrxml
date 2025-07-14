@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_performance" language="groovy" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="20" bottomMargin="20" uuid="44cd7ba6-0acb-42d2-86a2-e0feb1905820">
 	<property name="ireport.zoom" value="1.6500000000000192"/>
 	<property name="ireport.x" value="0"/>
@@ -121,7 +121,7 @@
 				</staticText>
 				<textField>
 					<reportElement x="244" y="14" width="27" height="11" uuid="f60ef797-8e0f-48fe-b69b-9142b7d8d5c4"/>
-					<textElement textAlignment="Center">
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 4 ? "4º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
@@ -152,7 +152,7 @@
 				</line>
 				<textField>
 					<reportElement x="213" y="14" width="27" height="11" uuid="af36deaf-ca2f-4a8b-aa46-8860559791ca"/>
-					<textElement textAlignment="Center">
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 3 ? "3º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
@@ -165,7 +165,7 @@
 				</line>
 				<textField>
 					<reportElement x="182" y="14" width="27" height="11" uuid="690ce1d1-d535-4bb7-bdfb-8174e0abb02e"/>
-					<textElement textAlignment="Center">
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="6"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{quantidade_etapas} >= 2 ? "2º " + $F{etapa_tipo} : "-"]]></textFieldExpression>
@@ -365,7 +365,7 @@
 			</rectangle>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="9840a00d-adea-4426-a3f6-1d778ed4d45e">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota1}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -373,17 +373,8 @@
 				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 1 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($F{saiu_etapa} == 1 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
-				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="9b6ab458-c91b-4426-a4f8-ac3d8a1875b9">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota1}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 1 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($F{saiu_etapa} == 1 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : $F{nota1}) : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="e777cca9-d769-4e39-be43-01f55e78666d">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota1}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -391,17 +382,8 @@
 				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 1) ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota1})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
-				<reportElement x="153" y="1" width="26" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="62a0026a-3c6d-4d09-a1c4-38670ed0de16">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota1}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 1) ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : $F{nota1}) : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="2344dec8-0e37-4c33-9841-4b3b7dade92c">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota2}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -409,31 +391,13 @@
 				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 2 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($F{saiu_etapa} == 2 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
-				<reportElement x="183" y="1" width="26" height="11" uuid="7738ec3a-eefa-4f27-a668-ae613ed6390d">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota2}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 2 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($F{saiu_etapa} == 2 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : $F{nota2}) : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="183" y="1" width="26" height="11" uuid="48b3461e-6c11-4eda-be2d-a5a9f2fb9fd3">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota2}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 2) ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota2})).toString()) : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#0.0" isBlankWhenNull="true">
-				<reportElement x="183" y="1" width="26" height="11" uuid="533fad99-7b6d-420c-81db-babc3eefcdad">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota2}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[($F{cursou_etapa_max} >= 2) ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : $F{nota2}) : "-"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="2" y="1" width="148" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
@@ -468,7 +432,7 @@
 			</rectangle>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="9577053f-dd74-42c5-b56e-dfebedb718aa">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota3}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -476,31 +440,13 @@
 				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 3 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false) ? ($F{saiu_etapa} == 3 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
-				<reportElement x="214" y="1" width="26" height="11" uuid="f557e834-f0ac-4ea9-9d1a-0de967e7cc2e">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota3}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 3 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false) ? ($F{saiu_etapa} == 3 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : $F{nota3}) : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="214" y="1" width="26" height="11" uuid="90a7f72a-e8f1-42a3-a4cf-c273c6149fa3">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota3}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 3 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false) ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota3})).toString()) : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#0.0" isBlankWhenNull="true">
-				<reportElement x="214" y="1" width="26" height="11" uuid="033ea9a7-d070-463b-85de-c07bdc078c6b">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota3}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 3 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false) ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : $F{nota3}) : "-"]]></textFieldExpression>
 			</textField>
 			<rectangle>
 				<reportElement stretchType="ElementGroupHeight" x="393" y="0" width="0" height="13" uuid="8686462e-eef2-4298-a2d0-61ddf6aad639">
@@ -512,7 +458,7 @@
 			</rectangle>
 			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11" uuid="12c04f41-b44c-480f-8330-90d92250edbd">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota4}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
@@ -520,31 +466,13 @@
 				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 4 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($F{saiu_etapa} == 4 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField pattern="#0.0" isBlankWhenNull="true">
-				<reportElement x="245" y="1" width="26" height="11" uuid="64fde0f1-fce8-4718-a3ab-a1947f7fc892">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 0 && $F{nota4}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{saiu_etapa} >= 4 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($F{saiu_etapa} == 4 ? "-" : ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") ) : $F{nota4}) : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#0.0" isBlankWhenNull="true">
 				<reportElement x="245" y="1" width="26" height="11" uuid="d818fe14-48b0-44ac-8694-d718ff868105">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota4}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 4 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
-			</textField>
-			<textField pattern="#0.0" isBlankWhenNull="true">
-				<reportElement x="245" y="1" width="26" height="11" uuid="2e00c052-d229-4241-849d-97b87b2e4c77">
-					<printWhenExpression><![CDATA[$F{ativo_na_turma} == 1 && $F{nota4}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="DejaVu Sans" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 4 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : $F{nota4}) : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="513" y="0" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108">
