@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_cabecalho_retrato" language="groovy" pageWidth="545" pageHeight="752" columnWidth="545" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0d2ddb19-fbc0-4ec9-9b68-1b3f41c8ef77">
 	<parameter name="logo" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -34,6 +34,8 @@
 	<field name="email" class="java.lang.String"/>
 	<field name="uf" class="java.lang.String"/>
 	<field name="cidade" class="java.lang.String"/>
+	<field name="ato_criacao" class="java.lang.String"/>
+	<field name="ato_autorizativo" class="java.lang.String"/>
 	<pageHeader>
 		<band height="61" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -44,7 +46,7 @@
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="69" y="1" width="470" height="10" uuid="f6960e90-9ff9-4ae7-b8fe-cd89f3390925"/>
+				<reportElement x="69" y="1" width="301" height="10" uuid="f6960e90-9ff9-4ae7-b8fe-cd89f3390925"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
@@ -69,7 +71,7 @@
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="69" y="11" width="321" height="10" uuid="08a62240-61cb-401e-a8ac-a1b3a17541f1"/>
+				<reportElement x="69" y="11" width="301" height="10" uuid="08a62240-61cb-401e-a8ac-a1b3a17541f1"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
@@ -80,7 +82,7 @@
 					<printWhenExpression><![CDATA[$P{cod_escola}!=0]]></printWhenExpression>
 				</reportElement>
 				<textElement markup="html">
-					<font fontName="DejaVu Sans" size="8" isBold="false"/>
+					<font fontName="DejaVu Sans" size="7" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{email} != null ? $F{email} : "")]]></textFieldExpression>
 			</textField>
@@ -156,23 +158,15 @@
 				</textElement>
 				<text><![CDATA[E-MAIL:]]></text>
 			</staticText>
-			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="390" y="1" width="75" height="10" uuid="06243296-6ee9-41fb-bd07-960c019a46a1">
-					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+			<textField isBlankWhenNull="false">
+				<reportElement x="414" y="1" width="133" height="10" uuid="47ab2458-b7bc-491d-aa50-b25299ffb811">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$F{ato_criacao} != null && $F{ato_criacao}.isEmpty() == false]]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Right" markup="html">
-					<font fontName="DejaVu Sans" size="8" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA["<b>Emitido em:</b>"]]></textFieldExpression>
-			</textField>
-			<textField pattern="dd/MM/yyyy hh:mm" isBlankWhenNull="false">
-				<reportElement x="465" y="1" width="74" height="10" uuid="47ab2458-b7bc-491d-aa50-b25299ffb811">
-					<printWhenExpression><![CDATA[false]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Right" markup="html">
+				<textElement textAlignment="Left" markup="none">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ato_criacao}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="471" y="31" width="68" height="10" uuid="8c58fd45-fd74-45d9-8059-9515e318bcf2"/>
@@ -188,6 +182,36 @@
 				</textElement>
 				<text><![CDATA[INEP:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="372" y="11" width="32" height="10" uuid="94da7c8b-9a75-4ab3-afef-d2edb8e9235c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$F{ato_autorizativo} != null && $F{ato_autorizativo}.isEmpty() == false]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ato Aut.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="1" width="42" height="10" uuid="eddc9fce-5d25-4438-987d-f0c284a17cef">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$F{ato_criacao} != null && $F{ato_criacao}.isEmpty() == false]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ato criação:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement x="404" y="11" width="143" height="10" uuid="573b9fd0-839a-4234-9139-1f6358bda981">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$F{ato_autorizativo} != null && $F{ato_autorizativo}.isEmpty() == false]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ato_autorizativo}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 </jasperReport>
