@@ -31,10 +31,11 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
      */
     public function form()
     {
-        $this->inputsHelper()->dynamic(['ano', 'instituicao', 'escola', 'curso', 'serie', 'turma']);
+        $this->inputsHelper()->dynamic(['ano', 'instituicao', 'escola']);
+        $this->inputsHelper()->dynamic(['curso', 'serie', 'turma'], ['required' => false]);      
         $this->inputsHelper()->simpleSearchAluno(null);
 
-        $this->inputsHelper()->checkbox('lote', ['label' => 'Emitir em lote?']);
+        // $this->inputsHelper()->checkbox('lote', ['label' => 'Emitir em lote?']);
 
         // $this->inputsHelper()->checkbox('emitir_carga_horaria_frequentada', ['label' => 'Emitir Carga horária frequentada']);
 
