@@ -475,7 +475,7 @@
 				<textFieldExpression><![CDATA[$F{cursou_etapa_max} >= 4 ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false)  ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC")  : new DecimalFormat("##0.0").format(Double.parseDouble($F{nota4})).toString()) : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="513" y="0" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108">
+				<reportElement x="513" y="1" width="26" height="11" uuid="882e68c9-f561-4490-8aae-276d0a88e108">
 					<printWhenExpression><![CDATA[$F{media_final}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
@@ -484,7 +484,7 @@
 				<textFieldExpression><![CDATA[$F{ativo_na_turma} == 0 ? $F{situacao}.toString().substring(0,3) : ($F{cursou_etapa_max} >= $F{quantidade_etapas} ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false) ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") : new DecimalFormat("##0.0").format(Double.parseDouble($F{media_final})).toString()) : "-")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="513" y="0" width="26" height="11" uuid="9bc73d71-9dfd-4398-b421-df2f7bf93ad9">
+				<reportElement x="513" y="1" width="26" height="11" uuid="9bc73d71-9dfd-4398-b421-df2f7bf93ad9">
 					<printWhenExpression><![CDATA[$F{media_final}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" markup="html">
@@ -493,7 +493,7 @@
 				<textFieldExpression><![CDATA[$F{ativo_na_turma} == 0 ? $F{situacao}.toString().substring(0,3) : ($F{cursou_etapa_max} >= $F{quantidade_etapas} ? (($F{tem_nota} == false && $F{desconsidera_para_progressao} == false) ? ($P{dominio}.contains("japaratinga") || $P{dominio}.contains("coite") ? "APC" : "PPC") : $F{media_final}) : "-")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="469" y="0" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
+				<reportElement x="469" y="1" width="26" height="11" uuid="887f00b8-1d2e-48b9-a272-12c4782bdb3d"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -576,7 +576,7 @@
 				<textFieldExpression><![CDATA[$F{nota4recuperacao} != null ? new DecimalFormat("##0.0").format($F{nota4recuperacao}.doubleValue()).toString() : "-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="399" y="0" width="26" height="11" uuid="bf1bd499-99fb-425b-b9a0-a0a19383a788">
+				<reportElement x="399" y="1" width="26" height="11" uuid="bf1bd499-99fb-425b-b9a0-a0a19383a788">
 					<printWhenExpression><![CDATA[$F{media_final}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -585,7 +585,7 @@
 				<textFieldExpression><![CDATA[$F{tem_nota} == false ? "-" : new DecimalFormat("##0.0").format($F{resultado_anual}.doubleValue()).toString()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="399" y="0" width="26" height="11" uuid="88ad97fa-fbf6-4ecb-801e-a291a8966939">
+				<reportElement x="399" y="1" width="26" height="11" uuid="88ad97fa-fbf6-4ecb-801e-a291a8966939">
 					<printWhenExpression><![CDATA[$F{media_final}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -610,7 +610,7 @@
 				</graphicElement>
 			</rectangle>
 			<textField isBlankWhenNull="true">
-				<reportElement x="431" y="0" width="26" height="11" uuid="4de9b050-140b-42a4-9101-97c4429f06b1">
+				<reportElement x="431" y="1" width="26" height="11" uuid="4de9b050-140b-42a4-9101-97c4429f06b1">
 					<printWhenExpression><![CDATA[$F{tem_nota} == false]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -619,7 +619,7 @@
 				<textFieldExpression><![CDATA["-"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="431" y="0" width="26" height="11" uuid="e011575d-cae1-46b9-abfe-d3f1d7317488">
+				<reportElement x="431" y="1" width="26" height="11" uuid="e011575d-cae1-46b9-abfe-d3f1d7317488">
 					<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -628,7 +628,7 @@
 				<textFieldExpression><![CDATA[$F{nota_exame} == null ? new DecimalFormat("##0.0").format(Double.parseDouble($F{media_final})).toString() : new DecimalFormat("##0.0").format($F{media_anual}.doubleValue()).toString()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="431" y="0" width="26" height="11" uuid="43f732b4-eb0a-4d62-b3d9-59a51348d682">
+				<reportElement x="431" y="1" width="26" height="11" uuid="43f732b4-eb0a-4d62-b3d9-59a51348d682">
 					<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[a-zA-Z]+[., ]*[a-zA-Z]*")]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">

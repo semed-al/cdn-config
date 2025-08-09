@@ -259,7 +259,6 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                                                                             AND falta_componente4.etapa = '4')
         INNER JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie
                                                                 AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
-                                                                AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
                                                                 )
         LEFT JOIN modules.componente_curricular_turma ON (componente_curricular_turma.ano_escolar_id = serie.cod_serie
                                                                 AND componente_curricular_turma.componente_curricular_id = view_componente_curricular.id
@@ -409,7 +408,6 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                                                                 AND nota_componente_curricular_media.componente_curricular_id = view_componente_curricular.id)
         INNER JOIN modules.componente_curricular_ano_escolar ON (componente_curricular_ano_escolar.ano_escolar_id = serie.cod_serie
                                                                 AND componente_curricular_ano_escolar.componente_curricular_id = view_componente_curricular.id
-                                                                AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
                                                                 )
         INNER JOIN modules.componente_curricular ON (componente_curricular.id = componente_curricular_ano_escolar.componente_curricular_id)
         LEFT JOIN modules.regra_avaliacao_serie_ano rasa on(serie.cod_serie = rasa.serie_id AND matricula.ano = rasa.ano_letivo)

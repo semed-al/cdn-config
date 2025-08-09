@@ -10,6 +10,7 @@ class EnrollmentQuantitativeMapSchoolGrade extends QueryBridge
         return <<<'SQL'
             SELECT
                 relatorio.get_nome_escola(escola.cod_escola) AS nm_escola,
+                curso.nm_curso AS nm_curso,
                 serie.nm_serie AS nm_serie,
                 COUNT(matricula.cod_matricula) AS total_alunos,
                 COUNT(turma.cod_turma) as total_turmas,
@@ -72,10 +73,12 @@ class EnrollmentQuantitativeMapSchoolGrade extends QueryBridge
                 END
             GROUP BY
                 nm_escola,
+                nm_curso,
                 nm_serie,
                 turma.cod_turma
             ORDER BY
                 nm_escola,
+                nm_curso,
                 nm_serie,
                 turma.cod_turma;
 SQL;
