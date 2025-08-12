@@ -59,6 +59,7 @@
 	<parameter name="modelo" class="java.lang.Integer"/>
 	<parameter name="dependencia" class="java.lang.Integer"/>
 	<parameter name="source" class="java.lang.String"/>
+	<parameter name="turno" class="java.lang.Integer"/>
 	<field name="cod_aluno" class="java.lang.Integer"/>
 	<field name="cpf" class="java.lang.String"/>
 	<field name="nome_aluno" class="java.lang.String"/>

@@ -52,6 +52,7 @@
 	</parameter>
 	<parameter name="modelo" class="java.lang.Integer"/>
 	<parameter name="dependencia" class="java.lang.Integer"/>
+	<parameter name="turno" class="java.lang.Integer"/>
 	<field name="sequencial_fechamento" class="java.lang.Integer"/>
 	<field name="nome_aluno" class="java.lang.String"/>
 	<field name="cod_turma" class="java.lang.Integer"/>

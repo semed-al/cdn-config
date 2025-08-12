@@ -228,6 +228,14 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                             TRUE
                         END
                     )
+                    AND
+                    (
+                        CASE WHEN '{$this->args['turno']}' = 0 THEN
+                            TRUE
+                        ELSE
+                            pmieducar.turma_turno.id = '{$this->args['turno']}'
+                        END
+                    )
                 ORDER BY
                     cod_aluno
             ) subquery
