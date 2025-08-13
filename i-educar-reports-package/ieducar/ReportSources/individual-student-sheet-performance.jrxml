@@ -333,7 +333,7 @@
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="1" y="-1" width="541" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ac8fd9a5-2f5b-42eb-bb60-b991170b191f">
-						<printWhenExpression><![CDATA[$F{tem_nota} == true && $F{media_final}.matches("[0-9]+[.,]?[0-9]*")]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{tem_nota} == true && $V{media_global} != null]]></printWhenExpression>
 					</reportElement>
 					<box>
 						<pen lineWidth="0.25"/>

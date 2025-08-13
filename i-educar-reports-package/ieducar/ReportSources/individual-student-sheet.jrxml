@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="portabilis_individual_student_sheet" language="groovy" pageWidth="595" pageHeight="842" columnWidth="570" leftMargin="20" rightMargin="5" topMargin="20" bottomMargin="20" uuid="ab80d035-fee0-4652-ad3f-1dfa50b6e3c2">
 	<property name="ireport.zoom" value="1.6500000000000192"/>
 	<property name="ireport.x" value="0"/>
@@ -516,7 +516,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
 					<font fontName="DejaVu Sans" size="7"/>
 				</textElement>
-				<text><![CDATA[LEGENDA:<br>Resultado de desempenho:<br>&emsp A = Aprovado<br>&emsp R = Reprovado<br>&emsp PPC = Promovido em Progressão Continuada<br>&emsp APP = Aprovado com Progressão Parcial<br>
+				<text><![CDATA[LEGENDA:<br>Resultado de desempenho:<br>&emsp A = Aprovado<br>&emsp R = Reprovado<br>&emsp APC = Aprovado em Progressão Continuada<br>&emsp PPC = Promovido em Progressão Continuada<br>&emsp APP = Aprovado com Progressão Parcial<br>
 				Resultado final:<br>&emsp A, R, APC, PPC, APP]]></text>
 			</staticText>
 			<textField>
