@@ -113,7 +113,6 @@ INNER JOIN cadastro.pessoa ON pessoa.idpes = fisica.idpes
 WHERE escola_ano_letivo.ativo = 1
   AND escola_ano_letivo.ano = {$ano}
   AND matricula.ref_ref_cod_escola = {$escola}
-  AND matricula.ref_cod_curso = {$curso}
   AND serie.cod_serie = {$serie}
   AND view_situacao.cod_situacao = {$situacao}
   AND (SELECT 1
