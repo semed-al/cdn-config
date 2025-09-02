@@ -22,8 +22,6 @@ class TeachersAndCoursesTaughtByClassReport extends Portabilis_Report_ReportCore
         $this->addRequiredArg('ano');
         $this->addRequiredArg('instituicao');
         $this->addRequiredArg('escola');
-        $this->addRequiredArg('curso');
-        $this->addRequiredArg('serie');
     }
 
     public function getSqlMainReport()
@@ -163,8 +161,20 @@ INNER JOIN modules.professor_turma_disciplina ON TRUE
 WHERE TRUE
     AND instituicao.cod_instituicao = {$instituicao}
     AND escola.cod_escola = {$escola}
-    AND curso.cod_curso = {$curso}
-    AND serie.cod_serie = {$serie}
+    AND (
+        CASE WHEN {$curso} = 0 THEN
+            TRUE
+        ELSE
+            curso.cod_curso = {$curso}
+        END
+    )
+    AND (
+        CASE WHEN {$serie} = 0 THEN
+            TRUE
+        ELSE
+            serie.cod_serie = {$serie}
+        END
+    )
     AND
     (
         CASE WHEN {$turma} = 0 THEN
