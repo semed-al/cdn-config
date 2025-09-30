@@ -531,7 +531,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq5}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -577,7 +577,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq9}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -624,7 +624,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq2}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -685,7 +685,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq3}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -704,7 +704,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq6}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -723,7 +723,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq4}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -858,7 +858,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq8}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -919,7 +919,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq7}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -952,7 +952,7 @@
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
 						<textFieldExpression><![CDATA[new java.lang.String(
-  new java.text.DecimalFormat("#.##").format(
+  new java.text.DecimalFormat("0.0").format(
     new java.lang.Double( $V{max_freq1}.doubleValue() )
     ).replace(".",",")
   )]]></textFieldExpression>
@@ -1214,16 +1214,17 @@
 						<text><![CDATA[]]></text>
 					</staticText>
 					<staticText>
-						<reportElement x="0" y="33" width="544" height="25" uuid="9cdeaad2-5774-4f7a-96e1-58b3dea48cff">
+						<reportElement x="0" y="33" width="544" height="35" uuid="9cdeaad2-5774-4f7a-96e1-58b3dea48cff">
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
-							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Justified" markup="html">
 							<font size="7"/>
 							<paragraph lineSpacingSize="1.0"/>
 						</textElement>
-						<text><![CDATA[Legenda do resultado final:<br>Apr: APROVADO; AprDep: APROVADO COM DEPENDÊNCIA; AprCo: APROVADO POR CONSELHO DE CLASSE; Repr: REPROVADO; RpFt: REPROVADO POR FALTA; Curs: CURSANDO; Trs: TRANSFERIDO; Aban: ABANDONO; Fal: FALECIDO; Prom: PROMOVIDO]]></text>
+						<text><![CDATA[Legenda:<br>Apr: APROVADO; AprDep: APROVADO COM DEPENDÊNCIA; AprCo: APROVADO POR CONSELHO DE CLASSE; Repr: REPROVADO; RpFt: REPROVADO POR FALTA; Curs: CURSANDO; Trs: TRANSFERIDO; Aban: ABANDONO; Fal: FALECIDO; Prom: PROMOVIDO; PPC: PROGRESSÃO PARCIAL CONTINUADA; APC: APROVADO POR PROGRESSÃO CONTINUADA]]></text>
 					</staticText>
 				</frame>
 				<frame>

@@ -86,8 +86,8 @@ class SchoolHistoryController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
         $this->report->addArg('ano', (int) $this->getRequest()->ano);
         $this->report->addArg('emitir_carga_horaria_frequentada', (bool) $this->getRequest()->emitir_carga_horaria_frequentada);
-        $this->report->addArg('ano_ini', ($this->getRequest()->ano_ini == '' ? 0 : (int)$this->getRequest()->ano_ini));
-        $this->report->addArg('ano_fim', ($this->getRequest()->ano_fim == '' ? 0 : (int)$this->getRequest()->ano_fim));
+        $this->report->addArg('ano_ini', intval($this->getRequest()->ano_ini));
+        $this->report->addArg('ano_fim', intval($this->getRequest()->ano_fim));
         $cursoaluno = implode(',', array_filter($this->getRequest()->cursoaluno ?? []));
         $this->report->addArg('cursoaluno', trim($cursoaluno) == '' ? 0 : $cursoaluno);
         $this->report->addArg('apenas_ultimo_registro', (bool)$this->getRequest()->apenas_ultimo_registro);

@@ -11,18 +11,37 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
      */
     public function templateName()
     {
-        switch ($this->args['modelo']) {
-            case 1:
-                $model = 'students-per-class';
-                break;
-            case 2:
-                $model = 'students-per-class-simplified';
-                break;
-            case 3:
-                $model = 'students-per-class-basic';                
-                break;
-            default:
-                $model = 'students-per-class';
+        $dominio = $_SERVER['HTTP_HOST'];
+
+        if (strpos($dominio, 'delmiro') !== false) {
+            switch ($this->args['modelo']) {
+                case 1:
+                    $model = 'students-per-class';
+                    break;
+                case 2:
+                    $model = 'students-per-class-delmiro1';
+                    break;
+                case 3:
+                    $model = 'students-per-class-delmiro';                
+                    break;
+                default:
+                    $model = 'students-per-class';
+            }
+            
+        } else {
+            switch ($this->args['modelo']) {
+                case 1:
+                    $model = 'students-per-class';
+                    break;
+                case 2:
+                    $model = 'students-per-class-simplified';
+                    break;
+                case 3:
+                    $model = 'students-per-class-basic';                
+                    break;
+                default:
+                    $model = 'students-per-class';
+            }
         }
         return $model;
     }
