@@ -16,13 +16,13 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
         if (strpos($dominio, 'delmiro') !== false) {
             switch ($this->args['modelo']) {
                 case 1:
-                    $model = 'students-per-class';
-                    break;
-                case 2:
                     $model = 'students-per-class-delmiro1';
                     break;
+                case 2:
+                    $model = 'students-per-class-delmiro';
+                    break;
                 case 3:
-                    $model = 'students-per-class-delmiro';                
+                    $model = 'students-per-class';
                     break;
                 default:
                     $model = 'students-per-class';
