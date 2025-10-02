@@ -1214,7 +1214,7 @@
 						<text><![CDATA[]]></text>
 					</staticText>
 					<staticText>
-						<reportElement x="0" y="33" width="544" height="35" uuid="9cdeaad2-5774-4f7a-96e1-58b3dea48cff">
+						<reportElement x="0" y="33" width="544" height="30" uuid="9cdeaad2-5774-4f7a-96e1-58b3dea48cff">
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -1224,7 +1224,7 @@
 							<font size="7"/>
 							<paragraph lineSpacingSize="1.0"/>
 						</textElement>
-						<text><![CDATA[Legenda:<br>Apr: APROVADO; AprDep: APROVADO COM DEPENDÊNCIA; AprCo: APROVADO POR CONSELHO DE CLASSE; Repr: REPROVADO; RpFt: REPROVADO POR FALTA; Curs: CURSANDO; Trs: TRANSFERIDO; Aban: ABANDONO; Fal: FALECIDO; Prom: PROMOVIDO; PPC: PROGRESSÃO PARCIAL CONTINUADA; APC: APROVADO POR PROGRESSÃO CONTINUADA]]></text>
+						<text><![CDATA[Legenda -> Apr: APROVADO; AprDep: APROVADO COM DEPENDÊNCIA; AprCo: APROVADO POR CONSELHO DE CLASSE; Repr: REPROVADO; RpFt: REPROVADO POR FALTA; Curs: CURSANDO; Trs: TRANSFERIDO; Aban: ABANDONO; Fal: FALECIDO; Prom: PROMOVIDO; PPC: PROGRESSÃO PARCIAL CONTINUADA; APC: APROVADO POR PROGRESSÃO CONTINUADA]]></text>
 					</staticText>
 				</frame>
 				<frame>
@@ -1639,7 +1639,7 @@
 					<textFieldExpression><![CDATA[$F{data_atual_extenso}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="FixRelativeToBottom" x="330" y="73" width="158" height="26" uuid="f66cb3b1-76b6-4ee1-aa9b-7cdc06ce4058">
+					<reportElement positionType="FixRelativeToBottom" x="330" y="73" width="204" height="26" uuid="f66cb3b1-76b6-4ee1-aa9b-7cdc06ce4058">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
 					<box>
@@ -1662,7 +1662,7 @@
 					</graphicElement>
 				</line>
 				<textField isBlankWhenNull="true">
-					<reportElement positionType="FixRelativeToBottom" x="17" y="73" width="150" height="26" uuid="a7ea0998-c69f-419a-b1e8-d451e7ccd235">
+					<reportElement positionType="FixRelativeToBottom" x="17" y="73" width="245" height="26" uuid="a7ea0998-c69f-419a-b1e8-d451e7ccd235">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					</reportElement>
@@ -2870,7 +2870,7 @@
 						<textFieldExpression><![CDATA["<b>OBSERVAÇÕES</b><br>" + $F{observacao_all}]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement positionType="Float" x="197" y="150" width="159" height="16" uuid="40196625-d873-4c94-91d4-248c35f98bf3">
+						<reportElement positionType="Float" x="197" y="150" width="183" height="16" uuid="40196625-d873-4c94-91d4-248c35f98bf3">
 							<printWhenExpression><![CDATA[!$P{dominio}.contains("taquarana")]]></printWhenExpression>
 						</reportElement>
 						<textElement verticalAlignment="Middle">
@@ -2879,7 +2879,7 @@
 						<textFieldExpression><![CDATA[$F{municipio} + ", _____ / _____ / __________ "]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement positionType="Float" x="197" y="150" width="159" height="16" uuid="03ddd41d-aa00-4384-9126-a2b58658de4c">
+						<reportElement positionType="Float" x="197" y="150" width="183" height="16" uuid="03ddd41d-aa00-4384-9126-a2b58658de4c">
 							<printWhenExpression><![CDATA[$P{dominio}.contains("taquarana")]]></printWhenExpression>
 						</reportElement>
 						<textElement verticalAlignment="Middle">
@@ -2888,7 +2888,7 @@
 						<textFieldExpression><![CDATA[$F{municipio} + ", "+$F{data_atual_extenso}]]></textFieldExpression>
 					</textField>
 					<textField isBlankWhenNull="true">
-						<reportElement positionType="Float" x="318" y="200" width="160" height="26" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe">
+						<reportElement positionType="Float" x="318" y="200" width="204" height="26" uuid="9a5f8811-990a-41ec-ab70-7d559e26d0fe">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<box>
@@ -2909,7 +2909,7 @@
 						</graphicElement>
 					</line>
 					<textField isBlankWhenNull="true">
-						<reportElement positionType="Float" x="14" y="200" width="158" height="26" uuid="323eb834-4bb0-4121-9a04-c3e7b208ef1f"/>
+						<reportElement positionType="Float" x="14" y="200" width="227" height="26" uuid="323eb834-4bb0-4121-9a04-c3e7b208ef1f"/>
 						<textElement verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="8"/>
 						</textElement>
