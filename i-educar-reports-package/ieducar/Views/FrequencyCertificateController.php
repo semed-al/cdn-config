@@ -38,7 +38,7 @@ class FrequencyCertificateController extends Portabilis_Controller_ReportCoreCon
         $this->inputsHelper()->dynamic(['curso', 'serie', 'turma']);
         $this->inputsHelper()->select('modelo', ['label' => 'Modelo', 'resources' => [1 => 'Modelo 1'], 'value' => 1]);
         $this->inputsHelper()->simpleSearchMatricula(null, ['required' => false]);
-        // $this->campoMemo('observacao', 'Observação', $this->observacao, 48, 3, false);
+        $this->campoMemo('observacao', 'Observação', $this->observacao, 48, 3, false);
         $this->inputsHelper()->checkbox('emitir_frequencia', ['label' => 'Emitir a percentagem de frequência do aluno']);
         // $this->inputsHelper()->checkbox('emitir_nome_diretor', ['label' => 'Emitir assinatura do gestor escolar', 'value' => true]);
         // $this->inputsHelper()->checkbox('emitir_secretario_escolar', ['label' => 'Emitir assinatura do secretário escolar', 'value' => true]);        
