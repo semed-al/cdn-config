@@ -61,7 +61,9 @@ class TransferenceCertificateController extends Portabilis_Controller_ReportCore
         $this->report->addArg('instituicao', (int) $this->getRequest()->ref_cod_instituicao);
         $this->report->addArg('escola', (int) $this->getRequest()->ref_cod_escola);
         $this->report->addArg('matricula', (int) $this->getRequest()->matricula_id);
-        $this->report->addArg('observacao', $this->getRequest()->observacao);
+        
+        $observacao_encoded = base64_encode($this->getRequest()->observacao);
+        $this->report->addArg('observacao_b64', $observacao_encoded);
         $this->report->addArg('cabecalho_alternativo', (int) $GLOBALS['coreExt']['Config']->report->header->alternativo);
         $this->report->addArg('emitir_nome_diretor', (bool) $this->getRequest()->emitir_nome_diretor);
         $this->report->addArg('emitir_secretario_escolar', (bool) $this->getRequest()->emitir_secretario_escolar);

@@ -59,7 +59,9 @@ class FrequencyCertificateController extends Portabilis_Controller_ReportCoreCon
         $this->report->addArg('instituicao', (int) $this->getRequest()->ref_cod_instituicao);
         $this->report->addArg('escola', (int) $this->getRequest()->ref_cod_escola);
         $this->report->addArg('matricula', (int) $this->getRequest()->matricula_id);
-        $this->report->addArg('observacao', $this->getRequest()->observacao);
+
+        $observacao_encoded = base64_encode($this->getRequest()->observacao);
+        $this->report->addArg('observacao_b64', $observacao_encoded);
         $this->report->addArg('modelo', $this->getRequest()->modelo);
         $this->report->addArg('emitir_frequencia', (bool) $this->getRequest()->emitir_frequencia);
         $this->report->addArg('cabecalho_alternativo', (int) $GLOBALS['coreExt']['Config']->report->header->alternativo);

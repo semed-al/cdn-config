@@ -18,7 +18,10 @@
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="data_emissao" class="java.lang.Integer"/>
-	<parameter name="observacao" class="java.lang.String"/>
+	<parameter name="observacao_b64" class="java.lang.String"/>
+	<parameter name="observacao" class="java.lang.String">
+		<defaultValueExpression><![CDATA[new String(java.util.Base64.getDecoder().decode($P{observacao_b64}), "UTF-8")]]></defaultValueExpression>
+	</parameter>
 	<parameter name="cabecalho_alternativo" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
