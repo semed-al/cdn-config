@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="students-per-class" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="660c525a-0168-4141-8483-3075f389d9a9">
 	<property name="ireport.zoom" value="1.9965000000000017"/>
 	<property name="ireport.x" value="0"/>
@@ -64,10 +64,10 @@
 	<field name="serie_ciasc" class="java.lang.String"/>
 	<field name="inep" class="java.lang.Long"/>
 	<field name="nome_aluno" class="java.lang.String"/>
-	<field name="nm_mae_responsavel" class="java.lang.String"/>
+	<field name="nome_da_mae" class="java.lang.String"/>
 	<field name="prodesp_gdae" class="java.lang.String"/>
 	<field name="sexo" class="java.lang.String"/>
-	<field name="transporte" class="java.lang.String"/>
+	<field name="transporte_aluno" class="java.lang.String"/>
 	<field name="deficiencia" class="java.lang.String"/>
 	<field name="data_nasc" class="java.lang.String"/>
 	<field name="data_matricula" class="java.lang.String"/>
@@ -84,13 +84,13 @@
 	<field name="sala" class="java.lang.String"/>
 	<field name="situacao" class="java.lang.String"/>
 	<field name="dependencia" class="java.lang.Boolean"/>
-	<field name="nm_pai_responsavel" class="java.lang.String"/>
-	<field name="raca" class="java.lang.String"/>
-	<field name="municipio_nasc" class="java.lang.String"/>
+	<field name="nome_do_pai" class="java.lang.String"/>
+	<field name="cor_raca" class="java.lang.String"/>
+	<field name="naturalidade" class="java.lang.String"/>
 	<field name="cod_escola_ano_anterior" class="java.lang.Integer"/>
 	<field name="rg" class="java.lang.String"/>
-	<field name="sus" class="java.lang.String"/>
-	<field name="logradouro_aluno" class="java.lang.String"/>
+	<field name="codigo_sus" class="java.lang.String"/>
+	<field name="endereco" class="java.lang.String"/>
 	<field name="numero_aluno" class="java.lang.String"/>
 	<field name="complemento_aluno" class="java.lang.String"/>
 	<field name="letra_aluno" class="java.lang.String"/>
@@ -673,7 +673,7 @@
 					<font fontName="DejaVu Sans" size="5"/>
 					<paragraph leftIndent="2"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Nº SUS: " + $F{sus}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Nº SUS: " + $F{codigo_sus}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="0" y="0" width="12" height="30" uuid="2cab2d18-4400-4777-a35c-ace3e6779167">
@@ -718,7 +718,7 @@
 					<font fontName="DejaVu Sans" size="5"/>
 					<paragraph leftIndent="2" rightIndent="2"/>
 				</textElement>
-				<textFieldExpression><![CDATA["PAI: " + $F{nm_pai_responsavel}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["PAI: " + $F{nome_do_pai}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="0" width="800" height="1" uuid="8efc071c-4318-425e-b527-721ea9c14ecd">
@@ -971,7 +971,7 @@
 					<font fontName="DejaVu Sans" size="5"/>
 					<paragraph leftIndent="2" rightIndent="2"/>
 				</textElement>
-				<textFieldExpression><![CDATA["MÃE: " + $F{nm_mae_responsavel}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["MÃE: " + $F{nome_da_mae}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="718" y="0" width="35" height="30" uuid="1c662c1c-c0af-4891-8cf0-4d6a93737d1a">
@@ -981,7 +981,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{transporte}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{transporte_aluno}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="180" y="0" width="16" height="30" uuid="7de44e0c-2997-48f2-bde9-55a3ac73a342">
@@ -1002,7 +1002,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{raca}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cor_raca}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="239" y="0" width="63" height="30" uuid="d961b261-f34e-4469-91d9-56f63477533f">
@@ -1014,7 +1014,7 @@
 					<font fontName="DejaVu Sans" size="5"/>
 					<paragraph leftIndent="2" rightIndent="2"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{municipio_nasc}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{naturalidade}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="418" y="0" width="90" height="16" uuid="07efd5a5-d316-47ab-9e63-1b58dc65bf01">
@@ -1049,22 +1049,7 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[(!$F{logradouro_aluno}.equals("")?
-$F{logradouro_aluno} + $F{numero_aluno} + $F{complemento_aluno} + $F{letra_aluno} + $F{bloco_aluno} + $F{andar_aluno} + $F{apartamento_aluno}  + $F{bairro_aluno} +$F{municipio_aluno} +$F{sigla_uf_aluno} + $F{cep_aluno}
-:
-(!$F{logradouro_pai}.equals("")?
-$F{logradouro_pai} + $F{numero_pai} + $F{complemento_pai} + $F{letra_pai} + $F{bloco_pai} + $F{andar_pai} + $F{apartamento_pai}  + $F{bairro_pai} +$F{municipio_pai} +$F{sigla_uf_pai} + $F{cep_pai}
-:
-(!$F{logradouro_mae}.equals("")?
-$F{logradouro_mae} + $F{numero_mae} + $F{complemento_mae} + $F{letra_mae} + $F{bloco_mae} + $F{andar_mae} + $F{apartamento_mae}  + $F{bairro_mae} +$F{municipio_mae} +$F{sigla_uf_mae} + $F{cep_mae}
-:
-(!$F{logradouro_responsavel}.equals("")?
-$F{logradouro_responsavel} + $F{numero_responsavel} + $F{complemento_responsavel} + $F{letra_responsavel} + $F{bloco_responsavel} + $F{andar_responsavel} + $F{apartamento_responsavel}  + $F{bairro_responsavel} +$F{municipio_responsavel} +$F{sigla_uf_responsavel} + $F{cep_responsavel}
-:""
-)
-)
-)
-)]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{endereco} != null ? $F{endereco} : ""]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="642" y="0" width="75" height="10" uuid="71db967c-5ff4-414b-b259-9ca98a522ba2">

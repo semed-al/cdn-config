@@ -73,6 +73,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                     DISTINCT ON (aluno.cod_aluno) aluno.cod_aluno AS cod_aluno,
                     matricula_turma.sequencial_fechamento AS sequencial_fechamento,
                     public.formata_cpf(cpf) AS cpf,
+                    educacenso_cod_aluno.cod_aluno_inep AS num_censo,
                     fcn_upper(pessoa.nome) AS nome_aluno,
                     municipio.nome AS naturalidade,
                     fisica.sus AS codigo_sus,
@@ -146,6 +147,7 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                             )
                         )
                     ) AS endereco,
+                    to_char(matricula_turma.data_enturmacao,'dd/mm/yyyy') AS data_matricula,
                     view_situacao.texto_situacao AS situacao,
                     matricula.dependencia
                 FROM
