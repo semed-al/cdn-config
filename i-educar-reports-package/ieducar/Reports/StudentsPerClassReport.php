@@ -147,6 +147,45 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                             )
                         )
                     ) AS endereco,
+                    (
+                        SELECT documento.certidao_nascimento
+                        FROM cadastro.documento
+                        WHERE documento.idpes = aluno.ref_idpes
+                    ) AS certidao_nasc,
+                    coalesce(
+                            (SELECT to_char(fone_pai.fone, '9999999-9999')
+                                FROM cadastro.fisica AS pessoa_pai, cadastro.fone_pessoa AS fone_pai
+                                WHERE pessoa_pai.idpes = fisica.idpes_pai
+                                  AND pessoa_pai.idpes = fone_pai.idpes
+                                  AND fone_pai.tipo = 1),
+                            (SELECT to_char(fone_pai.fone, '9999999-9999')
+                                FROM cadastro.fisica AS pessoa_pai, cadastro.fone_pessoa AS fone_pai
+                                WHERE pessoa_pai.idpes = fisica.idpes_pai
+                                  AND pessoa_pai.idpes = fone_pai.idpes
+                                  AND fone_pai.tipo = 3),
+                            (SELECT to_char(fone_pai.fone, '9999999-9999')
+                                FROM cadastro.fisica AS pessoa_pai, cadastro.fone_pessoa AS fone_pai
+                                WHERE pessoa_pai.idpes = fisica.idpes_pai
+                                  AND pessoa_pai.idpes = fone_pai.idpes
+                                  AND fone_pai.tipo = 2)
+                    ) AS fone_pai,
+                    coalesce(
+                            (SELECT to_char(fone_mae.fone, '9999999-9999')
+                                FROM cadastro.fisica AS pessoa_mae, cadastro.fone_pessoa AS fone_mae
+                                WHERE pessoa_mae.idpes = fisica.idpes_mae
+                                  AND pessoa_mae.idpes = fone_mae.idpes
+                                  AND fone_mae.tipo = 1),
+                            (SELECT to_char(fone_mae.fone, '9999999-9999')
+                                FROM cadastro.fisica AS pessoa_mae, cadastro.fone_pessoa AS fone_mae
+                                WHERE pessoa_mae.idpes = fisica.idpes_mae
+                                  AND pessoa_mae.idpes = fone_mae.idpes
+                                  AND fone_mae.tipo = 3),
+                            (SELECT to_char(fone_mae.fone, '9999999-9999')
+                                FROM cadastro.fisica AS pessoa_mae, cadastro.fone_pessoa AS fone_mae
+                                WHERE pessoa_mae.idpes = fisica.idpes_mae
+                                  AND pessoa_mae.idpes = fone_mae.idpes
+                                  AND fone_mae.tipo = 2)
+                    ) AS fone_mae,
                     to_char(matricula_turma.data_enturmacao,'dd/mm/yyyy') AS data_matricula,
                     view_situacao.texto_situacao AS situacao,
                     matricula.dependencia
