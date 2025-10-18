@@ -16,7 +16,6 @@ trait ReportCardTrait
         $situacao_matricula = $this->args['situacao_matricula'] ?: 0;
         $alunos_diferenciados = $this->args['alunos_diferenciados'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
-        $tipo_nota = $this->args['tipo_nota'] ?: 0;
         $anual = strpos($this->args['dominio'], 'japaratinga') !== false ? 1 : 0;
         
         return <<<SQL
@@ -36,11 +35,11 @@ trait ReportCardTrait
               view_componente_curricular.nome AS nome_disciplina,
               area_conhecimento.nome AS area_conhecimento,
               area_conhecimento.secao AS secao,
-              CASE WHEN {$anual} = 1 
+              CASE WHEN ra.tipo_nota NOT IN (1,3) AND {$anual} = 1
                 THEN COALESCE(nota_etapa4.nota, nota_etapa3.nota, nota_etapa2.nota, nota_etapa1.nota)
                 ELSE nota_etapa1.nota 
               END AS nota1num,
-              CASE WHEN {$anual} = 1 
+              CASE WHEN ra.tipo_nota NOT IN (1,3) AND {$anual} = 1
                 THEN COALESCE(nota_etapa4.nota_arredondada, nota_etapa3.nota_arredondada, nota_etapa2.nota_arredondada, nota_etapa1.nota_arredondada)
                 ELSE nota_etapa1.nota_arredondada 
               END AS nota1,
@@ -193,7 +192,7 @@ trait ReportCardTrait
                                                                AND matricula.ano = any(componente_curricular_ano_escolar.anos_letivos)
                                                                )
         LEFT JOIN modules.regra_avaliacao_serie_ano rasa on(serie.cod_serie = rasa.serie_id AND matricula.ano = rasa.ano_letivo)
-        LEFT JOIN modules.regra_avaliacao on(rasa.regra_avaliacao_id = regra_avaliacao.id)
+        LEFT JOIN modules.regra_avaliacao ra on(rasa.regra_avaliacao_id = ra.id)
         WHERE instituicao.cod_instituicao = {$instituicao}
          AND escola.cod_escola = {$escola}
          AND curso.cod_curso = {$curso}
@@ -203,7 +202,8 @@ trait ReportCardTrait
          AND view_situacao.cod_situacao = {$situacao_matricula}
          AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
          AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
-         AND (CASE WHEN {$tipo_nota} = 0 THEN TRUE ELSE componente_curricular_ano_escolar.tipo_nota IS NULL OR componente_curricular_ano_escolar.tipo_nota = {$tipo_nota} END)
+         AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}' 
+         AND view_componente_curricular.nome !~ '[0-9][0-9]?.'
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 area_conhecimento.ordenamento_ac,

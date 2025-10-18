@@ -73,7 +73,7 @@
 	<field name="data_matricula" class="java.lang.String"/>
 	<field name="idade" class="java.lang.Integer"/>
 	<field name="nis_pis_pasep" class="java.math.BigDecimal"/>
-	<field name="cpf" class="java.math.BigDecimal"/>
+	<field name="cpf" class="java.lang.String"/>
 	<field name="nome_curso" class="java.lang.String"/>
 	<field name="nome_turma" class="java.lang.String"/>
 	<field name="nome_serie" class="java.lang.String"/>
