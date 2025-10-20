@@ -473,33 +473,30 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
    WHERE m.ref_cod_aluno = aluno.cod_aluno
    AND m.ativo = 1
-   GROUP BY m.ano
-   ORDER BY m.ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_serie,
+   GROUP BY m.ano, m.data_matricula
+   ORDER BY m.ano DESC, m.data_matricula DESC
+   OFFSET 1 LIMIT 1) AS ultima_matricula_serie,
 
   (SELECT max(nm_curso)
    FROM pmieducar.curso
    INNER JOIN pmieducar.matricula m ON (m.ref_cod_curso = curso.cod_curso)
    INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
    INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
-   INNER JOIN pmieducar.turma_tipo tipo ON (tt.id = t.turma_turno_id)
    WHERE m.ref_cod_aluno = aluno.cod_aluno
-     AND tipo.nm_tipo = turma_tipo.nm_tipo
-     AND m.ref_cod_aluno = aluno.cod_aluno
      AND m.ativo = 1
-   GROUP BY m.ano
-   ORDER BY m.ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_curso,
+   GROUP BY m.ano, m.data_matricula
+   ORDER BY m.ano DESC, m.data_matricula DESC
+   OFFSET 1 LIMIT 1) AS ultima_matricula_curso,
   initcap(lower(
                   (SELECT relatorio.get_nome_escola(escola.cod_escola)
                     FROM pmieducar.escola
                     INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_escola = escola.cod_escola)
                     INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
                     INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
-                    INNER JOIN pmieducar.turma_tipo tipo ON (tt.id = t.turma_turno_id)
                     WHERE m.ref_cod_aluno = aluno.cod_aluno
-                      AND tipo.nm_tipo = turma_tipo.nm_tipo
-                      AND m.ref_cod_aluno = aluno.cod_aluno
                       AND m.ativo = 1
-                    ORDER BY m.ano DESC OFFSET 1 LIMIT 1))) AS ultima_matricula_escola,
+                    ORDER BY m.ano DESC, m.data_matricula DESC
+                    OFFSET 1 LIMIT 1))) AS ultima_matricula_escola,
 
   (SELECT max(tt.nome)
    FROM pmieducar.turma_turno tt
