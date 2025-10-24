@@ -100,7 +100,11 @@
 	<field name="tem_nota" class="java.lang.Boolean"/>
 	<field name="desconsidera_para_progressao" class="java.lang.Boolean"/>
 	<variable name="conceito" class="java.lang.String" calculation="First">
-		<variableExpression><![CDATA[$P{dominio}.contains("coite") || $P{dominio}.contains("japaratinga") ? "APC" : "PPC"]]></variableExpression>
+		<variableExpression><![CDATA[$P{dominio} != null
+			    ? ($P{dominio}.contains("coite") || $P{dominio}.contains("japaratinga")
+			        ? "APC"
+			        : ($P{dominio}.contains("belem") ? "PPC" : "-"))
+			    : "-"]]></variableExpression>
 	</variable>
 	<variable name="nota_maior_dez" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{nota_maior_dez}]]></variableExpression>
@@ -379,10 +383,10 @@
 											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : new java.text.DecimalFormat("#0.0").format($V{mediaGlobal})]]></textFieldExpression>
 										</textField>
 										<textField>
-											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="1e5fc50e-05d6-4367-afc5-5659337e5435">
+											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="a7ba8476-82f3-4254-93cd-63ee89a57dc4">
 												<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 												<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-												<printWhenExpression><![CDATA[$V{mediaGlobal} == null || $V{temMediaValida} == 0]]></printWhenExpression>
+												<printWhenExpression><![CDATA[($V{mediaGlobal} == null || $V{temMediaValida} == 0)]]></printWhenExpression>
 											</reportElement>
 											<box>
 												<pen lineWidth="0.25"/>
@@ -391,7 +395,7 @@
 												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 												<rightPen lineWidth="2.5" lineStyle="Solid" lineColor="#000000"/>
 											</box>
-											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : $V{conceito}]]></textFieldExpression>
+											<textFieldExpression><![CDATA['-']]></textFieldExpression>
 										</textField>
 									</cellContents>
 								</crosstabRowHeader>
@@ -434,7 +438,7 @@
 								</crosstabTotalColumnHeader>
 							</columnGroup>
 							<measure name="mediaMeasure" class="java.lang.String" calculation="First">
-								<measureExpression><![CDATA[$F{media}]]></measureExpression>
+								<measureExpression><![CDATA[($P{ano} < 2025 && $F{media}.equalsIgnoreCase("EC")) ? "I" : $F{media}]]></measureExpression>
 							</measure>
 							<measure name="mediaGlobal" class="java.lang.Double" calculation="Average">
 								<measureExpression><![CDATA[$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ?
