@@ -103,7 +103,9 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
         } else {
             $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
         }
-        $this->report->addArg('tipo_nota', 1);
+
+        $conceitoAnual = getenv('ANNUAL_CONCEPT') ?: 0;
+        $this->report->addArg('conceito_anual', (int) $conceitoAnual);
         
         $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
         $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);

@@ -81,7 +81,8 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                     AND view_componente_curricular.cod_serie = serie.cod_serie
                     AND componente_curricular.desconsidera_para_progressao = true
                     AND area_conhecimento.nome NOT LIKE '%Ficha%'
-            ) AS merge_disciplinas_desconsideradas_aprovacao
+            ) AS merge_disciplinas_desconsideradas_aprovacao,
+            ra.tipo_nota
         FROM pmieducar.instituicao
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
         INNER JOIN pmieducar.escola_ano_letivo ON (escola_ano_letivo.ref_cod_escola = escola.cod_escola)
@@ -113,6 +114,8 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         INNER JOIN relatorio.view_situacao ON (view_situacao.cod_matricula = matricula.cod_matricula AND view_situacao.cod_turma = turma.cod_turma)
         LEFT JOIN cadastro.pessoa pessoa_gestor ON pessoa_gestor.idpes = escola.ref_idpes_gestor
         LEFT JOIN cadastro.pessoa pessoa_secr ON pessoa_secr.idpes = escola.ref_idpes_secretario_escolar
+        LEFT JOIN modules.regra_avaliacao_serie_ano rasa ON (serie.cod_serie = rasa.serie_id AND matricula.ano = rasa.ano_letivo)
+        LEFT JOIN modules.regra_avaliacao ra ON (rasa.regra_avaliacao_id = ra.id)
         WHERE instituicao.cod_instituicao = {$instituicao}
             AND escola.cod_escola = {$escola}
             AND escola_ano_letivo.ano = {$ano}
@@ -137,7 +140,6 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
         $situacao_matricula = $this->args['situacao_matricula'] ?: 0;
         $alunos_diferenciados = $this->args['alunos_diferenciados'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
-        $tipo_nota = $this->args['tipo_nota'] ?: 0;
 
     $studentSheetFrequency = "
         WITH etapa_desc AS (
@@ -195,7 +197,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                 COALESCE(turma_modulo.sequencial, ano_letivo_modulo.sequencial, 0) AS saiu_etapa,
                 etapas.qtd AS quantidade_etapas,
                 etapas.tipo AS etapa_tipo,
-                (CAST(matricula_turma.data_exclusao as DATE) - COALESCE(turma_modulo.data_inicio, ano_letivo_modulo.data_inicio))::float/(COALESCE(turma_modulo.data_fim, ano_letivo_modulo.data_fim) - COALESCE(turma_modulo.data_inicio, ano_letivo_modulo.data_inicio))::float AS percentual_cursado_na_etapa_decimal
+                (CAST(matricula_turma.data_exclusao as DATE) - COALESCE(turma_modulo.data_inicio, ano_letivo_modulo.data_inicio))::float/(COALESCE(turma_modulo.data_fim, ano_letivo_modulo.data_fim) - COALESCE(turma_modulo.data_inicio, ano_letivo_modulo.data_inicio))::float AS percentual_cursado_na_etapa_decimal                
         FROM etapas
         INNER JOIN pmieducar.instituicao ON instituicao.ativo = 1
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
@@ -348,7 +350,7 @@ class IndividualStudentSheetReport extends Portabilis_Report_ReportCore
                     WHERE falta_aluno.matricula_id = matricula.cod_matricula
                 ) AS cursou_etapa_max,
                 etapas.qtd AS quantidade_etapas,
-                etapas.tipo AS etapa_tipo
+                etapas.tipo AS etapa_tipo                
         FROM etapas
         INNER JOIN pmieducar.instituicao ON instituicao.ativo = 1
         INNER JOIN pmieducar.escola ON (escola.ref_cod_instituicao = instituicao.cod_instituicao)
