@@ -297,7 +297,8 @@ class StudentsPerClassReport extends Portabilis_Report_ReportCore
                         END
                     )
                 ORDER BY
-                    cod_aluno
+                    cod_aluno,
+                    matricula_turma.data_enturmacao DESC
             ) subquery
             ORDER BY
                     nm_escola ASC,
