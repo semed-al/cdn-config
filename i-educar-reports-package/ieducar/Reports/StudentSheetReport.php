@@ -516,6 +516,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
     (SELECT CASE WHEN m.aprovado = 1 then 'Aprovado' 
  			WHEN m.aprovado = 2 THEN 'Reprovado'
  			WHEN m.aprovado = 3 THEN 'Cursando'
+      WHEN m.aprovado = 4 THEN 'Transferido'
  			ELSE 'Não definida' END
            FROM pmieducar.serie
            INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_serie = serie.cod_serie)
