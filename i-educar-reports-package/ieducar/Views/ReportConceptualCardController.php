@@ -100,8 +100,12 @@ class ReportConceptualCardController extends Portabilis_Controller_ReportCoreCon
             $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
         }
         $this->report->addArg('tipo_nota', 2);
-        $anual = strpos($this->args['dominio'], 'japaratinga') !== false ? 1 : 0;
+        $dominio = $_SERVER['HTTP_HOST'];
+        $anual = strpos($dominio, 'japaratinga') !== false ? 1 : 0;
         $this->report->addArg('anual', $anual);
+
+        $ficha_conceito = strpos($dominio, 'japaratinga') !== false ? 1 : 0;
+        $this->report->addArg('ficha_conceito', $ficha_conceito);
     }
 
     /**

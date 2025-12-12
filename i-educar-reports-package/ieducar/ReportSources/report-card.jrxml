@@ -63,6 +63,7 @@
 	<parameter name="selecionar_areas_conhecimento" class="java.lang.String">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
+	<parameter name="ficha_conceito" class="java.lang.Integer"/>
 	<parameter name="emitir_assinatura" class="java.lang.String">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>

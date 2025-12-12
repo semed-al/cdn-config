@@ -17,6 +17,7 @@ trait ReportCardTrait
         $alunos_diferenciados = $this->args['alunos_diferenciados'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
         $anual = strpos($this->args['dominio'], 'japaratinga') !== false ? 1 : 0;
+        $ficha_conceito = $this->args['ficha_conceito'] ?: 0;
         
         return <<<SQL
             SELECT fcn_upper(instituicao.nm_instituicao) AS nome_instituicao,
@@ -133,9 +134,9 @@ trait ReportCardTrait
               nota_componente_curricular_media.media_arredondada AS media,
               nota_componente_curricular_media.media AS medianum,
               nota_exame.nota_arredondada AS nota_exame,
-              regra_avaliacao.qtd_casas_decimais,
-              regra_avaliacao.tipo_presenca,
-              coalesce(regra_avaliacao.media, 0.00) AS media_recuperacao,
+              ra.qtd_casas_decimais,
+              ra.tipo_presenca,
+              coalesce(ra.media, 0.00) AS media_recuperacao,
               relatorio.get_media_geral_turma(turma.cod_turma, view_componente_curricular.id) AS medianumturma,
               relatorio.get_total_falta_componente(matricula.cod_matricula, view_componente_curricular.id) AS total_faltas_componente
         FROM pmieducar.instituicao
@@ -202,8 +203,8 @@ trait ReportCardTrait
          AND view_situacao.cod_situacao = {$situacao_matricula}
          AND relatorio.exibe_aluno_conforme_parametro_alunos_diferenciados(aluno.cod_aluno, {$alunos_diferenciados})
          AND (CASE WHEN {$matricula} = 0 THEN TRUE ELSE matricula.cod_matricula = {$matricula} END)
-         AND view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}' 
-         AND view_componente_curricular.nome !~ '[0-9][0-9]?.'
+         AND (CASE WHEN {$ficha_conceito} = 1 THEN (view_componente_curricular.nome ~ '([a-zA-Z]{2}[0-9]{2}){2}' OR view_componente_curricular.nome ~ '[0-9][0-9]?.') 
+                                               ELSE (view_componente_curricular.nome !~ '([a-zA-Z]{2}[0-9]{2}){2}' AND view_componente_curricular.nome !~ '[0-9][0-9]?.' ) END)
         ORDER BY sequencial_fechamento,
                 relatorio.get_texto_sem_caracter_especial(pessoa.nome),
                 area_conhecimento.ordenamento_ac,

@@ -106,6 +106,8 @@ class ReportCardController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('observacoes', $this->getRequest()->observacoes);
         $this->report->addArg('orientacao', (int) $this->getRequest()->orientacao);
 
+        $this->report->addArg('ficha_conceito', (int) 0);
+
         if (is_null($this->getRequest()->ref_cod_matricula)) {
             $this->report->addArg('matricula', 0);
         } else {
