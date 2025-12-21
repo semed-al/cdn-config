@@ -58,18 +58,22 @@ trait ReportCardTraitWithSemesterRecovery
                 COALESCE(nota_etapa4.nota_recuperacao_especifica, nota_etapa4.nota_recuperacao)::numeric, 1
               ) AS rec_semestre2,
               ROUND(
-                  GREATEST(
-                      ((nota_etapa1.nota_original)::numeric + (nota_etapa2.nota_original)::numeric) / 2,
-                      (nota_etapa2.nota_recuperacao_especifica)::numeric
-                  ),
+                  CASE 
+                      WHEN nota_etapa2.nota_recuperacao_especifica IS NOT NULL 
+                           AND (nota_etapa2.nota_recuperacao_especifica)::numeric > ((nota_etapa1.nota_original)::numeric + (nota_etapa2.nota_original)::numeric) / 2
+                      THEN ((nota_etapa2.nota_recuperacao_especifica)::numeric + ((nota_etapa1.nota_original)::numeric + (nota_etapa2.nota_original)::numeric) / 2) / 2
+                      ELSE ((nota_etapa1.nota_original)::numeric + (nota_etapa2.nota_original)::numeric) / 2
+                  END,
                   1
               ) AS media_final_semestre1,
               ROUND(
-                GREATEST(
-                    ((nota_etapa3.nota_original)::numeric + (nota_etapa4.nota_original)::numeric) / 2,
-                    (nota_etapa4.nota_recuperacao_especifica)::numeric
-                ),
-                1
+                  CASE 
+                      WHEN nota_etapa4.nota_recuperacao_especifica IS NOT NULL 
+                           AND (nota_etapa4.nota_recuperacao_especifica)::numeric > ((nota_etapa3.nota_original)::numeric + (nota_etapa4.nota_original)::numeric) / 2
+                      THEN ((nota_etapa4.nota_recuperacao_especifica)::numeric + ((nota_etapa3.nota_original)::numeric + (nota_etapa4.nota_original)::numeric) / 2) / 2
+                      ELSE ((nota_etapa3.nota_original)::numeric + (nota_etapa4.nota_original)::numeric) / 2
+                  END,
+                  1
               ) AS media_final_semestre2,
               nota_exame.nota AS nota_exame,
               matricula.cod_matricula AS matricula,
