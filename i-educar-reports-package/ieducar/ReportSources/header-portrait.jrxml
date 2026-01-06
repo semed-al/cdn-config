@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="header-portrait" pageWidth="572" pageHeight="752" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0d2ddb19-fbc0-4ec9-9b68-1b3f41c8ef77">
 	<property name="ireport.zoom" value="1.5026296018031557"/>
 	<property name="ireport.x" value="0"/>
@@ -71,7 +71,7 @@
 				<textFieldExpression><![CDATA[$F{nm_escola}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="71" y="38" width="150" height="10" uuid="1176d12b-48c8-4a50-8104-f9daf02dc0d4">
+				<reportElement x="171" y="38" width="110" height="10" uuid="1176d12b-48c8-4a50-8104-f9daf02dc0d4">
 					<printWhenExpression><![CDATA[$P{cod_escola} != 0]]></printWhenExpression>
 				</reportElement>
 				<textElement markup="html">
@@ -153,7 +153,7 @@
 				</textField>
 			</frame>
 			<staticText>
-				<reportElement x="485" y="29" width="21" height="10" uuid="a4f9423c-3673-4708-8e06-0ce26812b063">
+				<reportElement x="72" y="38" width="21" height="10" uuid="a4f9423c-3673-4708-8e06-0ce26812b063">
 					<printWhenExpression><![CDATA[$F{inep} != null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -162,7 +162,7 @@
 				<text><![CDATA[INEP:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="507" y="29" width="60" height="10" uuid="d372ad04-b1b2-41b0-9386-e63983551227"/>
+				<reportElement x="93" y="38" width="60" height="10" uuid="d372ad04-b1b2-41b0-9386-e63983551227"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>

@@ -103,7 +103,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
                       WHERE endereco_pessoa.idpes = pessoa.idpes),
                      (SELECT endereco_externo.numero
                       FROM cadastro.endereco_externo
-                      WHERE endereco_externo.idpes = aluno.ref_idpes))) AS numero,
+                      WHERE endereco_externo.idpes = aluno.ref_idpes))::text) AS numero,
 
   (SELECT COALESCE(
                      (SELECT endereco_pessoa.letra
@@ -345,7 +345,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
                       WHERE endereco_pessoa.idpes = fisica.idpes_responsavel),
                      (SELECT endereco_externo.numero
                       FROM cadastro.endereco_externo
-                      WHERE endereco_externo.idpes = fisica.idpes_responsavel))) AS numero_responsavel,
+                      WHERE endereco_externo.idpes = fisica.idpes_responsavel))::text) AS numero_responsavel,
 
   (SELECT COALESCE(
                      (SELECT endereco_pessoa.letra
@@ -431,12 +431,12 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
   (SELECT caminho
    FROM cadastro.fisica_foto
    WHERE idpes = aluno.ref_idpes
-       AND SUBSTR(caminho, 1,27) = 'http://apps-ieducar-images.') AS foto,
+       AND caminho IS NOT NULL) AS foto,
 
   (SELECT 1
    FROM cadastro.fisica_foto
    WHERE idpes = aluno.ref_idpes
-       AND SUBSTR(caminho, 1,27) = 'http://apps-ieducar-images.') AS existe_foto,
+       AND caminho IS NOT NULL) AS existe_foto,
 
   (SELECT fisica.sus
    FROM cadastro.fisica
