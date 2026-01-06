@@ -107,7 +107,7 @@
 				<textFieldExpression><![CDATA[$F{nm_responsavel}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="301" y="38" width="241" height="10" uuid="a065f9a7-f9bc-4117-ba78-c79f630c77d3">
+				<reportElement x="270" y="38" width="241" height="10" uuid="a065f9a7-f9bc-4117-ba78-c79f630c77d3">
 					<printWhenExpression><![CDATA[$P{cod_escola}!=0]]></printWhenExpression>
 				</reportElement>
 				<textElement markup="html">
@@ -145,7 +145,7 @@
 					<textFieldExpression><![CDATA[($F{logradouro} != null ? $F{logradouro}+", " : "" )+($F{numero} != null ? $F{numero} : "S/N")+($F{bairro} != null ? ", "+$F{bairro} : "" )+($F{cidade} != null ? " - "+$F{cidade} : "" )+($F{uf} != null ? " - "+$F{uf} : "" )+($F{cidade} != null ? " - CEP: "+$F{cep} : "" )]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="0" y="11" width="150" height="10" uuid="1176d12b-48c8-4a50-8104-f9daf02dc0d4"/>
+					<reportElement x="0" y="11" width="110" height="10" uuid="1176d12b-48c8-4a50-8104-f9daf02dc0d4"/>
 					<textElement markup="html">
 						<font fontName="DejaVu Sans" size="8" isBold="false"/>
 					</textElement>

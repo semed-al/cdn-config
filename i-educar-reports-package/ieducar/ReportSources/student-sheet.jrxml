@@ -152,6 +152,15 @@
 	<field name="profissao_mae" class="java.lang.String"/>
 	<field name="transporte_aluno" class="java.lang.String"/>
 	<field name="data_matricula" class="java.lang.String"/>
+	<variable name="foto" class="java.lang.String">
+		<variableExpression><![CDATA[
+			$F{foto} == null
+				? null
+				: ($F{foto}.startsWith("http")
+					? $F{foto}
+					: "https://" + $P{dominio} + $F{foto})
+		]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -828,7 +837,7 @@
 			</staticText>
 			<image>
 				<reportElement x="484" y="6" width="57" height="71" uuid="10d94ccc-f34f-4b8b-b3d4-3749c115755c"/>
-				<imageExpression><![CDATA[$F{foto}]]></imageExpression>
+				<imageExpression><![CDATA[$V{foto}]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="199" y="679" width="160" height="12" uuid="42f2d7ca-da39-447b-a5b5-05cc34b437e4"/>
