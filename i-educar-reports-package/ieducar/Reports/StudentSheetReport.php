@@ -464,15 +464,16 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    FROM pmieducar.matricula
    WHERE matricula.ref_cod_aluno = cod_aluno
    AND matricula.ativo = 1
+   AND matricula.ref_cod_curso = curso.cod_curso
    ORDER BY ano DESC OFFSET 1 LIMIT 1) AS ultima_matricula_ano,
 
   (SELECT max(nm_serie)
    FROM pmieducar.serie
-   INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_serie = serie.cod_serie)
+   INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_serie = serie.cod_serie AND m.ref_cod_curso = curso.cod_curso)
    INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
    INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
    WHERE m.ref_cod_aluno = aluno.cod_aluno
-   AND m.ativo = 1
+      AND m.ativo = 1      
    GROUP BY m.ano, m.data_matricula
    ORDER BY m.ano DESC, m.data_matricula DESC
    OFFSET 1 LIMIT 1) AS ultima_matricula_serie,
@@ -483,7 +484,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
    INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
    INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
    WHERE m.ref_cod_aluno = aluno.cod_aluno
-     AND m.ativo = 1
+      AND m.ativo = 1
    GROUP BY m.ano, m.data_matricula
    ORDER BY m.ano DESC, m.data_matricula DESC
    OFFSET 1 LIMIT 1) AS ultima_matricula_curso,
@@ -519,7 +520,7 @@ SELECT (cod_aluno), public.fcn_upper(nm_instituicao) AS nome_instituicao,
       WHEN m.aprovado = 4 THEN 'Transferido'
  			ELSE 'Não definida' END
            FROM pmieducar.serie
-           INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_serie = serie.cod_serie)
+           INNER JOIN pmieducar.matricula m ON (m.ref_ref_cod_serie = serie.cod_serie and m.ref_cod_curso = curso.cod_curso)
            INNER JOIN pmieducar.matricula_turma mt ON (mt.ref_cod_matricula = m.cod_matricula)
            INNER JOIN pmieducar.turma t ON (mt.ref_cod_turma = t.cod_turma)
            WHERE m.ref_cod_aluno = aluno.cod_aluno
