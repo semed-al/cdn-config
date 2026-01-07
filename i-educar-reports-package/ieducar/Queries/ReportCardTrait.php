@@ -16,7 +16,7 @@ trait ReportCardTrait
         $situacao_matricula = $this->args['situacao_matricula'] ?: 0;
         $alunos_diferenciados = $this->args['alunos_diferenciados'] ?: 0;
         $matricula = $this->args['matricula'] ?: 0;
-        $anual = strpos($this->args['dominio'], 'japaratinga') !== false ? 1 : 0;
+        $anual = $this->args['anual'] ?: 0;
         $ficha_conceito = $this->args['ficha_conceito'] ?: 0;
         
         return <<<SQL

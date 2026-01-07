@@ -101,10 +101,13 @@ class ReportConceptualCardController extends Portabilis_Controller_ReportCoreCon
         }
         $this->report->addArg('tipo_nota', 2);
         $dominio = $_SERVER['HTTP_HOST'];
-        $anual = strpos($dominio, 'japaratinga') !== false ? 1 : 0;
+
+        $anualEnv = getenv('ANNUAL_CONCEPT');
+        $anual = ($anualEnv !== false && $anualEnv !== '') ? (int) $anualEnv : 0;
         $this->report->addArg('anual', $anual);
 
-        $ficha_conceito = strpos($dominio, 'japaratinga') !== false ? 1 : 0;
+        $fichaConceitoEnv = getenv('SHEET_CONCEPT');
+        $ficha_conceito = ($fichaConceitoEnv !== false && $fichaConceitoEnv !== '') ? (int) $fichaConceitoEnv : 0;
         $this->report->addArg('ficha_conceito', $ficha_conceito);
     }
 

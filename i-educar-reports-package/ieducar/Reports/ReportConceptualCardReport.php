@@ -34,7 +34,7 @@ class ReportConceptualCardReport extends Portabilis_Report_ReportCore
         $this->addRequiredArg('curso');
         $this->addRequiredArg('serie');
         $this->addRequiredArg('turma');
-        $this->addRequiredArg('ficha_conceito');
+        $this->addRequiredArg('anual');        
     }
 
     public function getJsonData()
