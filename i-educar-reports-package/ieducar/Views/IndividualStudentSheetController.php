@@ -38,7 +38,7 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
             'turma'
         ]);
 
-        $this->inputsHelper()->dynamic('matricula', ['required' => true]);
+        $this->inputsHelper()->dynamic('matricula', ['required' => false]);
 
         $resources = [
             1 => 'Aprovado',
@@ -62,6 +62,8 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
         // ];
 
         // $this->inputsHelper()->select('situacao_matricula', $options);
+
+        $this->inputsHelper()->checkbox('lote', ['label' => 'Emitir em lote?']);
 
         $this->inputsHelper()->text('data', [
             'label' => 'Data de encerramento',
@@ -98,10 +100,19 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
         $this->report->addArg('data_mes', $months[(int) $data_part[1]]);
         $this->report->addArg('data_ano', (int) $data_part[2]);
 
-        if (is_null($this->getRequest()->ref_cod_matricula)) {
+        $lote = (bool) $this->getRequest()->lote;
+        $this->report->addArg('lote', $lote);
+
+        if ($lote) {
+            // Se lote estiver marcado, definir matrícula como null (0)
             $this->report->addArg('matricula', 0);
         } else {
-            $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
+            // Se lote não estiver marcado, usar a matrícula informada
+            if (is_null($this->getRequest()->ref_cod_matricula)) {
+                $this->report->addArg('matricula', 0);
+            } else {
+                $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
+            }
         }
 
         $conceitoAnual = getenv('ANNUAL_CONCEPT') ?: 0;
@@ -109,6 +120,7 @@ class IndividualStudentSheetController extends Portabilis_Controller_ReportCoreC
         
         $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
         $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
+        
     }
 
     /**

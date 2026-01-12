@@ -46,8 +46,9 @@
 	<parameter name="tipo_nota" class="java.lang.Integer"/>
 	<parameter name="merge_disciplinas_desconsideradas_aprovacao" class="java.lang.String"/>
 	<queryString language="json">
-		<![CDATA[student_sheet_performance]]>
+		<![CDATA[student_sheet_performance(cod_matricula == $P{matricula})]]>
 	</queryString>
+	<field name="cod_matricula" class="java.lang.Integer"/>
 	<field name="nome_disciplina" class="java.lang.String"/>
 	<field name="desconsidera_para_progressao" class="java.lang.Boolean"/>
 	<field name="situacao" class="java.lang.String"/>

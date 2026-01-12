@@ -39,8 +39,9 @@
 	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="tipo_nota" class="java.lang.Integer"/>
 	<queryString language="json">
-		<![CDATA[student_sheet_frequency]]>
+		<![CDATA[student_sheet_frequency(cod_matricula == $P{matricula})]]>
 	</queryString>
+	<field name="cod_matricula" class="java.lang.Integer"/>
 	<field name="nome_disciplina" class="java.lang.String"/>
 	<field name="total_faltas_et1" class="java.lang.Integer"/>
 	<field name="total_faltas_et2" class="java.lang.Integer"/>

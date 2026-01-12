@@ -54,8 +54,9 @@
 	<parameter name="dominio" class="java.lang.String"/>
 	<parameter name="tipo_nota" class="java.lang.Integer"/>
 	<queryString language="json">
-		<![CDATA[student_sheet_performance]]>
+		<![CDATA[student_sheet_performance(cod_matricula == $P{matricula})]]>
 	</queryString>
+	<field name="cod_matricula" class="java.lang.Integer"/>
 	<field name="nome_disciplina" class="java.lang.String"/>
 	<field name="desconsidera_para_progressao" class="java.lang.Boolean"/>
 	<field name="situacao" class="java.lang.String"/>
@@ -86,6 +87,9 @@
 	</variable>
 	<variable name="media_global" class="java.math.BigDecimal" calculation="Average">
 		<variableExpression><![CDATA[$F{medianum}.doubleValue()]]></variableExpression>
+	</variable>
+	<variable name="conceito_anual" class="java.lang.String" calculation="First">
+		<variableExpression><![CDATA[$F{nota1} ?: ($F{nota2} ?: ($F{nota3} ?: $F{nota4}))]]></variableExpression>
 	</variable>
 	<group name="performance" keepTogether="true">
 		<groupExpression><![CDATA[$P{matricula}]]></groupExpression>
@@ -188,7 +192,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nota1} != null ? $F{nota1} : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{conceito_anual} != null ? $V{conceito_anual} : "-"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="2" y="1" width="478" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
