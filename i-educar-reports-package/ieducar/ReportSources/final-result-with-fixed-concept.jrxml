@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.4.3  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="final-result" language="groovy" pageWidth="595" pageHeight="842" columnWidth="500" leftMargin="15" rightMargin="10" topMargin="20" bottomMargin="20" uuid="0378c531-ef85-4c42-9c57-3c8660b99c2d">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="final-result-with-fixed-concept" language="groovy" pageWidth="595" pageHeight="842" columnWidth="500" leftMargin="15" rightMargin="10" topMargin="20" bottomMargin="20" uuid="0378c531-ef85-4c42-9c57-3c8660b99c2d">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Crosstab Data Text" hTextAlign="Center" hImageAlign="Center"/>
 	<style name="table">
@@ -81,10 +81,10 @@
 	<parameter name="tem_conceito_fixo" class="java.lang.Boolean">
 		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
 	</parameter>
-	<parameter name="conceito_fixo" class="java.lang.String"/>
 	<parameter name="tipo_nota" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
-	</parameter>	
+	</parameter>
+	<parameter name="conceito_fixo" class="java.lang.String"/>
 	<field name="nome_diretor" class="java.lang.String"/>
 	<field name="nome_secretario" class="java.lang.String"/>
 	<field name="municipio" class="java.lang.String"/>
@@ -106,6 +106,9 @@
 	<field name="sequencial_fechamento" class="java.lang.Integer"/>
 	<field name="tem_nota" class="java.lang.Boolean"/>
 	<field name="desconsidera_para_progressao" class="java.lang.Boolean"/>
+	<variable name="conceito" class="java.lang.String">
+		<variableExpression><![CDATA[$P{conceito_fixo}]]></variableExpression>
+	</variable>
 	<variable name="nota_maior_dez" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{nota_maior_dez}]]></variableExpression>
 	</variable>
@@ -198,75 +201,53 @@
 										<rightPen lineWidth="0.0"/>
 									</box>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="0" y="0" width="45" height="80" uuid="d784cbb4-7303-4aa7-979d-6b659e307ab7"/>
+										<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="80" uuid="d784cbb4-7303-4aa7-979d-6b659e307ab7"/>
 										<textElement textAlignment="Left">
 											<font fontName="DejaVu Sans" size="8" isBold="true"/>
 										</textElement>
 										<text><![CDATA[Aluno]]></text>
 									</staticText>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="45" y="0" width="45" height="80" uuid="a05dbf75-2346-4bdf-ac8c-f9df8cac3f01"/>
+										<reportElement style="Crosstab Data Text" x="50" y="0" width="45" height="80" uuid="a05dbf75-2346-4bdf-ac8c-f9df8cac3f01"/>
 										<textElement textAlignment="Left">
 											<font fontName="DejaVu Sans" size="8" isBold="true"/>
 										</textElement>
 										<text><![CDATA[]]></text>
 									</staticText>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="90" y="0" width="45" height="80" uuid="84d20c1c-57b8-4d44-a534-63522428476c"/>
+										<reportElement style="Crosstab Data Text" x="95" y="0" width="45" height="80" uuid="84d20c1c-57b8-4d44-a534-63522428476c"/>
 										<textElement textAlignment="Left">
 											<font fontName="DejaVu Sans" size="8" isBold="true"/>
 										</textElement>
 										<text><![CDATA[]]></text>
 									</staticText>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="135" y="0" width="45" height="80" uuid="4aa69f0a-3518-4fa1-81ed-bebb10e531d9"/>
+										<reportElement style="Crosstab Data Text" x="140" y="0" width="45" height="80" uuid="4aa69f0a-3518-4fa1-81ed-bebb10e531d9"/>
 										<textElement textAlignment="Left">
 											<font fontName="DejaVu Sans" size="8" isBold="true"/>
 										</textElement>
 										<text><![CDATA[]]></text>
 									</staticText>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="180" y="0" width="45" height="80" uuid="5ccf001e-a261-4461-8f12-c08d479ee8b1"/>
+										<reportElement style="Crosstab Data Text" x="185" y="0" width="45" height="80" uuid="5ccf001e-a261-4461-8f12-c08d479ee8b1"/>
 										<textElement textAlignment="Left">
 											<font fontName="DejaVu Sans" size="8" isBold="true"/>
 										</textElement>
 										<text><![CDATA[]]></text>
 									</staticText>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="225" y="0" width="45" height="80" uuid="2ba58a37-c9da-48d4-a2ac-086dc9849def"/>
+										<reportElement style="Crosstab Data Text" x="230" y="0" width="45" height="80" uuid="2ba58a37-c9da-48d4-a2ac-086dc9849def"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 											<font fontName="DejaVu Sans" size="7" isBold="true"/>
 										</textElement>
 										<text><![CDATA[Situação]]></text>
 									</staticText>
 									<staticText>
-										<reportElement style="Crosstab Data Text" x="270" y="0" width="45" height="80" uuid="93d25ded-82b7-42bd-800b-5c782568bed0"/>
+										<reportElement style="Crosstab Data Text" x="275" y="0" width="45" height="80" uuid="93d25ded-82b7-42bd-800b-5c782568bed0"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 											<font fontName="DejaVu Sans" size="8" isBold="true"/>
 										</textElement>
 										<text><![CDATA[Freq. %]]></text>
-									</staticText>
-									<staticText>
-										<reportElement style="Crosstab Data Text" x="315" y="0" width="45" height="80" uuid="ed6a1eef-04b1-48f3-b06f-8df6aa2b52fd">
-											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-											<property name="com.jaspersoft.layout.grid.x" value="-1"/>
-											<property name="com.jaspersoft.layout.grid.y" value="-1"/>
-											<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
-											<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
-											<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
-											<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
-											<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
-										</reportElement>
-										<box>
-											<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-											<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-											<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-											<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-										</box>
-										<textElement verticalAlignment="Middle" rotation="Left">
-											<font fontName="DejaVu Sans" size="8" isBold="true"/>
-										</textElement>
-										<text><![CDATA[R. Global]]></text>
 									</staticText>
 								</cellContents>
 							</crosstabHeaderCell>
@@ -364,45 +345,6 @@
 									<cellContents/>
 								</crosstabTotalRowHeader>
 							</rowGroup>
-							<rowGroup name="Média global" width="40" totalPosition="End">
-								<bucket class="java.lang.String">
-									<bucketExpression><![CDATA[$F{nome_diretor}]]></bucketExpression>
-								</bucket>
-								<crosstabRowHeader>
-									<cellContents mode="Opaque" style="linha-zebrado">
-										<textField>
-											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="f2f429a8-b5e1-4242-a796-8fbf635af627">
-												<printWhenExpression><![CDATA[$V{mediaGlobal} != null && $V{temMediaValida} > 0]]></printWhenExpression>
-											</reportElement>
-											<box>
-												<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-												<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-												<rightPen lineWidth="3.0" lineStyle="Solid" lineColor="#000000"/>
-											</box>
-											<textFieldExpression><![CDATA[($V{situacao}.contains("Trs") || $V{situacao}.contains("Aba")) ? '-' : new java.text.DecimalFormat("#0.0").format($V{mediaGlobal})]]></textFieldExpression>
-										</textField>
-										<textField>
-											<reportElement style="Crosstab Data Text" x="0" y="0" width="40" height="15" uuid="a7ba8476-82f3-4254-93cd-63ee89a57dc4">
-												<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-												<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-												<printWhenExpression><![CDATA[($V{mediaGlobal} == null || $V{temMediaValida} == 0)]]></printWhenExpression>
-											</reportElement>
-											<box>
-												<pen lineWidth="0.25"/>
-												<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-												<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-												<rightPen lineWidth="2.5" lineStyle="Solid" lineColor="#000000"/>
-											</box>
-											<textFieldExpression><![CDATA['-']]></textFieldExpression>
-										</textField>
-									</cellContents>
-								</crosstabRowHeader>
-								<crosstabTotalRowHeader>
-									<cellContents/>
-								</crosstabTotalRowHeader>
-							</rowGroup>
 							<columnGroup name="nm_componente_curricular" height="80" totalPosition="Start">
 								<bucket class="java.lang.String">
 									<bucketExpression><![CDATA[$F{nm_componente_curricular}]]></bucketExpression>
@@ -437,22 +379,11 @@
 									</cellContents>
 								</crosstabTotalColumnHeader>
 							</columnGroup>
-							<measure name="mediaMeasure" class="java.lang.String" calculation="First">
-								<measureExpression><![CDATA[($P{ano} < 2025 && $F{media}.equalsIgnoreCase("EC")) ? "I" : $F{media}]]></measureExpression>
-							</measure>
-							<measure name="mediaGlobal" class="java.lang.Double" calculation="Average">
-								<measureExpression><![CDATA[$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ?
-										Double.parseDouble($F{media}.replace(",", ".")) :
-										null]]></measureExpression>
-							</measure>
-							<measure name="temMediaValida" class="java.lang.Integer" calculation="Sum">
-								<measureExpression><![CDATA[$F{media} != null && $F{media}.replace(",", ".").matches("-?\\d+(\\.\\d+)?") ? 1 : 0]]></measureExpression>
-							</measure>
-							<measure name="tem_nota" class="java.lang.Boolean" calculation="First">
-								<measureExpression><![CDATA[$F{tem_nota}]]></measureExpression>
-							</measure>
 							<measure name="dominio" class="java.lang.String" calculation="First">
 								<measureExpression><![CDATA[$P{dominio}]]></measureExpression>
+							</measure>
+							<measure name="conceito" class="java.lang.String" calculation="First">
+								<measureExpression><![CDATA[$V{conceito}]]></measureExpression>
 							</measure>
 							<crosstabCell width="25" height="15">
 								<cellContents mode="Opaque" style="linha-zebrado">
@@ -475,13 +406,7 @@
 										<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
 											<font fontName="DejaVu Sans" size="8"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$V{tem_nota} != null && $V{tem_nota} == true ?
-												($V{situacao} != null && ($V{situacao}.equals("Trs") || $V{situacao}.equals("Aba")) ?
-													"-" :
-													($V{mediaMeasure} != null ? String.valueOf($V{mediaMeasure}) : "-")
-												)
-											:
-												("-")]]></textFieldExpression>
+										<textFieldExpression><![CDATA[($V{situacao} != null && $V{situacao}.equals("Apr") ? $V{conceito} : "-")]]></textFieldExpression>
 									</textField>
 								</cellContents>
 							</crosstabCell>
@@ -512,12 +437,6 @@
 								<cellContents/>
 							</crosstabCell>
 							<crosstabCell rowTotalGroup="%fr" columnTotalGroup="nm_componente_curricular">
-								<cellContents/>
-							</crosstabCell>
-							<crosstabCell height="0" rowTotalGroup="Média global">
-								<cellContents/>
-							</crosstabCell>
-							<crosstabCell height="0" rowTotalGroup="Média global" columnTotalGroup="nm_componente_curricular">
 								<cellContents/>
 							</crosstabCell>
 						</crosstab>

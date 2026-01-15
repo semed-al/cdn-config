@@ -11,6 +11,17 @@ class FinalResultReport extends Portabilis_Report_ReportCore
      */
     public function templateName()
     {
+        // Prioridade 2: Verificar o tipo de nota da série
+        $tipoNota = isset($this->args['tipo_nota']) ? (int) $this->args['tipo_nota'] : 1;
+        $tem_conceito_fixo = isset($this->args['tem_conceito_fixo']) ? (bool) $this->args['tem_conceito_fixo'] : false;
+        
+        // tipo_nota = 2 significa conceitual
+        if ($tipoNota == 0 || ($tipoNota == 2 && $tem_conceito_fixo)) {
+            return 'final-result-with-fixed-concept';
+        }
+
+        // tipo_nota = 0 significa sem nota, tipo_nota = 1 ou 3 significa numérica
+        // Ambos usam o template padrão, mas respeitando a orientação
         if ($this->args['orientacao'] == 'paisagem') {
             return 'final-result-landscape';
         }
@@ -30,6 +41,9 @@ class FinalResultReport extends Portabilis_Report_ReportCore
         $this->addRequiredArg('serie');
         $this->addRequiredArg('turma');
         $this->addRequiredArg('modelo');
+        $this->addRequiredArg('tem_conceito_fixo');
+        $this->addRequiredArg('conceito_fixo');
+        $this->addRequiredArg('tipo_nota');
     }
 
     /**

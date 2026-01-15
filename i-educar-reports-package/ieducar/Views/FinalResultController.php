@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\LegacySchoolClass;
+
 class FinalResultController extends Portabilis_Controller_ReportCoreController
 {
     /**
@@ -112,13 +114,16 @@ class FinalResultController extends Portabilis_Controller_ReportCoreController
      */
     public function beforeValidation()
     {
+        $turmaId = (int) $this->getRequest()->ref_cod_turma;
+        $serieId = (int) $this->getRequest()->ref_cod_serie;
+
         $this->report->addArg('dominio', $_SERVER['HTTP_HOST']);
         $this->report->addArg('ano', (int) $this->getRequest()->ano);
         $this->report->addArg('instituicao', (int) $this->getRequest()->ref_cod_instituicao);
         $this->report->addArg('escola', (int) $this->getRequest()->ref_cod_escola);
         $this->report->addArg('curso', (int) $this->getRequest()->ref_cod_curso);
-        $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
-        $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
+        $this->report->addArg('serie', $serieId);
+        $this->report->addArg('turma', $turmaId);
         $this->report->addArg('cabecalho_alternativo', (int) $GLOBALS['coreExt']['Config']->report->header->alternativo);
         $this->report->addArg('modelo', (int) 1);
         $this->report->addArg('orientacao', (string) $this->getRequest()->orientacao);
@@ -139,6 +144,32 @@ class FinalResultController extends Portabilis_Controller_ReportCoreController
         // $this->report->addArg('areas_conhecimento', trim($areasConhecimento) == '' ? 0 : $areasConhecimento);
         $this->report->addArg('alterar_nome_diretor', $this->getRequest()->alterar_nome_diretor);
         $this->report->addArg('alterar_nome_secretario', $this->getRequest()->alterar_nome_secretario);
+
+        $temConceitoFixoEnv = getenv('TEM_CONCEITO_FIXO');
+        $temConceitoFixo = ($temConceitoFixoEnv !== false && $temConceitoFixoEnv !== '') ? (bool) $temConceitoFixoEnv : false;
+        $this->report->addArg('tem_conceito_fixo', $temConceitoFixo);
+
+        $conceitoFixoEnv = getenv('CONCEITO_FIXO'); // APP ou PPC ou "" ou null
+        $conceitoFixo = ($conceitoFixoEnv !== false && $conceitoFixoEnv !== '') ? (string) $conceitoFixoEnv : '';
+        $this->report->addArg('conceito_fixo', $conceitoFixo);
+
+        // Buscar o tipo de nota da série para direcionar o relatório adequado
+        $tipoNota = 1; // Default: numérica
+        try {
+            $schoolClass = LegacySchoolClass::find($turmaId);
+            if ($schoolClass) {
+                $evaluationRule = $schoolClass->getEvaluationRule($serieId);
+                if ($evaluationRule && isset($evaluationRule->tipo_nota) && $evaluationRule->tipo_nota !== null) {
+                    // Forçar conversão para inteiro PHP puro
+                    // O Eloquent pode retornar como string, então garantimos que seja int
+                    $tipoNota = (int) $evaluationRule->tipo_nota;
+                }
+            }
+        } catch (Exception $e) {
+            // Em caso de erro, mantém o default
+        }
+        // Passar como número inteiro literal (igual ao ReportConceptualCardController que passa 2 diretamente)
+        $this->report->addArg('tipo_nota', $tipoNota);
     }
 
     /**

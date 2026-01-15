@@ -78,6 +78,13 @@
 	<parameter name="data_dia" class="java.lang.Integer"/>
 	<parameter name="data_mes" class="java.lang.String"/>
 	<parameter name="data_ano" class="java.lang.Integer"/>
+	<parameter name="tem_conceito_fixo" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tipo_nota" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="conceito_fixo" class="java.lang.String"/>
 	<field name="nome_diretor" class="java.lang.String"/>
 	<field name="nome_secretario" class="java.lang.String"/>
 	<field name="municipio" class="java.lang.String"/>
