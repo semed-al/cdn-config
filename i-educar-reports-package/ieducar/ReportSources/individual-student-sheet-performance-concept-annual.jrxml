@@ -88,9 +88,6 @@
 	<variable name="media_global" class="java.math.BigDecimal" calculation="Average">
 		<variableExpression><![CDATA[$F{medianum}.doubleValue()]]></variableExpression>
 	</variable>
-	<variable name="conceito_anual" class="java.lang.String" calculation="First">
-		<variableExpression><![CDATA[$F{nota1} ?: ($F{nota2} ?: ($F{nota3} ?: $F{nota4}))]]></variableExpression>
-	</variable>
 	<group name="performance" keepTogether="true">
 		<groupExpression><![CDATA[$P{matricula}]]></groupExpression>
 		<groupHeader>
@@ -192,7 +189,7 @@
 				<textElement textAlignment="Center" markup="html">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{conceito_anual} != null ? $V{conceito_anual} : "-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{nota1} ?: ($F{nota2} ?: ($F{nota3} ?: $F{nota4}))) ?: "-"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="2" y="1" width="478" height="11" uuid="7a070405-d463-4e82-bf5a-c6c99f075120"/>
