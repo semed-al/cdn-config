@@ -21,7 +21,6 @@ class StudentSheetReport extends Portabilis_Report_ReportCore
     {
         $this->addRequiredArg('instituicao');
         $this->addRequiredArg('escola');
-        $this->addRequiredArg('modelo');
     }
 
     /**

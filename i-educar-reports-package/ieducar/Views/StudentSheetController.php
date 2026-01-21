@@ -33,13 +33,20 @@ class StudentSheetController extends Portabilis_Controller_ReportCoreController
     {
         $this->inputsHelper()->dynamic(['ano', 'instituicao', 'escola', 'curso', 'serie', 'turma']);
         $this->inputsHelper()->dynamic('matricula', [], ['options' => ['required' => false]]);
-        $this->inputsHelper()->select('modelo', [
-            'label' => 'Modelo',
-            'resources' => [
-                1 => 'Modelo 1',
-            ], 'value' => 1
+        // $this->inputsHelper()->select('modelo', [
+        //     'label' => 'Modelo',
+        //     'resources' => [
+        //         1 => 'Modelo 1',
+        //     ], 'value' => 1
+        // ]);
+        // $this->inputsHelper()->checkbox('emitir_data_atual', ['label' => 'Emitir com data atual', 'value' => true]);
+
+        $this->inputsHelper()->text('data', [
+            'label' => 'Data de encerramento',
+            'value' => date('d/m/Y'),
+            'placeholder' => '',
+            'required' => true
         ]);
-        $this->inputsHelper()->checkbox('emitir_data_atual', ['label' => 'Emitir com data atual', 'value' => true]);
     }
 
     /**
@@ -51,12 +58,13 @@ class StudentSheetController extends Portabilis_Controller_ReportCoreController
         $this->report->addArg('ano', (int) $this->getRequest()->ano);
         $this->report->addArg('instituicao', (int) $this->getRequest()->ref_cod_instituicao);
         $this->report->addArg('escola', (int) $this->getRequest()->ref_cod_escola);
-        $this->report->addArg('modelo', (int) $this->getRequest()->modelo);
+        $this->report->addArg('modelo', (int) $this->getRequest()->modelo ?? 1);
         $this->report->addArg('curso', (int) $this->getRequest()->ref_cod_curso);
         $this->report->addArg('serie', (int) $this->getRequest()->ref_cod_serie);
         $this->report->addArg('turma', (int) $this->getRequest()->ref_cod_turma);
         $this->report->addArg('matricula', (int) $this->getRequest()->ref_cod_matricula);
-        $this->report->addArg('emitir_data_atual', (bool) $this->getRequest()->emitir_data_atual);
+        // $this->report->addArg('emitir_data_atual', (bool) $this->getRequest()->emitir_data_atual);
+        $this->report->addArg('data', (string) $this->getRequest()->data);
     }
 
     /**

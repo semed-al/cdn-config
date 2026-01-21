@@ -90,12 +90,11 @@ class FinalResultController extends Portabilis_Controller_ReportCoreController
         // ]);
         $this->inputsHelper()->text('data', [
             'label' => 'Data de encerramento',
-            'value' => '',
-            'placeholder' => 'DD/MM/AAAA',
-            'size' => 40,
+            'value' => date('d/m/Y'),
+            'placeholder' => '',
             'required' => true
         ]);
-
+        
         $this->loadResourceAssets($this->getDispatcher());
 
         // $mensagemAprovacaoPontos = 'Se esta opção for selecionada, a informação (' . $GLOBALS['coreExt']['Config']->report->portaria_aprovacao_pontos . ') será apresentada';
